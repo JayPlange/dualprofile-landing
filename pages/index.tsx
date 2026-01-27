@@ -80,10 +80,11 @@ export default function Home() {
         <title>DualProfile - One WhatsApp. Multiple Identities.</title>
         <meta name="description" content="Finally show different profile pictures to different contacts. Control your identity on WhatsApp Web like never before." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js"></script>
+        <link rel="icon" href="/dualprofile-logo.png" />
+        <link rel="apple-touch-icon" href="/dualprofile-logo.png" />
       </Head>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js"></script>
 
       <div className="app">
         {/* Navbar */}
@@ -105,6 +106,9 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
+            <div className="hero-logo">
+              <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="48" height="48" />
+            </div>
             <h1 className="hero-title">
               One WhatsApp.<br />Multiple Identities.
             </h1>
@@ -1021,6 +1025,23 @@ export default function Home() {
           .nav-links {
             display: flex;
           }
+        }
+
+        /* Hero Logo */
+        .hero-logo {
+          margin-bottom: 1.5rem;
+          display: flex;
+          justify-content: center;
+        }
+
+        .hero-logo img {
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s ease;
+        }
+
+        .hero-logo img:hover {
+          transform: scale(1.05);
         }
 
         /* Hero Section */
