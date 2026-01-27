@@ -123,6 +123,9 @@ export default function Home() {
               <div className="proof-badge">
                 ⭐ Trusted by early adopters
               </div>
+              <div className="scarcity-badge">
+                🔥 Only 143 Founding spots left!
+              </div>
             </div>
             <div className="hero-buttons">
               <button 
@@ -511,6 +514,26 @@ export default function Home() {
           font-size: 0.875rem;
           font-weight: 600;
           border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .scarcity-badge {
+          background: rgba(239, 68, 68, 0.1);
+          color: #ef4444;
+          padding: 0.5rem 1rem;
+          border-radius: 2rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          border: 1px solid rgba(239, 68, 68, 0.2);
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
         }
 
         /* Hero Status */
