@@ -537,6 +537,30 @@ export default function Home() {
           font-size: 0.875rem;
         }
 
+        /* Demo Section */
+        .demo {
+          padding: 4rem 0;
+        }
+
+        .demo-container {
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .demo-video-wrapper {
+          margin-bottom: 2rem;
+          border-radius: var(--radius);
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .trust-statement {
+          color: #9ca3af;
+          font-size: 0.875rem;
+          margin-top: 1rem;
+        }
+
         /* How It Works */
         .how-it-works {
           padding: 6rem 0;
