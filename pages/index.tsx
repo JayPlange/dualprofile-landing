@@ -384,7 +384,14 @@ export default function Home() {
         {/* Footer */}
         <footer className="footer">
           <div className="container">
-            <p>© 2024 DualProfile. All rights reserved.</p>
+            <div className="footer-content">
+              <p>© 2024 DualProfile. All rights reserved.</p>
+              <div className="footer-links">
+                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
+                  Support
+                </a>
+              </div>
+            </div>
           </div>
         </footer>
 
@@ -883,8 +890,34 @@ export default function Home() {
           border-top: 1px solid rgba(107, 114, 128, 0.2);
         }
 
-        .footer p {
+        .footer-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .footer-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .footer-link {
           color: #9ca3af;
+          text-decoration: none;
+          font-size: 0.875rem;
+          transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+          color: var(--primary);
+        }
+
+        @media (min-width: 768px) {
+          .footer-content {
+            flex-direction: row;
+            justify-content: space-between;
+          }
         }
         .container {
           width: 100%;
