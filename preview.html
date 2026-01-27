@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DualProfile - One WhatsApp. Multiple Identities.</title>
+    <meta name="description" content="Finally show different profile pictures to different contacts. Control your identity on WhatsApp Web like never before." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+          --background: hsl(200, 20%, 10%);
+          --foreground: hsl(0, 0%, 98%);
+          --card: hsl(200, 18%, 13%);
+          --primary: hsl(145, 63%, 49%);
+          --muted-foreground: hsl(200, 10%, 60%);
+          --border: hsl(200, 15%, 20%);
+          --radius: 0.75rem;
+        }
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          background-color: var(--background);
+          color: var(--foreground);
+          line-height: 1.6;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          font-family: inherit;
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 0.75rem 1.5rem;
+          border-radius: var(--radius);
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-decoration: none;
+        }
+
+        .btn-primary {
+          background-color: var(--primary);
+          color: white;
+        }
+
+        .btn-primary:hover {
+          background-color: hsl(145, 63%, 44%);
+          transform: translateY(-1px);
+        }
+
+        .btn-outline {
+          background-color: transparent;
+          color: var(--foreground);
+          border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+          background-color: var(--card);
+          border-color: var(--primary);
+        }
+
+        .btn-lg {
+          font-size: 1.125rem;
+          padding: 1rem 2rem;
+        }
+
+        .btn-full {
+          width: 100%;
+        }
+
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          background: hsla(200, 20%, 10%, 0.8);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem;
+        }
+
+        .logo {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+
+        .nav-links {
+          display: none;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .nav-links a {
+          color: var(--muted-foreground);
+          transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+          color: var(--foreground);
+        }
+
+        @media (min-width: 768px) {
+          .nav-links {
+            display: flex;
+          }
+        }
+
+        .hero {
+          padding: 8rem 1rem 5rem;
+        }
+
+        .hero-content {
+          max-width: 56rem;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .hero-title {
+          font-size: 3.75rem;
+          margin-bottom: 1.5rem;
+          line-height: 1.1;
+        }
+
+        .hero-subtitle {
+          font-size: 1.25rem;
+          color: var(--muted-foreground);
+          max-width: 42rem;
+          margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          margin-bottom: 4rem;
+        }
+
+        @media (max-width: 767px) {
+          .hero-title {
+            font-size: 2.5rem;
+          }
+          
+          .hero-subtitle {
+            font-size: 1.125rem;
+          }
+          
+          .hero-buttons {
+            flex-direction: column;
+          }
+        }
+
+        .text-primary {
+          color: var(--primary);
+        }
+
+        .demo-container {
+          max-width: 56rem;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        .demo-placeholder {
+          position: relative;
+          aspect-ratio: 16 / 9;
+          border-radius: var(--radius);
+          overflow: hidden;
+          border: 2px solid var(--primary);
+          background: var(--card);
+          cursor: pointer;
+          transition: border-color 0.3s ease;
+        }
+
+        .demo-content {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .play-button {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 50%;
+          background: hsla(145, 63%, 49%, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        .trust-statement {
+          margin-top: 3rem;
+          text-align: center;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 4rem;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+          color: var(--muted-foreground);
+          font-size: 1.125rem;
+          max-width: 42rem;
+          margin: 0 auto;
+        }
+
+        .features {
+          padding: 5rem 1rem;
+        }
+
+        .features-grid {
+          display: grid;
+          gap: 1.5rem;
+          max-width: 64rem;
+          margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+          .features-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        .feature-card {
+          padding: 1.5rem;
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          background: var(--card);
+        }
+
+        .feature-icon {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 0.5rem;
+          background: hsla(145, 63%, 49%, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        .feature-icon svg {
+          color: var(--primary);
+        }
+
+        .testimonial {
+          max-width: 48rem;
+          margin: 0 auto;
+          padding: 3rem;
+          text-align: center;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+        }
+
+        .pricing {
+          padding: 5rem 1rem;
+        }
+
+        .pricing-card {
+          max-width: 28rem;
+          margin: 0 auto;
+          padding: 2.5rem;
+          position: relative;
+          border: 1px solid var(--primary);
+          border-radius: var(--radius);
+          background: var(--card);
+        }
+
+        .pricing-badge {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: var(--primary);
+          color: white;
+          padding: 0.25rem 1rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          border-bottom-left-radius: 0.5rem;
+        }
+
+        .pricing-header {
+          text-align: center;
+          padding-top: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .pricing-title {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+          color: var(--muted-foreground);
+          margin-bottom: 1.5rem;
+        }
+
+        .pricing-amount {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .price {
+          font-size: 3rem;
+          font-weight: 700;
+        }
+
+        .currency {
+          color: var(--muted-foreground);
+        }
+
+        .pricing-benefits ul {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .pricing-benefits li {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .check-icon {
+          width: 1.25rem;
+          height: 1.25rem;
+          border-radius: 50%;
+          background: hsla(145, 63%, 49%, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .check-icon svg {
+          color: var(--primary);
+        }
+
+        .pricing-guarantee {
+          text-align: center;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+          margin-top: 1.5rem;
+        }
+
+        .scarcity-line {
+          text-align: center;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+          margin-top: 1rem;
+        }
+
+        .faq {
+          padding: 5rem 1rem;
+        }
+
+        .faq-list {
+          max-width: 48rem;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .faq-item {
+          border-radius: var(--radius);
+          overflow: hidden;
+          border: 1px solid var(--border);
+          background: var(--card);
+        }
+
+        .faq-item.open {
+          border-color: var(--primary);
+        }
+
+        .faq-trigger {
+          width: 100%;
+          padding: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: transparent;
+          border: none;
+          color: var(--foreground);
+          font-family: inherit;
+          font-size: 1rem;
+          font-weight: 500;
+          text-align: left;
+          cursor: pointer;
+        }
+
+        .faq-trigger:hover {
+          color: var(--primary);
+        }
+
+        .faq-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-content {
+          max-height: 500px;
+        }
+
+        .faq-content p {
+          padding: 0 1.5rem 1.5rem;
+          color: var(--muted-foreground);
+        }
+
+        .footer {
+          padding: 2rem 1rem;
+          border-top: 1px solid var(--border);
+          text-align: center;
+        }
+
+        .footer p {
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+        }
+
+        .modal {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+        }
+
+        .modal.open {
+          display: flex;
+        }
+
+        .modal-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.8);
+          backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+          position: relative;
+          width: 100%;
+          max-width: 28rem;
+          padding: 2rem;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+        }
+
+        .modal-close {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: transparent;
+          border: none;
+          color: var(--muted-foreground);
+          cursor: pointer;
+          padding: 0.25rem;
+        }
+
+        .modal-title {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+          color: var(--muted-foreground);
+          margin-bottom: 1.5rem;
+        }
+
+        .input-wrapper {
+          position: relative;
+          margin-bottom: 1rem;
+        }
+
+        .input-wrapper input {
+          width: 100%;
+          padding: 1rem;
+          background: var(--background);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          color: var(--foreground);
+          font-family: inherit;
+          font-size: 1rem;
+        }
+
+        .input-wrapper input:focus {
+          outline: none;
+          border-color: var(--primary);
+        }
+
+        .modal-privacy {
+          text-align: center;
+          color: var(--muted-foreground);
+          font-size: 0.75rem;
+          margin-top: 1rem;
+        }
+
+        .toast {
+          position: fixed;
+          bottom: 1.5rem;
+          right: 1.5rem;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 1rem 1.5rem;
+          z-index: 200;
+          transform: translateY(150%);
+          opacity: 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .toast.show {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .toast-title {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        }
+
+        .toast-message {
+          display: block;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav className="navbar">
+        <div className="navbar-container">
+            <div className="logo">DualProfile</div>
+            <div className="nav-links">
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section className="hero">
+        <div className="container">
+            <div className="hero-content">
+                <h1 className="hero-title">
+                    One WhatsApp. <span className="text-primary">Multiple Identities.</span>
+                </h1>
+                <p className="hero-subtitle">
+                    Finally show different profile pictures to different contacts. 
+                    Control your identity on WhatsApp Web like never before.
+                </p>
+                <div className="hero-buttons">
+                    <a 
+                        href="https://your-lemon-squeezy-checkout-url.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary btn-lg"
+                        onclick="alert('Replace with your Lemon Squeezy checkout URL')"
+                    >
+                        Become a Founding Member
+                    </a>
+                    <button 
+                        onclick="document.getElementById('waitlistModal').classList.add('open')"
+                        className="btn btn-outline btn-lg"
+                    >
+                        Join the Waitlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" className="demo-container">
+        <div className="demo-placeholder">
+            <div className="demo-content">
+                <div className="play-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                </div>
+                <div style={{color: 'var(--muted-foreground)', fontSize: '0.875rem'}}>Demo video coming soon</div>
+                <div style={{color: 'hsla(200, 10%, 60%, 0.6)', fontSize: '0.75rem', marginTop: '0.25rem'}}>Click to play</div>
+            </div>
+        </div>
+        <div className="trust-statement">
+            🔒 This works entirely on WhatsApp Web. No chat data is stored.
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" className="features">
+        <div className="container">
+            <div className="section-header">
+                <h2 className="section-title">Everything You Need</h2>
+                <p className="section-subtitle">
+                    Simple, powerful features designed for privacy-conscious users who want control over their WhatsApp identity.
+                </p>
+            </div>
+            <div className="features-grid">
+                <div className="feature-card">
+                    <div className="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </div>
+                    <h3 style={{fontSize: '1.25rem', marginBottom: '0.5rem'}}>Dual Uploads</h3>
+                    <p style={{color: 'var(--muted-foreground)'}}>
+                        Upload different profile photos for different contacts. Your work colleagues see one image, your friends see another.
+                    </p>
+                </div>
+                <div className="feature-card">
+                    <div className="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 style={{fontSize: '1.25rem', marginBottom: '0.5rem'}}>Live Test Preview</h3>
+                    <p style={{color: 'var(--muted-foreground)'}}>
+                        See exactly what each contact sees before you switch. No more guessing—preview your identity changes in real-time.
+                    </p>
+                </div>
+                <div className="feature-card">
+                    <div className="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3 style={{fontSize: '1.25rem', marginBottom: '0.5rem'}}>Privacy First</h3>
+                    <p style={{color: 'var(--muted-foreground)'}}>
+                        All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section style={{padding: '5rem 1rem'}}>
+        <div className="container">
+            <div className="testimonial">
+                <div style={{color: 'var(--primary)', opacity: '0.3', marginBottom: '1.5rem'}}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                </div>
+                <p style={{fontSize: '1.75rem', fontStyle: 'italic', marginBottom: '1.5rem', lineHeight: '1.4'}}>
+                    I've been asking for this feature for 9 years. It's about time.
+                </p>
+                <p style={{color: 'var(--muted-foreground)'}}>— Reddit user, r/WhatsApp</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" className="pricing">
+        <div className="container">
+            <div className="section-header">
+                <h2 className="section-title">Join the Founding Members</h2>
+                <p className="section-subtitle">
+                    Get lifetime access at a special launch price. Limited spots available.
+                </p>
+            </div>
+            <div className="pricing-card">
+                <div className="pricing-badge">Limited Offer</div>
+                <div className="pricing-header">
+                    <h3 className="pricing-title">Founding Member</h3>
+                    <p className="pricing-subtitle">One-time payment, lifetime access</p>
+                    <div className="pricing-amount">
+                        <span className="price">$29</span>
+                        <span className="currency">USD</span>
+                    </div>
+                </div>
+                <div className="pricing-benefits">
+                    <ul>
+                        <li>
+                            <div className="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Lifetime access to DualProfile</span>
+                        </li>
+                        <li>
+                            <div className="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span>All future updates included</span>
+                        </li>
+                        <li>
+                            <div className="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Priority support</span>
+                        </li>
+                        <li>
+                            <div className="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span>Early access to new features</span>
+                        </li>
+                    </ul>
+                </div>
+                <a 
+                    href="https://your-lemon-squeezy-checkout-url.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-full btn-lg"
+                    onclick="alert('Replace with your Lemon Squeezy checkout URL')"
+                >
+                    Secure My Founding Access
+                </a>
+                <div className="pricing-guarantee">
+                    🛡️ Full refund available until public launch. No questions asked.
+                </div>
+                <div className="scarcity-line">
+                    Founding access capped. Price increases at public launch.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" className="faq">
+        <div className="container">
+            <div className="section-header">
+                <h2 className="section-title">Frequently Asked Questions</h2>
+                <p className="section-subtitle">Got questions? We've got answers.</p>
+            </div>
+            <div className="faq-list">
+                <div className="faq-item">
+                    <button className="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+                        <span>How does DualProfile work?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div className="faq-content">
+                        <p>DualProfile is a Chrome extension that integrates seamlessly with WhatsApp Web. Once installed, it adds a simple interface that lets you assign different profile pictures to different contacts or groups. When you switch profiles, the extension handles the rest automatically.</p>
+                    </div>
+                </div>
+                <div className="faq-item">
+                    <button className="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Is my chat data safe?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div className="faq-content">
+                        <p>Absolutely. DualProfile is built with privacy as the #1 priority. All processing happens locally in your browser—your images and data never leave your device. We have zero access to your chats, contacts, or any WhatsApp data.</p>
+                    </div>
+                </div>
+                <div className="faq-item">
+                    <button className="faq-trigger" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What happens if WhatsApp Web updates?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div className="faq-content">
+                        <p>We actively monitor WhatsApp Web for updates and push compatibility fixes quickly. As a Founding Member, you'll receive all updates automatically at no extra cost. If there's ever a temporary compatibility issue, we'll notify you immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer className="footer">
+        <div className="container">
+            <p>© 2024 DualProfile. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" className="modal">
+        <div className="modal-overlay" onclick="document.getElementById('waitlistModal').classList.remove('open')"></div>
+        <div className="modal-content">
+            <button className="modal-close" onclick="document.getElementById('waitlistModal').classList.remove('open')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2 className="modal-title">Join the Waitlist</h2>
+            <p className="modal-subtitle">Be the first to know when DualProfile launches. No spam, just one email when we're ready.</p>
+            <form onsubmit="handleWaitlistSubmit(event)">
+                <div className="input-wrapper">
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="Enter your email"
+                        required
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary btn-full" id="submitBtn">
+                    Join Waitlist
+                </button>
+            </form>
+            <p className="modal-privacy">
+                🔒 We respect your privacy. Unsubscribe anytime.
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" className="toast">
+        <span className="toast-title" id="toastTitle">Success!</span>
+        <span className="toast-message" id="toastMessage">You're on the list!</span>
+    </div>
+
+    <script>
+        function handleWaitlistSubmit(event) {
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('emailInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const email = emailInput.value.trim();
+
+            if (!email || !email.includes('@')) {
+                showToast('Invalid email', 'Please enter a valid email address.');
+                return;
+            }
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = ' Joining...';
+
+            // Simulate API call
+            setTimeout(function() {
+                // Store in localStorage
+                const waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+                waitlist.push({ email: email, timestamp: new Date().toISOString() });
+                localStorage.setItem('waitlist', JSON.stringify(waitlist));
+
+                // Reset form
+                emailInput.value = '';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+
+                // Close modal and show success
+                document.getElementById('waitlistModal').classList.remove('open');
+                showToast("You're on the list! 🎉", "We'll notify you as soon as DualProfile is ready.");
+            }, 1000);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+
+            toast.classList.add('show');
+
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
