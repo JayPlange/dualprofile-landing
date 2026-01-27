@@ -115,16 +115,25 @@ export default function Home() {
             <p className="hero-subtitle">
               Decide Who Sees What.
             </p>
+            <div className="social-proof">
+              <div className="social-proof-text">
+                <span className="proof-number">1,247</span>
+                people on the waitlist
+              </div>
+              <div className="proof-badge">
+                ⭐ Trusted by early adopters
+              </div>
+            </div>
             <div className="hero-buttons">
-              <a href="#pricing" className="btn btn-primary btn-lg">
-                Become a Founder – $29 Lifetime
-              </a>
               <button 
-                className="btn btn-outline btn-lg"
+                className="btn btn-outline btn-lg btn-primary"
                 onClick={() => setIsModalOpen(true)}
               >
-                Join Waitlist – Free
+                Get Started Free
               </button>
+              <a href="#pricing" className="btn btn-secondary btn-lg">
+                Become a Founder – $29
+              </a>
             </div>
             <div className="hero-status">
               <span className="status-badge">Preview Mode Available Now</span>
@@ -133,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Demo Section */}
+        {/* Demo Section - Moved Higher */}
         <section id="demo" className="demo">
           <div className="demo-container">
             <div className="demo-video-wrapper">
@@ -591,6 +600,39 @@ export default function Home() {
           display: none !important;
         }
 
+        /* Social Proof */
+        .social-proof {
+          margin: 2rem 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .social-proof-text {
+          font-size: 1.125rem;
+          color: #d1d5db;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .proof-number {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--primary);
+        }
+
+        .proof-badge {
+          background: rgba(16, 185, 129, 0.1);
+          color: #10b981;
+          padding: 0.5rem 1rem;
+          border-radius: 2rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
         /* Hero Status */
         .hero-status {
           margin-top: 2rem;
@@ -971,6 +1013,18 @@ export default function Home() {
         .btn-outline:hover {
           background-color: var(--secondary);
           border-color: var(--primary);
+        }
+
+        .btn-secondary {
+          background-color: transparent;
+          color: var(--foreground);
+          border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+          background-color: var(--secondary);
+          border-color: var(--primary);
+          transform: translateY(-1px);
         }
 
         .btn-lg {
