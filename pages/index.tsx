@@ -110,10 +110,10 @@ export default function Home() {
         <section className="hero">
           <div className="hero-content">
             <h1 className="hero-title">
-              One WhatsApp.<br />Multiple Identities.
+              Look professional to clients,<br />casual to friends.
             </h1>
             <p className="hero-subtitle">
-              Decide Who Sees What.
+              Same WhatsApp. Different identities. You decide who sees what.
             </p>
             <div className="social-proof">
               <div className="social-proof-text">
@@ -293,6 +293,61 @@ export default function Home() {
                 Start free, upgrade when you need unlimited control.
               </p>
             </div>
+
+            {/* Feature Comparison Table */}
+            <div className="comparison-table glass-card">
+              <div className="comparison-header">
+                <div className="feature-column">Features</div>
+                <div className="plan-column free">
+                  <div className="plan-name">Free</div>
+                  <div className="plan-price">$0</div>
+                </div>
+                <div className="plan-column founder">
+                  <div className="plan-name">Founding Member</div>
+                  <div className="plan-price">$29<span>/lifetime</span></div>
+                </div>
+                <div className="plan-column pro">
+                  <div className="plan-name">Pro</div>
+                  <div className="plan-price">Coming Soon</div>
+                </div>
+              </div>
+              
+              <div className="comparison-row">
+                <div className="feature-name">Preview Mode</div>
+                <div className="feature-value">✓</div>
+                <div className="feature-value">✓</div>
+                <div className="feature-value">✓</div>
+              </div>
+              
+              <div className="comparison-row">
+                <div className="feature-name">Multiple Profiles</div>
+                <div className="feature-value">2</div>
+                <div className="feature-value">Unlimited</div>
+                <div className="feature-value">Unlimited</div>
+              </div>
+              
+              <div className="comparison-row">
+                <div className="feature-name">Real P2P Sync</div>
+                <div className="feature-value">—</div>
+                <div className="feature-value">✓</div>
+                <div className="feature-value">✓</div>
+              </div>
+              
+              <div className="comparison-row">
+                <div className="feature-name">Priority Support</div>
+                <div className="feature-value">—</div>
+                <div className="feature-value">✓</div>
+                <div className="feature-value">✓</div>
+              </div>
+              
+              <div className="comparison-row">
+                <div className="feature-name">Future Features</div>
+                <div className="feature-value">—</div>
+                <div className="feature-value">✓</div>
+                <div className="feature-value">✓</div>
+              </div>
+            </div>
+
             <div className="pricing-grid">
               {/* Free Plan */}
               <div className="pricing-card glass-card">
@@ -764,6 +819,78 @@ export default function Home() {
           color: #9ca3af;
           font-size: 0.875rem;
           margin: 0;
+        }
+
+        /* Feature Comparison Table */
+        .comparison-table {
+          margin: 3rem 0;
+          overflow-x: auto;
+        }
+
+        .comparison-header {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1fr;
+          gap: 1rem;
+          padding: 1.5rem;
+          border-bottom: 2px solid var(--border);
+        }
+
+        .feature-column {
+          font-weight: 700;
+          color: var(--foreground);
+        }
+
+        .plan-column {
+          text-align: center;
+        }
+
+        .plan-name {
+          font-weight: 600;
+          color: var(--foreground);
+          margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--primary);
+        }
+
+        .plan-price span {
+          font-size: 0.875rem;
+          font-weight: 400;
+          color: #9ca3af;
+        }
+
+        .comparison-row {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1fr;
+          gap: 1rem;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid rgba(107, 114, 128, 0.2);
+        }
+
+        .comparison-row:last-child {
+          border-bottom: none;
+        }
+
+        .feature-name {
+          color: var(--foreground);
+          font-weight: 500;
+        }
+
+        .feature-value {
+          text-align: center;
+          font-weight: 600;
+        }
+
+        .feature-value:nth-child(2) {
+          color: #9ca3af;
+        }
+
+        .feature-value:nth-child(3),
+        .feature-value:nth-child(4) {
+          color: var(--primary);
         }
 
         /* Pricing Grid */
