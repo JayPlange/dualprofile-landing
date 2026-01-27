@@ -80,8 +80,8 @@ export default function Home() {
         <title>DualProfile - One WhatsApp. Multiple Identities.</title>
         <meta name="description" content="Finally show different profile pictures to different contacts. Control your identity on WhatsApp Web like never before." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/dualprofile-logo.png" />
-        <link rel="apple-touch-icon" href="/dualprofile-logo.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </Head>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js"></script>
