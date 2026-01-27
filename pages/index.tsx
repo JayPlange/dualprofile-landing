@@ -90,7 +90,10 @@ export default function Home() {
         {/* Navbar */}
         <nav className="navbar">
           <div className="navbar-container">
-            <div className="logo">DualProfile</div>
+            <div className="logo">
+              <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="32" height="32" />
+              <span>DualProfile</span>
+            </div>
             <div className="nav-links">
               <a href="#features">Features</a>
               <a href="#demo">Demo</a>
@@ -106,9 +109,6 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            <div className="hero-logo">
-              <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="48" height="48" />
-            </div>
             <h1 className="hero-title">
               One WhatsApp.<br />Multiple Identities.
             </h1>
@@ -1002,8 +1002,20 @@ export default function Home() {
         }
 
         .logo {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
           font-size: 1.5rem;
           font-weight: 700;
+        }
+
+        .logo img {
+          border-radius: 8px;
+          transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+          transform: scale(1.05);
         }
 
         .nav-links {
