@@ -131,7 +131,11 @@ export default function Home() {
               >
                 Get Started Free
               </button>
-              <a href="#pricing" className="btn btn-secondary btn-lg">
+              <a href="#pricing" className="btn btn-secondary btn-lg" onClick={(e) => {
+                e.preventDefault();
+                window.open('https://dualprofile.kit.com/98211e1908', '_blank');
+                showToast("Opening Founding Member signup...", "Complete the form to become a founder.");
+              }}>
                 Become a Founder – $29
               </a>
             </div>
@@ -345,6 +349,185 @@ export default function Home() {
                 <div className="feature-value">—</div>
                 <div className="feature-value">✓</div>
                 <div className="feature-value">✓</div>
+              </div>
+            </div>
+
+            <div className="pricing-grid">
+              {/* Free Plan */}
+              <div className="pricing-card glass-card">
+                <div className="pricing-header">
+                  <h3 className="pricing-title">Free</h3>
+                  <p className="pricing-subtitle">Always available</p>
+                  <div className="pricing-amount">
+                    <span className="price">$0</span>
+                    <span className="currency">Forever</span>
+                  </div>
+                </div>
+                <div className="pricing-benefits">
+                  <ul>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Upload 2 profile photos
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Assign up to 6 contacts
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Preview Mode
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      P2P sync coming soon
+                    </li>
+                  </ul>
+                </div>
+                <button 
+                  className="btn btn-outline btn-full"
+                  onClick={() => {
+                    window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank');
+                    showToast("Opening Free tier signup...", "Complete the form to get started.");
+                  }}
+                >
+                  Get Started Free
+                </button>
+              </div>
+
+              {/* Founding Member Plan */}
+              <div className="pricing-card glass-card glow-primary featured">
+                <div className="pricing-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  Limited to 100-200 users
+                </div>
+                <div className="pricing-header">
+                  <h3 className="pricing-title">Founding Member</h3>
+                  <p className="pricing-subtitle">One-time payment</p>
+                  <div className="pricing-amount">
+                    <span className="price">$29</span>
+                    <span className="currency">Lifetime</span>
+                  </div>
+                </div>
+                <div className="pricing-benefits">
+                  <ul>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Unlimited contact assignments
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Real P2P sync when it launches
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Lifetime access to core features
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Founder badge + early access
+                    </li>
+                  </ul>
+                </div>
+                <button 
+                  className="btn btn-primary btn-full"
+                  onClick={() => {
+                    window.open('https://dualprofile.kit.com/98211e1908', '_blank');
+                    showToast("Opening Founding Member signup...", "Complete the form to become a founder.");
+                  }}
+                >
+                  Become a Founder
+                </button>
+              </div>
+
+              {/* Pro Plan */}
+              <div className="pricing-card glass-card">
+                <div className="pricing-header">
+                  <h3 className="pricing-title">Pro</h3>
+                  <p className="pricing-subtitle">Coming soon</p>
+                  <div className="pricing-amount">
+                    <span className="price">—</span>
+                    <span className="pricing-alternative">Join waitlist for updates</span>
+                  </div>
+                </div>
+                <div className="pricing-benefits">
+                  <ul>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Everything in Founder
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Advanced profile controls
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Business features
+                    </li>
+                    <li>
+                      <div className="check-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      Priority updates
+                    </li>
+                  </ul>
+                </div>
+                <button 
+                  className="btn btn-outline btn-full"
+                  onClick={() => {
+                    window.open('https://dualprofile.kit.com/06b424510c', '_blank');
+                    showToast("Opening Pro waitlist...", "We'll notify you when Pro launches.");
+                  }}
+                >
+                  Join Pro Waitlist
+                </button>
               </div>
             </div>
           </div>
