@@ -110,7 +110,7 @@ export default function Home() {
             <div className="hero-buttons">
               <button 
                 className="btn btn-outline btn-lg btn-primary"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
               >
                 Join Early Access List
               </button>
@@ -364,7 +364,7 @@ export default function Home() {
             <div className="early-access-card glass-card">
               <button 
                 className="btn btn-primary btn-lg"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
               >
                 Join Early Access List
               </button>
@@ -406,7 +406,7 @@ export default function Home() {
         <footer className="footer">
           <div className="container">
             <div className="footer-content">
-              <p>© 2024 DualProfile. All rights reserved.</p>
+              <p>© 2025 DualProfile. All rights reserved.</p>
               <div className="footer-links">
                 <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
                   Support
