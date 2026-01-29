@@ -7,10 +7,32 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState({ show: false, title: '', message: '' });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [currentAvatarIndex, setCurrentAvatarIndex] = useState(0);
+  const [isButtonSliding, setIsButtonSliding] = useState(false);
+
+  const avatarLabels = ['Boss', 'Friends', 'Family'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAvatarIndex((prev) => (prev + 1) % avatarLabels.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const showToast = (title: string, message: string) => {
     setToast({ show: true, title, message });
     setTimeout(() => setToast({ show: false, title: '', message: '' }), 4000);
+  };
+
+  const handleEarlyAccessClick = () => {
+    setIsButtonSliding(true);
+    setTimeout(() => {
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsButtonSliding(false);
+      }, 200);
+    }, 400);
   };
 
     const toggleFaq = (index: number) => {
@@ -96,28 +118,45 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            <h1 className="hero-title">
-              One WhatsApp.<br />Multiple Identities.
-            </h1>
-            <p className="hero-subtitle">
-              Control which profile photo each contact sees on WhatsApp Web.
-            </p>
-            <div className="social-proof">
-              <div className="proof-badge">
-                ⭐ Trusted by early adopters — only real humans here.
+            <div className="hero-text">
+              <h1 className="hero-title">
+                One WhatsApp.<br />Multiple Identities.
+              </h1>
+              <p className="hero-subtitle">
+                Control which profile photo each contact sees on WhatsApp Web.
+              </p>
+              <div className="social-proof">
+                <div className="proof-badge">
+                  ⭐ Trusted by early adopters — only real humans here.
+                </div>
+              </div>
+              <div className="hero-buttons">
+                <button 
+                  className="btn btn-outline btn-lg btn-primary"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Join Early Access List
+                </button>
+              </div>
+              <div className="hero-status">
+                <span className="status-badge">Preview Mode Available Now</span>
+                <span className="status-text">Real P2P sync coming soon</span>
               </div>
             </div>
-            <div className="hero-buttons">
-              <button 
-                className="btn btn-outline btn-lg btn-primary"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Join Early Access List
-              </button>
-            </div>
-            <div className="hero-status">
-              <span className="status-badge">Preview Mode Available Now</span>
-              <span className="status-text">Real P2P sync coming soon</span>
+            <div className="hero-visual">
+              <div className="avatar-container">
+                <div className="avatar-stack">
+                  <div 
+                    className="avatar-photo avatar-photo-1" 
+                    style={{ opacity: currentAvatarIndex % 2 === 0 ? 1 : 0 }}
+                  ></div>
+                  <div 
+                    className="avatar-photo avatar-photo-2" 
+                    style={{ opacity: currentAvatarIndex % 2 === 1 ? 1 : 0 }}
+                  ></div>
+                </div>
+                <div className="avatar-label">{avatarLabels[currentAvatarIndex]}</div>
+              </div>
             </div>
           </div>
         </section>
@@ -263,6 +302,14 @@ export default function Home() {
                   All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
                 </p>
               </div>
+            </div>
+            <div className="features-cta">
+              <button 
+                className={`btn btn-primary btn-lg ${isButtonSliding ? 'sliding' : ''}`}
+                onClick={handleEarlyAccessClick}
+              >
+                <span className="button-text">{isButtonSliding ? 'Joining...' : 'Join Early Access List'}</span>
+              </button>
             </div>
           </div>
         </section>
@@ -1665,6 +1712,105 @@ export default function Home() {
             font-size: 0.875rem;
           }
         }
+
+        /* Hero Visual Animation */
+        .hero-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 4rem;
+        }
+
+        .hero-text {
+          flex: 1;
+        }
+
+        .hero-visual {
+          flex: 0 0 auto;
+        }
+
+        .avatar-container {
+          position: relative;
+          width: 120px;
+          height: 120px;
+        }
+
+        .avatar-stack {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+          background: linear-gradient(135deg, #25d366, #128c7e);
+          box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+          animation: subtleFloat 6s ease-in-out infinite;
+        }
+
+        .avatar-photo {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          border-radius: 50%;
+          transition: opacity 1s ease-in-out;
+        }
+
+        .avatar-photo-1 {
+          background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fff"/><circle cx="50" cy="75" r="25" fill="%23fff"/></svg>');
+          opacity: 1;
+        }
+
+        .avatar-photo-2 {
+          background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="12" fill="%23fff"/><circle cx="50" cy="70" r="20" fill="%23fff"/><rect x="30" y="25" width="40" height="15" rx="7" fill="%23fff"/></svg>');
+          opacity: 0;
+        }
+
+        .avatar-label {
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(37, 211, 102, 0.9);
+          color: white;
+          padding: 4px 12px;
+          border-radius: 12px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          white-space: nowrap;
+          backdrop-filter: blur(10px);
+          transition: all 0.5s ease-in-out;
+        }
+
+        @keyframes subtleFloat {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-8px) scale(1.02); }
+        }
+
+        @keyframes avatarCrossfade {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+
+        /* CTA Button Slide Interaction */
+        .features-cta {
+          text-align: center;
+          margin-top: 3rem;
+        }
+
+        .btn.sliding {
+          transform: translateX(120px);
+          background: linear-gradient(135deg, #10b981, #059669);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn.sliding .button-text {
+          opacity: 0.9;
+        }
+
+        /* Avatar opacity will be handled via inline styles */
       `}</style>
     </>
   );
