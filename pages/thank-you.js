@@ -1,14 +1,258 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Confirmed - DualProfile Early Access</title>
-    <link rel="icon" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+
+export default function ThankYou() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Initialize Lucide icons
+    if (typeof window !== 'undefined' && window.lucide) {
+      window.lucide.createIcons();
+    }
+  }, []);
+
+  const landingPageUrl = 'https://dualprofile-landing.vercel.app/';
+  const shareMessage = 'Finally found a solution for WhatsApp profile privacy. Different photos for different contacts. No second phone number needed. Join the waitlist: ' + landingPageUrl;
+
+  const handleTwitterShare = () => {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+  };
+
+  const handleLinkedInShare = () => {
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(landingPageUrl)}`;
+    window.open(linkedinUrl, '_blank', 'width=600,height=400');
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(landingPageUrl).then(() => {
+      showToast();
+    }).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = landingPageUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      showToast();
+    });
+  };
+
+  const showToast = () => {
+    const toast = document.getElementById('toast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  };
+
+  useEffect(() => {
+    const handleScrollAnimation = () => {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScrollAnimation);
+    handleScrollAnimation();
+    
+    return () => window.removeEventListener('scroll', handleScrollAnimation);
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Email Confirmed - DualProfile Early Access</title>
+        <meta name="description" content="You're officially in the DualProfile early access list. See what happens next." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/lucide@latest" async />
+      </Head>
+
+      <div className="app">
+        {/* Hero Section */}
+        <section className="hero">
+          <div className="container">
+            <div className="success-icon">
+              <i data-lucide="check" size="40" color="white"></i>
+            </div>
+            <h1 className="hero-title">✅ Email Confirmed. You're Officially In.</h1>
+            <p className="hero-subtitle">
+              You're now on the DualProfile early access list.
+              <br />
+              What happens next? Read below.
+            </p>
+          </div>
+        </section>
+
+        {/* Timeline Section */}
+        <section className="timeline">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">📅 Your Early Access Timeline</h2>
+              <p className="section-subtitle">We'll only email you for these three milestones. No spam.</p>
+            </div>
+            <div className="timeline-grid">
+              <div className="timeline-item animate-on-scroll">
+                <div className="timeline-marker">1</div>
+                <div className="timeline-content">
+                  <h3>Week 1-2: Chrome Web Store Approval</h3>
+                  <p>You'll get the install link first. Be among the first to try DualProfile on WhatsApp Web.</p>
+                </div>
+              </div>
+              <div className="timeline-item animate-on-scroll">
+                <div className="timeline-marker">2</div>
+                <div className="timeline-content">
+                  <h3>Week 2-3: Founder Pricing Opens</h3>
+                  <p>$29 lifetime for the first 500 only. Lock in your exclusive rate before public pricing.</p>
+                </div>
+              </div>
+              <div className="timeline-item animate-on-scroll">
+                <div className="timeline-marker">3</div>
+                <div className="timeline-content">
+                  <h3>Week 4+: P2P Sync Launch</h3>
+                  <p>Real-time profile switching arrives. Your contacts will see different photos instantly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Proof Section */}
+        <section className="social-proof">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">🔥 You're Not Alone</h2>
+              <p className="section-subtitle">For 15 years, people have been asking for this on Reddit:</p>
+            </div>
+            <div className="reddit-grid">
+              <div className="reddit-post animate-on-scroll">
+                <div className="reddit-meta">
+                  <span className="reddit-subreddit">r/whatsapp</span>
+                  <span>•</span>
+                  <span>2015</span>
+                </div>
+                <div className="reddit-content">
+                  <h4>"Is there a way to display different profile pictures to different people?"</h4>
+                  <p>Users asking for the exact feature DualProfile provides.</p>
+                  <div className="reddit-answer">Answer: "Nope"</div>
+                </div>
+              </div>
+              <div className="reddit-post animate-on-scroll">
+                <div className="reddit-meta">
+                  <span className="reddit-subreddit">r/whatsapp</span>
+                  <span>•</span>
+                  <span>2024</span>
+                </div>
+                <div className="reddit-content">
+                  <h4>"WhatsApp should start multiple profile photo"</h4>
+                  <p>Recent demand showing this problem still exists today.</p>
+                </div>
+              </div>
+              <div className="reddit-post animate-on-scroll">
+                <div className="reddit-meta">
+                  <span className="reddit-subreddit">r/whatsapp</span>
+                  <span>•</span>
+                  <span>2023</span>
+                </div>
+                <div className="reddit-content">
+                  <h4>"Current solution: Get a second phone number 🤦‍♂️"</h4>
+                  <p>The painful workaround people have been forced to use.</p>
+                </div>
+              </div>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <strong style={{ fontSize: '1.25rem', color: 'var(--primary)' }}>DualProfile finally solves it.</strong>
+            </div>
+          </div>
+        </section>
+
+        {/* Share Section */}
+        <section className="share">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">💬 Know Someone Else Who Needs This?</h2>
+              <p className="section-subtitle">
+                Every entrepreneur, freelancer, or professional mixing work + personal contacts deals with this problem.
+              </p>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ marginBottom: '1rem', fontWeight: 600 }}>Share early access:</p>
+              <div className="share-buttons">
+                <button className="share-btn" onClick={handleTwitterShare}>
+                  <i data-lucide="twitter" size="20"></i>
+                  Share on X
+                </button>
+                <button className="share-btn" onClick={handleLinkedInShare}>
+                  <i data-lucide="linkedin" size="20"></i>
+                  Share on LinkedIn
+                </button>
+                <button className="share-btn" onClick={handleCopyLink}>
+                  <i data-lucide="link" size="20"></i>
+                  Copy Link
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Engagement Section */}
+        <section className="engagement">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">👀 Want a Behind-the-Scenes Look?</h2>
+            </div>
+            <div className="engagement-card">
+              <p className="section-subtitle">
+                Curious about what DualProfile looks like before launch?
+              </p>
+              <div className="engagement-content">
+Reply to your confirmation email with "DEMO" and I'll personally send you:
+- Live screenshots of the extension in action
+- Walkthrough video showing how it works
+- Breakdown of founder pricing vs. regular pricing
+
+— Edwin
+Founder, DualProfile
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="footer">
+          <div className="container">
+            <div className="footer-content">
+              <div className="footer-links">
+                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Questions? Email: edwin.dualprofile@gmail.com</a>
+                <a href="https://dualprofile-landing.vercel.app/" className="footer-link">Back to Landing Page</a>
+              </div>
+              <p className="footer-note">© 2025 DualProfile. All rights reserved.</p>
+              <p className="footer-note">No data leaves your device — all control is local.</p>
+            </div>
+          </div>
+        </footer>
+
+        {/* Toast Notification */}
+        <div className="toast" id="toast">
+          ✓ Copied to clipboard!
+        </div>
+      </div>
+
+      <style jsx global>{`
         /* CSS Variables - Design System */
         :root {
           --background: hsl(200, 20%, 10%);
@@ -339,6 +583,7 @@
           text-decoration: none;
           font-weight: 500;
           transition: all 0.3s ease;
+          cursor: pointer;
         }
 
         .share-btn:hover {
@@ -490,244 +735,7 @@
           opacity: 1;
           transform: translateY(0);
         }
-    </style>
-</head>
-<body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="success-icon">
-                <i data-lucide="check" size="40" color="white"></i>
-            </div>
-            <h1 class="hero-title">✅ Email Confirmed. You're Officially In.</h1>
-            <p class="hero-subtitle">
-                You're now on the DualProfile early access list.
-                <br>
-                What happens next? Read below.
-            </p>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">📅 Your Early Access Timeline</h2>
-                <p class="section-subtitle">We'll only email you for these three milestones. No spam.</p>
-            </div>
-            <div class="timeline-grid">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h3>Week 1-2: Chrome Web Store Approval</h3>
-                        <p>You'll get the install link first. Be among the first to try DualProfile on WhatsApp Web.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h3>Week 2-3: Founder Pricing Opens</h3>
-                        <p>$29 lifetime for the first 500 only. Lock in your exclusive rate before public pricing.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h3>Week 4+: P2P Sync Launch</h3>
-                        <p>Real-time profile switching arrives. Your contacts will see different photos instantly.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">🔥 You're Not Alone</h2>
-                <p class="section-subtitle">For 15 years, people have been asking for this on Reddit:</p>
-            </div>
-            <div class="reddit-grid">
-                <div class="reddit-post animate-on-scroll">
-                    <div class="reddit-meta">
-                        <span class="reddit-subreddit">r/whatsapp</span>
-                        <span>•</span>
-                        <span>2015</span>
-                    </div>
-                    <div class="reddit-content">
-                        <h4>"Is there a way to display different profile pictures to different people?"</h4>
-                        <p>Users asking for the exact feature DualProfile provides.</p>
-                        <div class="reddit-answer">Answer: "Nope"</div>
-                    </div>
-                </div>
-                <div class="reddit-post animate-on-scroll">
-                    <div class="reddit-meta">
-                        <span class="reddit-subreddit">r/whatsapp</span>
-                        <span>•</span>
-                        <span>2024</span>
-                    </div>
-                    <div class="reddit-content">
-                        <h4>"WhatsApp should start multiple profile photo"</h4>
-                        <p>Recent demand showing this problem still exists today.</p>
-                    </div>
-                </div>
-                <div class="reddit-post animate-on-scroll">
-                    <div class="reddit-meta">
-                        <span class="reddit-subreddit">r/whatsapp</span>
-                        <span>•</span>
-                        <span>2023</span>
-                    </div>
-                    <div class="reddit-content">
-                        <h4>"Current solution: Get a second phone number 🤦‍♂️"</h4>
-                        <p>The painful workaround people have been forced to use.</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <strong style="font-size: 1.25rem; color: var(--primary);">DualProfile finally solves it.</strong>
-            </div>
-        </div>
-    </section>
-
-    <!-- Share Section -->
-    <section class="share">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">💬 Know Someone Else Who Needs This?</h2>
-                <p class="section-subtitle">
-                    Every entrepreneur, freelancer, or professional mixing work + personal contacts deals with this problem.
-                </p>
-            </div>
-            <div style="text-align: center;">
-                <p style="margin-bottom: 1rem; font-weight: 600;">Share early access:</p>
-                <div class="share-buttons">
-                    <a href="#" class="share-btn" id="twitter-share">
-                        <i data-lucide="twitter" size="20"></i>
-                        Share on X
-                    </a>
-                    <a href="#" class="share-btn" id="linkedin-share">
-                        <i data-lucide="linkedin" size="20"></i>
-                        Share on LinkedIn
-                    </a>
-                    <button class="share-btn" id="copy-link">
-                        <i data-lucide="link" size="20"></i>
-                        Copy Link
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Engagement Section -->
-    <section class="engagement">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">👀 Want a Behind-the-Scenes Look?</h2>
-            </div>
-            <div class="engagement-card">
-                <p class="section-subtitle">
-                    Curious about what DualProfile looks like before launch?
-                </p>
-                <div class="engagement-content">
-Reply to your confirmation email with "DEMO" and I'll personally send you:
-- Live screenshots of the extension in action
-- Walkthrough video showing how it works
-- Breakdown of founder pricing vs. regular pricing
-
-— Edwin
-Founder, DualProfile
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="mailto:edwin.dualprofile@gmail.com" class="footer-link">Questions? Email: edwin.dualprofile@gmail.com</a>
-                    <a href="https://dualprofile-landing.vercel.app/" class="footer-link">Back to Landing Page</a>
-                </div>
-                <p class="footer-note">© 2025 DualProfile. All rights reserved.</p>
-                <p class="footer-note">No data leaves your device — all control is local.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        ✓ Copied to clipboard!
-    </div>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Share functionality
-        const landingPageUrl = 'https://dualprofile-landing.vercel.app/';
-        const shareMessage = 'Finally found a solution for WhatsApp profile privacy. Different photos for different contacts. No second phone number needed. Join the waitlist: ' + landingPageUrl;
-
-        // Twitter share
-        document.getElementById('twitter-share').addEventListener('click', function(e) {
-            e.preventDefault();
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}`;
-            window.open(twitterUrl, '_blank', 'width=600,height=400');
-        });
-
-        // LinkedIn share
-        document.getElementById('linkedin-share').addEventListener('click', function(e) {
-            e.preventDefault();
-            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(landingPageUrl)}`;
-            window.open(linkedinUrl, '_blank', 'width=600,height=400');
-        });
-
-        // Copy link
-        document.getElementById('copy-link').addEventListener('click', function() {
-            navigator.clipboard.writeText(landingPageUrl).then(function() {
-                showToast();
-            }).catch(function() {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = landingPageUrl;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showToast();
-            });
-        });
-
-        // Toast notification
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(function() {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Scroll animations
-        function handleScrollAnimation() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Initialize animations
-        window.addEventListener('scroll', handleScrollAnimation);
-        window.addEventListener('load', handleScrollAnimation);
-        
-        // Trigger initial animation
-        setTimeout(handleScrollAnimation, 100);
-    </script>
-</body>
-</html>
+      `}</style>
+    </>
+  );
+}
