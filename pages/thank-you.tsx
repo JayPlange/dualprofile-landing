@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 
 export default function ThankYou() {
   const [mounted, setMounted] = useState(false);
@@ -7,8 +7,8 @@ export default function ThankYou() {
   useEffect(() => {
     setMounted(true);
     // Initialize Lucide icons
-    if (typeof window !== 'undefined' && window.lucide) {
-      window.lucide.createIcons();
+    if (typeof window !== 'undefined' && (window as any).lucide) {
+      (window as any).lucide.createIcons();
     }
   }, []);
 
