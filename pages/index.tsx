@@ -49,24 +49,12 @@ export default function Home() {
 
   const faqs = [
     {
-      question: "Does it work in group chats?",
-      answer: "Not yet. DualProfile currently works only in 1-on-1 chats. Group chat support is planned for future updates."
-    },
-    {
-      question: "Do others need the extension?",
-      answer: "For Preview Mode, no. For real P2P sync when it launches, yes - both contacts will need DualProfile to see different profiles."
-    },
-    {
-      question: "Is P2P sync live?",
-      answer: "Not yet. Preview Mode is available now so you can see how others would see your profile. Real P2P sync is coming soon."
+      question: "Is this live on Chrome yet?",
+      answer: "Not yet — early access list opens before public launch. Join the list to be notified first when it goes live."
     },
     {
       question: "How does Preview Mode work?",
-      answer: "Preview Mode lets you simulate how different contacts would see your profile. It's a local simulation that shows you exactly what each contact would see when P2P sync goes live."
-    },
-    {
-      question: "What's the difference between Free and Founding Member?",
-      answer: "Free users can upload 2 photos and assign up to 6 contacts. Founding Members get unlimited contact assignments, real P2P sync when it launches, and lifetime access for a one-time $29 payment."
+      answer: "Preview Mode shows you exactly what each contact sees when they view your profile. It's a local simulation that demonstrates how your different photos will appear to specific contacts."
     },
     {
       question: "Is my data secure?",
@@ -97,11 +85,10 @@ export default function Home() {
             <div className="nav-links">
               <a href="#features">Features</a>
               <a href="#demo">Demo</a>
-              <a href="#pricing">Pricing</a>
               <a href="#faq">FAQ</a>
             </div>
-            <a href="#pricing" className="btn btn-primary">
-              Become a Founding Member
+            <a href="#early-access" className="btn btn-primary">
+              Join Early Access List
             </a>
           </div>
         </nav>
@@ -113,15 +100,11 @@ export default function Home() {
               One WhatsApp.<br />Multiple Identities.
             </h1>
             <p className="hero-subtitle">
-              Decide Who Sees What.
+              Control which profile photo each contact sees on WhatsApp Web.
             </p>
             <div className="social-proof">
-              <div className="social-proof-text">
-                <span className="proof-number">1,247</span>
-                people on the waitlist
-              </div>
               <div className="proof-badge">
-                ⭐ Trusted by early adopters
+                ⭐ Trusted by early adopters — only real humans here.
               </div>
             </div>
             <div className="hero-buttons">
@@ -129,15 +112,8 @@ export default function Home() {
                 className="btn btn-outline btn-lg btn-primary"
                 onClick={() => setIsModalOpen(true)}
               >
-                Get Started Free
+                Join Early Access List
               </button>
-              <a href="#pricing" className="btn btn-secondary btn-lg" onClick={(e) => {
-                e.preventDefault();
-                window.open('https://dualprofile.kit.com/98211e1908', '_blank');
-                showToast("Opening Founding Member signup...", "Complete the form to become a founder.");
-              }}>
-                Become a Founder – $29
-              </a>
             </div>
             <div className="hero-status">
               <span className="status-badge">Preview Mode Available Now</span>
@@ -168,6 +144,9 @@ export default function Home() {
             <div className="trust-statement">
               🔒 This works entirely on WhatsApp Web. No chat data is stored.
             </div>
+            <p className="demo-caption">
+              Watch how Preview Mode shows exactly what each contact sees.
+            </p>
           </div>
         </section>
 
@@ -288,252 +267,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="pricing">
+        {/* Early Access Section */}
+        <section id="early-access" className="early-access">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Choose Your Plan</h2>
+              <h2 className="section-title">Early Access List</h2>
               <p className="section-subtitle">
-                Start free, upgrade when you need unlimited control.
+                DualProfile is still under review. Join the early access list to be notified first when it goes live.
               </p>
             </div>
-
-            {/* Feature Comparison Table */}
-            <div className="comparison-table glass-card">
-              <div className="comparison-header">
-                <div className="feature-column">Features</div>
-                <div className="plan-column free">
-                  <div className="plan-name">Free</div>
-                  <div className="plan-price">$0</div>
-                </div>
-                <div className="plan-column founder">
-                  <div className="plan-name">Founding Member</div>
-                  <div className="plan-price">$29<span>/lifetime</span></div>
-                </div>
-                <div className="plan-column pro">
-                  <div className="plan-name">Pro</div>
-                  <div className="plan-price">Coming Soon</div>
-                </div>
-              </div>
-              
-              <div className="comparison-row">
-                <div className="feature-name">Preview Mode</div>
-                <div className="feature-value">✓</div>
-                <div className="feature-value">✓</div>
-                <div className="feature-value">✓</div>
-              </div>
-              
-              <div className="comparison-row">
-                <div className="feature-name">Multiple Profiles</div>
-                <div className="feature-value">2</div>
-                <div className="feature-value">Unlimited</div>
-                <div className="feature-value">Unlimited</div>
-              </div>
-              
-              <div className="comparison-row">
-                <div className="feature-name">Real P2P Sync</div>
-                <div className="feature-value">—</div>
-                <div className="feature-value">✓</div>
-                <div className="feature-value">✓</div>
-              </div>
-              
-              <div className="comparison-row">
-                <div className="feature-name">Priority Support</div>
-                <div className="feature-value">—</div>
-                <div className="feature-value">✓</div>
-                <div className="feature-value">✓</div>
-              </div>
-              
-              <div className="comparison-row">
-                <div className="feature-name">Future Features</div>
-                <div className="feature-value">—</div>
-                <div className="feature-value">✓</div>
-                <div className="feature-value">✓</div>
-              </div>
-            </div>
-
-            <div className="pricing-grid">
-              {/* Free Plan */}
-              <div className="pricing-card glass-card">
-                <div className="pricing-header">
-                  <h3 className="pricing-title">Free</h3>
-                  <p className="pricing-subtitle">Always available</p>
-                  <div className="pricing-amount">
-                    <span className="price">$0</span>
-                    <span className="currency">Forever</span>
-                  </div>
-                </div>
-                <div className="pricing-benefits">
-                  <ul>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Upload 2 profile photos
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Assign up to 6 contacts
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Preview Mode
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      P2P sync coming soon
-                    </li>
-                  </ul>
-                </div>
-                <button 
-                  className="btn btn-outline btn-full"
-                  onClick={() => {
-                    window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank');
-                    showToast("Opening Free tier signup...", "Complete the form to get started.");
-                  }}
-                >
-                  Get Started Free
-                </button>
-              </div>
-
-              {/* Founding Member Plan */}
-              <div className="pricing-card glass-card glow-primary featured">
-                <div className="pricing-badge">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  Limited to 100-200 users
-                </div>
-                <div className="pricing-header">
-                  <h3 className="pricing-title">Founding Member</h3>
-                  <p className="pricing-subtitle">One-time payment</p>
-                  <div className="pricing-amount">
-                    <span className="price">$29</span>
-                    <span className="currency">Lifetime</span>
-                  </div>
-                </div>
-                <div className="pricing-benefits">
-                  <ul>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Unlimited contact assignments
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Real P2P sync when it launches
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Lifetime access to core features
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Founder badge + early access
-                    </li>
-                  </ul>
-                </div>
-                <button 
-                  className="btn btn-primary btn-full"
-                  onClick={() => {
-                    window.open('https://dualprofile.kit.com/98211e1908', '_blank');
-                    showToast("Opening Founding Member signup...", "Complete the form to become a founder.");
-                  }}
-                >
-                  Become a Founder
-                </button>
-              </div>
-
-              {/* Pro Plan */}
-              <div className="pricing-card glass-card">
-                <div className="pricing-header">
-                  <h3 className="pricing-title">Pro</h3>
-                  <p className="pricing-subtitle">Coming soon</p>
-                  <div className="pricing-amount">
-                    <span className="price">—</span>
-                    <span className="pricing-alternative">Join waitlist for updates</span>
-                  </div>
-                </div>
-                <div className="pricing-benefits">
-                  <ul>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Everything in Founder
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Advanced profile controls
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Business features
-                    </li>
-                    <li>
-                      <div className="check-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      Priority updates
-                    </li>
-                  </ul>
-                </div>
-                <button 
-                  className="btn btn-outline btn-full"
-                  onClick={() => {
-                    window.open('https://dualprofile.kit.com/06b424510c', '_blank');
-                    showToast("Opening Pro waitlist...", "We'll notify you when Pro launches.");
-                  }}
-                >
-                  Join Pro Waitlist
-                </button>
-              </div>
+            <div className="early-access-card glass-card">
+              <button 
+                className="btn btn-primary btn-lg"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Join Early Access List
+              </button>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section id="faq" className="faq">
           <div className="container">
             <div className="section-header">
@@ -574,6 +327,9 @@ export default function Home() {
                   Support
                 </a>
               </div>
+              <p className="footer-note">
+                No data leaves your device — all control is local.
+              </p>
             </div>
           </div>
         </footer>
