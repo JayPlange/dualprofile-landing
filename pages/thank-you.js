@@ -221,9 +221,10 @@ export default function ThankYou() {
               </p>
               <div className="engagement-content">
 Reply to your confirmation email with "DEMO" and I'll personally send you:
-- Live screenshots of the extension in action
-- Walkthrough video showing how it works
-- Breakdown of founder pricing vs. regular pricing
+
+• Live screenshots of the extension in action
+• Walkthrough video showing how it works  
+• Breakdown of founder pricing vs. regular pricing
 
 — Edwin
 Founder, DualProfile
