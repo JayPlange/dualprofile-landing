@@ -107,6 +107,64 @@ export default function Home() {
                 ⭐ Trusted by early adopters — only real humans here.
               </div>
             </div>
+            
+            {/* Evidence Section */}
+            <div className="hero-evidence">
+              <div className="evidence-grid">
+                <div className="evidence-post">
+                  <div className="evidence-meta">
+                    <span className="evidence-subreddit">r/whatsapp</span>
+                    <span className="evidence-date">8mo ago</span>
+                    <span className="evidence-stats">9 upvotes</span>
+                  </div>
+                  <p className="evidence-content">"Whatsapp should start multiple profile photo"</p>
+                </div>
+                <div className="evidence-post">
+                  <div className="evidence-meta">
+                    <span className="evidence-subreddit">r/whatsapp</span>
+                    <span className="evidence-date">9y ago</span>
+                    <span className="evidence-stats">6 upvotes</span>
+                  </div>
+                  <p className="evidence-content">"Different profile pictures to different people?" Answer: "Nope"</p>
+                </div>
+                <div className="evidence-post">
+                  <div className="evidence-meta">
+                    <span className="evidence-subreddit">r/privacy</span>
+                    <span className="evidence-date">2y ago</span>
+                    <span className="evidence-stats">Trending</span>
+                  </div>
+                  <p className="evidence-content">"Risks of using personal photo as WhatsApp profile"</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Demo Video */}
+            <div className="hero-demo">
+              <div className="demo-video-wrapper">
+                <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
+                  <iframe 
+                    src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true"
+                    frameBorder="0"
+                    allowFullScreen
+                    style={{
+                      position: 'absolute',
+                      top: '0',
+                      left: '0',
+                      width: '100%',
+                      height: '100%'
+                    }}
+                  ></iframe>
+                </div>
+              </div>
+              <p className="demo-caption">
+                Watch how Preview Mode shows exactly what each contact sees.
+              </p>
+            </div>
+            
+            <div className="hero-status">
+              <span className="status-badge">Preview Mode Available Now</span>
+              <span className="status-text">Real P2P sync coming soon</span>
+            </div>
             <div className="hero-buttons">
               <button 
                 className="btn btn-outline btn-lg btn-primary"
@@ -115,125 +173,10 @@ export default function Home() {
                 Join Early Access List
               </button>
             </div>
-            <div className="hero-status">
-              <span className="status-badge">Preview Mode Available Now</span>
-              <span className="status-text">Real P2P sync coming soon</span>
-            </div>
           </div>
         </section>
 
-        {/* Demo Section - Moved Higher */}
-        <section id="demo" className="demo">
-          <div className="demo-container">
-            <div className="demo-video-wrapper">
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
-                <iframe 
-                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true"
-                  frameBorder="0"
-                  allowFullScreen
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%'
-                  }}
-                ></iframe>
-              </div>
-            </div>
-            <div className="trust-statement">
-              🔒 This works entirely on WhatsApp Web. No chat data is stored.
-            </div>
-            <p className="demo-caption">
-              Watch how Preview Mode shows exactly what each contact sees.
-            </p>
-          </div>
-        </section>
-
-        {/* Social Proof Section */}
-        <section className="social-proof-section">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">People Have Been Asking For This For Years</h2>
-              <p className="section-subtitle">
-                Before DualProfile, the only solution was to get a second phone number. Not anymore.
-              </p>
-            </div>
-            <div className="reddit-posts-grid">
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">8 months ago</span>
-                  </div>
-                  <div className="post-stats">9 upvotes • 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Whatsapp should start multiple profile photo"</h4>
-                  <p>"I would like my close circle to view a different photo of my and other contacts to view diff photo"</p>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">9 years ago</span>
-                  </div>
-                  <div className="post-stats">6 upvotes • 7 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Is there a way to display different profile pictures to different people?"</h4>
-                  <p>"As in, can I have a set of my contacts (group A) view a certain profile pic (picture A) while simultaneously another set of contacts (group B) will see another profile pic (picture B)?"</p>
-                  <div className="reddit-answer">Answer: "Nope"</div>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/privacy</span>
-                    <span className="post-date">2 years ago</span>
-                  </div>
-                  <div className="post-stats">Trending</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Risks of using a personal photo as a WhatsApp profile picture"</h4>
-                  <p>Long discussion about privacy concerns with profile photos and the need for separation between personal and professional contexts.</p>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">5 years ago</span>
-                  </div>
-                  <div className="post-stats">12 upvotes • 8 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Different profile picture between web and app"</h4>
-                  <p>Asked if it's possible to have different profile pictures on different platforms.</p>
-                  <div className="reddit-answer">Answer: "Only with two different numbers"</div>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">1 year ago</span>
-                  </div>
-                  <div className="post-stats">24 upvotes • 15 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Advice needed: Splitting mixed WhatsApp into personal and professional use"</h4>
-                  <p>"User wants to separate personal/professional but doesn't want to lose chat history. Current solution: Get TWO phone numbers!"</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Social Proof Section - Removed (moved to hero) */}
 
         {/* How It Works Section */}
         <section id="how-it-works" className="how-it-works">
@@ -566,6 +509,98 @@ export default function Home() {
         .status-text {
           color: #9ca3af;
           font-size: 0.875rem;
+        }
+
+        /* Hero Evidence Section */
+        .hero-evidence {
+          margin: 2rem 0;
+        }
+
+        .evidence-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1rem;
+          margin-top: 1.5rem;
+        }
+
+        .evidence-post {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 0.75rem;
+          padding: 1rem;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .evidence-post:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(16, 185, 129, 0.3);
+          transform: translateY(-2px);
+        }
+
+        .evidence-post::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 3px;
+          height: 100%;
+          background: linear-gradient(135deg, #ff4500, #ff6b35);
+        }
+
+        .evidence-meta {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.5rem;
+          font-size: 0.75rem;
+          color: var(--muted-foreground);
+        }
+
+        .evidence-subreddit {
+          color: #ff4500;
+          font-weight: 600;
+        }
+
+        .evidence-date {
+          opacity: 0.8;
+        }
+
+        .evidence-stats {
+          margin-left: auto;
+          background: rgba(255, 69, 0, 0.1);
+          color: #ff6b35;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-weight: 500;
+        }
+
+        .evidence-content {
+          color: var(--foreground);
+          font-size: 0.875rem;
+          line-height: 1.4;
+          font-weight: 500;
+        }
+
+        /* Hero Demo Video */
+        .hero-demo {
+          margin: 2rem 0;
+        }
+
+        .hero-demo .demo-video-wrapper {
+          max-width: 600px;
+          margin: 0 auto;
+          border-radius: var(--radius);
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-demo .demo-caption {
+          text-align: center;
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+          margin-top: 1rem;
         }
 
         /* Demo Section */
