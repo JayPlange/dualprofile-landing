@@ -150,6 +150,91 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Social Proof Section */}
+        <section className="social-proof-section">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">People Have Been Asking For This For Years</h2>
+              <p className="section-subtitle">
+                Before DualProfile, the only solution was to get a second phone number. Not anymore.
+              </p>
+            </div>
+            <div className="reddit-posts-grid">
+              <div className="reddit-post glass-card">
+                <div className="post-header">
+                  <div className="post-meta">
+                    <span className="subreddit">r/whatsapp</span>
+                    <span className="post-date">8 months ago</span>
+                  </div>
+                  <div className="post-stats">9 upvotes • 3 comments</div>
+                </div>
+                <div className="post-content">
+                  <h4>"Whatsapp should start multiple profile photo"</h4>
+                  <p>"I would like my close circle to view a different photo of my and other contacts to view diff photo"</p>
+                </div>
+              </div>
+              
+              <div className="reddit-post glass-card">
+                <div className="post-header">
+                  <div className="post-meta">
+                    <span className="subreddit">r/whatsapp</span>
+                    <span className="post-date">9 years ago</span>
+                  </div>
+                  <div className="post-stats">6 upvotes • 7 comments</div>
+                </div>
+                <div className="post-content">
+                  <h4>"Is there a way to display different profile pictures to different people?"</h4>
+                  <p>"As in, can I have a set of my contacts (group A) view a certain profile pic (picture A) while simultaneously another set of contacts (group B) will see another profile pic (picture B)?"</p>
+                  <div className="reddit-answer">Answer: "Nope"</div>
+                </div>
+              </div>
+              
+              <div className="reddit-post glass-card">
+                <div className="post-header">
+                  <div className="post-meta">
+                    <span className="subreddit">r/privacy</span>
+                    <span className="post-date">2 years ago</span>
+                  </div>
+                  <div className="post-stats">Trending</div>
+                </div>
+                <div className="post-content">
+                  <h4>"Risks of using a personal photo as a WhatsApp profile picture"</h4>
+                  <p>Long discussion about privacy concerns with profile photos and the need for separation between personal and professional contexts.</p>
+                </div>
+              </div>
+              
+              <div className="reddit-post glass-card">
+                <div className="post-header">
+                  <div className="post-meta">
+                    <span className="subreddit">r/whatsapp</span>
+                    <span className="post-date">5 years ago</span>
+                  </div>
+                  <div className="post-stats">12 upvotes • 8 comments</div>
+                </div>
+                <div className="post-content">
+                  <h4>"Different profile picture between web and app"</h4>
+                  <p>Asked if it's possible to have different profile pictures on different platforms.</p>
+                  <div className="reddit-answer">Answer: "Only with two different numbers"</div>
+                </div>
+              </div>
+              
+              <div className="reddit-post glass-card">
+                <div className="post-header">
+                  <div className="post-meta">
+                    <span className="subreddit">r/whatsapp</span>
+                    <span className="post-date">1 year ago</span>
+                  </div>
+                  <div className="post-stats">24 upvotes • 15 comments</div>
+                </div>
+                <div className="post-content">
+                  <h4>"Advice needed: Splitting mixed WhatsApp into personal and professional use"</h4>
+                  <p>"User wants to separate personal/professional but doesn't want to lose chat history. Current solution: Get TWO phone numbers!"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* How It Works Section */}
         <section id="how-it-works" className="how-it-works">
           <div className="container">
@@ -505,6 +590,101 @@ export default function Home() {
           color: #9ca3af;
           font-size: 0.875rem;
           margin-top: 1rem;
+        }
+
+        /* Social Proof Section */
+        .social-proof-section {
+          padding: 6rem 0;
+          background: linear-gradient(180deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+        }
+
+        .reddit-posts-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 1.5rem;
+          margin-top: 3rem;
+        }
+
+        .reddit-post {
+          padding: 1.5rem;
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .reddit-post:hover {
+          transform: translateY(-2px);
+          border-color: rgba(16, 185, 129, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .reddit-post::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(135deg, #ff4500, #ff6b35);
+        }
+
+        .post-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .post-meta {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .subreddit {
+          color: #ff4500;
+          font-weight: 600;
+          font-size: 0.875rem;
+        }
+
+        .post-date {
+          color: var(--muted-foreground);
+          font-size: 0.75rem;
+        }
+
+        .post-stats {
+          color: var(--muted-foreground);
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+
+        .post-content h4 {
+          color: var(--foreground);
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          line-height: 1.4;
+        }
+
+        .post-content p {
+          color: var(--muted-foreground);
+          font-size: 0.875rem;
+          line-height: 1.5;
+          margin-bottom: 0.75rem;
+        }
+
+        .reddit-answer {
+          background: rgba(255, 69, 0, 0.1);
+          color: #ff6b35;
+          padding: 0.5rem 0.75rem;
+          border-radius: 0.5rem;
+          font-size: 0.875rem;
+          font-weight: 500;
+          border-left: 3px solid #ff4500;
         }
 
         /* How It Works */
