@@ -220,14 +220,16 @@ export default function ThankYou() {
                 Curious about what DualProfile looks like before launch?
               </p>
               <div className="engagement-content">
-Reply to your confirmation email with "DEMO" and I'll personally send you:
-
-• Live screenshots of the extension in action
-• Walkthrough video showing how it works  
-• Breakdown of founder pricing vs. regular pricing
-
-— Edwin
-Founder, DualProfile
+                <p>Reply to your confirmation email with "DEMO" and I'll personally send you:</p>
+                <ul style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+                  <li>Live screenshots of the extension in action</li>
+                  <li>Walkthrough video showing how it works</li>
+                  <li>Breakdown of founder pricing vs. regular pricing</li>
+                </ul>
+                <p style={{ textAlign: 'right', marginTop: '2rem', fontStyle: 'italic', color: 'var(--foreground)' }}>
+                  — Edwin<br />
+                  Founder, DualProfile
+                </p>
               </div>
             </div>
           </div>
@@ -613,9 +615,31 @@ Founder, DualProfile
           padding: 2rem;
           margin-top: 2rem;
           text-align: left;
-          font-family: 'Courier New', monospace;
-          white-space: pre-line;
           color: var(--muted-foreground);
+          line-height: 1.6;
+        }
+
+        .engagement-content p {
+          margin-bottom: 1rem;
+        }
+
+        .engagement-content ul {
+          list-style: none;
+          padding-left: 0;
+        }
+
+        .engagement-content li {
+          padding: 0.5rem 0;
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .engagement-content li::before {
+          content: '•';
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+          font-weight: bold;
         }
 
         .signature {
