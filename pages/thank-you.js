@@ -89,14 +89,7 @@ export default function ThankYou() {
             <div className="logo-icon">
               <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="80" height="80" />
             </div>
-            <div className="confirmation-header">
-              <div className="tick-animation">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <h1 className="hero-title">Email Confirmed. You're Officially In.</h1>
-            </div>
+            <h1 className="hero-title">Email Confirmed. You're Officially In.</h1>
             <p className="hero-subtitle">
               You're now on the DualProfile early access list.
               <br />
@@ -417,27 +410,6 @@ export default function ThankYou() {
           animation: logoPulse 2s ease-in-out infinite;
         }
 
-        .confirmation-header {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .tick-animation {
-          width: 40px;
-          height: 40px;
-          background: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--primary);
-          animation: tickBounce 1s ease-out;
-          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-        }
-
         @keyframes logoPulse {
           0%, 100% { 
             transform: scale(1); 
@@ -446,21 +418,6 @@ export default function ThankYou() {
           50% { 
             transform: scale(1.05); 
             box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
-          }
-        }
-
-        @keyframes tickBounce {
-          0% { 
-            transform: scale(0) rotate(-45deg); 
-            opacity: 0;
-          }
-          50% { 
-            transform: scale(1.2) rotate(10deg); 
-            opacity: 1;
-          }
-          100% { 
-            transform: scale(1) rotate(0deg); 
-            opacity: 1;
           }
         }
 
