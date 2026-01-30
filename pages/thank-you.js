@@ -502,9 +502,9 @@ export default function ThankYou() {
           position: absolute;
           left: 0;
           top: 0;
-          bottom: -2rem;
+          bottom: -2.5rem;
           width: 2px;
-          background: linear-gradient(180deg, var(--primary), transparent);
+          background: linear-gradient(180deg, var(--primary), rgba(16, 185, 129, 0.3));
         }
 
         .timeline-item:last-child::before {
