@@ -1,1851 +1,515 @@
-import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ show: false, title: '', message: '' });
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const showToast = (title: string, message: string) => {
-    setToast({ show: true, title, message });
-    setTimeout(() => setToast({ show: false, title: '', message: '' }), 4000);
-  };
-
-    const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          el.classList.add('animate-fade-in-up');
-        }
-      });
-    };
-
-    // Detect ConvertKit form success
-    const observer = new MutationObserver(() => {
-      if (document.querySelector('.ck-form-success')) {
-        setEmail('');
-        setIsModalOpen(false);
-        showToast("You're on the list! 🎉", "We'll notify you as soon as DualProfile is ready.");
-      }
-    });
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
-  }, []);
-
-  const faqs = [
-    {
-      question: "Is this live on Chrome yet?",
-      answer: "Not yet — early access list opens before public launch. Join the list to be notified first when it goes live."
-    },
-    {
-      question: "How does Preview Mode work?",
-      answer: "Preview Mode shows you exactly what each contact sees when they view your profile. It's a local simulation that demonstrates how your different photos will appear to specific contacts."
-    },
-    {
-      question: "Is my data secure?",
-      answer: "Absolutely. All photos and data are stored locally on your device. Nothing is uploaded to our servers or shared with third parties."
+    // Initialize Iconify icons
+    if (typeof window !== 'undefined' && window.IconifyIcon) {
+      window.IconifyIcon.scan();
     }
-  ];
+  }, []);
 
   return (
     <>
       <Head>
-        <title>DualProfile - One WhatsApp. Multiple Identities.</title>
-        <meta name="description" content="Finally show different profile pictures to different contacts. Control your identity on WhatsApp Web like never before." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>DualProfile - Control Your WhatsApp Profile Photos</title>
+        <meta name="description" content="Upload two WhatsApp profile photos. Your boss sees professional. Your friends see personal. Control who sees what." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
+        
+        {/* Fonts: Inter */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+        
+        {/* Iconify */}
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" async />
+        
+        {/* Tailwind CSS */}
+        <script src="https://cdn.tailwindcss.com" async />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                DEFAULT: '#25D366',
+                                dark: '#128C7E',
+                                light: '#DCF8C6',
+                            },
+                            dark: '#0f1115',
+                            muted: '#6B7280',
+                        },
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                        },
+                        boxShadow: {
+                            'glow': '0 0 60px -15px rgba(37, 211, 102, 0.3)',
+                            '3d': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                        },
+                        animation: {
+                            'float': 'float 6s ease-in-out infinite',
+                            'float-delayed': 'float 6s ease-in-out 3s infinite',
+                            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        }
+                    }
+                }
+            }
+          `
+        }} />
       </Head>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js"></script>
 
-      <div className="app">
-        {/* Navbar */}
-        <nav className="navbar">
-          <div className="navbar-container">
-            <div className="logo">
-              <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="32" height="32" />
-              <span>DualProfile</span>
+      <div className="bg-white text-dark font-sans antialiased selection:bg-brand selection:text-white overflow-x-hidden">
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/50 supports-[backdrop-filter]:bg-white/60">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+                    {/* Logo */}
+                    <div className="flex items-center gap-2 group cursor-pointer">
+                        <div className="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white shadow-lg shadow-brand/20 group-hover:scale-105 transition-transform duration-300">
+                            <span className="font-semibold tracking-tighter">DP</span>
+                        </div>
+                        <span className="font-semibold tracking-tight text-lg group-hover:text-brand transition-colors">DualProfile</span>
+                    </div>
+                    
+                    {/* Desktop Nav */}
+                    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+                        <a href="#how-it-works" className="hover:text-dark transition-colors">How it Works</a>
+                        <a href="#pricing" className="hover:text-dark transition-colors">Pricing</a>
+                        <a href="#roadmap" className="hover:text-dark transition-colors">Roadmap</a>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex items-center gap-4">
+                        <a href="#pricing" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-dark">Log in</a>
+                        <a href="#pricing" className="bg-dark hover:bg-black text-white text-sm font-medium px-4 py-2 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5">
+                            Join Waitlist
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div className="nav-links">
-              <a href="#features">Features</a>
-              <a href="#demo">Demo</a>
-              <a href="#faq">FAQ</a>
-            </div>
-            <a href="#early-access" className="btn btn-primary">
-              Join Early Access List
-            </a>
-          </div>
         </nav>
 
         {/* Hero Section */}
-        <section className="hero">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              One WhatsApp.<br />Multiple Identities.
-            </h1>
-            <p className="hero-subtitle">
-              Control which profile photo each contact sees on WhatsApp Web.
-            </p>
-            <div className="social-proof">
-              <div className="proof-badge">
-                ⭐ Trusted by early adopters — only real humans here.
-              </div>
-            </div>
-            <div className="hero-buttons">
-              <button 
-                className="btn btn-outline btn-lg btn-primary"
-                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
-              >
-                Join Early Access List
-              </button>
-            </div>
-            <div className="hero-status">
-              <span className="status-badge">Preview Mode Available Now</span>
-              <span className="status-text">Real P2P sync coming soon</span>
-            </div>
-          </div>
-        </section>
+        <section className="relative pt-32 pb-20 overflow-visible">
+            {/* Background Gradients */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(circle_at_50%_0%,rgba(37,211,102,0.1),rgba(255,255,255,0))] -z-10 pointer-events-none"></div>
+            <div className="absolute top-40 right-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute top-20 left-0 w-72 h-72 bg-blue-100/30 rounded-full blur-3xl -z-10"></div>
 
-        {/* Demo Section - Moved Higher */}
-        <section id="demo" className="demo">
-          <div className="demo-container">
-            <div className="demo-video-wrapper">
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
-                <iframe 
-                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true"
-                  frameBorder="0"
-                  allowFullScreen
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%'
-                  }}
-                ></iframe>
-              </div>
-            </div>
-            <div className="trust-statement">
-              🔒 This works entirely on WhatsApp Web. No chat data is stored.
-            </div>
-            <p className="demo-caption">
-              Watch how Preview Mode shows exactly what each contact sees.
-            </p>
-          </div>
-        </section>
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center perspective-2000">
+                
+                {/* Trust Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 shadow-sm mb-8 animate-fade-in-up">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <span className="text-xs font-medium text-gray-500 tracking-wide uppercase">Founder Pricing: First 500 Only</span>
+                </div>
 
-        {/* Social Proof Section */}
-        <section className="social-proof-section">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">People Have Been Asking For This For Years</h2>
-              <p className="section-subtitle">
-                Before DualProfile, the only solution was to get a second phone number. Not anymore.
-              </p>
-            </div>
-            <div className="reddit-posts-grid">
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">8 months ago</span>
-                  </div>
-                  <div className="post-stats">9 upvotes • 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Whatsapp should start multiple profile photo"</h4>
-                  <p>"I would like my close circle to view a different photo of my and other contacts to view diff photo"</p>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">9 years ago</span>
-                  </div>
-                  <div className="post-stats">6 upvotes • 7 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Is there a way to display different profile pictures to different people?"</h4>
-                  <p>"As in, can I have a set of my contacts (group A) view a certain profile pic (picture A) while simultaneously another set of contacts (group B) will see another profile pic (picture B)?"</p>
-                  <div className="reddit-answer">Answer: "Nope"</div>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/privacy</span>
-                    <span className="post-date">2 years ago</span>
-                  </div>
-                  <div className="post-stats">Trending</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Risks of using a personal photo as a WhatsApp profile picture"</h4>
-                  <p>Long discussion about privacy concerns with profile photos and the need for separation between personal and professional contexts.</p>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">5 years ago</span>
-                  </div>
-                  <div className="post-stats">12 upvotes • 8 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Different profile picture between web and app"</h4>
-                  <p>Asked if it's possible to have different profile pictures on different platforms.</p>
-                  <div className="reddit-answer">Answer: "Only with two different numbers"</div>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">1 year ago</span>
-                  </div>
-                  <div className="post-stats">24 upvotes • 15 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Advice needed: Splitting mixed WhatsApp into personal and professional use"</h4>
-                  <p>"User wants to separate personal/professional but doesn't want to lose chat history. Current solution: Get TWO phone numbers!"</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section id="how-it-works" className="how-it-works">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">How It Works</h2>
-              <p className="section-subtitle">
-                Simple, powerful control over your WhatsApp identity in 1-on-1 chats.
-              </p>
-            </div>
-            <div className="steps-grid">
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">1</div>
-                <h3 className="step-title">Upload 2 Photos</h3>
-                <p className="step-description">
-                  Add your professional photo and your personal photo. Both stay stored locally on your device.
+                {/* Headlines */}
+                <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-dark mb-6 leading-[1.1]">
+                    One WhatsApp. <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-brand-dark">Two Realities.</span>
+                </h1>
+                
+                <p className="text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                    Professional for your boss. Personal for your friends. <br className="hidden sm:block" />Control your digital identity with a simple toggle.
                 </p>
-              </div>
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">2</div>
-                <h3 className="step-title">Assign Contacts</h3>
-                <p className="step-description">
-                  Choose which contacts see your work photo and which see your personal photo.
-                </p>
-              </div>
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">3</div>
-                <h3 className="step-title">Control Your Appearance</h3>
-                <p className="step-description">
-                  Preview how others see you. Real P2P sync coming soon for live profile switching.
-                </p>
-              </div>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 relative z-10">
+                    <a href="https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c" className="w-full sm:w-auto px-8 py-4 bg-brand hover:bg-brand-dark text-white text-lg font-medium rounded-full transition-all shadow-glow hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                        Get Founder Access - £22
+                        <iconify-icon icon="solar:arrow-right-linear" width="20" className="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+                    <a href="#demo" className="w-full sm:w-auto px-8 py-4 bg-white border border-gray-200 text-dark hover:border-gray-300 hover:bg-gray-50 text-lg font-medium rounded-full transition-all hover:shadow-md hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <iconify-icon icon="solar:play-circle-linear" width="20"></iconify-icon>
+                        Watch Demo
+                    </a>
+                </div>
+
+                {/* Mobile Placeholder (No 3D) */}
+                <div className="block md:hidden mx-auto max-w-sm">
+                    <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6 shadow-xl">
+                         <div className="flex justify-between items-center mb-6">
+                            <div className="text-center w-1/2 border-r border-gray-200">
+                                <iconify-icon icon="solar:user-id-bold" className="text-gray-400 text-5xl mb-2"></iconify-icon>
+                                <p className="text-xs font-bold text-gray-500">Boss Sees</p>
+                            </div>
+                            <div className="text-center w-1/2">
+                                <iconify-icon icon="solar:glasses-bold-duotone" className="text-brand text-5xl mb-2"></iconify-icon>
+                                <p className="text-xs font-bold text-brand">Friends See</p>
+                            </div>
+                         </div>
+                         <p className="text-xs text-center text-muted">DualProfile manages this automatically.</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </section>
 
-        {/* Current Status Section */}
-        <section className="current-status">
-          <div className="container">
-            <div className="status-card glass-card">
-              <h2 className="status-title">Current Status</h2>
-              <div className="status-grid">
-                <div className="status-item">
-                  <div className="status-icon available">✓</div>
-                  <div className="status-text">
-                    <strong>Preview Mode</strong>
-                    <p>See how others would see your profile</p>
-                  </div>
+        {/* Problem Section */}
+        <section className="py-24 bg-gray-50 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-50"></div>
+            
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center max-w-2xl mx-auto mb-16">
+                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-dark">The 17-Year-Old Problem</h2>
+                    <p className="text-muted">WhatsApp has 2 billion users, but zero privacy controls for your profile picture.</p>
                 </div>
-                <div className="status-item">
-                  <div className="status-icon coming-soon">→</div>
-                  <div className="status-text">
-                    <strong>P2P Sync</strong>
-                    <p>Real-time profile switching coming soon</p>
-                  </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000">
+                    {/* Card 1 */}
+                    <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
+                        <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <iconify-icon icon="solar:tie-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-blue-600 transition-colors">Career Risk</h3>
+                        <p className="text-muted leading-relaxed text-sm">Your boss sees your weekend party photos. Clients see your vacation selfies. One wrong photo can cost opportunities.</p>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
+                        <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <iconify-icon icon="solar:users-group-two-rounded-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-purple-600 transition-colors">Social Friction</h3>
+                        <p className="text-muted leading-relaxed text-sm">You keep your photo "neutral" for work, which means your friends never see the real you. You're living a diluted digital life.</p>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
+                        <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <iconify-icon icon="solar:shield-warning-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-red-600 transition-colors">Privacy Gap</h3>
+                        <p className="text-muted leading-relaxed text-sm">Every handyman, delivery driver, or random contact gets access to your personal face. It's a security hole.</p>
+                    </div>
                 </div>
-                <div className="status-item">
-                  <div className="status-icon not-available">—</div>
-                  <div className="status-text">
-                    <strong>Group Chats</strong>
-                    <p>Not supported yet</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="features">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">Everything You Need</h2>
-              <p className="section-subtitle">
-                Simple, powerful features designed for privacy-conscious users who want control over their WhatsApp identity.
-              </p>
+        {/* How It Works */}
+        <section id="how-it-works" className="py-24">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">How DualProfile Works</h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* Step 1 */}
+                    <div className="group cursor-default">
+                        <div className="aspect-square bg-gray-50 rounded-2xl mb-6 border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                            <span className="absolute top-4 left-4 w-8 h-8 bg-white border border-gray-200 text-dark rounded-full flex items-center justify-center font-bold text-sm z-10 shadow-sm">1</span>
+                            <iconify-icon icon="solar:gallery-add-linear" className="text-gray-400 group-hover:text-brand group-hover:scale-110 transition-all duration-300 w-16 h-16"></iconify-icon>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">Upload Two Photos</h3>
+                        <p className="text-sm text-muted">Drag and drop. Securely stored locally on your device.</p>
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className="group cursor-default">
+                        <div className="aspect-square bg-gray-50 rounded-2xl mb-6 border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                            <span className="absolute top-4 left-4 w-8 h-8 bg-white border border-gray-200 text-dark rounded-full flex items-center justify-center font-bold text-sm z-10 shadow-sm">2</span>
+                            <div className="flex gap-2 group-hover:gap-4 transition-all duration-300">
+                                 <div className="w-10 h-10 bg-brand rounded-full shadow-lg border-2 border-white relative z-10"></div>
+                                 <div className="w-10 h-10 bg-gray-800 rounded-full shadow-lg border-2 border-white relative -ml-4 group-hover:ml-0 transition-all"></div>
+                            </div>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">Assign Contacts</h3>
+                        <p className="text-sm text-muted">Select contacts or create rules (e.g. "+1 555..." = Professional).</p>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="group cursor-default">
+                        <div className="aspect-square bg-gray-50 rounded-2xl mb-6 border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                            <span className="absolute top-4 left-4 w-8 h-8 bg-white border border-gray-200 text-dark rounded-full flex items-center justify-center font-bold text-sm z-10 shadow-sm">3</span>
+                            <iconify-icon icon="solar:eye-linear" className="text-gray-400 group-hover:text-brand group-hover:rotate-12 transition-all duration-300 w-16 h-16"></iconify-icon>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">Preview Instantly</h3>
+                        <p className="text-sm text-muted">Verify exactly what they see before you hit save.</p>
+                    </div>
+
+                    {/* Step 4 */}
+                    <div className="group cursor-default">
+                        <div className="aspect-square bg-gray-50 rounded-2xl mb-6 border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-all duration-300">
+                            <span className="absolute top-4 left-4 w-8 h-8 bg-white border border-gray-200 text-dark rounded-full flex items-center justify-center font-bold text-sm z-10 shadow-sm">4</span>
+                            <div className="relative">
+                                <iconify-icon icon="solar:check-circle-bold" className="text-brand opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-500 absolute inset-0 w-16 h-16"></iconify-icon>
+                                <iconify-icon icon="solar:check-circle-linear" className="text-gray-400 group-hover:opacity-0 transition-opacity duration-300 w-16 h-16"></iconify-icon>
+                            </div>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2">Complete Control</h3>
+                        <p className="text-sm text-muted">The extension handles the switching automatically in the background.</p>
+                    </div>
+                </div>
             </div>
-            <div className="features-grid">
-              <div className="feature-card glass-card animate-on-scroll">
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                  </svg>
-                </div>
-                <h3 className="feature-title">Dual Uploads</h3>
-                <p className="feature-description">
-                  Upload different profile photos for different contacts. Your work colleagues see one image, your friends see another.
-                </p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll">
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                </div>
-                <h3 className="feature-title">Live Test Preview</h3>
-                <p className="feature-description">
-                  See exactly what each contact sees before you switch. No more guessing—preview your identity changes in real-time.
-                </p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll">
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </div>
-                <h3 className="feature-title">Privacy First</h3>
-                <p className="feature-description">
-                  All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
-                </p>
-              </div>
-            </div>
-          </div>
         </section>
 
-        {/* Early Access Section */}
-        <section id="early-access" className="early-access">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">Early Access List</h2>
-              <p className="section-subtitle">
-                DualProfile is still under review. Join the early access list to be notified first when it goes live.
-              </p>
+        {/* Pricing Section */}
+        <section id="pricing" className="py-24">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">One-Time Pricing</h2>
+                    <p className="text-muted">Join the founding members. <span className="text-brand font-medium">427 spots remaining.</span></p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto perspective-1000">
+                    
+                    {/* Founding Member Card */}
+                    <div className="relative bg-white rounded-2xl border border-gray-200 shadow-2xl p-8 overflow-hidden transform-style-3d transition-transform duration-500 hover:rotate-y-2 hover:scale-[1.02] z-10">
+                        <div className="absolute top-0 right-0 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-bl-lg tracking-wider border-b border-l border-amber-200">MOST POPULAR</div>
+                        
+                        <div className="flex items-center gap-2 mb-2 text-amber-500 relative">
+                            <iconify-icon icon="solar:cup-star-bold" width="20"></iconify-icon>
+                            <span className="font-bold tracking-wide text-xs uppercase">Founding Member</span>
+                        </div>
+                        
+                        <div className="flex items-baseline gap-1 mb-2 relative">
+                            <span className="text-5xl font-bold tracking-tight text-dark">£22</span>
+                            <span className="text-muted text-sm">/ lifetime</span>
+                        </div>
+                        <p className="text-sm text-gray-500 mb-8 border-b border-gray-100 pb-8 relative">Pay once. Use forever. Include all future updates.</p>
+
+                        <ul className="space-y-4 mb-8 relative">
+                            <li className="flex items-center gap-3 text-sm">
+                                <iconify-icon icon="solar:check-circle-bold" className="text-amber-500 flex-shrink-0"></iconify-icon>
+                                <span><strong>Unlimited</strong> contacts & photos</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-sm">
+                                <iconify-icon icon="solar:check-circle-bold" className="text-amber-500 flex-shrink-0"></iconify-icon>
+                                <span>Priority 24/7 Support</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-sm">
+                                <iconify-icon icon="solar:check-circle-bold" className="text-amber-500 flex-shrink-0"></iconify-icon>
+                                <span>P2P Sync Access (Feb 2026)</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-sm">
+                                <iconify-icon icon="solar:check-circle-bold" className="text-amber-500 flex-shrink-0"></iconify-icon>
+                                <span>Golden Founder Badge</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c" className="w-full bg-amber-400 hover:bg-amber-500 text-black font-semibold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl relative overflow-hidden group">
+                            <span className="relative z-10">Become a Founder - £22</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        </a>
+                        <p className="text-center text-xs text-gray-400 mt-4">Price increases to £4.99/mo soon.</p>
+                    </div>
+
+                    {/* Free Tier */}
+                    <div className="bg-gray-50 rounded-2xl border border-gray-200 p-8 flex flex-col hover:bg-white hover:shadow-lg transition-all duration-300">
+                        <div className="flex items-center gap-2 mb-2 text-gray-500">
+                            <iconify-icon icon="solar:user-linear" width="20"></iconify-icon>
+                            <span className="font-bold tracking-wide text-xs uppercase">Free Tier</span>
+                        </div>
+                        
+                        <div className="flex items-baseline gap-1 mb-2">
+                            <span className="text-5xl font-bold tracking-tight text-dark">Free</span>
+                        </div>
+                        <p className="text-sm text-gray-500 mb-8 border-b border-gray-200 pb-8">Basic privacy controls.</p>
+
+                        <ul className="space-y-4 mb-8 flex-1">
+                            <li className="flex items-center gap-3 text-sm text-gray-700">
+                                <iconify-icon icon="solar:check-circle-linear" className="text-gray-400 flex-shrink-0"></iconify-icon>
+                                <span>6 contact assignments</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-sm text-gray-700">
+                                <iconify-icon icon="solar:check-circle-linear" className="text-gray-400 flex-shrink-0"></iconify-icon>
+                                <span>2 profile photos</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-sm text-gray-700">
+                                <iconify-icon icon="solar:check-circle-linear" className="text-gray-400 flex-shrink-0"></iconify-icon>
+                                <span>Preview mode</span>
+                            </li>
+                        </ul>
+
+                        <a href="#waitlist" className="w-full bg-transparent border-2 border-gray-200 hover:border-dark hover:text-dark text-gray-500 font-semibold py-4 rounded-xl transition-all">
+                            Join Waitlist Free
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div className="early-access-card glass-card">
-              <button 
-                className="btn btn-primary btn-lg"
-                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
-              >
-                Join Early Access List
-              </button>
-            </div>
-          </div>
         </section>
 
-        <section id="faq" className="faq">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">Frequently Asked Questions</h2>
-              <p className="section-subtitle">Got questions? We've got answers.</p>
-            </div>
-            <div className="faq-list">
-              {faqs.map((faq, index) => (
-                <div key={index} className={`faq-item glass-card ${openFaq === index ? 'open' : ''}`}>
-                  <button 
-                    className="faq-trigger"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <span>{faq.question}</span>
-                    <svg 
-                      className="faq-chevron" 
-                      width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-                    >
-                      <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                  </button>
-                  <div className="faq-content">
-                    <p>{faq.answer}</p>
-                  </div>
+        {/* FAQ */}
+        <section className="py-24 bg-gray-50">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl font-semibold tracking-tight mb-12 text-center">Frequently Asked Questions</h2>
+                
+                <div className="space-y-4">
+                    {/* Q1 */}
+                    <details className="group bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 open:shadow-md">
+                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none bg-white hover:bg-gray-50 transition-colors">
+                            <span className="font-medium text-dark">Is this available now?</span>
+                            <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-open:bg-brand group-open:border-brand transition-colors">
+                                <iconify-icon icon="solar:alt-arrow-down-linear" className="transform group-open:rotate-180 group-open:text-white transition-transform text-gray-400"></iconify-icon>
+                            </div>
+                        </summary>
+                        <div className="px-6 pb-6 text-muted text-sm leading-relaxed border-t border-gray-50 animate-fade-in">
+                            Chrome Web Store approval pending (typically 1-2 weeks). You'll receive install instructions via email when approved. Preview mode works now. P2P sync launches February 2026.
+                        </div>
+                    </details>
+
+                    {/* Q2 */}
+                    <details className="group bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 open:shadow-md">
+                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none bg-white hover:bg-gray-50 transition-colors">
+                            <span className="font-medium text-dark">Does the other person need the extension?</span>
+                            <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-open:bg-brand group-open:border-brand transition-colors">
+                                <iconify-icon icon="solar:alt-arrow-down-linear" className="transform group-open:rotate-180 group-open:text-white transition-transform text-gray-400"></iconify-icon>
+                            </div>
+                        </summary>
+                        <div className="px-6 pb-6 text-muted text-sm leading-relaxed border-t border-gray-50">
+                            Not for preview mode (available now). Yes for P2P mode. As more people install, the value grows exponentially.
+                        </div>
+                    </details>
+
+                    {/* Q3 */}
+                    <details className="group bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 open:shadow-md">
+                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none bg-white hover:bg-gray-50 transition-colors">
+                            <span className="font-medium text-dark">Is it safe?</span>
+                            <div className="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-open:bg-brand group-open:border-brand transition-colors">
+                                <iconify-icon icon="solar:alt-arrow-down-linear" className="transform group-open:rotate-180 group-open:text-white transition-transform text-gray-400"></iconify-icon>
+                            </div>
+                        </summary>
+                        <div className="px-6 pb-6 text-muted text-sm leading-relaxed border-t border-gray-50">
+                            Yes. Photos are stored locally or encrypted. We don't read your messages. We only touch the profile picture element in the DOM.
+                        </div>
+                    </details>
                 </div>
-              ))}
             </div>
-          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-32 bg-dark text-white text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                 <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px]"></div>
+                 <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]"></div>
+            </div>
+
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">Take Control of Your Identity</h2>
+                <p className="text-xl text-gray-400 mb-10">Don't let a party photo ruin your career. Don't let a headshot ruin your vibe.</p>
+                
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                    <a href="https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c" className="w-full sm:w-auto px-10 py-4 bg-brand hover:bg-brand-dark text-white text-lg font-medium rounded-full transition-all hover:scale-105 shadow-glow">
+                        Get Lifetime Access - £22
+                    </a>
+                    <a href="#waitlist" className="w-full sm:w-auto px-10 py-4 border border-gray-600 hover:border-white text-white text-lg font-medium rounded-full transition-colors">
+                        Join Waitlist
+                    </a>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-400">
+                    <span className="flex items-center gap-2"><iconify-icon icon="solar:shield-check-linear" className="text-brand"></iconify-icon> 30-day money-back guarantee</span>
+                    <span className="flex items-center gap-2"><iconify-icon icon="solar:lock-password-linear" className="text-brand"></iconify-icon> Encrypted & Private</span>
+                </div>
+            </div>
+        </section>
+
+        {/* Waitlist Section */}
+        <section id="waitlist" className="py-20 bg-gray-50">
+            <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="text-3xl font-semibold tracking-tight mb-4">Join Free Waitlist</h2>
+                <p className="text-muted mb-8">Not ready to commit? Join the waitlist for updates when Chrome approves.</p>
+                
+                {/* ConvertKit Form Embed */}
+                <div id="convertkit-waitlist-form">
+                    <script async data-uid="7a5b00e94e" src="https://dualprofile.kit.com/7a5b00e94e/index.js"></script>
+                </div>
+                
+                <p className="text-sm text-gray-400 mt-4">No spam. Unsubscribe anytime.</p>
+            </div>
         </section>
 
         {/* Footer */}
-        <footer className="footer">
-          <div className="container">
-            <div className="footer-content">
-              <p>© 2025 DualProfile. All rights reserved.</p>
-              <div className="footer-links">
-                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
-                  Support
-                </a>
-              </div>
-              <p className="footer-note">
-                No data leaves your device — all control is local.
-              </p>
+        <footer className="bg-white pt-20 pb-12 border-t border-gray-100">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+                    <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded bg-brand flex items-center justify-center text-white text-xs font-bold">DP</div>
+                        <span className="font-bold text-dark">DualProfile</span>
+                    </div>
+                    <div className="text-gray-400">
+                        &copy; 2025 DualProfile. Not affiliated with WhatsApp/Meta.
+                    </div>
+                    <div className="flex gap-6">
+                        <a href="#" className="text-gray-500 hover:text-brand transition-colors"><iconify-icon icon="brandico:twitter-bird"></iconify-icon></a>
+                        <a href="#" className="text-gray-500 hover:text-brand transition-colors"><iconify-icon icon="brandico:linkedin"></iconify-icon></a>
+                        <a href="mailto:edwin.dualprofile@gmail.com" className="text-gray-500 hover:text-brand transition-colors">Contact</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </footer>
 
-        {/* Waitlist Modal */}
-        <div className={`modal ${isModalOpen ? 'open' : ''}`}>
-          <div className="modal-overlay" onClick={() => setIsModalOpen(false)}></div>
-          <div className="modal-content glass-card">
-            <button className="modal-close" onClick={() => setIsModalOpen(false)}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <h2 className="modal-title">Join the Waitlist</h2>
-            <p className="modal-subtitle">
-              Be the first to know when DualProfile launches. No spam, just one email when we're ready.
-            </p>
-            <button 
-              className="btn btn-primary btn-full"
-              onClick={() => {
-                // Use the correct public form URL
-                window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank');
-                // Close modal and show success message
-                setIsModalOpen(false);
-                showToast("Opening waitlist form...", "Complete your subscription to join the waitlist.");
-              }}
-            >
-              Join Waitlist
-            </button>
-            <p className="modal-privacy">
-              🔒 We respect your privacy. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
+        {/* Custom Styles */}
+        <style jsx global>{`
+            /* Custom scrollbar hiding */
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            
+            /* 3D Transform Utilities */
+            .perspective-1000 { perspective: 1000px; }
+            .perspective-2000 { perspective: 2000px; }
+            .transform-style-3d { transform-style: preserve-3d; }
+            .backface-hidden { backface-visibility: hidden; }
+            
+            /* Z-axis translation helpers not in default tailwind */
+            .translate-z-0 { transform: translateZ(0px); }
+            .translate-z-10 { transform: translateZ(20px); }
+            .translate-z-20 { transform: translateZ(40px); }
+            .translate-z-30 { transform: translateZ(60px); }
 
-        {/* Toast Notification */}
-        <div className={`toast ${toast.show ? 'show' : ''}`}>
-          <span className="toast-title">{toast.title}</span>
-          <span className="toast-message">{toast.message}</span>
-        </div>
+            /* Custom 3D Animations */
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
+                50% { transform: translateY(-20px) rotateX(8deg) rotateY(-2deg); }
+            }
+            
+            @keyframes float-reverse {
+                0%, 100% { transform: translateY(0px) rotateX(2deg) rotateY(2deg); }
+                50% { transform: translateY(-15px) rotateX(-2deg) rotateY(-2deg); }
+            }
+
+            .animate-3d-float { animation: float 8s ease-in-out infinite; }
+            .animate-3d-float-reverse { animation: float-reverse 9s ease-in-out infinite; }
+
+            /* Smooth hover transitions for cards */
+            .card-hover-3d {
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            .card-hover-3d:hover {
+                transform: translateY(-10px) rotateX(2deg);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            }
+
+            .rotate-y-2:hover {
+                transform: rotateY(2deg) scale(1.02);
+            }
+
+            .rotate-x-2:hover {
+                transform: rotateX(2deg);
+            }
+
+            @keyframes fade-in-up {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .animate-fade-in-up {
+                animation: fade-in-up 0.6s ease-out;
+            }
+        `}</style>
       </div>
-
-      <style jsx global>{`
-        /* CSS Variables - Design System */
-        :root {
-          --background: hsl(200, 20%, 10%);
-          --foreground: hsl(0, 0%, 98%);
-          --card: hsl(200, 18%, 13%);
-          --card-foreground: hsl(0, 0%, 98%);
-          --primary: hsl(145, 63%, 49%);
-          --primary-foreground: hsl(200, 20%, 10%);
-          --secondary: hsl(200, 15%, 18%);
-          --secondary-foreground: hsl(0, 0%, 98%);
-          --muted: hsl(200, 15%, 18%);
-          --muted-foreground: hsl(200, 10%, 60%);
-          --accent: hsl(145, 63%, 49%);
-          --accent-foreground: hsl(200, 20%, 10%);
-          --border: hsl(200, 15%, 20%);
-          --input: hsl(200, 15%, 20%);
-          --ring: hsl(145, 63%, 49%);
-          --radius: 0.75rem;
-        }
-
-        /* Global Reset & Background */
-        html, body {
-          background-color: #0b0b0f;
-          color: #ffffff;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        /* Reset & Base */
-        *, *::before, *::after {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        html {
-          scroll-behavior: auto;
-        }
-
-        body {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          line-height: 1.6;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Hide ConvertKit's success message */
-        .ck-success-message {
-          display: none !important;
-        }
-
-        /* Social Proof */
-        .social-proof {
-          margin: 2rem 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .social-proof-text {
-          font-size: 1.125rem;
-          color: #d1d5db;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .proof-number {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--primary);
-        }
-
-        .proof-badge {
-          background: rgba(16, 185, 129, 0.1);
-          color: #10b981;
-          padding: 0.5rem 1rem;
-          border-radius: 2rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        /* Hero Status */
-        .hero-status {
-          margin-top: 2rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .status-badge {
-          background: rgba(16, 185, 129, 0.2);
-          color: #10b981;
-          padding: 0.5rem 1rem;
-          border-radius: 2rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .status-text {
-          color: #9ca3af;
-          font-size: 0.875rem;
-        }
-
-        /* Demo Section */
-        .demo {
-          padding: 4rem 0;
-        }
-
-        .demo-container {
-          max-width: 800px;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .demo-video-wrapper {
-          margin-bottom: 2rem;
-          border-radius: var(--radius);
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .trust-statement {
-          color: #9ca3af;
-          font-size: 0.875rem;
-          margin-top: 1rem;
-        }
-
-        /* Social Proof Section */
-        .social-proof-section {
-          padding: 6rem 0;
-          background: linear-gradient(180deg, transparent, rgba(16, 185, 129, 0.05), transparent);
-        }
-
-        .reddit-posts-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 1.5rem;
-          margin-top: 3rem;
-        }
-
-        .reddit-post {
-          padding: 1.5rem;
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .reddit-post:hover {
-          transform: translateY(-2px);
-          border-color: rgba(16, 185, 129, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .reddit-post::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background: linear-gradient(135deg, #ff4500, #ff6b35);
-        }
-
-        .post-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1rem;
-          padding-bottom: 0.75rem;
-          border-bottom: 1px solid var(--border);
-        }
-
-        .post-meta {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        .subreddit {
-          color: #ff4500;
-          font-weight: 600;
-          font-size: 0.875rem;
-        }
-
-        .post-date {
-          color: var(--muted-foreground);
-          font-size: 0.75rem;
-        }
-
-        .post-stats {
-          color: var(--muted-foreground);
-          font-size: 0.75rem;
-          font-weight: 500;
-        }
-
-        .post-content h4 {
-          color: var(--foreground);
-          font-size: 1rem;
-          font-weight: 600;
-          margin-bottom: 0.75rem;
-          line-height: 1.4;
-        }
-
-        .post-content p {
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-          line-height: 1.5;
-          margin-bottom: 0.75rem;
-        }
-
-        .reddit-answer {
-          background: rgba(255, 69, 0, 0.1);
-          color: #ff6b35;
-          padding: 0.5rem 0.75rem;
-          border-radius: 0.5rem;
-          font-size: 0.875rem;
-          font-weight: 500;
-          border-left: 3px solid #ff4500;
-        }
-
-        /* How It Works */
-        .how-it-works {
-          padding: 6rem 0;
-        }
-
-        .steps-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 3rem;
-        }
-
-        .step-card {
-          text-align: center;
-          padding: 2rem;
-          position: relative;
-        }
-
-        .step-number {
-          width: 3rem;
-          height: 3rem;
-          background: var(--primary);
-          color: var(--primary-foreground);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin: 0 auto 1.5rem;
-        }
-
-        .step-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-        }
-
-        .step-description {
-          color: #d1d5db;
-          line-height: 1.6;
-        }
-
-        /* Current Status */
-        .current-status {
-          padding: 4rem 0;
-        }
-
-        .status-card {
-          padding: 2rem;
-          text-align: center;
-        }
-
-        .status-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-bottom: 2rem;
-        }
-
-        .status-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-        }
-
-        .status-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
-          text-align: left;
-        }
-
-        .status-icon {
-          width: 2rem;
-          height: 2rem;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          flex-shrink: 0;
-        }
-
-        .status-icon.available {
-          background: rgba(16, 185, 129, 0.2);
-          color: #10b981;
-        }
-
-        .status-icon.coming-soon {
-          background: rgba(59, 130, 246, 0.2);
-          color: #3b82f6;
-        }
-
-        .status-icon.not-available {
-          background: rgba(107, 114, 128, 0.2);
-          color: #6b7280;
-        }
-
-        .status-text strong {
-          display: block;
-          margin-bottom: 0.25rem;
-        }
-
-        .status-text p {
-          color: #9ca3af;
-          font-size: 0.875rem;
-          margin: 0;
-        }
-
-        /* Feature Comparison Table */
-        .comparison-table {
-          margin: 3rem 0;
-          overflow-x: auto;
-        }
-
-        .comparison-header {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          gap: 1rem;
-          padding: 1.5rem;
-          border-bottom: 2px solid var(--border);
-        }
-
-        .feature-column {
-          font-weight: 700;
-          color: var(--foreground);
-        }
-
-        .plan-column {
-          text-align: center;
-        }
-
-        .plan-name {
-          font-weight: 600;
-          color: var(--foreground);
-          margin-bottom: 0.5rem;
-        }
-
-        .plan-price {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: var(--primary);
-        }
-
-        .plan-price span {
-          font-size: 0.875rem;
-          font-weight: 400;
-          color: #9ca3af;
-        }
-
-        .comparison-row {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          gap: 1rem;
-          padding: 1rem 1.5rem;
-          border-bottom: 1px solid rgba(107, 114, 128, 0.2);
-        }
-
-        .comparison-row:last-child {
-          border-bottom: none;
-        }
-
-        .feature-name {
-          color: var(--foreground);
-          font-weight: 500;
-        }
-
-        .feature-value {
-          text-align: center;
-          font-weight: 600;
-        }
-
-        .feature-value:nth-child(2) {
-          color: #9ca3af;
-        }
-
-        .feature-value:nth-child(3),
-        .feature-value:nth-child(4) {
-          color: var(--primary);
-        }
-
-        /* Pricing Grid */
-        .pricing-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          margin-top: 3rem;
-        }
-
-        .pricing-card {
-          padding: 2rem;
-          text-align: center;
-          position: relative;
-        }
-
-        .pricing-card.featured {
-          transform: scale(1.05);
-        }
-
-        .pricing-header {
-          margin-bottom: 2rem;
-        }
-
-        .pricing-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-        }
-
-        .pricing-subtitle {
-          color: #9ca3af;
-          margin-bottom: 1.5rem;
-        }
-
-        .pricing-amount {
-          margin-bottom: 1rem;
-        }
-
-        .price {
-          font-size: 3rem;
-          font-weight: 700;
-          color: var(--primary);
-        }
-
-        .currency {
-          font-size: 1rem;
-          color: #9ca3af;
-        }
-
-        .pricing-alternative {
-          color: #9ca3af;
-          font-size: 0.875rem;
-        }
-
-        .pricing-benefits {
-          text-align: left;
-          margin-bottom: 2rem;
-        }
-
-        .pricing-benefits ul {
-          list-style: none;
-        }
-
-        .pricing-benefits li {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 0.75rem 0;
-          border-bottom: 1px solid rgba(107, 114, 128, 0.2);
-        }
-
-        .pricing-benefits li:last-child {
-          border-bottom: none;
-        }
-
-        .check-icon {
-          color: var(--primary);
-          flex-shrink: 0;
-        }
-
-        /* FAQ */
-        .faq {
-          padding: 6rem 0;
-        }
-
-        .faq-list {
-          margin-top: 3rem;
-        }
-
-        .faq-item {
-          margin-bottom: 1rem;
-          overflow: hidden;
-        }
-
-        .faq-trigger {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.5rem;
-          background: none;
-          border: none;
-          text-align: left;
-          cursor: pointer;
-          color: inherit;
-        }
-
-        .faq-trigger span {
-          font-weight: 600;
-        }
-
-        .faq-chevron {
-          transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-chevron {
-          transform: rotate(180deg);
-        }
-
-        .faq-content {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease;
-        }
-
-        .faq-item.open .faq-content {
-          max-height: 500px;
-        }
-
-        .faq-content p {
-          padding: 0 1.5rem 1.5rem;
-          color: #d1d5db;
-          line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-          padding: 3rem 0;
-          text-align: center;
-          border-top: 1px solid rgba(107, 114, 128, 0.2);
-        }
-
-        .footer-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        .footer-links {
-          display: flex;
-          gap: 2rem;
-        }
-
-        .footer-link {
-          color: #9ca3af;
-          text-decoration: none;
-          font-size: 0.875rem;
-          transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-          color: var(--primary);
-        }
-
-        @media (min-width: 768px) {
-          .footer-content {
-            flex-direction: row;
-            justify-content: space-between;
-          }
-        }
-        .container {
-          width: 100%;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1rem;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-          line-height: 1.2;
-          font-weight: 700;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        /* Utility Classes */
-        .text-primary {
-          color: var(--primary);
-        }
-
-        .glass-card {
-          background: hsla(200, 18%, 13%, 0.8);
-          backdrop-filter: blur(8px);
-          border: 1px solid hsla(200, 15%, 20%, 0.5);
-          border-radius: var(--radius);
-        }
-
-        .glow-primary {
-          box-shadow: 0 0 30px hsla(145, 63%, 49%, 0.2);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        .animate-on-scroll {
-          opacity: 0;
-        }
-
-        /* Buttons */
-        .btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          font-family: inherit;
-          font-size: 1rem;
-          font-weight: 600;
-          padding: 0.75rem 1.5rem;
-          border-radius: var(--radius);
-          border: none;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          text-decoration: none;
-        }
-
-        .btn-primary {
-          background-color: var(--primary);
-          color: var(--primary-foreground);
-        }
-
-        .btn-primary:hover {
-          background-color: hsl(145, 63%, 44%);
-          transform: translateY(-1px);
-        }
-
-        .btn-outline {
-          background-color: transparent;
-          color: var(--foreground);
-          border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-          background-color: var(--secondary);
-          border-color: var(--primary);
-        }
-
-        .btn-secondary {
-          background-color: transparent;
-          color: var(--foreground);
-          border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-          background-color: var(--secondary);
-          border-color: var(--primary);
-          transform: translateY(-1px);
-        }
-
-        .btn-lg {
-          font-size: 1.125rem;
-          padding: 1rem 2rem;
-        }
-
-        .btn-full {
-          width: 100%;
-        }
-
-        /* Navbar */
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 50;
-          background: hsla(200, 20%, 10%, 0.8);
-          backdrop-filter: blur(12px);
-          border-bottom: 1px solid hsla(200, 15%, 20%, 0.5);
-        }
-
-        .navbar-container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem;
-        }
-
-        .logo {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 1.5rem;
-          font-weight: 700;
-        }
-
-        .logo img {
-          border-radius: 8px;
-          transition: transform 0.3s ease;
-        }
-
-        .logo img:hover {
-          transform: scale(1.05);
-        }
-
-        .nav-links {
-          display: none;
-          align-items: center;
-          gap: 2rem;
-        }
-
-        .nav-links a {
-          color: var(--muted-foreground);
-          transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-          color: var(--foreground);
-        }
-
-        @media (min-width: 768px) {
-          .nav-links {
-            display: flex;
-          }
-        }
-
-        /* Hero Logo */
-        .hero-logo {
-          margin-bottom: 1.5rem;
-          display: flex;
-          justify-content: center;
-        }
-
-        .hero-logo img {
-          border-radius: 12px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-          transition: transform 0.3s ease;
-        }
-
-        .hero-logo img:hover {
-          transform: scale(1.05);
-        }
-
-        /* Hero Section */
-        .hero {
-          padding: 8rem 1rem 5rem;
-        }
-
-        .hero-content {
-          max-width: 56rem;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .hero-title {
-          font-size: 2.5rem;
-          margin-bottom: 1.5rem;
-          line-height: 1.1;
-        }
-
-        .hero-subtitle {
-          font-size: 1.125rem;
-          color: var(--muted-foreground);
-          max-width: 42rem;
-          margin: 0 auto 2rem;
-        }
-
-        .hero-buttons {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          justify-content: center;
-          margin-bottom: 4rem;
-        }
-
-        @media (min-width: 640px) {
-          .hero-title {
-            font-size: 3.75rem;
-          }
-
-          .hero-subtitle {
-            font-size: 1.25rem;
-          }
-
-          .hero-buttons {
-            flex-direction: row;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .hero-title {
-            font-size: 4.5rem;
-          }
-        }
-
-        /* Demo Section */
-        .demo {
-          padding: 5rem 1rem;
-        }
-
-        .demo-container {
-          max-width: 56rem;
-          margin: 0 auto;
-        }
-
-        .demo-placeholder {
-          position: relative;
-          aspect-ratio: 16 / 9;
-          border-radius: var(--radius);
-          overflow: hidden;
-          border: 2px solid hsla(145, 63%, 49%, 0.2);
-          background: var(--card);
-          cursor: pointer;
-          transition: border-color 0.3s ease;
-        }
-
-        .demo-placeholder:hover {
-          border-color: hsla(145, 63%, 49%, 0.4);
-        }
-
-        .demo-placeholder:hover .play-button {
-          background: hsla(145, 63%, 49%, 0.3);
-        }
-
-        .demo-gradient {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, hsla(145, 63%, 49%, 0.05), transparent);
-        }
-
-        .demo-content {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .play-button {
-          width: 5rem;
-          height: 5rem;
-          border-radius: 50%;
-          background: hsla(145, 63%, 49%, 0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 1rem;
-          transition: background 0.3s ease;
-        }
-
-        .play-button svg {
-          color: var(--primary);
-          margin-left: 4px;
-        }
-
-        .demo-text {
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-        }
-
-        .demo-subtext {
-          color: hsla(200, 10%, 60%, 0.6);
-          font-size: 0.75rem;
-          margin-top: 0.25rem;
-        }
-
-        .demo-mockup {
-          position: absolute;
-          bottom: 1rem;
-          left: 1rem;
-          right: 1rem;
-        }
-
-        .mockup-inner {
-          background: hsla(200, 15%, 18%, 0.5);
-          backdrop-filter: blur(8px);
-          border-radius: 0.5rem;
-          padding: 0.75rem;
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .mockup-avatar {
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 50%;
-          background: hsla(145, 63%, 49%, 0.3);
-        }
-
-        .mockup-text {
-          flex: 1;
-        }
-
-        .mockup-line-1 {
-          height: 0.75rem;
-          background: hsla(200, 10%, 60%, 0.2);
-          border-radius: 0.25rem;
-          width: 6rem;
-          margin-bottom: 0.25rem;
-        }
-
-        .mockup-line-2 {
-          height: 0.5rem;
-          background: hsla(200, 10%, 60%, 0.1);
-          border-radius: 0.25rem;
-          width: 8rem;
-        }
-
-        /* Trust Statement */
-        .trust-statement {
-          margin-top: 3rem;
-          text-align: center;
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-        }
-
-        /* Section Headers */
-        .section-header {
-          text-align: center;
-          margin-bottom: 4rem;
-        }
-
-        .section-title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-          color: var(--muted-foreground);
-          font-size: 1.125rem;
-          max-width: 42rem;
-          margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-          .section-title {
-            font-size: 2.5rem;
-          }
-        }
-
-        /* Features Section */
-        .features {
-          padding: 5rem 1rem;
-        }
-
-        .features-grid {
-          display: grid;
-          gap: 1.5rem;
-          max-width: 64rem;
-          margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-          .features-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-
-        .feature-card {
-          padding: 1.5rem;
-          transition: border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-          border-color: hsla(145, 63%, 49%, 0.3);
-        }
-
-        .feature-card:hover .feature-icon {
-          background: hsla(145, 63%, 49%, 0.2);
-        }
-
-        .feature-icon {
-          width: 3rem;
-          height: 3rem;
-          border-radius: 0.5rem;
-          background: hsla(145, 63%, 49%, 0.1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 1rem;
-          transition: background 0.3s ease;
-        }
-
-        .feature-icon svg {
-          color: var(--primary);
-        }
-
-        .feature-title {
-          font-size: 1.25rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .feature-description {
-          color: var(--muted-foreground);
-        }
-
-        /* Social Proof Section */
-        .social-proof {
-          padding: 5rem 1rem;
-        }
-
-        .testimonial {
-          max-width: 48rem;
-          margin: 0 auto;
-          padding: 3rem;
-          text-align: center;
-        }
-
-        .quote-icon {
-          color: var(--primary);
-          opacity: 0.3;
-          margin-bottom: 1.5rem;
-        }
-
-        .testimonial-quote {
-          font-size: 1.5rem;
-          font-style: italic;
-          margin-bottom: 1.5rem;
-          line-height: 1.4;
-        }
-
-        .testimonial-author {
-          color: var(--muted-foreground);
-        }
-
-        @media (min-width: 768px) {
-          .testimonial-quote {
-            font-size: 1.75rem;
-          }
-        }
-
-        /* Pricing Section */
-        .pricing {
-          padding: 5rem 1rem;
-        }
-
-        .pricing-card {
-          max-width: 28rem;
-          margin: 0 auto;
-          padding: 2.5rem;
-          position: relative;
-          overflow: hidden;
-          border-color: hsla(145, 63%, 49%, 0.3);
-        }
-
-        .pricing-badge {
-          position: absolute;
-          top: 0;
-          right: 0;
-          background: var(--primary);
-          color: var(--primary-foreground);
-          padding: 0.25rem 1rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          border-bottom-left-radius: 0.5rem;
-          display: flex;
-          align-items: center;
-          gap: 0.25rem;
-        }
-
-        .pricing-header {
-          text-align: center;
-          padding-top: 1.5rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .pricing-title {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .pricing-subtitle {
-          color: var(--muted-foreground);
-          margin-bottom: 1.5rem;
-        }
-
-        .pricing-amount {
-          display: flex;
-          align-items: baseline;
-          justify-content: center;
-          gap: 0.5rem;
-        }
-
-        .price {
-          font-size: 3rem;
-          font-weight: 700;
-        }
-
-        .currency {
-          color: var(--muted-foreground);
-        }
-
-        .pricing-benefits {
-          margin-bottom: 1.5rem;
-        }
-
-        .pricing-benefits ul {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-        }
-
-        .pricing-benefits li {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .check-icon {
-          width: 1.25rem;
-          height: 1.25rem;
-          border-radius: 50%;
-          background: hsla(145, 63%, 49%, 0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .check-icon svg {
-          color: var(--primary);
-        }
-
-        .pricing-guarantee {
-          text-align: center;
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-          margin-top: 1.5rem;
-        }
-
-        /* FAQ Section */
-        .faq {
-          padding: 5rem 1rem;
-        }
-
-        .faq-list {
-          max-width: 48rem;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .faq-item {
-          border-radius: var(--radius);
-          overflow: hidden;
-          transition: border-color 0.3s ease;
-        }
-
-        .faq-item.open {
-          border-color: hsla(145, 63%, 49%, 0.3);
-        }
-
-        .faq-trigger {
-          width: 100%;
-          padding: 1.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: transparent;
-          border: none;
-          color: var(--foreground);
-          font-family: inherit;
-          font-size: 1rem;
-          font-weight: 500;
-          text-align: left;
-          cursor: pointer;
-          transition: color 0.2s ease;
-        }
-
-        .faq-trigger:hover {
-          color: var(--primary);
-        }
-
-        .faq-chevron {
-          color: var(--muted-foreground);
-          transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-chevron {
-          transform: rotate(180deg);
-        }
-
-        .faq-content {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .faq-item.open .faq-content {
-          max-height: 500px;
-        }
-
-        .faq-content p {
-          padding: 0 1.5rem 1.5rem;
-          color: var(--muted-foreground);
-        }
-
-        /* Footer */
-        .footer {
-          padding: 2rem 1rem;
-          border-top: 1px solid hsla(200, 15%, 20%, 0.5);
-          text-align: center;
-        }
-
-        .footer p {
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-        }
-
-        /* Modal */
-        .modal {
-          position: fixed;
-          inset: 0;
-          z-index: 100;
-          display: none;
-          align-items: center;
-          justify-content: center;
-          padding: 1rem;
-        }
-
-        .modal.open {
-          display: flex;
-        }
-
-        .modal-overlay {
-          position: absolute;
-          inset: 0;
-          background: hsla(0, 0%, 0%, 0.8);
-          backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-          position: relative;
-          width: 100%;
-          max-width: 28rem;
-          padding: 2rem;
-          animation: fadeInUp 0.3s ease;
-        }
-
-        .modal-close {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          background: transparent;
-          border: none;
-          color: var(--muted-foreground);
-          cursor: pointer;
-          padding: 0.25rem;
-          transition: color 0.2s ease;
-        }
-
-        .modal-close:hover {
-          color: var(--foreground);
-        }
-
-        .modal-title {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .modal-subtitle {
-          color: var(--muted-foreground);
-          margin-bottom: 1.5rem;
-        }
-
-        .input-wrapper {
-          position: relative;
-          margin-bottom: 1rem;
-        }
-
-        .input-icon {
-          position: absolute;
-          left: 0.75rem;
-          top: 50%;
-          transform: translateY(-50%);
-          color: var(--muted-foreground);
-        }
-
-        .input-wrapper input {
-          width: 100%;
-          padding: 1rem 1rem 1rem 2.75rem;
-          background: var(--input);
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
-          color: var(--foreground);
-          font-family: inherit;
-          font-size: 1rem;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .input-wrapper input::placeholder {
-          color: var(--muted-foreground);
-        }
-
-        .input-wrapper input:focus {
-          outline: none;
-          border-color: var(--primary);
-          box-shadow: 0 0 0 3px hsla(145, 63%, 49%, 0.1);
-        }
-
-        .modal-privacy {
-          text-align: center;
-          color: var(--muted-foreground);
-          font-size: 0.75rem;
-          margin-top: 1rem;
-        }
-
-        /* Toast */
-        .toast {
-          position: fixed;
-          bottom: 1.5rem;
-          right: 1.5rem;
-          background: var(--card);
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
-          padding: 1rem 1.5rem;
-          z-index: 200;
-          transform: translateY(150%);
-          opacity: 0;
-          transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .toast.show {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        .toast-title {
-          display: block;
-          font-weight: 600;
-          margin-bottom: 0.25rem;
-        }
-
-        .toast-message {
-          display: block;
-          color: var(--muted-foreground);
-          font-size: 0.875rem;
-        }
-
-        /* Responsive Navigation */
-        @media (max-width: 767px) {
-          .navbar .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-          }
-        }
-      `}</style>
     </>
   );
 }
