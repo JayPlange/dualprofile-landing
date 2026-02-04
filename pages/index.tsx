@@ -17,7 +17,16 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
         
         {/* Iconify */}
-        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" async />
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener('load', function() {
+              if (window.IconifyIcon) {
+                window.IconifyIcon.scan();
+              }
+            });
+          `
+        }} />
         
         {/* Tailwind CSS */}
         <script src="https://cdn.tailwindcss.com" async />
@@ -117,10 +126,14 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 relative z-10">
                     <a href="https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c" className="w-full sm:w-auto px-8 py-4 bg-brand hover:bg-brand-dark text-white text-lg font-medium rounded-full transition-all shadow-glow hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group">
                         Get Founder Access - £22
-                        <iconify-icon icon="solar:arrow-right-linear" width="20" className="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="group-hover:translate-x-1 transition-transform">
+                            <path d="M5 12h14m0 0l-7-7m7 7l-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </a>
                     <a href="#demo" className="w-full sm:w-auto px-8 py-4 bg-white border border-gray-200 text-dark hover:border-gray-300 hover:bg-gray-50 text-lg font-medium rounded-full transition-all hover:shadow-md hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <iconify-icon icon="solar:play-circle-linear" width="20"></iconify-icon>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
                         Watch Demo
                     </a>
                 </div>
@@ -130,11 +143,18 @@ export default function Home() {
                     <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6 shadow-xl">
                          <div className="flex justify-between items-center mb-6">
                             <div className="text-center w-1/2 border-r border-gray-200">
-                                <iconify-icon icon="solar:user-id-bold" className="text-gray-400 text-5xl mb-2"></iconify-icon>
+                                <svg className="text-gray-400 text-5xl mb-2" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <circle cx="12" cy="8" r="3"/>
+                            <path d="M16 8v0a4 4 0 0 0-8 0v0"/>
+                            <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2"/>
+                        </svg>
                                 <p className="text-xs font-bold text-gray-500">Boss Sees</p>
                             </div>
                             <div className="text-center w-1/2">
-                                <iconify-icon icon="solar:glasses-bold-duotone" className="text-brand text-5xl mb-2"></iconify-icon>
+                                <svg className="text-brand text-5xl mb-2" width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 20H7l-4-4a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1 0 1.414l-4 4z"/>
+                            <circle cx="12" cy="12" r="2" fill="white"/>
+                        </svg>
                                 <p className="text-xs font-bold text-brand">Friends See</p>
                             </div>
                          </div>
@@ -158,7 +178,9 @@ export default function Home() {
                     {/* Card 1 */}
                     <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
                         <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <iconify-icon icon="solar:tie-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                            <svg width="24" strokeWidth="1.5" className="text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
                         </div>
                         <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-blue-600 transition-colors">Career Risk</h3>
                         <p className="text-muted leading-relaxed text-sm">Your boss sees your weekend party photos. Clients see your vacation selfies. One wrong photo can cost opportunities.</p>
@@ -167,7 +189,12 @@ export default function Home() {
                     {/* Card 2 */}
                     <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
                         <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <iconify-icon icon="solar:users-group-two-rounded-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                            <svg width="24" strokeWidth="1.5" className="text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
                         </div>
                         <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-purple-600 transition-colors">Social Friction</h3>
                         <p className="text-muted leading-relaxed text-sm">You keep your photo "neutral" for work, which means your friends never see the real you. You're living a diluted digital life.</p>
@@ -176,7 +203,9 @@ export default function Home() {
                     {/* Card 3 */}
                     <div className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm card-hover-3d transform-style-3d h-full">
                         <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <iconify-icon icon="solar:shield-warning-linear" width="24" strokeWidth="1.5"></iconify-icon>
+                            <svg width="24" strokeWidth="1.5" className="text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
                         </div>
                         <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-red-600 transition-colors">Privacy Gap</h3>
                         <p className="text-muted leading-relaxed text-sm">Every handyman, delivery driver, or random contact gets access to your personal face. It's a security hole.</p>
