@@ -9,7 +9,6 @@ export default function ThankYou() {
         <meta name="description" content="You're officially in the DualProfile early access list." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <div style={{ 

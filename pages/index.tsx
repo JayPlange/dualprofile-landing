@@ -1,13 +1,6 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 
 export default function Home() {
-  useEffect(() => {
-    // Initialize Iconify icons
-    if (typeof window !== 'undefined' && window.IconifyIcon) {
-      window.IconifyIcon.scan();
-    }
-  }, []);
 
   return (
     <>
