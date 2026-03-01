@@ -449,7 +449,7 @@ export default function Home() {
               </div>
               <button 
                 className="btn btn-primary"
-                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
+                onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
                 style={{
                   fontSize: 'clamp(18px, 3vw, 22px)',
                   padding: '20px 40px',
@@ -607,7 +607,7 @@ export default function Home() {
                   <div className="status-icon available">✓</div>
                   <div className="status-text">
                     <strong>P2P Sync</strong>
-                    <p>Real-time profile switching now live</p>
+                    <p>Real-time profile switching ✨ LIVE</p>
                   </div>
                 </div>
                 <div className="status-item">
@@ -672,22 +672,162 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Early Access Section */}
-        <section id="early-access" className="early-access">
+        {/* Pricing Section */}
+        <section id="pricing" className="pricing">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Early Access List</h2>
+              <h2 className="section-title">Choose Your Plan</h2>
               <p className="section-subtitle">
-                DualProfile is still under review. Join the early access list to be notified first when it goes live.
+                Start free, upgrade when you need more power.
               </p>
             </div>
-            <div className="early-access-card glass-card">
-              <button 
-                className="btn btn-primary btn-lg"
-                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
-              >
-                Join Early Access List
-              </button>
+            <div className="pricing-grid" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '32px',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              <div className="pricing-card glass-card" style={{
+                padding: '40px',
+                textAlign: 'center',
+                borderRadius: '16px',
+                border: '2px solid rgba(37, 211, 102, 0.2)',
+                background: 'rgba(255, 255, 255, 0.05)'
+              }}>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '700',
+                  marginBottom: '16px',
+                  color: 'var(--foreground, #ffffff)'
+                }}>Free</h3>
+                <div style={{
+                  fontSize: '48px',
+                  fontWeight: '800',
+                  color: '#25D366',
+                  marginBottom: '24px'
+                }}>$0<span style={{
+                  fontSize: '18px',
+                  fontWeight: '400',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>/month</span></div>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: '0',
+                  marginBottom: '32px',
+                  textAlign: 'left'
+                }}>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Up to 5 dual profiles
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Preview Mode
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    P2P Sync
+                  </li>
+                </ul>
+                <button 
+                  className="btn btn-secondary"
+                  style={{
+                    width: '100%',
+                    padding: '16px 24px',
+                    background: 'transparent',
+                    border: '2px solid #25D366',
+                    borderRadius: '12px',
+                    color: '#25D366',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                >
+                  Get Started Free
+                </button>
+              </div>
+              
+              <div className="pricing-card glass-card featured" style={{
+                padding: '40px',
+                textAlign: 'center',
+                borderRadius: '16px',
+                border: '2px solid #25D366',
+                background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.1))',
+                position: 'relative',
+                transform: 'scale(1.05)'
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: '-12px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: '#25D366',
+                  color: 'white',
+                  padding: '4px 16px',
+                  borderRadius: '20px',
+                  fontSize: '12px',
+                  fontWeight: '600'
+                }}>POPULAR</div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '700',
+                  marginBottom: '16px',
+                  color: 'var(--foreground, #ffffff)'
+                }}>Pro</h3>
+                <div style={{
+                  fontSize: '48px',
+                  fontWeight: '800',
+                  color: '#25D366',
+                  marginBottom: '24px'
+                }}>$4<span style={{
+                  fontSize: '18px',
+                  fontWeight: '400',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>/month</span></div>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: '0',
+                  marginBottom: '32px',
+                  textAlign: 'left'
+                }}>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Unlimited dual profiles
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    All Free features
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Priority support
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Early access to new features
+                  </li>
+                </ul>
+                <button 
+                  className="btn btn-primary"
+                  style={{
+                    width: '100%',
+                    padding: '16px 24px',
+                    background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                    border: 'none',
+                    borderRadius: '12px',
+                    color: 'white',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
+                  }}
+                  onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                >
+                  Get DualProfile Pro
+                </button>
+              </div>
             </div>
           </div>
         </section>
