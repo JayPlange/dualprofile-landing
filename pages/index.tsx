@@ -359,7 +359,7 @@ export default function Home() {
                   objectFit: 'cover',
                   borderRadius: '12px'
                 }}
-                poster="/video-thumbnail.jpg"
+                poster="/video-thumbnail.png"
                 title="DualProfile Demo - See how different contacts see different profile photos"
                 onError={(e) => {
                   // If video fails to load, replace with iframe
@@ -387,7 +387,7 @@ export default function Home() {
                   wrapper.replaceChild(iframe, video);
                 }}
               >
-                <source src="/demo.mp4" type="video/mp4" />
+                <source src="/DualProfile x Demo Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
