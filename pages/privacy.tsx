@@ -19,16 +19,99 @@ export default function Privacy() {
               color: #ffffff;
               margin: 0;
               padding: 0;
-              line-height: 1.6;
+              line-height: 1.7;
               font-size: 16px;
             }
             .container {
-              max-width: 800px;
+              max-width: 700px;
               margin: 0 auto;
               padding: 0 2rem;
             }
             .bg-dark {
               background-color: #0b0b0f;
+              min-height: 100vh;
+            }
+            .text-white {
+              color: #ffffff;
+            }
+            .text-gray-400 {
+              color: #9ca3af;
+            }
+            .text-gray-300 {
+              color: #d1d5db;
+            }
+            .brand-green {
+              color: #25D366;
+            }
+            .hover\\:text-brand-green:hover {
+              color: #25D366;
+            }
+            .transition {
+              transition: color 0.2s ease;
+            }
+            .mb-4 {
+              margin-bottom: 1.5rem;
+            }
+            .mb-8 {
+              margin-bottom: 2.5rem;
+            }
+            .mt-12 {
+              margin-top: 3rem;
+            }
+            .pt-8 {
+              padding-top: 2rem;
+            }
+            .py-16 {
+              padding-top: 4rem;
+              padding-bottom: 4rem;
+            }
+            .px-4 {
+              padding-left: 1rem;
+              padding-right: 1rem;
+            }
+            .space-y-8 > * + * {
+              margin-top: 3rem;
+            }
+            .space-y-2 > * + * {
+              margin-top: 1rem;
+            }
+            .mt-4 {
+              margin-top: 1.5rem;
+            }
+            .border-t {
+              border-top: 1px solid;
+            }
+            .border-gray-800 {
+              border-color: #374151;
+            }
+            .text-center {
+              text-align: center;
+            }
+            .inline-block {
+              display: inline-block;
+            }
+            .text-4xl {
+              font-size: 2.25rem;
+              font-weight: 700;
+              line-height: 1.2;
+            }
+            .text-2xl {
+              font-size: 1.5rem;
+              font-weight: 600;
+              line-height: 1.3;
+            }
+            .font-semibold {
+              font-weight: 600;
+            }
+            .font-bold {
+              font-weight: 700;
+            }
+            ul {
+              list-style: none;
+              padding: 0;
+            }
+            section {
+              margin-bottom: 3rem;
             }
             a {
               text-decoration: none;
@@ -37,19 +120,21 @@ export default function Privacy() {
               background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.1));
               border: 1px solid rgba(37, 211, 102, 0.3);
               border-radius: 12px;
-              padding: 2rem;
-              margin: 2rem 0;
+              padding: 2.5rem;
+              margin: 3rem 0;
             }
             .quick-summary h2 {
               color: #25D366;
               font-size: 1.25rem;
               font-weight: 600;
-              margin-bottom: 1rem;
+              margin-bottom: 1.5rem;
             }
             .quick-summary ul li {
-              padding: 0.5rem 0;
+              padding: 0.75rem 0;
               position: relative;
-              padding-left: 1.5rem;
+              padding-left: 2rem;
+              font-size: 1rem;
+              line-height: 1.6;
             }
             .quick-summary ul li:before {
               content: "✓";
@@ -61,22 +146,26 @@ export default function Privacy() {
             .section-title {
               font-size: 1.5rem;
               font-weight: 600;
-              margin-bottom: 1rem;
+              margin-bottom: 2rem;
               color: #ffffff;
+              line-height: 1.3;
             }
             .subsection {
-              margin: 1.5rem 0;
+              margin: 2rem 0;
             }
             .subsection h3 {
               font-size: 1.125rem;
               font-weight: 600;
-              margin-bottom: 0.75rem;
+              margin-bottom: 1rem;
               color: #25D366;
+              line-height: 1.4;
             }
             .subsection ul li {
-              padding: 0.25rem 0;
+              padding: 0.5rem 0;
               position: relative;
-              padding-left: 1rem;
+              padding-left: 1.5rem;
+              font-size: 1rem;
+              line-height: 1.6;
             }
             .subsection ul li:before {
               content: "•";
@@ -87,21 +176,41 @@ export default function Privacy() {
             .do-not-collect {
               background: rgba(239, 68, 68, 0.1);
               border-left: 4px solid #ef4444;
-              padding: 1rem 1.5rem;
-              margin: 1rem 0;
-              border-radius: 0 8px 8px 0;
+              padding: 1.5rem 2rem;
+              margin: 2rem 0;
+              border-radius: 0 12px 12px 0;
             }
             .do-not-collect h3 {
               color: #ef4444;
               font-weight: 600;
-              margin-bottom: 0.5rem;
+              margin-bottom: 1rem;
+              font-size: 1.125rem;
+            }
+            .do-not-collect ul li {
+              padding: 0.5rem 0;
+              position: relative;
+              padding-left: 1.5rem;
+              font-size: 1rem;
+              line-height: 1.6;
+            }
+            .do-not-collect ul li:before {
+              content: "•";
+              position: absolute;
+              left: 0;
+              color: #ef4444;
+            }
+            p {
+              margin-bottom: 1.5rem;
+              line-height: 1.7;
+              font-size: 1rem;
             }
             @media (max-width: 768px) {
               .container {
                 padding: 0 1rem;
               }
               .quick-summary {
-                padding: 1.5rem;
+                padding: 2rem;
+                margin: 2rem 0;
               }
               .text-4xl {
                 font-size: 2rem;
@@ -111,6 +220,14 @@ export default function Privacy() {
               }
               body {
                 font-size: 15px;
+              }
+              .section-title {
+                font-size: 1.25rem;
+              }
+              .quick-summary ul li,
+              .subsection ul li,
+              .do-not-collect ul li {
+                font-size: 0.9rem;
               }
             }
           `
