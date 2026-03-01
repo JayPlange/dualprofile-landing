@@ -7,22 +7,118 @@ export default function Privacy() {
       <Head>
         <title>Privacy Policy — DualProfile</title>
         <meta name="description" content="DualProfile Privacy Policy — How we protect your data and privacy" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <style dangerouslySetInnerHTML={{
           __html: `
-            body { font-family: 'Inter', sans-serif; }
-            .brand-green { color: #25D366; }
-            .bg-dark { background-color: #0f1115; }
-            .text-dark { color: #0f1115; }
+            body { 
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              background-color: #0b0b0f;
+              color: #ffffff;
+              margin: 0;
+              padding: 0;
+              line-height: 1.6;
+            }
+            .container {
+              max-width: 900px;
+              margin: 0 auto;
+              padding: 0 2rem;
+            }
+            .bg-dark {
+              background-color: #0b0b0f;
+              min-height: 100vh;
+            }
+            .text-white {
+              color: #ffffff;
+            }
+            .text-gray-400 {
+              color: #9ca3af;
+            }
+            .text-gray-300 {
+              color: #d1d5db;
+            }
+            .brand-green {
+              color: #25D366;
+            }
+            .hover\\:text-brand-green:hover {
+              color: #25D366;
+            }
+            .transition {
+              transition: color 0.2s ease;
+            }
+            .mb-4 {
+              margin-bottom: 1rem;
+            }
+            .mb-8 {
+              margin-bottom: 2rem;
+            }
+            .mt-12 {
+              margin-top: 3rem;
+            }
+            .pt-8 {
+              padding-top: 2rem;
+            }
+            .py-16 {
+              padding-top: 4rem;
+              padding-bottom: 4rem;
+            }
+            .px-4 {
+              padding-left: 1rem;
+              padding-right: 1rem;
+            }
+            .space-y-8 > * + * {
+              margin-top: 2rem;
+            }
+            .space-y-2 > * + * {
+              margin-top: 0.5rem;
+            }
+            .mt-4 {
+              margin-top: 1rem;
+            }
+            .border-t {
+              border-top: 1px solid;
+            }
+            .border-gray-800 {
+              border-color: #374151;
+            }
+            .text-center {
+              text-align: center;
+            }
+            .inline-block {
+              display: inline-block;
+            }
+            .text-4xl {
+              font-size: 2.25rem;
+              font-weight: 700;
+            }
+            .text-2xl {
+              font-size: 1.5rem;
+              font-weight: 600;
+            }
+            .font-semibold {
+              font-weight: 600;
+            }
+            .font-bold {
+              font-weight: 700;
+            }
+            ul {
+              list-style: none;
+              padding: 0;
+            }
+            section {
+              margin-bottom: 2rem;
+            }
+            a {
+              text-decoration: none;
+            }
           `
         }} />
       </Head>
 
-      <div className="bg-dark text-white min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 py-16">
-          <div className="mb-8">
-            <a href="/" className="text-gray-400 hover:text-brand-green transition mb-8 inline-block">
+      <div className="bg-dark text-white">
+        <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
+          <div style={{marginBottom: '2rem'}}>
+            <a href="/" className="text-gray-400 hover:text-brand-green transition mb-8 inline-block" style={{marginBottom: '1rem', display: 'inline-block'}}>
               ← Back to DualProfile
             </a>
             <h1 className="text-4xl font-bold mb-4">Privacy Policy — DualProfile</h1>
