@@ -888,7 +888,7 @@ export default function Home() {
                 </a>
               </div>
               <p className="footer-note">
-                Your chats and contacts are never accessed or stored.
+                Your chats and messages are never accessed or stored.
               </p>
             </div>
           </div>
