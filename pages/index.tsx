@@ -37,35 +37,12 @@ export default function Home() {
       }
     });
 
-    // Handle video loading errors
-    const handleVideoError = () => {
-      const iframe = document.querySelector('iframe[src*="loom.com"]');
-      const fallback = document.getElementById('video-fallback');
-      
-      if (iframe && fallback) {
-        // Check if iframe failed to load (no content after timeout)
-        setTimeout(() => {
-          try {
-            // Try to access iframe content - will fail if blocked
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-            if (!iframeDoc || !iframeDoc.body) {
-              // Show fallback if iframe is blocked/empty
-              fallback.style.display = 'flex';
-              iframe.style.display = 'none';
-            }
-          } catch (e) {
-            // Cross-origin error means iframe is blocked, show fallback
-            fallback.style.display = 'flex';
-            iframe.style.display = 'none';
-          }
-        }, 3000); // Wait 3 seconds to check if video loads
-      }
-    };
+    // Handle video loading errors - REMOVED - Video will play inline
+    // No need for fallback since video will be self-hosted
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     observer.observe(document.body, { childList: true, subtree: true });
-    handleVideoError();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -355,71 +332,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Demo Section - Fixed Video Embed */}
+        {/* Demo Section - Inline Video Implementation */}
         <section id="demo" className="demo">
           <div className="demo-container">
             <div className="demo-video-wrapper" style={{
               position: 'relative',
+              width: '100%',
+              maxWidth: '800px',
+              margin: '0 auto',
               borderRadius: '12px',
               overflow: 'hidden',
               background: '#000',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+              aspectRatio: '16 / 9'
             }}>
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0', minHeight: '300px'}}>
-                <iframe 
-                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=1&muted=1"
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write"
-                  allowFullScreen
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    border: 'none',
-                    borderRadius: '12px'
-                  }}
-                  title="DualProfile Demo - See how different contacts see different profile photos"
-                  onLoad={() => console.log('Video loaded successfully')}
-                  onError={() => console.log('Video failed to load')}
-                ></iframe>
-              </div>
-              
-              {/* Fallback thumbnail with click to play */}
-              <div id="video-fallback" style={{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '100%',
-                height: '100%',
-                display: 'none',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'linear-gradient(135deg, #0b0b0f, #1a1a2e)',
-                borderRadius: '12px',
-                cursor: 'pointer'
-              }} onClick={() => {
-                window.open('https://www.loom.com/share/142f339f576c42028e9fab9c3f8d3e8d', '_blank');
-              }}>
-                <div style={{textAlign: 'center', color: 'white'}}>
-                  <div style={{
-                    width: '80px',
-                    height: '80px',
-                    margin: '0 auto 20px',
-                    background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '32px'
-                  }}>
-                    ▶
-                  </div>
-                  <h3 style={{fontSize: '20px', marginBottom: '10px'}}>Watch Demo</h3>
-                  <p style={{opacity: '0.8', fontSize: '14px'}}>Click to watch in new tab</p>
-                </div>
-              </div>
+              <video 
+                controls
+                playsinline
+                preload="metadata"
+                muted
+                loop
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '12px'
+                }}
+                poster="/video-thumbnail.jpg"
+                title="DualProfile Demo - See how different contacts see different profile photos"
+              >
+                <source src="/demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             
             <div className="trust-statement" style={{
@@ -442,8 +386,7 @@ export default function Home() {
               textAlign: 'center',
               lineHeight: '1.5'
             }}>
-              Watch how Preview Mode shows exactly what each contact sees.<br />
-              <span style={{opacity: '0.6', fontSize: '14px'}}>If video doesn't load, click the thumbnail above</span>
+              Watch how Preview Mode shows exactly what each contact sees.
             </p>
           </div>
         </section>
@@ -2255,6 +2198,7 @@ export default function Home() {
 
           .demo-video-wrapper {
             margin: 0 -20px;
+            max-width: calc(100% + 40px);
           }
 
           .social-proof-section {
