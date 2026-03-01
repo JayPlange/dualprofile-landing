@@ -1,0 +1,14 @@
+<!-- Placeholder thumbnail for demo video -->
+<svg width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#25D366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#128C7E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#grad)" />
+  <circle cx="640" cy="360" r="80" fill="white" opacity="0.9"/>
+  <polygon points="600,320 600,400 680,360" fill="#25D366"/>
+  <text x="640" y="500" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">DualProfile Demo</text>
+  <text x="640" y="550" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white" opacity="0.8">See how different contacts see different profile photos</text>
+</svg>

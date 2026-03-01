@@ -332,7 +332,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Demo Section - Inline Video Implementation */}
+        {/* Demo Section - Hybrid Video Implementation */}
         <section id="demo" className="demo">
           <div className="demo-container">
             <div className="demo-video-wrapper" style={{
@@ -346,6 +346,7 @@ export default function Home() {
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
               aspectRatio: '16 / 9'
             }}>
+              {/* Try self-hosted MP4 first, fallback to Loom iframe */}
               <video 
                 controls
                 playsinline
@@ -360,6 +361,31 @@ export default function Home() {
                 }}
                 poster="/video-thumbnail.jpg"
                 title="DualProfile Demo - See how different contacts see different profile photos"
+                onError={(e) => {
+                  // If video fails to load, replace with iframe
+                  const video = e.target;
+                  const wrapper = video.parentElement;
+                  
+                  // Create iframe fallback
+                  const iframe = document.createElement('iframe');
+                  iframe.src = 'https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=1&muted=1';
+                  iframe.frameBorder = '0';
+                  iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write';
+                  iframe.allowFullScreen = true;
+                  iframe.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    border-radius: 12px;
+                  `;
+                  iframe.title = 'DualProfile Demo - See how different contacts see different profile photos';
+                  
+                  // Replace video with iframe
+                  wrapper.replaceChild(iframe, video);
+                }}
               >
                 <source src="/demo.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
