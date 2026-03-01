@@ -263,7 +263,7 @@ export default function Home() {
                 <div className="step-number">3</div>
                 <h3 className="step-title">Control Your Appearance</h3>
                 <p className="step-description">
-                  Preview how others see you. Real P2P sync coming soon for live profile switching.
+                  Preview how others see you. Real P2P sync enabled for live profile switching.
                 </p>
               </div>
             </div>
@@ -284,10 +284,10 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="status-item">
-                  <div className="status-icon coming-soon">→</div>
+                  <div className="status-icon available">✓</div>
                   <div className="status-text">
                     <strong>P2P Sync</strong>
-                    <p>Real-time profile switching coming soon</p>
+                    <p>Real-time profile switching now live</p>
                   </div>
                 </div>
                 <div className="status-item">
@@ -408,6 +408,9 @@ export default function Home() {
             <div className="footer-content">
               <p>© 2025 DualProfile. All rights reserved.</p>
               <div className="footer-links">
+                <a href="/privacy" className="footer-link">
+                  Privacy Policy
+                </a>
                 <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
                   Support
                 </a>
