@@ -760,15 +760,17 @@ export default function Home() {
               }}>
                 <div style={{
                   position: 'absolute',
-                  top: '-12px',
+                  top: '-20px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   background: '#25D366',
                   color: 'white',
-                  padding: '4px 16px',
+                  padding: '6px 20px',
                   borderRadius: '20px',
-                  fontSize: '12px',
-                  fontWeight: '600'
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  zIndex: '10',
+                  boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)'
                 }}>POPULAR</div>
                 <h3 style={{
                   fontSize: '24px',
@@ -904,9 +906,9 @@ export default function Home() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <h2 className="modal-title">Join the Waitlist</h2>
+            <h2 className="modal-title">Join our Newsletter</h2>
             <p className="modal-subtitle">
-              Be the first to know when DualProfile launches. No spam, just one email when we're ready.
+              Get the latest updates and tips for DualProfile. No spam, just valuable content.
             </p>
             <button 
               className="btn btn-primary btn-full"
@@ -915,10 +917,10 @@ export default function Home() {
                 window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank');
                 // Close modal and show success message
                 setIsModalOpen(false);
-                showToast("Opening waitlist form...", "Complete your subscription to join the waitlist.");
+                showToast("Opening newsletter form...", "Complete your subscription to join our newsletter.");
               }}
             >
-              Join Waitlist
+              Join Newsletter
             </button>
             <p className="modal-privacy">
               🔒 We respect your privacy. Unsubscribe anytime.
