@@ -50,7 +50,7 @@ export default function Home() {
   const faqs = [
     {
       question: "Is this live on Chrome yet?",
-      answer: "Not yet — early access list opens before public launch. Join the list to be notified first when it goes live."
+      answer: "Not yet on the Chrome Web Store — but launching very soon. Join the early access list to be notified the moment it goes live."
     },
     {
       question: "How does Preview Mode work?",
@@ -114,10 +114,17 @@ export default function Home() {
               >
                 Join Early Access List
               </button>
+              <button 
+                className="btn btn-outline btn-lg"
+                disabled
+                style={{opacity: 0.5, cursor: 'not-allowed'}}
+              >
+                Coming Soon to Chrome Web Store
+              </button>
             </div>
             <div className="hero-status">
               <span className="status-badge">Preview Mode Available Now</span>
-              <span className="status-text">Real P2P sync coming soon</span>
+              <span className="status-text">Real-time P2P sync — live now</span>
             </div>
           </div>
         </section>
@@ -263,7 +270,7 @@ export default function Home() {
                 <div className="step-number">3</div>
                 <h3 className="step-title">Control Your Appearance</h3>
                 <p className="step-description">
-                  Preview how others see you. Real P2P sync enabled for live profile switching.
+                  Preview how others see you. Changes reflect instantly on the other person's WhatsApp Web.
                 </p>
               </div>
             </div>
@@ -406,7 +413,7 @@ export default function Home() {
         <footer className="footer">
           <div className="container">
             <div className="footer-content">
-              <p>© 2025 DualProfile. All rights reserved.</p>
+              <p>© 2026 DualProfile. All rights reserved.</p>
               <div className="footer-links">
                 <a href="/privacy" className="footer-link">
                   Privacy Policy
