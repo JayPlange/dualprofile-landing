@@ -876,7 +876,7 @@ export default function Home() {
                 </a>
               </div>
               <p className="footer-note">
-                No data leaves your device — all control is local.
+                Your chats and contacts are never accessed or stored.
               </p>
             </div>
           </div>

@@ -350,6 +350,14 @@ export default function Privacy() {
               </p>
             </section>
 
+            {/* Data Retention */}
+            <section>
+              <h2 className="section-title">Data Retention</h2>
+              <p>
+                Data stored on our servers is retained until the user deletes their account or requests deletion via email. Uninstalling the extension stops all syncing but does not automatically delete server-side data.
+              </p>
+            </section>
+
             {/* Contact Information */}
             <section>
               <h2 className="section-title">Contact Information</h2>
