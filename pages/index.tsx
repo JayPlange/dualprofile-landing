@@ -96,64 +96,332 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            <h1 className="hero-title">
-              One WhatsApp.<br />Multiple Identities.
-            </h1>
-            <p className="hero-subtitle">
-              Control which profile photo each contact sees on WhatsApp Web.
-            </p>
-            <div className="social-proof">
-              <div className="proof-badge">
-                ⭐ Trusted by early adopters — only real humans here.
-              </div>
+            {/* P2P Hook - PRIMARY MESSAGE */}
+            <div className="p2p-hook" style={{
+              background: 'linear-gradient(135deg, #25D366, #128C7E)',
+              color: 'white',
+              padding: '12px 24px',
+              borderRadius: '50px',
+              fontWeight: '600',
+              fontSize: 'clamp(16px, 3vw, 20px)',
+              marginBottom: '24px',
+              display: 'inline-block',
+              animation: 'pulse 2s infinite',
+              boxShadow: '0 4px 20px rgba(37, 211, 102, 0.3)'
+            }}>
+              Real-time P2P sync — live now
             </div>
-            <div className="hero-buttons">
+            
+            {/* Main Headline */}
+            <h1 className="hero-title" style={{
+              fontSize: 'clamp(32px, 6vw, 56px)',
+              fontWeight: '700',
+              lineHeight: '1.1',
+              marginBottom: '16px'
+            }}>
+              One WhatsApp.<br />Multiple Identities.<br />
+              <span style={{fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: '600'}}>
+                You decide who sees what.
+              </span>
+            </h1>
+            
+            {/* Subheading */}
+            <p className="hero-subtitle" style={{
+              fontSize: 'clamp(18px, 3vw, 22px)',
+              marginBottom: '32px',
+              opacity: '0.9'
+            }}>
+              Real-time P2P profile photos — different people see different you.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="hero-buttons" style={{marginBottom: '24px'}}>
               <button 
                 className="btn btn-outline btn-lg btn-primary"
                 onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
+                style={{
+                  fontSize: 'clamp(16px, 2.5vw, 18px)',
+                  padding: '16px 32px',
+                  minWidth: '280px',
+                  marginRight: '16px'
+                }}
               >
-                Join Early Access List
+                Get DualProfile Now
               </button>
               <button 
                 className="btn btn-outline btn-lg"
-                disabled
-                style={{opacity: 0.5, cursor: 'not-allowed'}}
+                onClick={() => document.getElementById('demo')?.scrollIntoView({behavior: 'smooth'})}
+                style={{
+                  fontSize: 'clamp(16px, 2.5vw, 18px)',
+                  padding: '16px 32px',
+                  minWidth: '200px'
+                }}
               >
-                Coming Soon to Chrome Web Store
+                Watch Demo
               </button>
             </div>
-            <div className="hero-status">
-              <span className="status-badge">Preview Mode Available Now</span>
-              <span className="status-text">Real-time P2P sync — live now</span>
+            
+            {/* Preview Badge - Secondary */}
+            <div className="hero-status" style={{opacity: '0.7'}}>
+              <span className="status-badge" style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                padding: '6px 12px',
+                borderRadius: '20px',
+                fontSize: '14px',
+                marginRight: '12px'
+              }}>
+                Live Demo Available
+              </span>
             </div>
           </div>
         </section>
 
-        {/* Demo Section - Moved Higher */}
+        {/* How It Works Section - NEW */}
+        <section id="how-it-works" className="how-it-works" style={{
+          padding: '80px 20px',
+          background: 'linear-gradient(180deg, rgba(11, 11, 15, 0) 0%, rgba(11, 11, 15, 0.5) 100%)'
+        }}>
+          <div className="container" style={{maxWidth: '1200px', margin: '0 auto'}}>
+            <div className="section-header" style={{textAlign: 'center', marginBottom: '60px'}}>
+              <h2 className="section-title" style={{
+                fontSize: 'clamp(32px, 5vw, 48px)',
+                fontWeight: '700',
+                marginBottom: '16px',
+                color: 'var(--foreground, #ffffff)'
+              }}>
+                HOW IT WORKS
+              </h2>
+              <p className="section-subtitle" style={{
+                fontSize: 'clamp(18px, 3vw, 22px)',
+                opacity: '0.8',
+                color: 'var(--muted-foreground, #9ca3af)'
+              }}>
+                3 simple steps to control your WhatsApp identity
+              </p>
+            </div>
+            
+            <div className="steps-grid" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '40px',
+              marginBottom: '40px'
+            }}>
+              <div className="step-card" style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                padding: '40px 30px',
+                borderRadius: '16px',
+                textAlign: 'center',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div className="step-icon" style={{
+                  width: '80px',
+                  height: '80px',
+                  margin: '0 auto 20px',
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '32px',
+                  fontWeight: '700'
+                }}>
+                  1
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  marginBottom: '12px',
+                  color: 'var(--foreground, #ffffff)'
+                }}>
+                  Upload 2 profile photos
+                </h3>
+                <p style={{
+                  fontSize: '16px',
+                  opacity: '0.8',
+                  lineHeight: '1.6',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>
+                  Professional for work, casual for friends. Your choice.
+                </p>
+              </div>
+              
+              <div className="step-card" style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                padding: '40px 30px',
+                borderRadius: '16px',
+                textAlign: 'center',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div className="step-icon" style={{
+                  width: '80px',
+                  height: '80px',
+                  margin: '0 auto 20px',
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '32px',
+                  fontWeight: '700'
+                }}>
+                  2
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  marginBottom: '12px',
+                  color: 'var(--foreground, #ffffff)'
+                }}>
+                  Assign who sees what
+                </h3>
+                <p style={{
+                  fontSize: '16px',
+                  opacity: '0.8',
+                  lineHeight: '1.6',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>
+                  Simply drag contacts to groups. Boss sees professional, friends see casual.
+                </p>
+              </div>
+              
+              <div className="step-card" style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                padding: '40px 30px',
+                borderRadius: '16px',
+                textAlign: 'center',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}>
+                <div className="step-icon" style={{
+                  width: '80px',
+                  height: '80px',
+                  margin: '0 auto 20px',
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '32px',
+                  fontWeight: '700'
+                }}>
+                  3
+                </div>
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  marginBottom: '12px',
+                  color: 'var(--foreground, #ffffff)'
+                }}>
+                  They see a different you instantly
+                </h3>
+                <p style={{
+                  fontSize: '16px',
+                  opacity: '0.8',
+                  lineHeight: '1.6',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>
+                  Real-time P2P sync. Changes reflect instantly on their WhatsApp Web.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Demo Section - Fixed Video Embed */}
         <section id="demo" className="demo">
           <div className="demo-container">
             <div className="demo-video-wrapper">
               <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
                 <iframe 
-                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true"
+                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true& muted=true"
                   frameBorder="0"
+                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                   style={{
                     position: 'absolute',
                     top: '0',
                     left: '0',
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
+                    borderRadius: '12px'
                   }}
                 ></iframe>
               </div>
             </div>
-            <div className="trust-statement">
+            <div className="trust-statement" style={{
+              background: 'rgba(37, 211, 102, 0.1)',
+              padding: '12px 20px',
+              borderRadius: '8px',
+              marginTop: '16px',
+              textAlign: 'center',
+              fontSize: '14px'
+            }}>
               🔒 This works entirely on WhatsApp Web. No chat data is stored.
             </div>
-            <p className="demo-caption">
+            <p className="demo-caption" style={{
+              marginTop: '12px',
+              fontSize: '16px',
+              opacity: '0.8',
+              textAlign: 'center'
+            }}>
               Watch how Preview Mode shows exactly what each contact sees.
             </p>
+          </div>
+        </section>
+
+        {/* Viral Hook Section - NEW */}
+        <section id="viral-hook" className="viral-hook" style={{
+          padding: '100px 20px',
+          background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(18, 140, 126, 0.1) 100%)',
+          textAlign: 'center'
+        }}>
+          <div className="container" style={{maxWidth: '900px', margin: '0 auto'}}>
+            <div className="viral-message" style={{
+              marginBottom: '40px'
+            }}>
+              <h2 className="viral-headline" style={{
+                fontSize: 'clamp(36px, 6vw, 64px)',
+                fontWeight: '700',
+                marginBottom: '24px',
+                lineHeight: '1.1',
+                color: 'var(--foreground, #ffffff)'
+              }}>
+                "Your boss sees professional you.<br />
+                Your friends see the real you."
+              </h2>
+              <div className="viral-subheadline" style={{
+                fontSize: 'clamp(24px, 4vw, 36px)',
+                fontWeight: '600',
+                color: '#25D366',
+                marginBottom: '32px',
+                fontStyle: 'italic'
+              }}>
+                Same WhatsApp.<br />
+                Different realities.
+              </div>
+              <button 
+                className="btn btn-primary"
+                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
+                style={{
+                  fontSize: 'clamp(18px, 3vw, 22px)',
+                  padding: '20px 40px',
+                  minWidth: '300px',
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  border: 'none',
+                  borderRadius: '50px',
+                  color: 'white',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
+                }}
+              >
+                Get DualProfile Now
+              </button>
+            </div>
           </div>
         </section>
 
@@ -1853,6 +2121,177 @@ export default function Home() {
           .navbar .btn {
             padding: 0.5rem 1rem;
             font-size: 0.875rem;
+          }
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+          .hero-content {
+            padding: 2rem 1rem;
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+          }
+
+          .hero-buttons {
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          .hero-buttons button {
+            width: 100%;
+            min-width: unset;
+            margin-right: 0;
+            padding: 16px 24px;
+            font-size: 16px;
+          }
+
+          .p2p-hook {
+            font-size: 14px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+          }
+
+          .steps-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+
+          .step-card {
+            padding: 30px 20px;
+          }
+
+          .viral-headline {
+            font-size: 32px;
+            line-height: 1.2;
+          }
+
+          .viral-subheadline {
+            font-size: 20px;
+          }
+
+          .viral-hook button {
+            width: 100%;
+            min-width: unset;
+            padding: 18px 32px;
+            font-size: 18px;
+          }
+
+          .demo-video-wrapper {
+            margin: 0 -20px;
+          }
+
+          .social-proof-section {
+            padding: 60px 20px;
+          }
+
+          .reddit-posts-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-content {
+            padding: 1.5rem 1rem;
+          }
+
+          .viral-headline {
+            font-size: 28px;
+          }
+
+          .viral-subheadline {
+            font-size: 18px;
+          }
+
+          .section-title {
+            font-size: 28px;
+          }
+
+          .step-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+          }
+
+          .step-card h3 {
+            font-size: 20px;
+          }
+
+          .step-card p {
+            font-size: 14px;
+          }
+        }
+
+        /* Micro-interactions */
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+          }
+          50% {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.6s ease;
+        }
+
+        .animate-fade-in-up {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .step-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 12px 40px rgba(37, 211, 102, 0.2);
+          border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        .btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn:active {
+          transform: translateY(0);
+        }
+
+        .viral-hook button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Performance optimizations */
+        .hero-content,
+        .step-card,
+        .viral-message {
+          will-change: transform;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
           }
         }
       `}</style>
