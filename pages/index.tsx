@@ -719,7 +719,7 @@ export default function Home() {
                 }}>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Up to 5 dual profiles
+                    Up to 2 P2P contacts
                   </li>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
@@ -727,7 +727,7 @@ export default function Home() {
                   </li>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    P2P Sync
+                    P2P Sync (basic)
                   </li>
                 </ul>
                 <button 
@@ -780,12 +780,20 @@ export default function Home() {
                   fontSize: '48px',
                   fontWeight: '800',
                   color: '#25D366',
-                  marginBottom: '24px'
-                }}>$4<span style={{
+                  marginBottom: '8px'
+                }}>$7.99<span style={{
                   fontSize: '18px',
                   fontWeight: '400',
                   color: 'var(--muted-foreground, #9ca3af)'
                 }}>/month</span></div>
+                <div style={{
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#25D366',
+                  marginBottom: '24px'
+                }}>
+                  Or $59/year (save 38%)
+                </div>
                 <ul style={{
                   listStyle: 'none',
                   padding: '0',
@@ -794,11 +802,15 @@ export default function Home() {
                 }}>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Unlimited dual profiles
+                    Unlimited P2P contacts
                   </li>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    All Free features
+                    Work/Personal mode switching
+                  </li>
+                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
+                    Photo history (revert to previous assignments)
                   </li>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
