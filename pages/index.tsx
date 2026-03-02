@@ -683,16 +683,16 @@ export default function Home() {
             </div>
             <div className="pricing-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
               gap: '32px',
-              maxWidth: '800px',
+              maxWidth: '1000px',
               margin: '0 auto'
             }}>
               <div className="pricing-card glass-card" style={{
                 padding: '40px',
                 textAlign: 'center',
                 borderRadius: '16px',
-                border: '2px solid rgba(37, 211, 102, 0.2)',
+                border: '2px solid rgba(37, 211, 102, 0.5)',
                 background: 'rgba(255, 255, 255, 0.05)'
               }}>
                 <h3 style={{
@@ -735,7 +735,7 @@ export default function Home() {
                   style={{
                     width: '100%',
                     padding: '16px 24px',
-                    background: 'transparent',
+                    background: 'rgba(37, 211, 102, 0.1)',
                     border: '2px solid #25D366',
                     borderRadius: '12px',
                     color: '#25D366',
@@ -749,29 +749,14 @@ export default function Home() {
                 </button>
               </div>
               
-              <div className="pricing-card glass-card featured" style={{
+              <div className="pricing-card glass-card" style={{
                 padding: '40px',
                 textAlign: 'center',
                 borderRadius: '16px',
-                border: '2px solid #25D366',
-                background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.1))',
-                position: 'relative',
-                transform: 'scale(1.05)'
+                border: '2px solid rgba(37, 211, 102, 0.5)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                position: 'relative'
               }}>
-                <div style={{
-                  position: 'absolute',
-                  top: '-20px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  background: '#25D366',
-                  color: 'white',
-                  padding: '6px 20px',
-                  borderRadius: '20px',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  zIndex: '10',
-                  boxShadow: '0 4px 12px rgba(37, 211, 102, 0.3)'
-                }}>POPULAR</div>
                 <h3 style={{
                   fontSize: '24px',
                   fontWeight: '700',
@@ -837,9 +822,116 @@ export default function Home() {
                     transition: 'all 0.3s ease',
                     boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
                   }}
-                  onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c', '_blank')}
                 >
-                  Get DualProfile Pro
+                  Start Pro
+                </button>
+              </div>
+
+              <div className="pricing-card glass-card lifetime" style={{
+                padding: '48px',
+                textAlign: 'center',
+                borderRadius: '20px',
+                border: '3px solid #FFD700',
+                background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05))',
+                position: 'relative',
+                transform: 'scale(1.08)',
+                boxShadow: '0 20px 60px rgba(255, 215, 0, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.1)'
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: '-20px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: 'linear-gradient(135deg, #FFD700, #FFA500)',
+                  color: '#000',
+                  padding: '8px 24px',
+                  borderRadius: '25px',
+                  fontSize: '14px',
+                  fontWeight: '700',
+                  zIndex: '10',
+                  boxShadow: '0 6px 20px rgba(255, 215, 0, 0.4)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px'
+                }}>BEST VALUE</div>
+                <h3 style={{
+                  fontSize: '28px',
+                  fontWeight: '800',
+                  marginBottom: '20px',
+                  color: '#FFD700',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                }}>Lifetime Access</h3>
+                <div style={{
+                  fontSize: '56px',
+                  fontWeight: '900',
+                  color: '#FFD700',
+                  marginBottom: '12px',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                }}>$59<span style={{
+                  fontSize: '20px',
+                  fontWeight: '400',
+                  color: 'var(--muted-foreground, #9ca3af)'
+                }}>/once</span></div>
+                <div style={{
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  color: '#FFD700',
+                  marginBottom: '32px',
+                  fontStyle: 'italic'
+                }}>
+                  Pay once, own it forever
+                </div>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: '0',
+                  marginBottom: '36px',
+                  textAlign: 'left'
+                }}>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
+                    Unlimited P2P contacts
+                  </li>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
+                    Work/Personal mode switching
+                  </li>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
+                    Photo history (revert to previous assignments)
+                  </li>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
+                    Priority support
+                  </li>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
+                    Early access to new features
+                  </li>
+                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center', fontWeight: '600', color: '#FFD700'}}>
+                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✨</span>
+                    All future updates included
+                  </li>
+                </ul>
+                <button 
+                  className="btn btn-primary lifetime-btn"
+                  style={{
+                    width: '100%',
+                    padding: '20px 28px',
+                    background: 'linear-gradient(135deg, #FFD700, #FFA500)',
+                    border: 'none',
+                    borderRadius: '16px',
+                    color: '#000',
+                    fontSize: '18px',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 12px 40px rgba(255, 215, 0, 0.4)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px'
+                  }}
+                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}
+                >
+                  Get Lifetime Access
                 </button>
               </div>
             </div>
