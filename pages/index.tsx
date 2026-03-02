@@ -53,7 +53,7 @@ export default function Home() {
   const faqs = [
     {
       question: "Is this live on Chrome yet?",
-      answer: "Not yet on the Chrome Web Store — but launching very soon. Join the early access list to be notified the moment it goes live."
+      answer: "Not yet on the Chrome Web Store — but launching very soon. Join our newsletter to be notified the moment it goes live."
     },
     {
       question: "How does Preview Mode work?",
@@ -91,7 +91,7 @@ export default function Home() {
               <a href="#faq">FAQ</a>
             </div>
             <a href="#early-access" className="btn btn-primary">
-              Join Early Access List
+              Join Newsletter
             </a>
           </div>
         </nav>
