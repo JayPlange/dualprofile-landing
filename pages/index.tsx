@@ -61,7 +61,7 @@ export default function Home() {
     },
     {
       question: "Is my data secure?",
-      answer: "Absolutely. All photos and data are stored locally on your device. Nothing is uploaded to our servers or shared with third parties."
+      answer: "Profile photos are stored securely on Cloudinary. Assignment rules are stored in our backend (Convex). Your phone number is hashed locally before transmission and is never stored in its original form. Your messages and chats are never accessed."
     }
   ];
 
@@ -569,7 +569,7 @@ export default function Home() {
                 <div className="step-number">1</div>
                 <h3 className="step-title">Upload 2 Photos</h3>
                 <p className="step-description">
-                  Add your professional photo and your personal photo. Both stay stored locally on your device.
+                  Add your professional photo and your personal photo. Photos are stored securely on cloud infrastructure.
                 </p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
@@ -608,13 +608,6 @@ export default function Home() {
                   <div className="status-text">
                     <strong>P2P Sync</strong>
                     <p>Real-time profile switching ✨ LIVE</p>
-                  </div>
-                </div>
-                <div className="status-item">
-                  <div className="status-icon not-available">—</div>
-                  <div className="status-text">
-                    <strong>Group Chats</strong>
-                    <p>Not supported yet</p>
                   </div>
                 </div>
               </div>
@@ -665,7 +658,7 @@ export default function Home() {
                 </div>
                 <h3 className="feature-title">Privacy First</h3>
                 <p className="feature-description">
-                  All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
+                  Your messages are never accessed or stored. Profile photos are stored on secure cloud infrastructure (Cloudinary). Phone numbers are hashed with SHA-256 before leaving your device.
                 </p>
               </div>
             </div>
@@ -803,7 +796,7 @@ export default function Home() {
                   color: '#25D366',
                   marginBottom: '24px'
                 }}>
-                  Or $59/year (save 38%)
+                  Billed monthly
                 </div>
                 <ul style={{
                   listStyle: 'none',
@@ -814,14 +807,6 @@ export default function Home() {
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
                     Unlimited P2P contacts
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Work/Personal mode switching
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Photo history (revert to previous assignments)
                   </li>
                   <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
@@ -931,14 +916,6 @@ export default function Home() {
                   <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
                     Unlimited P2P contacts
-                  </li>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
-                    Work/Personal mode switching
-                  </li>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
-                    Photo history (revert to previous assignments)
                   </li>
                   <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
                     <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>

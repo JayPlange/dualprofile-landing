@@ -257,6 +257,10 @@ export default function Privacy() {
           </div>
 
           <div className="space-y-8 text-gray-300">
+            <p style={{fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem'}}>
+              <strong style={{color: '#25D366'}}>DualProfile does not read or modify your WhatsApp messages — ever.</strong> Our extension operates as a visual overlay that only manages profile photo assignments. We have zero access to your chat content, message history, or conversation data.
+            </p>
+
             {/* What Data We Collect */}
             <section>
               <h2 className="section-title">What Data We Collect</h2>
@@ -328,6 +332,39 @@ export default function Privacy() {
               </ul>
             </section>
 
+            {/* How to Delete Your Data */}
+            <section>
+              <h2 className="section-title">How to Delete Your Data</h2>
+              <p>You have three methods to delete your data:</p>
+              
+              <div className="subsection">
+                <h3>1. Clear All Data in Settings Tab</h3>
+                <p>Open the DualProfile extension settings and use the "Clear All Data" button to immediately delete all your assignments and photos.</p>
+              </div>
+              
+              <div className="subsection">
+                <h3>2. Unassign Contacts Individually</h3>
+                <p>Select specific contacts in the extension and remove their profile photo assignments to delete only that data.</p>
+              </div>
+              
+              <div className="subsection">
+                <h3>3. Email for Full Server-Side Deletion</h3>
+                <p>Email <a href="mailto:edwin.dualprofile@gmail.com" className="brand-green">edwin.dualprofile@gmail.com</a> with subject "Delete My Data" for complete server-side deletion within 7 days.</p>
+              </div>
+            </section>
+
+            {/* Security */}
+            <section>
+              <h2 className="section-title">Security</h2>
+              <ul>
+                <li>All communication uses HTTPS encryption</li>
+                <li>Phone numbers are SHA-256 hashed before leaving your device</li>
+                <li>Profile photos are served through Cloudinary's secure infrastructure</li>
+                <li>Backend runs on encrypted AWS infrastructure</li>
+                <li>No raw phone numbers or message content are ever stored</li>
+              </ul>
+            </section>
+
             {/* Third-Party Services */}
             <section>
               <h2 className="section-title">Third-Party Services</h2>
@@ -372,7 +409,7 @@ export default function Privacy() {
             <p> 2026 DualProfile. Privacy is not optional — it's fundamental.</p>
           </div>
         </div>
-      </div>
+``      </div>
     </>
   );
 }
