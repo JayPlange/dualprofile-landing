@@ -406,7 +406,7 @@ export default function Privacy() {
           </div>
 
           <div style={{marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', textAlign: 'center', color: 'var(--muted-foreground)'}}>
-            <p> 2026 DualProfile. Privacy is not optional — it's fundamental.</p>
+            <p>© 2026 DualProfile. Privacy is not optional — it's fundamental.</p>
           </div>
         </div>
 ``      </div>
