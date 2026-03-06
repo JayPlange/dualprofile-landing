@@ -683,17 +683,34 @@ export default function Home() {
             </div>
             <div className="pricing-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '32px',
-              maxWidth: '1000px',
-              margin: '0 auto'
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '24px',
+              maxWidth: '1200px',
+              margin: '0 auto',
+              '@media (max-width: 1024px)': {
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '20px'
+              },
+              '@media (max-width: 768px)': {
+                gridTemplateColumns: '1fr',
+                gap: '16px',
+                maxWidth: '400px'
+              }
             }}>
               <div className="pricing-card glass-card" style={{
-                padding: '40px',
+                padding: '32px 24px',
                 textAlign: 'center',
                 borderRadius: '16px',
                 border: '2px solid rgba(37, 211, 102, 0.5)',
-                background: 'rgba(255, 255, 255, 0.05)'
+                background: 'rgba(255, 255, 255, 0.05)',
+                minHeight: '500px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                '@media (max-width: 768px)': {
+                  padding: '24px 20px',
+                  minHeight: 'auto'
+                }
               }}>
                 <h3 style={{
                   fontSize: '24px',
@@ -750,12 +767,19 @@ export default function Home() {
               </div>
               
               <div className="pricing-card glass-card" style={{
-                padding: '40px',
+                padding: '32px 24px',
                 textAlign: 'center',
                 borderRadius: '16px',
                 border: '2px solid rgba(37, 211, 102, 0.5)',
                 background: 'rgba(255, 255, 255, 0.05)',
-                position: 'relative'
+                minHeight: '500px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                '@media (max-width: 768px)': {
+                  padding: '24px 20px',
+                  minHeight: 'auto'
+                }
               }}>
                 <h3 style={{
                   fontSize: '24px',
@@ -829,30 +853,47 @@ export default function Home() {
               </div>
 
               <div className="pricing-card glass-card lifetime" style={{
-                padding: '48px',
+                padding: '32px 24px',
                 textAlign: 'center',
                 borderRadius: '20px',
-                border: '3px solid #FFD700',
+                border: '2px solid #FFD700',
                 background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05))',
                 position: 'relative',
-                transform: 'scale(1.08)',
-                boxShadow: '0 20px 60px rgba(255, 215, 0, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.1)'
+                transform: 'scale(1.05)',
+                boxShadow: '0 20px 60px rgba(255, 215, 0, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.1)',
+                minHeight: '500px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                '@media (max-width: 1024px)': {
+                  transform: 'scale(1.02)'
+                },
+                '@media (max-width: 768px)': {
+                  transform: 'scale(1)',
+                  padding: '24px 20px',
+                  minHeight: 'auto'
+                }
               }}>
                 <div style={{
                   position: 'absolute',
-                  top: '-20px',
+                  top: '-16px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   background: 'linear-gradient(135deg, #FFD700, #FFA500)',
                   color: '#000',
-                  padding: '8px 24px',
-                  borderRadius: '25px',
-                  fontSize: '14px',
+                  padding: '6px 20px',
+                  borderRadius: '20px',
+                  fontSize: '12px',
                   fontWeight: '700',
                   zIndex: '10',
                   boxShadow: '0 6px 20px rgba(255, 215, 0, 0.4)',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  letterSpacing: '0.5px',
+                  '@media (max-width: 768px)': {
+                    top: '-12px',
+                    padding: '4px 16px',
+                    fontSize: '11px'
+                  }
                 }}>BEST VALUE</div>
                 <h3 style={{
                   fontSize: '28px',
@@ -2584,6 +2625,148 @@ export default function Home() {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
+          }
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+          .container {
+            padding: 0 20px;
+          }
+          
+          .hero-content {
+            text-align: center;
+            padding: 40px 0;
+          }
+          
+          .p2p-hook {
+            font-size: 14px !important;
+            padding: 8px 16px !important;
+            margin-bottom: 16px !important;
+          }
+          
+          .hero-title {
+            font-size: 28px !important;
+            line-height: 1.2 !important;
+            margin-bottom: 12px !important;
+          }
+          
+          .hero-subtitle {
+            font-size: 16px !important;
+            margin-bottom: 20px !important;
+          }
+          
+          .viral-message {
+            font-size: 18px !important;
+            padding: 12px 16px !important;
+            margin-bottom: 24px !important;
+          }
+          
+          .btn {
+            width: 100%;
+            margin: 8px 0;
+            padding: 16px 24px !important;
+            font-size: 16px !important;
+          }
+          
+          .step-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          
+          .step-card {
+            padding: 24px !important;
+          }
+          
+          .feature-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          
+          .social-proof-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          
+          .testimonial-card {
+            padding: 20px !important;
+          }
+          
+          .avatar {
+            width: 48px !important;
+            height: 48px !important;
+            margin-bottom: 12px !important;
+          }
+          
+          .pricing-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+            max-width: 400px !important;
+          }
+          
+          .pricing-card {
+            padding: 24px 20px !important;
+            min-height: auto !important;
+          }
+          
+          .pricing-card.lifetime {
+            transform: scale(1) !important;
+            border-width: 2px !important;
+          }
+          
+          .pricing-card.lifetime .badge {
+            top: -12px !important;
+            padding: 4px 16px !important;
+            font-size: 11px !important;
+          }
+          
+          .section-title {
+            font-size: 28px !important;
+            margin-bottom: 16px !important;
+          }
+          
+          .section-subtitle {
+            font-size: 16px !important;
+            margin-bottom: 32px !important;
+          }
+        }
+
+        /* Tablet Responsive Design */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .container {
+            padding: 0 32px;
+          }
+          
+          .hero-content {
+            padding: 60px 0;
+          }
+          
+          .pricing-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+          }
+          
+          .pricing-card.lifetime {
+            transform: scale(1.02) !important;
+          }
+          
+          .feature-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          
+          .social-proof-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+
+        /* Large Desktop Optimization */
+        @media (min-width: 1400px) {
+          .container {
+            max-width: 1200px;
+          }
+          
+          .pricing-grid {
+            max-width: 1200px;
           }
         }
       `}</style>
