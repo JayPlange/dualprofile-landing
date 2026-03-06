@@ -409,7 +409,7 @@ export default function Privacy() {
             <p>© 2026 DualProfile. Privacy is not optional — it's fundamental.</p>
           </div>
         </div>
-``      </div>
+      </div>
     </>
   );
 }
