@@ -89,6 +89,7 @@ export default function Home() {
               <a href="#features">Features</a>
               <a href="#demo">Demo</a>
               <a href="#faq">FAQ</a>
+              <a href="/support">Support</a>
             </div>
             <a href="#early-access" className="btn btn-primary">
               Join Newsletter
@@ -995,8 +996,11 @@ export default function Home() {
                 <a href="/privacy" className="footer-link">
                   Privacy Policy
                 </a>
-                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
+                <a href="/support" className="footer-link">
                   Support
+                </a>
+                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
+                  Contact
                 </a>
               </div>
               <p className="footer-note">
