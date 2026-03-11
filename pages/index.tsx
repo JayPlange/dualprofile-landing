@@ -754,7 +754,7 @@ export default function Home() {
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
-                  onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
                 >
                   Get Started Free
                 </button>

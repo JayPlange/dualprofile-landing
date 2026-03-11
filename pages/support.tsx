@@ -299,7 +299,7 @@ export default function Support() {
                   <div className="step-content">
                     <div className="step-title">Install DualProfile from Chrome Web Store</div>
                     <div className="step-description">
-                      Go to the Chrome Web Store, search for "DualProfile" and click "Add to Chrome". The extension will install automatically.
+                      Go to the <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" className="brand-green" target="_blank" rel="noopener noreferrer">Chrome Web Store</a>, search for "DualProfile" and click "Add to Chrome". The extension will install automatically.
                     </div>
                   </div>
                 </div>
