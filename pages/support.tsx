@@ -349,7 +349,7 @@ export default function Support() {
                     <strong>Badge not showing on contacts</strong> — Make sure your phone number is registered in DualProfile Settings. The badge appears only when your number is verified.
                   </li>
                   <li>
-                    <strong>Photos not syncing to the other device</strong> — Both users must have DualProfile installed and phone numbers registered. Check that both devices have the extension active.
+                    <strong>Photos not syncing to the other person</strong> — DualProfile works peer-to-peer. Both people need the extension installed and phone numbers registered. Once both sides are set up, syncing is automatic and requires no further action.
                   </li>
                   <li>
                     <strong>Notification icons not updating</strong> — Reload the extension from chrome://extensions. Find DualProfile, click the reload button, then refresh WhatsApp Web.
@@ -363,6 +363,16 @@ export default function Support() {
               <h2 className="section-title">FAQ</h2>
               
               <div className="space-y-4">
+                <div className="faq-item">
+                  <div className="faq-question">Does my contact need to install anything?</div>
+                  <div className="faq-answer">Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your assigned photo appears on their screen automatically. This is how the selective visibility works. Share the install link with them: <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" className="brand-green" target="_blank" rel="noopener noreferrer">chromewebstore.google.com</a></div>
+                </div>
+
+                <div className="faq-item">
+                  <div className="faq-question">Does it work on the WhatsApp mobile app?</div>
+                  <div className="faq-answer">No — DualProfile works on WhatsApp Web (web.whatsapp.com) in Chrome or Edge on desktop only. The WhatsApp mobile app does not support browser extensions.</div>
+                </div>
+
                 <div className="faq-item">
                   <div className="faq-question">Does it work on mobile?</div>
                   <div className="faq-answer">No — DualProfile is a browser extension for WhatsApp Web only. Mobile apps don't support extensions.</div>
