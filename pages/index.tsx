@@ -181,159 +181,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How It Works Section - NEW */}
-        <section id="how-it-works" className="how-it-works" style={{
-          padding: '80px 20px',
-          background: 'linear-gradient(180deg, rgba(11, 11, 15, 0) 0%, rgba(11, 11, 15, 0.5) 100%)'
-        }}>
-          <div className="container" style={{maxWidth: '1200px', margin: '0 auto'}}>
-            <div className="section-header" style={{textAlign: 'center', marginBottom: '60px'}}>
-              <h2 className="section-title" style={{
-                fontSize: 'clamp(32px, 5vw, 48px)',
-                fontWeight: '700',
-                marginBottom: '16px',
-                color: 'var(--foreground, #ffffff)'
-              }}>
-                HOW IT WORKS
-              </h2>
-              <p className="section-subtitle" style={{
-                fontSize: 'clamp(18px, 3vw, 22px)',
-                opacity: '0.8',
-                color: 'var(--muted-foreground, #9ca3af)'
-              }}>
-                3 simple steps to control your WhatsApp identity
-              </p>
-            </div>
-            
-            <div className="steps-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '40px',
-              marginBottom: '40px'
-            }}>
-              <div className="step-card" style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '40px 30px',
-                borderRadius: '16px',
-                textAlign: 'center',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-              }}>
-                <div className="step-icon" style={{
-                  width: '80px',
-                  height: '80px',
-                  margin: '0 auto 20px',
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '32px',
-                  fontWeight: '700'
-                }}>
-                  1
-                </div>
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  marginBottom: '12px',
-                  color: 'var(--foreground, #ffffff)'
-                }}>
-                  Upload 2 profile photos
-                </h3>
-                <p style={{
-                  fontSize: '16px',
-                  opacity: '0.8',
-                  lineHeight: '1.6',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>
-                  Professional for work, casual for friends. Your choice.
-                </p>
-              </div>
-              
-              <div className="step-card" style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '40px 30px',
-                borderRadius: '16px',
-                textAlign: 'center',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-              }}>
-                <div className="step-icon" style={{
-                  width: '80px',
-                  height: '80px',
-                  margin: '0 auto 20px',
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '32px',
-                  fontWeight: '700'
-                }}>
-                  2
-                </div>
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  marginBottom: '12px',
-                  color: 'var(--foreground, #ffffff)'
-                }}>
-                  Assign who sees what
-                </h3>
-                <p style={{
-                  fontSize: '16px',
-                  opacity: '0.8',
-                  lineHeight: '1.6',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>
-                  Simply drag contacts to groups. Boss sees professional, friends see casual.
-                </p>
-              </div>
-              
-              <div className="step-card" style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                padding: '40px 30px',
-                borderRadius: '16px',
-                textAlign: 'center',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-              }}>
-                <div className="step-icon" style={{
-                  width: '80px',
-                  height: '80px',
-                  margin: '0 auto 20px',
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '32px',
-                  fontWeight: '700'
-                }}>
-                  3
-                </div>
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  marginBottom: '12px',
-                  color: 'var(--foreground, #ffffff)'
-                }}>
-                  They see a different you instantly
-                </h3>
-                <p style={{
-                  fontSize: '16px',
-                  opacity: '0.8',
-                  lineHeight: '1.6',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>
-                  Real-time P2P sync. Changes reflect instantly on their WhatsApp Web.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Demo Section - Fixed Video Embed */}
         <section id="demo" className="demo">
           <div className="demo-container">
@@ -513,33 +360,66 @@ export default function Home() {
         <section id="how-it-works" className="how-it-works">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">How It Works</h2>
+              <h2 className="section-title">Set up once with someone. Works automatically.</h2>
               <p className="section-subtitle">
-                Simple, powerful control over your WhatsApp identity in 1-on-1 chats.
+                Three steps and you're done — forever.
               </p>
             </div>
             <div className="steps-grid">
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">1</div>
-                <h3 className="step-title">Upload 2 Photos</h3>
-                <p className="step-description">
-                  Add your professional photo and your personal photo. Both stay stored locally on your device.
-                </p>
+                <h3 className="step-title">You install DualProfile and upload your photos.</h3>
+                <p className="step-description">One for work. One for life.</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">2</div>
-                <h3 className="step-title">Assign Contacts</h3>
-                <p className="step-description">
-                  Choose which contacts see your work photo and which see your personal photo.
-                </p>
+                <h3 className="step-title">You assign which photo each contact sees.</h3>
+                <p className="step-description">Takes about 2 minutes.</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">3</div>
-                <h3 className="step-title">They install too — done</h3>
-                <p className="step-description">
-                  Send them the link. Once they install and register, your assigned photo appears on their screen automatically. No extra steps ever again.
-                </p>
+                <h3 className="step-title">They install too — your photo switches automatically.</h3>
+                <p className="step-description">No extra steps once they're set up.</p>
               </div>
+            </div>
+            <div style={{
+              marginTop: '48px',
+              background: 'rgba(37,211,102,0.07)',
+              border: '1px solid rgba(37,211,102,0.25)',
+              borderRadius: '16px',
+              padding: '28px 32px',
+              display: 'flex',
+              flexWrap: 'wrap' as const,
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '16px'
+            }}>
+              <p style={{margin: 0, color: '#d1d5db', fontSize: '1rem', lineHeight: '1.6', flex: '1 1 300px'}}>
+                <strong style={{color: '#ffffff'}}>DualProfile works when both people have it installed.</strong><br/>
+                Send someone the link — setup takes 3 minutes.
+              </p>
+              <button
+                style={{
+                  background: 'transparent',
+                  border: '1px solid rgba(37,211,102,0.5)',
+                  color: '#25D366',
+                  padding: '10px 24px',
+                  borderRadius: '8px',
+                  fontSize: '0.95rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap' as const,
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0
+                }}
+                onClick={() => {
+                  navigator.clipboard.writeText('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc');
+                  const btn = document.activeElement as HTMLButtonElement;
+                  if (btn) { btn.textContent = 'Copied!'; setTimeout(() => { btn.textContent = 'Copy install link'; }, 2500); }
+                }}
+              >
+                Copy install link
+              </button>
             </div>
           </div>
         </section>
