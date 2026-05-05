@@ -37,9 +37,6 @@ export default function Home() {
       }
     });
 
-    // Handle video loading errors - REMOVED - Video will play inline
-    // No need for fallback since video will be self-hosted
-
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     observer.observe(document.body, { childList: true, subtree: true });
@@ -52,8 +49,12 @@ export default function Home() {
 
   const faqs = [
     {
-      question: "Is this live on Chrome yet?",
-      answer: "Not yet on the Chrome Web Store — but launching very soon. Join our newsletter to be notified the moment it goes live."
+      question: "Does my contact need to install anything?",
+      answer: "Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your photo appears on their screen automatically. Share the install link with them and setup takes about 3 minutes."
+    },
+    {
+      question: "Does this work on the WhatsApp mobile app?",
+      answer: "No — DualProfile works on WhatsApp Web (web.whatsapp.com) in Chrome or Edge on desktop only. The mobile app is not supported."
     },
     {
       question: "How does Preview Mode work?",
@@ -61,7 +62,7 @@ export default function Home() {
     },
     {
       question: "Is my data secure?",
-      answer: "Profile photos are stored securely on Cloudinary. Assignment rules are stored in our backend (Convex). Your phone number is hashed locally before transmission and is never stored in its original form. Your messages and chats are never accessed."
+      answer: "Absolutely. All photos and data are stored locally on your device. Nothing is uploaded to our servers or shared with third parties."
     }
   ];
 
@@ -89,10 +90,9 @@ export default function Home() {
               <a href="#features">Features</a>
               <a href="#demo">Demo</a>
               <a href="#faq">FAQ</a>
-              <a href="/support">Support</a>
             </div>
-            <a href="#early-access" className="btn btn-primary">
-              Join Newsletter
+            <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
+              Add to Chrome — It's Free
             </a>
           </div>
         </nav>
@@ -123,9 +123,9 @@ export default function Home() {
               lineHeight: '1.1',
               marginBottom: '16px'
             }}>
-              One WhatsApp.<br />Multiple Identities.<br />
-              <span style={{fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: '600'}}>
-                You decide who sees what.
+              People have been asking<br />WhatsApp for years.<br />
+              <span style={{fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: '600', color: '#25D366'}}>
+                Now it exists.
               </span>
             </h1>
             
@@ -135,14 +135,14 @@ export default function Home() {
               marginBottom: '32px',
               opacity: '0.9'
             }}>
-              Real-time P2P profile photos — different people see different you.
+              Show different profile photos to different contacts — your boss sees one, your friends see another. Same number. Same WhatsApp.
             </p>
             
             {/* CTA Buttons */}
             <div className="hero-buttons" style={{marginBottom: '24px'}}>
               <button 
                 className="btn btn-outline btn-lg btn-primary"
-                onClick={() => window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank')}
+                onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
                 style={{
                   fontSize: 'clamp(16px, 2.5vw, 18px)',
                   padding: '16px 32px',
@@ -150,7 +150,7 @@ export default function Home() {
                   marginRight: '16px'
                 }}
               >
-                Get DualProfile Now
+                Add to Chrome — It's Free
               </button>
               <button 
                 className="btn btn-outline btn-lg"
@@ -333,85 +333,43 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Demo Section - Hybrid Video Implementation */}
+        {/* Demo Section - Fixed Video Embed */}
         <section id="demo" className="demo">
           <div className="demo-container">
-            <div className="demo-video-wrapper" style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: '800px',
-              margin: '0 auto',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              background: '#000',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-              aspectRatio: '16 / 9'
-            }}>
-              {/* Try self-hosted MP4 first, fallback to Loom iframe */}
-              <video 
-                controls
-                playsinline
-                preload="metadata"
-                muted
-                loop
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '12px'
-                }}
-                poster="/video-thumbnail.png"
-                title="DualProfile Demo - See how different contacts see different profile photos"
-                onError={(e) => {
-                  // If video fails to load, replace with iframe
-                  const video = e.target;
-                  const wrapper = video.parentElement;
-                  
-                  // Create iframe fallback
-                  const iframe = document.createElement('iframe');
-                  iframe.src = 'https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=1&muted=1';
-                  iframe.frameBorder = '0';
-                  iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write';
-                  iframe.allowFullScreen = true;
-                  iframe.style.cssText = `
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    border: none;
-                    border-radius: 12px;
-                  `;
-                  iframe.title = 'DualProfile Demo - See how different contacts see different profile photos';
-                  
-                  // Replace video with iframe
-                  wrapper.replaceChild(iframe, video);
-                }}
-              >
-                <source src="/DualProfile x Demo Video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <div className="demo-video-wrapper">
+              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
+                <iframe 
+                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true& muted=true"
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '12px'
+                  }}
+                ></iframe>
+              </div>
             </div>
-            
             <div className="trust-statement" style={{
               background: 'rgba(37, 211, 102, 0.1)',
-              border: '1px solid rgba(37, 211, 102, 0.3)',
-              padding: '16px 24px',
-              borderRadius: '12px',
-              marginTop: '24px',
+              padding: '12px 20px',
+              borderRadius: '8px',
+              marginTop: '16px',
               textAlign: 'center',
-              fontSize: '15px',
-              fontWeight: '500'
+              fontSize: '14px'
             }}>
               🔒 This works entirely on WhatsApp Web. No chat data is stored.
             </div>
-            
             <p className="demo-caption" style={{
-              marginTop: '16px',
+              marginTop: '12px',
               fontSize: '16px',
               opacity: '0.8',
-              textAlign: 'center',
-              lineHeight: '1.5'
+              textAlign: 'center'
             }}>
               Watch how Preview Mode shows exactly what each contact sees.
             </p>
@@ -450,7 +408,7 @@ export default function Home() {
               </div>
               <button 
                 className="btn btn-primary"
-                onClick={() => window.open('https://chrome.google.com/webstore', '_blank')}
+                onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
                 style={{
                   fontSize: 'clamp(18px, 3vw, 22px)',
                   padding: '20px 40px',
@@ -465,7 +423,7 @@ export default function Home() {
                   boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
                 }}
               >
-                Get DualProfile Now
+                Add to Chrome — It's Free
               </button>
             </div>
           </div>
@@ -475,7 +433,7 @@ export default function Home() {
         <section className="social-proof-section">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">People Have Been Asking For This For Years</h2>
+              <h2 className="section-title">The answer was always "no."</h2>
               <p className="section-subtitle">
                 Before DualProfile, the only solution was to get a second phone number. Not anymore.
               </p>
@@ -485,72 +443,66 @@ export default function Home() {
                 <div className="post-header">
                   <div className="post-meta">
                     <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">8 months ago</span>
-                  </div>
-                  <div className="post-stats">9 upvotes • 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Whatsapp should start multiple profile photo"</h4>
-                  <p>"I would like my close circle to view a different photo of my and other contacts to view diff photo"</p>
-                </div>
-              </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
                     <span className="post-date">9 years ago</span>
                   </div>
-                  <div className="post-stats">6 upvotes • 7 comments</div>
+                  <div className="post-stats">6 upvotes · 7 comments</div>
                 </div>
                 <div className="post-content">
                   <h4>"Is there a way to display different profile pictures to different people?"</h4>
-                  <p>"As in, can I have a set of my contacts (group A) view a certain profile pic (picture A) while simultaneously another set of contacts (group B) will see another profile pic (picture B)?"</p>
-                  <div className="reddit-answer">Answer: "Nope"</div>
+                  <p>"Can I have group A view picture A while group B sees picture B simultaneously?"</p>
+                  <div className="reddit-answer">Top answer: Nope.</div>
                 </div>
               </div>
-              
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/privacy</span>
-                    <span className="post-date">2 years ago</span>
-                  </div>
-                  <div className="post-stats">Trending</div>
-                </div>
-                <div className="post-content">
-                  <h4>"Risks of using a personal photo as a WhatsApp profile picture"</h4>
-                  <p>Long discussion about privacy concerns with profile photos and the need for separation between personal and professional contexts.</p>
-                </div>
-              </div>
-              
+
               <div className="reddit-post glass-card">
                 <div className="post-header">
                   <div className="post-meta">
                     <span className="subreddit">r/whatsapp</span>
                     <span className="post-date">5 years ago</span>
                   </div>
-                  <div className="post-stats">12 upvotes • 8 comments</div>
+                  <div className="post-stats">7 upvotes · 3 comments</div>
                 </div>
                 <div className="post-content">
-                  <h4>"Different profile picture between web and app"</h4>
-                  <p>Asked if it's possible to have different profile pictures on different platforms.</p>
-                  <div className="reddit-answer">Answer: "Only with two different numbers"</div>
+                  <h4>"Different profile picture between web and app — is it possible?"</h4>
+                  <div className="reddit-answer">Top answer: Only if you have two phone numbers.</div>
                 </div>
               </div>
-              
+
               <div className="reddit-post glass-card">
                 <div className="post-header">
                   <div className="post-meta">
                     <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">1 year ago</span>
+                    <span className="post-date">8 months ago</span>
                   </div>
-                  <div className="post-stats">24 upvotes • 15 comments</div>
+                  <div className="post-stats">9 upvotes · 3 comments</div>
                 </div>
                 <div className="post-content">
-                  <h4>"Advice needed: Splitting mixed WhatsApp into personal and professional use"</h4>
-                  <p>"User wants to separate personal/professional but doesn't want to lose chat history. Current solution: Get TWO phone numbers!"</p>
+                  <h4>"WhatsApp should start multiple profile photo"</h4>
+                  <p>"My close circle should see one photo, other contacts see another."</p>
+                  <div className="reddit-answer">Top answer: [deleted]</div>
                 </div>
+              </div>
+            </div>
+            <div style={{
+              textAlign: 'center',
+              marginTop: '48px',
+              paddingTop: '32px',
+              borderTop: '1px solid rgba(37,211,102,0.2)'
+            }}>
+              <span style={{
+                fontSize: 'clamp(24px, 4vw, 36px)',
+                fontWeight: '800',
+                color: '#25D366',
+                letterSpacing: '-0.5px'
+              }}>Until now.</span>
+              <div style={{marginTop: '24px'}}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
+                  style={{fontSize: '18px', padding: '14px 32px'}}
+                >
+                  Add to Chrome — It's Free
+                </button>
               </div>
             </div>
           </div>
@@ -570,7 +522,7 @@ export default function Home() {
                 <div className="step-number">1</div>
                 <h3 className="step-title">Upload 2 Photos</h3>
                 <p className="step-description">
-                  Add your professional photo and your personal photo. Photos are stored securely on cloud infrastructure.
+                  Add your professional photo and your personal photo. Both stay stored locally on your device.
                 </p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
@@ -582,9 +534,9 @@ export default function Home() {
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">3</div>
-                <h3 className="step-title">Control Your Appearance</h3>
+                <h3 className="step-title">They install too — done</h3>
                 <p className="step-description">
-                  Preview how others see you. Changes reflect instantly on the other person's WhatsApp Web.
+                  Send them the link. Once they install and register, your assigned photo appears on their screen automatically. No extra steps ever again.
                 </p>
               </div>
             </div>
@@ -608,7 +560,14 @@ export default function Home() {
                   <div className="status-icon available">✓</div>
                   <div className="status-text">
                     <strong>P2P Sync</strong>
-                    <p>Real-time profile switching ✨ LIVE</p>
+                    <p>Real-time profile switching now live</p>
+                  </div>
+                </div>
+                <div className="status-item">
+                  <div className="status-icon not-available">—</div>
+                  <div className="status-text">
+                    <strong>Group Chats</strong>
+                    <p>Not supported yet</p>
                   </div>
                 </div>
               </div>
@@ -659,300 +618,32 @@ export default function Home() {
                 </div>
                 <h3 className="feature-title">Privacy First</h3>
                 <p className="feature-description">
-                  Your messages are never accessed or stored. Profile photos are stored on secure cloud infrastructure (Cloudinary). Phone numbers are hashed with SHA-256 before leaving your device.
+                  All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="pricing">
+        {/* Early Access Section */}
+        <section id="early-access" className="early-access">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Choose Your Plan</h2>
+              <h2 className="section-title">The feature WhatsApp never built.</h2>
               <p className="section-subtitle">
-                Start free, upgrade when you need more power.
+                Free to start. Works on WhatsApp Web in Chrome and Edge.
               </p>
             </div>
-            <div className="pricing-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '24px',
-              maxWidth: '1200px',
-              margin: '0 auto',
-              '@media (max-width: 1024px)': {
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '20px'
-              },
-              '@media (max-width: 768px)': {
-                gridTemplateColumns: '1fr',
-                gap: '16px',
-                maxWidth: '400px'
-              }
-            }}>
-              <div className="pricing-card glass-card" style={{
-                padding: '32px 24px',
-                textAlign: 'center',
-                borderRadius: '16px',
-                border: '2px solid rgba(37, 211, 102, 0.5)',
-                background: 'rgba(255, 255, 255, 0.05)',
-                minHeight: '500px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                '@media (max-width: 768px)': {
-                  padding: '24px 20px',
-                  minHeight: 'auto'
-                }
-              }}>
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '700',
-                  marginBottom: '16px',
-                  color: 'var(--foreground, #ffffff)'
-                }}>Free</h3>
-                <div style={{
-                  fontSize: '48px',
-                  fontWeight: '800',
-                  color: '#25D366',
-                  marginBottom: '24px'
-                }}>$0<span style={{
-                  fontSize: '18px',
-                  fontWeight: '400',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>/month</span></div>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: '0',
-                  marginBottom: '32px',
-                  textAlign: 'left'
-                }}>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Up to 2 P2P contacts
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Preview Mode
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    P2P Sync (basic)
-                  </li>
-                </ul>
-                <button 
-                  className="btn btn-secondary"
-                  style={{
-                    width: '100%',
-                    padding: '16px 24px',
-                    background: 'rgba(37, 211, 102, 0.1)',
-                    border: '2px solid #25D366',
-                    borderRadius: '12px',
-                    color: '#25D366',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                >
-                  Get Started Free
-                </button>
-              </div>
-              
-              <div className="pricing-card glass-card" style={{
-                padding: '32px 24px',
-                textAlign: 'center',
-                borderRadius: '16px',
-                border: '2px solid rgba(37, 211, 102, 0.5)',
-                background: 'rgba(255, 255, 255, 0.05)',
-                minHeight: '500px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                '@media (max-width: 768px)': {
-                  padding: '24px 20px',
-                  minHeight: 'auto'
-                }
-              }}>
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '700',
-                  marginBottom: '16px',
-                  color: 'var(--foreground, #ffffff)'
-                }}>Pro</h3>
-                <div style={{
-                  fontSize: '48px',
-                  fontWeight: '800',
-                  color: '#25D366',
-                  marginBottom: '8px'
-                }}>$7.99<span style={{
-                  fontSize: '18px',
-                  fontWeight: '400',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>/month</span></div>
-                <div style={{
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  color: '#25D366',
-                  marginBottom: '24px'
-                }}>
-                  Billed monthly
-                </div>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: '0',
-                  marginBottom: '32px',
-                  textAlign: 'left'
-                }}>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Unlimited P2P contacts
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Priority support
-                  </li>
-                  <li style={{marginBottom: '12px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#25D366', marginRight: '12px'}}>✓</span>
-                    Early access to new features
-                  </li>
-                </ul>
-                <button 
-                  className="btn btn-primary"
-                  style={{
-                    width: '100%',
-                    padding: '16px 24px',
-                    background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                    border: 'none',
-                    borderRadius: '12px',
-                    color: 'white',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
-                  }}
-                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c', '_blank')}
-                >
-                  Start Pro
-                </button>
-              </div>
-
-              <div className="pricing-card glass-card lifetime" style={{
-                padding: '32px 24px',
-                textAlign: 'center',
-                borderRadius: '20px',
-                border: '2px solid #FFD700',
-                background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05))',
-                position: 'relative',
-                transform: 'scale(1.05)',
-                boxShadow: '0 20px 60px rgba(255, 215, 0, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.1)',
-                minHeight: '500px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                '@media (max-width: 1024px)': {
-                  transform: 'scale(1.02)'
-                },
-                '@media (max-width: 768px)': {
-                  transform: 'scale(1)',
-                  padding: '24px 20px',
-                  minHeight: 'auto'
-                }
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: '-16px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-                  color: '#000',
-                  padding: '6px 20px',
-                  borderRadius: '20px',
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  zIndex: '10',
-                  boxShadow: '0 6px 20px rgba(255, 215, 0, 0.4)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  '@media (max-width: 768px)': {
-                    top: '-12px',
-                    padding: '4px 16px',
-                    fontSize: '11px'
-                  }
-                }}>BEST VALUE</div>
-                <h3 style={{
-                  fontSize: '28px',
-                  fontWeight: '800',
-                  marginBottom: '20px',
-                  color: '#FFD700',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                }}>Lifetime Access</h3>
-                <div style={{
-                  fontSize: '56px',
-                  fontWeight: '900',
-                  color: '#FFD700',
-                  marginBottom: '12px',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                }}>$59<span style={{
-                  fontSize: '20px',
-                  fontWeight: '400',
-                  color: 'var(--muted-foreground, #9ca3af)'
-                }}>/once</span></div>
-                <div style={{
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  color: '#FFD700',
-                  marginBottom: '32px',
-                  fontStyle: 'italic'
-                }}>
-                  Pay once, own it forever
-                </div>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: '0',
-                  marginBottom: '36px',
-                  textAlign: 'left'
-                }}>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
-                    Unlimited P2P contacts
-                  </li>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
-                    Priority support
-                  </li>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✓</span>
-                    Early access to new features
-                  </li>
-                  <li style={{marginBottom: '14px', display: 'flex', alignItems: 'center', fontWeight: '600', color: '#FFD700'}}>
-                    <span style={{color: '#FFD700', marginRight: '14px', fontSize: '18px'}}>✨</span>
-                    All future updates included
-                  </li>
-                </ul>
-                <button 
-                  className="btn btn-primary lifetime-btn"
-                  style={{
-                    width: '100%',
-                    padding: '20px 28px',
-                    background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-                    border: 'none',
-                    borderRadius: '16px',
-                    color: '#000',
-                    fontSize: '18px',
-                    fontWeight: '700',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 12px 40px rgba(255, 215, 0, 0.4)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px'
-                  }}
-                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}
-                >
-                  Get Lifetime Access
-                </button>
-              </div>
+            <div className="early-access-card glass-card">
+              <button 
+                className="btn btn-primary btn-lg"
+                onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
+              >
+                Add to Chrome — It's Free
+              </button>
+              <p style={{marginTop: '12px', fontSize: '14px', color: '#9ca3af'}}>
+                Free plan includes 2 contacts · No credit card needed
+              </p>
             </div>
           </div>
         </section>
@@ -996,15 +687,12 @@ export default function Home() {
                 <a href="/privacy" className="footer-link">
                   Privacy Policy
                 </a>
-                <a href="/support" className="footer-link">
-                  Support
-                </a>
                 <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
-                  Contact
+                  Support
                 </a>
               </div>
               <p className="footer-note">
-                Your chats and messages are never accessed or stored.
+                No data leaves your device — all control is local.
               </p>
             </div>
           </div>
@@ -1020,21 +708,21 @@ export default function Home() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <h2 className="modal-title">Join our Newsletter</h2>
+            <h2 className="modal-title">Join the Waitlist</h2>
             <p className="modal-subtitle">
-              Get the latest updates and tips for DualProfile. No spam, just valuable content.
+              Be the first to know when DualProfile launches. No spam, just one email when we're ready.
             </p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
                 // Use the correct public form URL
-                window.open('https://dualprofile.kit.com/7a5b00e94e', '_blank');
+                window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank');
                 // Close modal and show success message
                 setIsModalOpen(false);
-                showToast("Opening newsletter form...", "Complete your subscription to join our newsletter.");
+                showToast("Opening waitlist form...", "Complete your subscription to join the waitlist.");
               }}
             >
-              Join Newsletter
+              Join Waitlist
             </button>
             <p className="modal-privacy">
               🔒 We respect your privacy. Unsubscribe anytime.
@@ -2492,7 +2180,6 @@ export default function Home() {
 
           .demo-video-wrapper {
             margin: 0 -20px;
-            max-width: calc(100% + 40px);
           }
 
           .social-proof-section {
@@ -2606,148 +2293,6 @@ export default function Home() {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
-          }
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 768px) {
-          .container {
-            padding: 0 20px;
-          }
-          
-          .hero-content {
-            text-align: center;
-            padding: 40px 0;
-          }
-          
-          .p2p-hook {
-            font-size: 14px !important;
-            padding: 8px 16px !important;
-            margin-bottom: 16px !important;
-          }
-          
-          .hero-title {
-            font-size: 28px !important;
-            line-height: 1.2 !important;
-            margin-bottom: 12px !important;
-          }
-          
-          .hero-subtitle {
-            font-size: 16px !important;
-            margin-bottom: 20px !important;
-          }
-          
-          .viral-message {
-            font-size: 18px !important;
-            padding: 12px 16px !important;
-            margin-bottom: 24px !important;
-          }
-          
-          .btn {
-            width: 100%;
-            margin: 8px 0;
-            padding: 16px 24px !important;
-            font-size: 16px !important;
-          }
-          
-          .step-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          
-          .step-card {
-            padding: 24px !important;
-          }
-          
-          .feature-grid {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
-          
-          .social-proof-grid {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
-          
-          .testimonial-card {
-            padding: 20px !important;
-          }
-          
-          .avatar {
-            width: 48px !important;
-            height: 48px !important;
-            margin-bottom: 12px !important;
-          }
-          
-          .pricing-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-            max-width: 400px !important;
-          }
-          
-          .pricing-card {
-            padding: 24px 20px !important;
-            min-height: auto !important;
-          }
-          
-          .pricing-card.lifetime {
-            transform: scale(1) !important;
-            border-width: 2px !important;
-          }
-          
-          .pricing-card.lifetime .badge {
-            top: -12px !important;
-            padding: 4px 16px !important;
-            font-size: 11px !important;
-          }
-          
-          .section-title {
-            font-size: 28px !important;
-            margin-bottom: 16px !important;
-          }
-          
-          .section-subtitle {
-            font-size: 16px !important;
-            margin-bottom: 32px !important;
-          }
-        }
-
-        /* Tablet Responsive Design */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .container {
-            padding: 0 32px;
-          }
-          
-          .hero-content {
-            padding: 60px 0;
-          }
-          
-          .pricing-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px !important;
-          }
-          
-          .pricing-card.lifetime {
-            transform: scale(1.02) !important;
-          }
-          
-          .feature-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          
-          .social-proof-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-
-        /* Large Desktop Optimization */
-        @media (min-width: 1400px) {
-          .container {
-            max-width: 1200px;
-          }
-          
-          .pricing-grid {
-            max-width: 1200px;
           }
         }
       `}</style>
