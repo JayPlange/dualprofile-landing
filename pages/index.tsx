@@ -186,10 +186,10 @@ export default function Home() {
           <div className="demo-container">
             <div className="demo-video-wrapper">
               <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
-                <iframe 
-                  src="https://www.loom.com/embed/142f339f576c42028e9fab9c3f8d3e8d?hideOwner=true&hideShare=true&hideTitle=true&disableLogo=true&hideEmbedTopBar=true&autoplay=true& muted=true"
+                <iframe
+                  src="https://www.youtube.com/embed/mt8QzcG0_XQ?rel=0&modestbranding=1&autoplay=0"
                   frameBorder="0"
-                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"
                   style={{
@@ -511,24 +511,21 @@ export default function Home() {
           <div className="container">
             <div className="section-header">
               <h2 className="section-title">Simple Pricing</h2>
-              <p className="section-subtitle">
-                Start free. Upgrade when you're ready.
-              </p>
+              <p className="section-subtitle">Start free. Upgrade when you're ready.</p>
             </div>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
               gap: '1.5rem',
-              maxWidth: '900px',
+              maxWidth: '1100px',
               margin: '0 auto'
             }}>
               {/* Free */}
               <div className="glass-card" style={{padding: '2rem', textAlign: 'center'}}>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Free</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Get started, no card needed</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '1.5rem'}}>
-                  $0
-                </div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>forever</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Up to 2 contacts', 'Preview mode', 'P2P photo sync', 'Chrome & Edge support'].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -536,34 +533,26 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className="btn btn-outline"
-                  style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                >
+                <button className="btn btn-outline" style={{width: '100%'}}
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
                   Add to Chrome
                 </button>
               </div>
 
               {/* Pro */}
               <div className="glass-card glow-primary" style={{
-                padding: '2rem',
-                textAlign: 'center',
-                border: '1px solid rgba(37,211,102,0.4)',
-                position: 'relative'
+                padding: '2rem', textAlign: 'center',
+                border: '1px solid rgba(37,211,102,0.4)', position: 'relative'
               }}>
                 <div style={{
                   position: 'absolute', top: 0, right: 0,
                   background: '#25D366', color: '#000',
                   fontSize: '0.75rem', fontWeight: '700',
-                  padding: '4px 14px', borderBottomLeftRadius: '8px',
-                  borderTopRightRadius: '12px'
+                  padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
                 }}>POPULAR</div>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Pro</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>For power users</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>
-                  $7.99
-                </div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£9.99</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per month</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
@@ -572,12 +561,37 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className="btn btn-primary"
-                  style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                >
+                <button className="btn btn-primary" style={{width: '100%'}}
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
                   Get Pro
+                </button>
+              </div>
+
+              {/* Annual */}
+              <div className="glass-card" style={{
+                padding: '2rem', textAlign: 'center',
+                border: '1px solid rgba(37,211,102,0.2)', position: 'relative'
+              }}>
+                <div style={{
+                  position: 'absolute', top: 0, right: 0,
+                  background: 'rgba(37,211,102,0.15)', color: '#25D366',
+                  fontSize: '0.75rem', fontWeight: '700',
+                  padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
+                }}>BEST VALUE</div>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Annual</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Save vs monthly</p>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£59</div>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per year · ~£4.92/mo</p>
+                <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
+                  {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
+                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="btn btn-outline" style={{width: '100%'}}
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
+                  Get Annual
                 </button>
               </div>
 
@@ -585,9 +599,7 @@ export default function Home() {
               <div className="glass-card" style={{padding: '2rem', textAlign: 'center'}}>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Lifetime</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Pay once, own it forever</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>
-                  $59
-                </div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£79</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>one-time</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features', 'No recurring fees'].map(f => (
@@ -596,11 +608,8 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className="btn btn-outline"
-                  style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                >
+                <button className="btn btn-outline" style={{width: '100%'}}
+                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
                   Get Lifetime
                 </button>
               </div>
