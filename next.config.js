@@ -25,7 +25,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
               "connect-src 'self' https://api.lemonsqueezy.com https://dualprofile.kit.com",
-              "frame-src 'none'",
+              "frame-src 'self' https://www.loom.com",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'"
