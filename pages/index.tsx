@@ -72,6 +72,46 @@ export default function Home() {
         <title>DualProfile — Show Different WhatsApp Photos to Different People</title>
         <meta name="description" content="Your boss sees your professional photo. Your friends see the real you. DualProfile lets you assign different profile photos to different WhatsApp contacts. Free Chrome extension." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://vivaup.org/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://vivaup.org/" />
+        <meta property="og:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
+        <meta property="og:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
+        <meta property="og:image" content="https://vivaup.org/dualprofile-logo.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
+        <meta name="twitter:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
+        <meta name="twitter:image" content="https://vivaup.org/dualprofile-logo.png" />
+
+        {/* Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "DualProfile",
+          "url": "https://vivaup.org",
+          "description": "Show different WhatsApp profile photos to different contacts. Your boss sees your professional photo, your friends see the real you. Free Chrome extension for WhatsApp Web.",
+          "applicationCategory": "BrowserApplication",
+          "operatingSystem": "Chrome, Edge",
+          "offers": [
+            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP" },
+            { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP", "billingIncrement": "P1M" },
+            { "@type": "Offer", "name": "Annual", "price": "59.00", "priceCurrency": "GBP", "billingIncrement": "P1Y" },
+            { "@type": "Offer", "name": "Lifetime", "price": "79.00", "priceCurrency": "GBP" }
+          ],
+          "featureList": [
+            "Show different profile photos to different WhatsApp contacts",
+            "Assign professional photo to work contacts",
+            "Assign casual photo to personal contacts",
+            "Peer-to-peer sync — no server storage",
+            "Works on WhatsApp Web in Chrome and Edge"
+          ],
+          "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
+          "screenshot": "https://vivaup.org/dualprofile-logo.png"
+        })}} />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
       </Head>
@@ -182,11 +222,12 @@ export default function Home() {
               <div style={{textAlign: 'center', padding: '0 8px'}}>
                 <div style={{
                   width: '72px', height: '72px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #1e3a5f, #2d5986)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '28px', margin: '0 auto 8px',
-                  border: '2px solid rgba(255,255,255,0.1)'
-                }}>👔</div>
+                  overflow: 'hidden', margin: '0 auto 8px',
+                  border: '2px solid rgba(255,255,255,0.15)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.4)'
+                }}>
+                  <img src="/dp-pro.jpg" alt="Professional photo" style={{width:'100%',height:'100%',objectFit:'cover' as const,objectPosition:'center top'}} />
+                </div>
                 <div style={{fontSize: '11px', color: '#9ca3af', fontWeight: '500'}}>Your Boss</div>
                 <div style={{
                   marginTop: '6px', fontSize: '10px', color: '#25D366',
@@ -207,12 +248,12 @@ export default function Home() {
                 }}>YOUR WHATSAPP</div>
                 <div style={{
                   width: '96px', height: '96px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '40px', margin: '0 auto',
-                  boxShadow: '0 0 0 3px rgba(37,211,102,0.3), 0 0 0 6px rgba(37,211,102,0.1)',
-                  border: '2px solid rgba(37,211,102,0.5)'
-                }}>🎭</div>
+                  overflow: 'hidden', margin: '0 auto',
+                  boxShadow: '0 0 0 3px rgba(37,211,102,0.4), 0 0 0 6px rgba(37,211,102,0.1), 0 8px 32px rgba(0,0,0,0.5)',
+                  border: '2px solid rgba(37,211,102,0.6)'
+                }}>
+                  <img src="/dp-pro.jpg" alt="Your WhatsApp profile" style={{width:'100%',height:'100%',objectFit:'cover' as const,objectPosition:'center top'}} />
+                </div>
                 <div style={{
                   marginTop: '8px', fontSize: '11px', color: '#6b7280',
                   fontWeight: '500'
@@ -226,11 +267,12 @@ export default function Home() {
               <div style={{textAlign: 'center', padding: '0 8px'}}>
                 <div style={{
                   width: '72px', height: '72px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #3d1a5e, #6b35a8)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '28px', margin: '0 auto 8px',
-                  border: '2px solid rgba(255,255,255,0.1)'
-                }}>🎉</div>
+                  overflow: 'hidden', margin: '0 auto 8px',
+                  border: '2px solid rgba(255,255,255,0.15)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.4)'
+                }}>
+                  <img src="/dp-casual.jpg" alt="Casual photo" style={{width:'100%',height:'100%',objectFit:'cover' as const,objectPosition:'center top'}} />
+                </div>
                 <div style={{fontSize: '11px', color: '#9ca3af', fontWeight: '500'}}>Your Friends</div>
                 <div style={{
                   marginTop: '6px', fontSize: '10px', color: '#a78bfa',
