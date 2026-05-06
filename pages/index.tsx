@@ -658,7 +658,8 @@ export default function Home() {
                 }}>POPULAR</div>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Pro</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>For power users</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£9.99</div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $12.50 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per month</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
@@ -668,7 +669,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <button className="btn btn-primary" style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
+                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c', '_blank')}>
                   Get Pro
                 </button>
               </div>
@@ -686,7 +687,8 @@ export default function Home() {
                 }}>BEST VALUE</div>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Annual</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Save vs monthly</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£59</div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£59</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $74 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per year · ~£4.92/mo</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
@@ -696,7 +698,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <button className="btn btn-outline" style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
+                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/eedf7e9a-3865-4dd5-934f-a81f0d9a2202', '_blank')}>
                   Get Annual
                 </button>
               </div>
@@ -705,7 +707,8 @@ export default function Home() {
               <div className="glass-card" style={{padding: '2rem', textAlign: 'center'}}>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Lifetime</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Pay once, own it forever</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£79</div>
+                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£79</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $99 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>one-time</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
                   {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features', 'No recurring fees'].map(f => (
@@ -715,7 +718,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <button className="btn btn-outline" style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
+                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}>
                   Get Lifetime
                 </button>
               </div>
