@@ -69,8 +69,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>DualProfile - One WhatsApp. Multiple Identities.</title>
-        <meta name="description" content="Finally show different profile pictures to different contacts. Control your identity on WhatsApp Web like never before." />
+        <title>DualProfile — Show Different WhatsApp Photos to Different People</title>
+        <meta name="description" content="Your boss sees your professional photo. Your friends see the real you. DualProfile lets you assign different profile photos to different WhatsApp contacts. Free Chrome extension." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -103,18 +103,21 @@ export default function Home() {
           <div className="hero-content">
             {/* P2P Hook - PRIMARY MESSAGE */}
             <div className="p2p-hook" style={{
-              background: 'linear-gradient(135deg, #25D366, #128C7E)',
-              color: 'white',
-              padding: '12px 24px',
+              background: 'rgba(37,211,102,0.12)',
+              color: '#25D366',
+              border: '1px solid rgba(37,211,102,0.3)',
+              padding: '10px 22px',
               borderRadius: '50px',
               fontWeight: '600',
-              fontSize: 'clamp(16px, 3vw, 20px)',
+              fontSize: 'clamp(13px, 2vw, 15px)',
               marginBottom: '24px',
-              display: 'inline-block',
-              animation: 'pulse 2s infinite',
-              boxShadow: '0 4px 20px rgba(37, 211, 102, 0.3)'
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              letterSpacing: '0.2px'
             }}>
-              Real-time P2P sync — live now
+              <span style={{width:'8px',height:'8px',borderRadius:'50%',background:'#25D366',display:'inline-block',boxShadow:'0 0 6px #25D366'}}></span>
+              Live on Chrome Web Store · Free to install
             </div>
             
             {/* Main Headline */}
@@ -166,17 +169,78 @@ export default function Home() {
               </button>
             </div>
             
-            {/* Preview Badge - Secondary */}
-            <div className="hero-status" style={{opacity: '0.7'}}>
-              <span className="status-badge" style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                padding: '6px 12px',
-                borderRadius: '20px',
-                fontSize: '14px',
-                marginRight: '12px'
-              }}>
-                Live Demo Available
-              </span>
+            {/* Avatar Swap Visual */}
+            <div style={{
+              marginTop: '48px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0',
+              flexWrap: 'wrap' as const
+            }}>
+              {/* Contact: Boss */}
+              <div style={{textAlign: 'center', padding: '0 8px'}}>
+                <div style={{
+                  width: '72px', height: '72px', borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #1e3a5f, #2d5986)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '28px', margin: '0 auto 8px',
+                  border: '2px solid rgba(255,255,255,0.1)'
+                }}>👔</div>
+                <div style={{fontSize: '11px', color: '#9ca3af', fontWeight: '500'}}>Your Boss</div>
+                <div style={{
+                  marginTop: '6px', fontSize: '10px', color: '#25D366',
+                  background: 'rgba(37,211,102,0.1)', padding: '3px 8px',
+                  borderRadius: '10px', border: '1px solid rgba(37,211,102,0.2)'
+                }}>Sees: Pro photo</div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{fontSize: '20px', color: 'rgba(255,255,255,0.2)', padding: '0 4px', marginBottom: '24px'}}>→</div>
+
+              {/* Center: Your Profile */}
+              <div style={{textAlign: 'center', padding: '0 16px', position: 'relative' as const}}>
+                <div style={{
+                  fontSize: '10px', color: '#25D366', fontWeight: '700',
+                  letterSpacing: '1px', textTransform: 'uppercase' as const,
+                  marginBottom: '8px'
+                }}>YOUR WHATSAPP</div>
+                <div style={{
+                  width: '96px', height: '96px', borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '40px', margin: '0 auto',
+                  boxShadow: '0 0 0 3px rgba(37,211,102,0.3), 0 0 0 6px rgba(37,211,102,0.1)',
+                  border: '2px solid rgba(37,211,102,0.5)'
+                }}>🎭</div>
+                <div style={{
+                  marginTop: '8px', fontSize: '11px', color: '#6b7280',
+                  fontWeight: '500'
+                }}>One number</div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{fontSize: '20px', color: 'rgba(255,255,255,0.2)', padding: '0 4px', marginBottom: '24px'}}>→</div>
+
+              {/* Contact: Friends */}
+              <div style={{textAlign: 'center', padding: '0 8px'}}>
+                <div style={{
+                  width: '72px', height: '72px', borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #3d1a5e, #6b35a8)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '28px', margin: '0 auto 8px',
+                  border: '2px solid rgba(255,255,255,0.1)'
+                }}>🎉</div>
+                <div style={{fontSize: '11px', color: '#9ca3af', fontWeight: '500'}}>Your Friends</div>
+                <div style={{
+                  marginTop: '6px', fontSize: '10px', color: '#a78bfa',
+                  background: 'rgba(167,139,250,0.1)', padding: '3px 8px',
+                  borderRadius: '10px', border: '1px solid rgba(167,139,250,0.2)'
+                }}>See: Casual photo</div>
+              </div>
+            </div>
+            <div style={{marginTop: '12px', fontSize: '12px', color: 'rgba(255,255,255,0.3)', textAlign: 'center' as const}}>
+              Same WhatsApp account · Different photos · Automatic
             </div>
           </div>
         </section>
@@ -700,24 +764,22 @@ export default function Home() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <h2 className="modal-title">Join the Waitlist</h2>
+            <h2 className="modal-title">Install DualProfile</h2>
             <p className="modal-subtitle">
-              Be the first to know when DualProfile launches. No spam, just one email when we're ready.
+              Free to start. Takes 2 minutes to set up. Works on WhatsApp Web in Chrome and Edge.
             </p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
-                // Use the correct public form URL
                 window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank');
-                // Close modal and show success message
                 setIsModalOpen(false);
-                showToast("Opening waitlist form...", "Complete your subscription to join the waitlist.");
+                showToast("Opening Chrome Web Store...", "Add DualProfile to Chrome to get started.");
               }}
             >
-              Join Waitlist
+              Add to Chrome — It's Free
             </button>
             <p className="modal-privacy">
-              🔒 We respect your privacy. Unsubscribe anytime.
+              🔒 Free plan includes 2 contacts. No credit card needed.
             </p>
           </div>
         </div>
