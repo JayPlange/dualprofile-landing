@@ -79,13 +79,13 @@ export default function Home() {
         <meta property="og:url" content="https://vivaup.org/" />
         <meta property="og:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
         <meta property="og:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
-        <meta property="og:image" content="https://vivaup.org/dualprofile-logo.png" />
+        <meta property="og:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
         <meta name="twitter:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
-        <meta name="twitter:image" content="https://vivaup.org/dualprofile-logo.png" />
+        <meta name="twitter:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Structured Data */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -110,7 +110,16 @@ export default function Home() {
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
-          "screenshot": "https://vivaup.org/dualprofile-logo.png"
+          "screenshot": "https://vivaup.org/dualprofile-logo.png",
+          "video": {
+            "@type": "VideoObject",
+            "name": "DualProfile: Multiple WhatsApp Profile Photos (Control Who Sees What)",
+            "description": "See how DualProfile lets you show different WhatsApp profile photos to different contacts — your boss sees your professional photo, your friends see the real you.",
+            "thumbnailUrl": "https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg",
+            "uploadDate": "2026-05-01",
+            "contentUrl": "https://www.youtube.com/watch?v=mt8QzcG0_XQ",
+            "embedUrl": "https://www.youtube.com/embed/mt8QzcG0_XQ"
+          }
         })}} />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
