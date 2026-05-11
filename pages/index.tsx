@@ -217,8 +217,6 @@ export default function Home() {
                 Watch Demo
               </button>
             </div>
-            
-            </div>
           </div>
         </section>
 
