@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /new-landing
+Disallow: /index-new-broken
+Disallow: /waitlist-confirmed
+Disallow: /thankyou
+Disallow: /thank-you
+Disallow: /api/
 
 Sitemap: https://vivaup.org/sitemap.xml
