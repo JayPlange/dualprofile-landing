@@ -1,12 +1,689 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
+// ─── i18n ────────────────────────────────────────────────────────────────────
+const LANGS: Record<string, Record<string, string>> = {
+  en: {
+    nav_features: 'Features', nav_demo: 'Demo', nav_pricing: 'Pricing', nav_faq: 'FAQ',
+    nav_cta: "Add to Chrome — It's Free",
+    live_badge: 'Live on Chrome Web Store · Free to install',
+    hero_h1_1: 'People have been asking', hero_h1_2: 'WhatsApp for years.',
+    hero_now: 'Now it exists.',
+    hero_sub: 'Show different profile photos to different contacts — your boss sees one, your friends see another. Same number. Same WhatsApp.',
+    hero_cta: "Add to Chrome — It's Free", hero_demo: 'Watch Demo',
+    reddit_title: 'The answer was always "no."',
+    reddit_sub: '{t('reddit_sub')}',
+    reddit_1_q: '"Is there a way to display different profile pictures to different people?"',
+    reddit_1_a: 'Top answer: Nope.',
+    reddit_2_q: '"Different profile picture between web and app — is it possible?"',
+    reddit_2_a: 'Top answer: Only if you have two phone numbers.',
+    reddit_3_q: '"WhatsApp should support multiple profile photos. My close circle should see one, others see another."',
+    reddit_3_a: 'Top answer: [deleted]',
+    until_now: 'Until now.',
+    how_title: '{t('how_title')}',
+    how_sub: 'Three steps and you\'re done — forever.',
+    step1_title: 'You install DualProfile and upload your photos.',
+    step1_sub: 'One for work. One for life.',
+    step2_title: 'You assign which photo each contact sees.',
+    step2_sub: 'Takes about 2 minutes.',
+    step3_title: 'They install too — your photo switches automatically.',
+    step3_sub: 'No extra steps once they\'re set up.',
+    callout_text: 'DualProfile works when both people have it installed. Send someone the link — setup takes 3 minutes.',
+    callout_btn: 'Copy install link',
+    features_title: '{t('features_title')}',
+    features_sub: '{t('features_sub')}',
+    feat1_title: '{t('feat1_title')}', feat1_desc: '{t('feat1_desc')}',
+    feat2_title: '{t('feat2_title')}', feat2_desc: 'See exactly what each contact sees before you switch. Preview your identity changes in real-time.',
+    feat3_title: '{t('feat3_title')}', feat3_desc: '{t('feat3_desc')}',
+    pricing_title: '{t('pricing_title')}', pricing_sub: "{t('pricing_sub')}",
+    free_label: 'Free', free_sub: 'Get started, no card needed', free_forever: 'forever',
+    pro_label: 'Pro', pro_sub: 'For power users', pro_mo: 'per month',
+    annual_label: 'Annual', annual_sub: 'Save vs monthly', annual_yr: 'per year · ~£4.92/mo',
+    lifetime_label: 'Lifetime', lifetime_sub: 'Pay once, own it forever', lifetime_once: 'one-time',
+    badge_popular: 'POPULAR', badge_value: 'BEST VALUE',
+    feat_2contacts: 'Up to 2 contacts', feat_preview: 'Preview mode', feat_p2p: 'P2P photo sync',
+    feat_chrome: 'Chrome & Edge support', feat_unlimited: 'Unlimited contacts',
+    feat_priority: 'Priority support', feat_future: 'All future features', feat_nofee: 'No recurring fees',
+    btn_add_chrome: 'Add to Chrome', btn_get_pro: 'Get Pro', btn_get_annual: 'Get Annual', btn_get_lifetime: 'Get Lifetime',
+    viral_title: 'The feature WhatsApp never built.',
+    viral_sub: 'Free to start. Works on WhatsApp Web in Chrome and Edge.',
+    viral_cta: "Add to Chrome — It's Free", viral_note: 'Free plan includes 2 contacts · No credit card needed',
+    faq_title: '{t('faq_title')}', faq_sub: "{t('faq_sub')}",
+    faq_1_q: 'Does my contact need to install anything?',
+    faq_1_a: 'Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your photo appears on their screen automatically. Share the install link with them and setup takes about 3 minutes.',
+    faq_2_q: 'Does this work on the WhatsApp mobile app?',
+    faq_2_a: 'No — DualProfile works on WhatsApp Web (web.whatsapp.com) in Chrome or Edge on desktop only. The mobile app is not supported.',
+    faq_3_q: 'How does Preview Mode work?',
+    faq_3_a: "Preview Mode shows you exactly what each contact sees when they view your profile. It's a local simulation that demonstrates how your different photos will appear to specific contacts.",
+    faq_4_q: 'Is my data secure?',
+    faq_4_a: 'Absolutely. All photos and data are stored locally on your device. Nothing is uploaded to our servers or shared with third parties.',
+    footer_rights: 'All rights reserved.',
+    modal_title: 'Install DualProfile',
+    modal_sub: '{t('modal_sub')}',
+    modal_btn: "Add to Chrome — It's Free",
+    modal_note: '{t('modal_note')}',
+    copied_msg: 'Copied!',
+    footer_note: 'No data leaves your device — all control is local.',
+    status_title: 'Current Status',
+    status_1_title: 'Preview Mode',
+    status_1_desc: 'See how others would see your profile',
+    status_2_title: 'P2P Sync',
+    status_2_desc: 'Real-time profile switching now live',
+    status_3_title: 'Group Chats',
+    status_3_desc: 'Not supported yet',
+    usd_approx: '≈',
+    demo_privacy: '🔒 This works entirely on WhatsApp Web. No chat data is stored.',
+    demo_caption: 'Watch how Preview Mode shows exactly what each contact sees.',
+  },
+  es: {
+    nav_features: 'Funciones', nav_demo: 'Demo', nav_pricing: 'Precios', nav_faq: 'FAQ',
+    nav_cta: 'Agregar a Chrome — Gratis',
+    live_badge: 'En Chrome Web Store · Gratis para instalar',
+    hero_h1_1: 'La gente lleva años pidiéndole', hero_h1_2: 'esto a WhatsApp.',
+    hero_now: 'Ahora existe.',
+    hero_sub: 'Muestra fotos de perfil diferentes a diferentes contactos — tu jefe ve una, tus amigos ven otra. El mismo número. El mismo WhatsApp.',
+    hero_cta: 'Agregar a Chrome — Gratis', hero_demo: 'Ver demo',
+    reddit_title: 'La respuesta siempre fue "no."',
+    reddit_sub: 'Antes de DualProfile, la única solución era conseguir un segundo número. Ya no.',
+    reddit_1_q: '"¿Hay alguna forma de mostrar diferentes fotos de perfil a diferentes personas?"',
+    reddit_1_a: 'Respuesta principal: No.',
+    reddit_2_q: '"¿Foto de perfil diferente entre web y app — es posible?"',
+    reddit_2_a: 'Respuesta principal: Solo si tienes dos números de teléfono.',
+    reddit_3_q: '"WhatsApp debería admitir múltiples fotos de perfil."',
+    reddit_3_a: 'Respuesta principal: [eliminado]',
+    until_now: 'Hasta ahora.',
+    how_title: 'Configura una vez con alguien. Funciona automáticamente.',
+    how_sub: 'Tres pasos y listo — para siempre.',
+    step1_title: 'Instalas DualProfile y subes tus fotos.',
+    step1_sub: 'Una para el trabajo. Una para la vida.',
+    step2_title: 'Asignas qué foto ve cada contacto.',
+    step2_sub: 'Tarda unos 2 minutos.',
+    step3_title: 'Ellos también lo instalan — tu foto cambia automáticamente.',
+    step3_sub: 'Sin pasos extra una vez configurado.',
+    callout_text: 'DualProfile funciona cuando ambas personas lo tienen instalado. Envía el enlace — la configuración tarda 3 minutos.',
+    callout_btn: 'Copiar enlace de instalación',
+    features_title: 'Todo lo que necesitas',
+    features_sub: 'Funciones simples y potentes para usuarios que quieren controlar su identidad en WhatsApp.',
+    feat1_title: 'Doble carga', feat1_desc: 'Sube diferentes fotos para diferentes contactos. Tus colegas ven una imagen, tus amigos ven otra.',
+    feat2_title: 'Vista previa en vivo', feat2_desc: 'Ve exactamente lo que cada contacto ve antes de cambiar. Sin adivinanzas.',
+    feat3_title: 'Privacidad primero', feat3_desc: 'Todo funciona localmente en tu navegador. Tus imágenes nunca salen de tu dispositivo.',
+    pricing_title: 'Precios simples', pricing_sub: 'Empieza gratis. Actualiza cuando estés listo.',
+    free_label: 'Gratis', free_sub: 'Empieza, sin tarjeta', free_forever: 'para siempre',
+    pro_label: 'Pro', pro_sub: 'Para usuarios avanzados', pro_mo: 'por mes',
+    annual_label: 'Anual', annual_sub: 'Ahorra vs mensual', annual_yr: 'por año · ~£4.92/mes',
+    lifetime_label: 'De por vida', lifetime_sub: 'Paga una vez, úsalo siempre', lifetime_once: 'pago único',
+    badge_popular: 'POPULAR', badge_value: 'MEJOR VALOR',
+    feat_2contacts: 'Hasta 2 contactos', feat_preview: 'Modo vista previa', feat_p2p: 'Sincronización P2P',
+    feat_chrome: 'Compatible con Chrome y Edge', feat_unlimited: 'Contactos ilimitados',
+    feat_priority: 'Soporte prioritario', feat_future: 'Todas las funciones futuras', feat_nofee: 'Sin cargos recurrentes',
+    btn_add_chrome: 'Agregar a Chrome', btn_get_pro: 'Obtener Pro', btn_get_annual: 'Obtener Anual', btn_get_lifetime: 'Obtener De por vida',
+    viral_title: 'La función que WhatsApp nunca creó.',
+    viral_sub: 'Gratis para empezar. Funciona en WhatsApp Web en Chrome y Edge.',
+    viral_cta: 'Agregar a Chrome — Gratis', viral_note: 'El plan gratuito incluye 2 contactos · Sin tarjeta de crédito',
+    faq_title: 'Preguntas frecuentes', faq_sub: '¿Tienes preguntas? Tenemos respuestas.',
+    faq_1_q: '¿Mi contacto necesita instalar algo?',
+    faq_1_a: 'Sí — DualProfile funciona de igual a igual. Cuando asignas una foto a un contacto y ellos tienen DualProfile instalado, tu foto aparece en su pantalla automáticamente.',
+    faq_2_q: '¿Funciona en la app móvil de WhatsApp?',
+    faq_2_a: 'No — DualProfile funciona en WhatsApp Web en Chrome o Edge solo en escritorio. La app móvil no es compatible.',
+    faq_3_q: '¿Cómo funciona el modo vista previa?',
+    faq_3_a: 'El modo vista previa te muestra exactamente lo que cada contacto ve cuando visita tu perfil.',
+    faq_4_q: '¿Están seguros mis datos?',
+    faq_4_a: 'Absolutamente. Todas las fotos y datos se almacenan localmente en tu dispositivo.',
+    footer_rights: 'Todos los derechos reservados.',
+    modal_title: 'Instala DualProfile',
+    modal_sub: 'Gratis para empezar. Tarda 2 minutos. Funciona en WhatsApp Web en Chrome y Edge.',
+    modal_btn: 'Agregar a Chrome — Gratis',
+    modal_note: '🔒 El plan gratuito incluye 2 contactos. Sin tarjeta de crédito.',
+    copied_msg: '¡Copiado!',
+    footer_note: 'No hay datos que salgan de tu dispositivo.',
+    status_title: 'Estado actual',
+    status_1_title: 'Modo vista previa',
+    status_1_desc: 'Ve cómo te ven los demás',
+    status_2_title: 'Sincronización P2P',
+    status_2_desc: 'Cambio de perfil en tiempo real',
+    status_3_title: 'Chats grupales',
+    status_3_desc: 'Aún no compatible',
+    usd_approx: '≈',
+    demo_privacy: '🔒 Fonctionne entièrement sur WhatsApp Web. Aucune donnée de chat n\'est stockée.',
+    demo_caption: 'Voyez comment le mode aperçu montre exactement ce que chaque contact voit.',
+  },
+  fr: {
+    nav_features: 'Fonctionnalités', nav_demo: 'Démo', nav_pricing: 'Tarifs', nav_faq: 'FAQ',
+    nav_cta: 'Ajouter à Chrome — Gratuit',
+    live_badge: 'Sur le Chrome Web Store · Gratuit',
+    hero_h1_1: 'Les gens demandent ça à', hero_h1_2: 'WhatsApp depuis des années.',
+    hero_now: 'Maintenant, ça existe.',
+    hero_sub: 'Montrez des photos de profil différentes à différents contacts — votre patron voit l\'une, vos amis voient l\'autre. Même numéro. Même WhatsApp.',
+    hero_cta: 'Ajouter à Chrome — Gratuit', hero_demo: 'Voir la démo',
+    reddit_title: 'La réponse a toujours été « non ».',
+    reddit_sub: 'Avant DualProfile, la seule solution était d\'avoir un deuxième numéro. Plus maintenant.',
+    reddit_1_q: '"Y a-t-il un moyen d\'afficher des photos de profil différentes à différentes personnes ?"',
+    reddit_1_a: 'Meilleure réponse : Non.',
+    reddit_2_q: '"Photo de profil différente entre web et app — est-ce possible ?"',
+    reddit_2_a: 'Meilleure réponse : Seulement avec deux numéros.',
+    reddit_3_q: '"WhatsApp devrait permettre plusieurs photos de profil."',
+    reddit_3_a: 'Meilleure réponse : [supprimé]',
+    until_now: 'Jusqu\'à maintenant.',
+    how_title: 'Configurez une fois. Fonctionne automatiquement.',
+    how_sub: 'Trois étapes et c\'est fait — pour toujours.',
+    step1_title: 'Vous installez DualProfile et téléchargez vos photos.',
+    step1_sub: 'Une pour le travail. Une pour la vie.',
+    step2_title: 'Vous assignez quelle photo chaque contact voit.',
+    step2_sub: 'Prend environ 2 minutes.',
+    step3_title: 'Ils installent aussi — votre photo change automatiquement.',
+    step3_sub: 'Aucune étape supplémentaire une fois configuré.',
+    callout_text: 'DualProfile fonctionne quand les deux personnes l\'ont installé. Envoyez le lien — la configuration prend 3 minutes.',
+    callout_btn: 'Copier le lien d\'installation',
+    features_title: 'Tout ce dont vous avez besoin',
+    features_sub: 'Des fonctionnalités simples et puissantes pour contrôler votre identité WhatsApp.',
+    feat1_title: 'Double téléchargement', feat1_desc: 'Téléchargez différentes photos pour différents contacts.',
+    feat2_title: 'Aperçu en direct', feat2_desc: 'Voyez exactement ce que chaque contact voit avant de changer.',
+    feat3_title: 'Confidentialité d\'abord', feat3_desc: 'Tout fonctionne localement. Vos images ne quittent jamais votre appareil.',
+    pricing_title: 'Tarification simple', pricing_sub: 'Commencez gratuitement. Passez à la version supérieure quand vous êtes prêt.',
+    free_label: 'Gratuit', free_sub: 'Commencez, sans carte', free_forever: 'pour toujours',
+    pro_label: 'Pro', pro_sub: 'Pour les utilisateurs avancés', pro_mo: 'par mois',
+    annual_label: 'Annuel', annual_sub: 'Économisez vs mensuel', annual_yr: 'par an · ~£4.92/mois',
+    lifetime_label: 'À vie', lifetime_sub: 'Payez une fois, utilisez toujours', lifetime_once: 'paiement unique',
+    badge_popular: 'POPULAIRE', badge_value: 'MEILLEURE VALEUR',
+    feat_2contacts: 'Jusqu\'à 2 contacts', feat_preview: 'Mode aperçu', feat_p2p: 'Synchronisation P2P',
+    feat_chrome: 'Chrome et Edge', feat_unlimited: 'Contacts illimités',
+    feat_priority: 'Support prioritaire', feat_future: 'Toutes les futures fonctionnalités', feat_nofee: 'Sans frais récurrents',
+    btn_add_chrome: 'Ajouter à Chrome', btn_get_pro: 'Obtenir Pro', btn_get_annual: 'Obtenir Annuel', btn_get_lifetime: 'Obtenir À vie',
+    viral_title: 'La fonctionnalité que WhatsApp n\'a jamais construite.',
+    viral_sub: 'Gratuit pour commencer. Fonctionne sur WhatsApp Web dans Chrome et Edge.',
+    viral_cta: 'Ajouter à Chrome — Gratuit', viral_note: 'Le plan gratuit inclut 2 contacts · Sans carte de crédit',
+    faq_title: 'Questions fréquentes', faq_sub: 'Des questions ? Nous avons des réponses.',
+    faq_1_q: 'Mon contact doit-il installer quelque chose ?',
+    faq_1_a: 'Oui — DualProfile fonctionne en pair-à-pair. Quand vous assignez une photo et que votre contact a DualProfile, votre photo apparaît automatiquement.',
+    faq_2_q: 'Cela fonctionne-t-il sur l\'app mobile WhatsApp ?',
+    faq_2_a: 'Non — DualProfile fonctionne sur WhatsApp Web dans Chrome ou Edge sur ordinateur uniquement.',
+    faq_3_q: 'Comment fonctionne le mode aperçu ?',
+    faq_3_a: 'Le mode aperçu vous montre exactement ce que chaque contact voit quand il consulte votre profil.',
+    faq_4_q: 'Mes données sont-elles sécurisées ?',
+    faq_4_a: 'Absolument. Toutes les photos sont stockées localement sur votre appareil.',
+    footer_rights: 'Tous droits réservés.',
+    modal_title: 'Installer DualProfile',
+    modal_sub: 'Gratuit pour commencer. 2 minutes de configuration. Fonctionne sur WhatsApp Web.',
+    modal_btn: 'Ajouter à Chrome — Gratuit',
+    modal_note: '🔒 Le plan gratuit inclut 2 contacts. Sans carte de crédit.',
+    copied_msg: 'Copié !',
+    footer_note: 'Aucune donnée ne quitte votre appareil.',
+    status_title: 'Statut actuel',
+    status_1_title: 'Mode aperçu',
+    status_1_desc: 'Voyez comment les autres vous voient',
+    status_2_title: 'Synchronisation P2P',
+    status_2_desc: 'Changement de profil en temps réel',
+    status_3_title: 'Chats de groupe',
+    status_3_desc: 'Pas encore pris en charge',
+    usd_approx: '≈',
+    demo_privacy: '🔒 Funciona inteiramente no WhatsApp Web. Nenhum dado de chat é armazenado.',
+    demo_caption: 'Veja como o modo de prévia mostra exatamente o que cada contato vê.',
+  },
+  pt: {
+    nav_features: 'Recursos', nav_demo: 'Demo', nav_pricing: 'Preços', nav_faq: 'FAQ',
+    nav_cta: 'Adicionar ao Chrome — Grátis',
+    live_badge: 'Na Chrome Web Store · Grátis para instalar',
+    hero_h1_1: 'As pessoas pedem isso ao', hero_h1_2: 'WhatsApp há anos.',
+    hero_now: 'Agora existe.',
+    hero_sub: 'Mostre fotos de perfil diferentes para contatos diferentes — seu chefe vê uma, seus amigos veem outra. Mesmo número. Mesmo WhatsApp.',
+    hero_cta: 'Adicionar ao Chrome — Grátis', hero_demo: 'Ver demo',
+    reddit_title: 'A resposta sempre foi "não".',
+    reddit_sub: 'Antes do DualProfile, a única solução era ter um segundo número. Não mais.',
+    reddit_1_q: '"Há como exibir fotos de perfil diferentes para pessoas diferentes?"',
+    reddit_1_a: 'Melhor resposta: Não.',
+    reddit_2_q: '"Foto de perfil diferente entre web e app — é possível?"',
+    reddit_2_a: 'Melhor resposta: Só com dois números de telefone.',
+    reddit_3_q: '"O WhatsApp deveria ter múltiplas fotos de perfil."',
+    reddit_3_a: 'Melhor resposta: [excluído]',
+    until_now: 'Até agora.',
+    how_title: 'Configure uma vez com alguém. Funciona automaticamente.',
+    how_sub: 'Três passos e pronto — para sempre.',
+    step1_title: 'Você instala o DualProfile e envia suas fotos.',
+    step1_sub: 'Uma para o trabalho. Uma para a vida.',
+    step2_title: 'Você define qual foto cada contato vê.',
+    step2_sub: 'Leva cerca de 2 minutos.',
+    step3_title: 'Eles instalam também — sua foto muda automaticamente.',
+    step3_sub: 'Sem etapas extras após a configuração.',
+    callout_text: 'O DualProfile funciona quando as duas pessoas têm instalado. Envie o link — a configuração leva 3 minutos.',
+    callout_btn: 'Copiar link de instalação',
+    features_title: 'Tudo que você precisa',
+    features_sub: 'Recursos simples e poderosos para quem quer controlar sua identidade no WhatsApp.',
+    feat1_title: 'Upload duplo', feat1_desc: 'Envie fotos diferentes para contatos diferentes.',
+    feat2_title: 'Prévia ao vivo', feat2_desc: 'Veja exatamente o que cada contato vê antes de mudar.',
+    feat3_title: 'Privacidade em primeiro lugar', feat3_desc: 'Tudo funciona localmente. Suas imagens nunca saem do seu dispositivo.',
+    pricing_title: 'Preços simples', pricing_sub: 'Comece grátis. Faça upgrade quando estiver pronto.',
+    free_label: 'Grátis', free_sub: 'Comece, sem cartão', free_forever: 'para sempre',
+    pro_label: 'Pro', pro_sub: 'Para usuários avançados', pro_mo: 'por mês',
+    annual_label: 'Anual', annual_sub: 'Economize vs mensal', annual_yr: 'por ano · ~£4.92/mês',
+    lifetime_label: 'Vitalício', lifetime_sub: 'Pague uma vez, use sempre', lifetime_once: 'pagamento único',
+    badge_popular: 'POPULAR', badge_value: 'MELHOR CUSTO',
+    feat_2contacts: 'Até 2 contatos', feat_preview: 'Modo prévia', feat_p2p: 'Sincronização P2P',
+    feat_chrome: 'Chrome e Edge', feat_unlimited: 'Contatos ilimitados',
+    feat_priority: 'Suporte prioritário', feat_future: 'Todos os recursos futuros', feat_nofee: 'Sem cobranças recorrentes',
+    btn_add_chrome: 'Adicionar ao Chrome', btn_get_pro: 'Obter Pro', btn_get_annual: 'Obter Anual', btn_get_lifetime: 'Obter Vitalício',
+    viral_title: 'O recurso que o WhatsApp nunca criou.',
+    viral_sub: 'Grátis para começar. Funciona no WhatsApp Web no Chrome e Edge.',
+    viral_cta: 'Adicionar ao Chrome — Grátis', viral_note: 'Plano gratuito inclui 2 contatos · Sem cartão de crédito',
+    faq_title: 'Perguntas frequentes', faq_sub: 'Tem dúvidas? Temos respostas.',
+    faq_1_q: 'Meu contato precisa instalar algo?',
+    faq_1_a: 'Sim — o DualProfile funciona ponto a ponto. Quando você atribui uma foto e seu contato tem o DualProfile, sua foto aparece automaticamente.',
+    faq_2_q: 'Funciona no app móvel do WhatsApp?',
+    faq_2_a: 'Não — o DualProfile funciona no WhatsApp Web no Chrome ou Edge apenas no desktop.',
+    faq_3_q: 'Como funciona o modo de prévia?',
+    faq_3_a: 'O modo de prévia mostra exatamente o que cada contato vê quando acessa seu perfil.',
+    faq_4_q: 'Meus dados estão seguros?',
+    faq_4_a: 'Com certeza. Todas as fotos são armazenadas localmente no seu dispositivo.',
+    footer_rights: 'Todos os direitos reservados.',
+    modal_title: 'Instalar DualProfile',
+    modal_sub: 'Grátis para começar. 2 minutos de configuração. Funciona no WhatsApp Web.',
+    modal_btn: 'Adicionar ao Chrome — Grátis',
+    modal_note: '🔒 Plano gratuito inclui 2 contatos. Sem cartão de crédito.',
+    copied_msg: 'Copiado!',
+    footer_note: 'Nenhum dado sai do seu dispositivo.',
+    status_title: 'Status atual',
+    status_1_title: 'Modo prévia',
+    status_1_desc: 'Veja como os outros te veem',
+    status_2_title: 'Sincronização P2P',
+    status_2_desc: 'Troca de perfil em tempo real',
+    status_3_title: 'Chats em grupo',
+    status_3_desc: 'Ainda não suportado',
+    usd_approx: '≈',
+    demo_privacy: '🔒 Funktioniert vollständig in WhatsApp Web. Keine Chat-Daten werden gespeichert.',
+    demo_caption: 'Sieh, wie der Vorschaumodus genau zeigt, was jeder Kontakt sieht.',
+  },
+  de: {
+    nav_features: 'Funktionen', nav_demo: 'Demo', nav_pricing: 'Preise', nav_faq: 'FAQ',
+    nav_cta: 'Zu Chrome hinzufügen — Kostenlos',
+    live_badge: 'Im Chrome Web Store · Kostenlos installieren',
+    hero_h1_1: 'Menschen bitten WhatsApp', hero_h1_2: 'seit Jahren darum.',
+    hero_now: 'Jetzt gibt es es.',
+    hero_sub: 'Zeige verschiedenen Kontakten verschiedene Profilfotos — dein Chef sieht eines, deine Freunde ein anderes. Gleiche Nummer. Gleiches WhatsApp.',
+    hero_cta: 'Zu Chrome hinzufügen — Kostenlos', hero_demo: 'Demo ansehen',
+    reddit_title: 'Die Antwort war immer „Nein".',
+    reddit_sub: 'Vor DualProfile war die einzige Lösung eine zweite Nummer. Nicht mehr.',
+    reddit_1_q: '"Gibt es eine Möglichkeit, verschiedenen Personen verschiedene Profilbilder anzuzeigen?"',
+    reddit_1_a: 'Beste Antwort: Nein.',
+    reddit_2_q: '"Verschiedenes Profilbild zwischen Web und App — ist das möglich?"',
+    reddit_2_a: 'Beste Antwort: Nur mit zwei Telefonnummern.',
+    reddit_3_q: '"WhatsApp sollte mehrere Profilfotos unterstützen."',
+    reddit_3_a: 'Beste Antwort: [gelöscht]',
+    until_now: 'Bis jetzt.',
+    how_title: 'Einmal mit jemandem einrichten. Funktioniert automatisch.',
+    how_sub: 'Drei Schritte und fertig — für immer.',
+    step1_title: 'Du installierst DualProfile und lädst deine Fotos hoch.',
+    step1_sub: 'Eines für die Arbeit. Eines fürs Leben.',
+    step2_title: 'Du weist jedem Kontakt ein Foto zu.',
+    step2_sub: 'Dauert etwa 2 Minuten.',
+    step3_title: 'Sie installieren es auch — dein Foto wechselt automatisch.',
+    step3_sub: 'Keine weiteren Schritte nach der Einrichtung.',
+    callout_text: 'DualProfile funktioniert, wenn beide Personen es installiert haben. Sende den Link — die Einrichtung dauert 3 Minuten.',
+    callout_btn: 'Installationslink kopieren',
+    features_title: 'Alles, was du brauchst',
+    features_sub: 'Einfache, leistungsstarke Funktionen für Nutzer, die ihre WhatsApp-Identität kontrollieren möchten.',
+    feat1_title: 'Doppel-Upload', feat1_desc: 'Lade verschiedene Fotos für verschiedene Kontakte hoch.',
+    feat2_title: 'Live-Vorschau', feat2_desc: 'Sieh genau, was jeder Kontakt sieht, bevor du wechselst.',
+    feat3_title: 'Datenschutz zuerst', feat3_desc: 'Alles läuft lokal im Browser. Deine Bilder verlassen nie dein Gerät.',
+    pricing_title: 'Einfache Preise', pricing_sub: 'Kostenlos starten. Upgraden wenn bereit.',
+    free_label: 'Kostenlos', free_sub: 'Starten, ohne Karte', free_forever: 'für immer',
+    pro_label: 'Pro', pro_sub: 'Für Power-Nutzer', pro_mo: 'pro Monat',
+    annual_label: 'Jährlich', annual_sub: 'Sparen vs. monatlich', annual_yr: 'pro Jahr · ~£4,92/Monat',
+    lifetime_label: 'Lebenslang', lifetime_sub: 'Einmal zahlen, immer nutzen', lifetime_once: 'einmalige Zahlung',
+    badge_popular: 'BELIEBT', badge_value: 'BESTES ANGEBOT',
+    feat_2contacts: 'Bis zu 2 Kontakte', feat_preview: 'Vorschaumodus', feat_p2p: 'P2P-Synchronisation',
+    feat_chrome: 'Chrome & Edge', feat_unlimited: 'Unbegrenzte Kontakte',
+    feat_priority: 'Prioritäts-Support', feat_future: 'Alle zukünftigen Funktionen', feat_nofee: 'Keine wiederkehrenden Gebühren',
+    btn_add_chrome: 'Zu Chrome hinzufügen', btn_get_pro: 'Pro holen', btn_get_annual: 'Jährlich holen', btn_get_lifetime: 'Lebenslang holen',
+    viral_title: 'Die Funktion, die WhatsApp nie gebaut hat.',
+    viral_sub: 'Kostenlos starten. Funktioniert in WhatsApp Web in Chrome und Edge.',
+    viral_cta: 'Zu Chrome hinzufügen — Kostenlos', viral_note: 'Kostenloser Plan enthält 2 Kontakte · Keine Kreditkarte',
+    faq_title: 'Häufig gestellte Fragen', faq_sub: 'Fragen? Wir haben Antworten.',
+    faq_1_q: 'Muss mein Kontakt auch etwas installieren?',
+    faq_1_a: 'Ja — DualProfile funktioniert Peer-to-Peer. Wenn du ein Foto zuweist und dein Kontakt DualProfile hat, erscheint dein Foto automatisch.',
+    faq_2_q: 'Funktioniert es in der mobilen WhatsApp-App?',
+    faq_2_a: 'Nein — DualProfile funktioniert nur in WhatsApp Web in Chrome oder Edge auf dem Desktop.',
+    faq_3_q: 'Wie funktioniert der Vorschaumodus?',
+    faq_3_a: 'Der Vorschaumodus zeigt genau, was jeder Kontakt sieht, wenn er dein Profil aufruft.',
+    faq_4_q: 'Sind meine Daten sicher?',
+    faq_4_a: 'Absolut. Alle Fotos werden lokal auf deinem Gerät gespeichert.',
+    footer_rights: 'Alle Rechte vorbehalten.',
+    modal_title: 'DualProfile installieren',
+    modal_sub: 'Kostenlos starten. 2 Minuten Einrichtung. Funktioniert in WhatsApp Web.',
+    modal_btn: 'Zu Chrome hinzufügen — Kostenlos',
+    modal_note: '🔒 Kostenloser Plan enthält 2 Kontakte. Keine Kreditkarte.',
+    copied_msg: 'Kopiert!',
+    footer_note: 'Keine Daten verlassen dein Gerät.',
+    status_title: 'Aktueller Status',
+    status_1_title: 'Vorschaumodus',
+    status_1_desc: 'Sieh, wie andere dich sehen',
+    status_2_title: 'P2P-Synchronisation',
+    status_2_desc: 'Echtzeit-Profilwechsel jetzt live',
+    status_3_title: 'Gruppenunterhaltungen',
+    status_3_desc: 'Noch nicht unterstützt',
+    usd_approx: '≈',
+    demo_privacy: '🔒 यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।',
+    demo_caption: 'देखें कि पूर्वावलोकन मोड दिखाता है कि प्रत्येक संपर्क वास्तव में क्या देखता है।',
+  },
+  hi: {
+    nav_features: 'सुविधाएँ', nav_demo: 'डेमो', nav_pricing: 'मूल्य', nav_faq: 'FAQ',
+    nav_cta: 'Chrome में जोड़ें — मुफ़्त',
+    live_badge: 'Chrome Web Store पर · मुफ़्त इंस्टॉल करें',
+    hero_h1_1: 'लोग सालों से WhatsApp से', hero_h1_2: 'यह माँग रहे थे।',
+    hero_now: 'अब यह मौजूद है।',
+    hero_sub: 'अलग-अलग संपर्कों को अलग-अलग प्रोफ़ाइल फ़ोटो दिखाएँ — आपका बॉस एक देखे, दोस्त दूसरी। वही नंबर। वही WhatsApp।',
+    hero_cta: 'Chrome में जोड़ें — मुफ़्त', hero_demo: 'डेमो देखें',
+    reddit_title: 'जवाब हमेशा "नहीं" था।',
+    reddit_sub: 'DualProfile से पहले, एकमात्र उपाय दूसरा नंबर लेना था। अब नहीं।',
+    reddit_1_q: '"क्या अलग-अलग लोगों को अलग-अलग प्रोफ़ाइल फ़ोटो दिखाने का कोई तरीका है?"',
+    reddit_1_a: 'शीर्ष उत्तर: नहीं।',
+    reddit_2_q: '"वेब और ऐप पर अलग प्रोफ़ाइल फ़ोटो — क्या यह संभव है?"',
+    reddit_2_a: 'शीर्ष उत्तर: सिर्फ़ दो फ़ोन नंबर से।',
+    reddit_3_q: '"WhatsApp को कई प्रोफ़ाइल फ़ोटो का समर्थन करना चाहिए।"',
+    reddit_3_a: 'शीर्ष उत्तर: [हटाया गया]',
+    until_now: 'अब तक।',
+    how_title: 'एक बार सेट करें। अपने आप काम करे।',
+    how_sub: 'तीन चरण और हो गया — हमेशा के लिए।',
+    step1_title: 'आप DualProfile इंस्टॉल करें और अपनी फ़ोटो अपलोड करें।',
+    step1_sub: 'एक काम के लिए। एक जीवन के लिए।',
+    step2_title: 'आप तय करें कि कौन सा संपर्क कौन सी फ़ोटो देखे।',
+    step2_sub: 'लगभग 2 मिनट लगते हैं।',
+    step3_title: 'वे भी इंस्टॉल करें — आपकी फ़ोटो अपने आप बदल जाती है।',
+    step3_sub: 'सेटअप के बाद कोई अतिरिक्त चरण नहीं।',
+    callout_text: 'DualProfile तब काम करता है जब दोनों लोगों ने इंस्टॉल किया हो। लिंक भेजें — सेटअप 3 मिनट में होता है।',
+    callout_btn: 'इंस्टॉल लिंक कॉपी करें',
+    features_title: 'सब कुछ जो आपको चाहिए',
+    features_sub: 'उन उपयोगकर्ताओं के लिए सरल, शक्तिशाली सुविधाएँ जो WhatsApp पहचान पर नियंत्रण चाहते हैं।',
+    feat1_title: 'दोहरा अपलोड', feat1_desc: 'अलग-अलग संपर्कों के लिए अलग-अलग फ़ोटो अपलोड करें।',
+    feat2_title: 'लाइव पूर्वावलोकन', feat2_desc: 'बदलने से पहले देखें कि हर संपर्क क्या देखता है।',
+    feat3_title: 'गोपनीयता पहले', feat3_desc: 'सब कुछ आपके ब्राउज़र में स्थानीय रूप से चलता है। आपकी छवियाँ कभी नहीं जातीं।',
+    pricing_title: 'सरल मूल्य निर्धारण', pricing_sub: 'मुफ़्त शुरू करें। जब तैयार हों अपग्रेड करें।',
+    free_label: 'मुफ़्त', free_sub: 'शुरू करें, कार्ड नहीं', free_forever: 'हमेशा के लिए',
+    pro_label: 'Pro', pro_sub: 'पावर उपयोगकर्ताओं के लिए', pro_mo: 'प्रति माह',
+    annual_label: 'वार्षिक', annual_sub: 'मासिक से बचत', annual_yr: 'प्रति वर्ष · ~£4.92/माह',
+    lifetime_label: 'आजीवन', lifetime_sub: 'एक बार भुगतान, हमेशा उपयोग', lifetime_once: 'एकमुश्त भुगतान',
+    badge_popular: 'लोकप्रिय', badge_value: 'सर्वोत्तम मूल्य',
+    feat_2contacts: '2 संपर्क तक', feat_preview: 'पूर्वावलोकन मोड', feat_p2p: 'P2P सिंक',
+    feat_chrome: 'Chrome और Edge', feat_unlimited: 'असीमित संपर्क',
+    feat_priority: 'प्राथमिकता सहायता', feat_future: 'सभी भविष्य की सुविधाएँ', feat_nofee: 'कोई आवर्ती शुल्क नहीं',
+    btn_add_chrome: 'Chrome में जोड़ें', btn_get_pro: 'Pro लें', btn_get_annual: 'वार्षिक लें', btn_get_lifetime: 'आजीवन लें',
+    viral_title: 'वह सुविधा जो WhatsApp ने कभी नहीं बनाई।',
+    viral_sub: 'मुफ़्त शुरू करें। Chrome और Edge में WhatsApp Web पर काम करता है।',
+    viral_cta: 'Chrome में जोड़ें — मुफ़्त', viral_note: 'मुफ़्त योजना में 2 संपर्क · क्रेडिट कार्ड की ज़रूरत नहीं',
+    faq_title: 'अक्सर पूछे जाने वाले सवाल', faq_sub: 'सवाल हैं? हमारे पास जवाब हैं।',
+    faq_1_q: 'क्या मेरे संपर्क को कुछ इंस्टॉल करना होगा?',
+    faq_1_a: 'हाँ — DualProfile पीयर-टू-पीयर काम करता है। जब आप फ़ोटो असाइन करते हैं और उनके पास DualProfile है, तो आपकी फ़ोटो अपने आप दिखती है।',
+    faq_2_q: 'क्या यह WhatsApp मोबाइल ऐप पर काम करता है?',
+    faq_2_a: 'नहीं — DualProfile केवल डेस्कटॉप पर Chrome या Edge में WhatsApp Web पर काम करता है।',
+    faq_3_q: 'पूर्वावलोकन मोड कैसे काम करता है?',
+    faq_3_a: 'पूर्वावलोकन मोड दिखाता है कि हर संपर्क आपका प्रोफ़ाइल देखने पर क्या देखता है।',
+    faq_4_q: 'क्या मेरा डेटा सुरक्षित है?',
+    faq_4_a: 'बिल्कुल। सभी फ़ोटो आपके डिवाइस पर स्थानीय रूप से संग्रहीत हैं।',
+    footer_rights: 'सर्वाधिकार सुरक्षित।',
+    modal_title: 'DualProfile इंस्टॉल करें',
+    modal_sub: 'मुफ़्त शुरू करें। 2 मिनट सेटअप। WhatsApp Web पर काम करता है।',
+    modal_btn: 'Chrome में जोड़ें — मुफ़्त',
+    modal_note: '🔒 मुफ़्त योजना में 2 संपर्क। क्रेडिट कार्ड की ज़रूरत नहीं।',
+    copied_msg: 'कॉपी किया!',
+    footer_note: 'कोई डेटा आपके डिवाइस से नहीं जाता।',
+    status_title: 'वर्तमान स्थिति',
+    status_1_title: 'पूर्वावलोकन मोड',
+    status_1_desc: 'देखें दूसरे आपको कैसे देखते हैं',
+    status_2_title: 'P2P सिंक',
+    status_2_desc: 'रीयल-टाइम प्रोफ़ाइल स्विचिंग',
+    status_3_title: 'समूह चैट',
+    status_3_desc: 'अभी समर्थित नहीं',
+    usd_approx: '≈',
+    demo_privacy: '🔒 完全在 WhatsApp Web 上运行。不存储任何聊天数据。',
+    demo_caption: '查看预览模式如何准确显示每个联系人看到的内容。',
+  },
+  zh: {
+    nav_features: '功能', nav_demo: '演示', nav_pricing: '定价', nav_faq: '常见问题',
+    nav_cta: '添加到 Chrome — 免费',
+    live_badge: '已上线 Chrome 网上应用店 · 免费安装',
+    hero_h1_1: '人们向 WhatsApp 请求这个功能', hero_h1_2: '已经多年了。',
+    hero_now: '现在它来了。',
+    hero_sub: '向不同联系人显示不同的个人资料照片 — 你的老板看到一张，朋友看到另一张。同一个号码。同一个 WhatsApp。',
+    hero_cta: '添加到 Chrome — 免费', hero_demo: '观看演示',
+    reddit_title: '答案总是"不行"。',
+    reddit_sub: '在 DualProfile 出现之前，唯一的解决方案是拥有第二个号码。现在不同了。',
+    reddit_1_q: '"有没有办法向不同的人显示不同的个人资料图片？"',
+    reddit_1_a: '最佳答案：不行。',
+    reddit_2_q: '"网页版和手机版显示不同的头像——可能吗？"',
+    reddit_2_a: '最佳答案：只有拥有两个电话号码才行。',
+    reddit_3_q: '"WhatsApp 应该支持多张个人资料照片。"',
+    reddit_3_a: '最佳答案：[已删除]',
+    until_now: '直到现在。',
+    how_title: '与对方一次设置好。自动运行。',
+    how_sub: '三个步骤，一劳永逸。',
+    step1_title: '安装 DualProfile 并上传你的照片。',
+    step1_sub: '一张用于工作，一张用于生活。',
+    step2_title: '为每个联系人分配对应的照片。',
+    step2_sub: '大约需要 2 分钟。',
+    step3_title: '对方也安装后，你的照片自动切换。',
+    step3_sub: '设置完成后无需额外操作。',
+    callout_text: 'DualProfile 需要双方都安装后才能生效。发送链接给对方 — 设置只需 3 分钟。',
+    callout_btn: '复制安装链接',
+    features_title: '一切你所需要的',
+    features_sub: '为希望掌控 WhatsApp 身份的隐私用户设计的简单而强大的功能。',
+    feat1_title: '双重上传', feat1_desc: '为不同联系人上传不同的照片。',
+    feat2_title: '实时预览', feat2_desc: '在切换之前准确查看每个联系人看到的内容。',
+    feat3_title: '隐私优先', feat3_desc: '所有内容在浏览器本地运行。您的图像永远不会离开设备。',
+    pricing_title: '简单定价', pricing_sub: '免费开始。随时升级。',
+    free_label: '免费', free_sub: '无需信用卡', free_forever: '永久',
+    pro_label: 'Pro', pro_sub: '高级用户', pro_mo: '每月',
+    annual_label: '年度', annual_sub: '比月付更省', annual_yr: '每年 · ~£4.92/月',
+    lifetime_label: '终身', lifetime_sub: '一次付款，永久使用', lifetime_once: '一次性付款',
+    badge_popular: '热门', badge_value: '最佳价值',
+    feat_2contacts: '最多 2 个联系人', feat_preview: '预览模式', feat_p2p: 'P2P 同步',
+    feat_chrome: 'Chrome 和 Edge', feat_unlimited: '无限联系人',
+    feat_priority: '优先支持', feat_future: '所有未来功能', feat_nofee: '无定期费用',
+    btn_add_chrome: '添加到 Chrome', btn_get_pro: '获取 Pro', btn_get_annual: '获取年度', btn_get_lifetime: '获取终身',
+    viral_title: 'WhatsApp 从未构建的功能。',
+    viral_sub: '免费开始。在 Chrome 和 Edge 的 WhatsApp Web 上运行。',
+    viral_cta: '添加到 Chrome — 免费', viral_note: '免费计划包含 2 个联系人 · 无需信用卡',
+    faq_title: '常见问题', faq_sub: '有疑问？我们有解答。',
+    faq_1_q: '我的联系人需要安装什么吗？',
+    faq_1_a: '是的 — DualProfile 采用点对点方式运行。当您为联系人分配照片且对方安装了 DualProfile 后，您的照片会自动出现在对方屏幕上。',
+    faq_2_q: '这在 WhatsApp 手机应用上有效吗？',
+    faq_2_a: '不 — DualProfile 仅在桌面版 Chrome 或 Edge 的 WhatsApp Web 上运行。',
+    faq_3_q: '预览模式如何工作？',
+    faq_3_a: '预览模式准确显示每个联系人查看您个人资料时看到的内容。',
+    faq_4_q: '我的数据安全吗？',
+    faq_4_a: '绝对安全。所有照片都存储在您的本地设备上。',
+    footer_rights: '保留所有权利。',
+    modal_title: '安装 DualProfile',
+    modal_sub: '免费开始。2 分钟设置。在 WhatsApp Web 上运行。',
+    modal_btn: '添加到 Chrome — 免费',
+    modal_note: '🔒 免费计划包含 2 个联系人。无需信用卡。',
+    copied_msg: '已复制！',
+    footer_note: '数据不离开您的设备。',
+    status_title: '当前状态',
+    status_1_title: '预览模式',
+    status_1_desc: '查看他人如何看到您的资料',
+    status_2_title: 'P2P同步',
+    status_2_desc: '实时个人资料切换已上线',
+    status_3_title: '群聊',
+    status_3_desc: '暂不支持',
+    usd_approx: '≈',
+    demo_privacy: '🔒 これは完全にWhatsApp Webで動作します。チャットデータは保存されません。',
+    demo_caption: 'プレビューモードが各連絡先に見える内容を正確に表示する様子をご覧ください。',
+  },
+  ja: {
+    nav_features: '機能', nav_demo: 'デモ', nav_pricing: '料金', nav_faq: 'よくある質問',
+    nav_cta: 'Chromeに追加 — 無料',
+    live_badge: 'Chrome ウェブストアで公開中 · 無料インストール',
+    hero_h1_1: '人々はずっと', hero_h1_2: 'WhatsAppにこれを求めてきました。',
+    hero_now: '今、それが存在します。',
+    hero_sub: '異なる連絡先に異なるプロフィール写真を表示 — 上司には一枚、友達には別の一枚。同じ番号。同じWhatsApp。',
+    hero_cta: 'Chromeに追加 — 無料', hero_demo: 'デモを見る',
+    reddit_title: '答えはいつも「できない」でした。',
+    reddit_sub: 'DualProfile以前、唯一の解決策は2つ目の番号を持つことでした。もうそれは不要です。',
+    reddit_1_q: '"異なる人に異なるプロフィール写真を表示する方法はありますか？"',
+    reddit_1_a: 'ベストアンサー：できません。',
+    reddit_2_q: '"ウェブとアプリで異なるプロフィール写真 — 可能ですか？"',
+    reddit_2_a: 'ベストアンサー：2つの電話番号があれば。',
+    reddit_3_q: '"WhatsAppは複数のプロフィール写真をサポートすべきです。"',
+    reddit_3_a: 'ベストアンサー：[削除済み]',
+    until_now: '今まではそうでした。',
+    how_title: '一度設定すれば、自動で動作します。',
+    how_sub: '3ステップで完了 — ずっと使えます。',
+    step1_title: 'DualProfileをインストールし、写真をアップロードします。',
+    step1_sub: '仕事用に一枚。プライベート用に一枚。',
+    step2_title: '各連絡先にどの写真を見せるか割り当てます。',
+    step2_sub: '約2分で完了します。',
+    step3_title: '相手もインストールすれば、写真が自動で切り替わります。',
+    step3_sub: '設定後は追加の手順不要。',
+    callout_text: 'DualProfileは両方がインストールしているときに機能します。リンクを送って — セットアップは3分です。',
+    callout_btn: 'インストールリンクをコピー',
+    features_title: '必要なすべてが揃っています',
+    features_sub: 'WhatsAppのアイデンティティをコントロールしたいプライバシー意識の高いユーザー向けの機能。',
+    feat1_title: 'デュアルアップロード', feat1_desc: '異なる連絡先に異なる写真をアップロードできます。',
+    feat2_title: 'ライブプレビュー', feat2_desc: '切り替える前に各連絡先が見る内容を正確に確認できます。',
+    feat3_title: 'プライバシー優先', feat3_desc: 'すべてブラウザ内でローカルに実行されます。画像がデバイスを離れることはありません。',
+    pricing_title: 'シンプルな料金', pricing_sub: '無料で始めましょう。準備ができたらアップグレード。',
+    free_label: '無料', free_sub: 'カード不要で開始', free_forever: '永久',
+    pro_label: 'Pro', pro_sub: 'パワーユーザー向け', pro_mo: '月額',
+    annual_label: '年間', annual_sub: '月払いよりお得', annual_yr: '年額 · ~£4.92/月',
+    lifetime_label: '生涯', lifetime_sub: '一度払ってずっと使える', lifetime_once: '一括払い',
+    badge_popular: '人気', badge_value: '最もお得',
+    feat_2contacts: '最大2連絡先', feat_preview: 'プレビューモード', feat_p2p: 'P2P同期',
+    feat_chrome: 'ChromeとEdge', feat_unlimited: '無制限の連絡先',
+    feat_priority: '優先サポート', feat_future: '将来の全機能', feat_nofee: '継続課金なし',
+    btn_add_chrome: 'Chromeに追加', btn_get_pro: 'Proを取得', btn_get_annual: '年間を取得', btn_get_lifetime: '生涯を取得',
+    viral_title: 'WhatsAppが作らなかった機能。',
+    viral_sub: '無料で始められます。ChromeとEdgeのWhatsApp Webで動作します。',
+    viral_cta: 'Chromeに追加 — 無料', viral_note: '無料プランには2連絡先が含まれます · クレジットカード不要',
+    faq_title: 'よくある質問', faq_sub: '質問がありますか？答えがあります。',
+    faq_1_q: '連絡先も何かインストールする必要がありますか？',
+    faq_1_a: 'はい — DualProfileはピアツーピアで動作します。写真を割り当てた連絡先がDualProfileをインストールすると、あなたの写真が自動的に表示されます。',
+    faq_2_q: 'WhatsAppモバイルアプリで動作しますか？',
+    faq_2_a: 'いいえ — DualProfileはデスクトップのChromeまたはEdgeのWhatsApp Webでのみ動作します。',
+    faq_3_q: 'プレビューモードはどのように機能しますか？',
+    faq_3_a: 'プレビューモードは、各連絡先があなたのプロフィールを見たときに表示される内容を正確に示します。',
+    faq_4_q: 'データは安全ですか？',
+    faq_4_a: 'もちろんです。すべての写真はデバイスにローカルで保存されます。',
+    footer_rights: '全著作権所有。',
+    modal_title: 'DualProfileをインストール',
+    modal_sub: '無料で始められます。2分でセットアップ。WhatsApp Webで動作します。',
+    modal_btn: 'Chromeに追加 — 無料',
+    modal_note: '🔒 無料プランには2連絡先が含まれます。クレジットカード不要。',
+    copied_msg: 'コピーしました！',
+    footer_note: 'データはデバイスを離れません。',
+    status_title: '現在のステータス',
+    status_1_title: 'プレビューモード',
+    status_1_desc: '他のユーザーからどう見えるか確認',
+    status_2_title: 'P2P同期',
+    status_2_desc: 'リアルタイムプロフィール切り替え',
+    status_3_title: 'グループチャット',
+    status_3_desc: 'まだサポートされていません',
+    usd_approx: '≈',
+    demo_privacy: '🔒 Работает полностью в WhatsApp Web. Данные чатов не хранятся.',
+    demo_caption: 'Посмотрите, как режим предпросмотра показывает именно то, что видит каждый контакт.',
+  },
+  ru: {
+    nav_features: 'Функции', nav_demo: 'Демо', nav_pricing: 'Цены', nav_faq: 'FAQ',
+    nav_cta: 'Добавить в Chrome — Бесплатно',
+    live_badge: 'В Chrome Web Store · Бесплатная установка',
+    hero_h1_1: 'Люди годами просили', hero_h1_2: 'WhatsApp об этом.',
+    hero_now: 'Теперь это существует.',
+    hero_sub: 'Показывайте разным контактам разные фото профиля — начальник видит одно, друзья — другое. Тот же номер. Тот же WhatsApp.',
+    hero_cta: 'Добавить в Chrome — Бесплатно', hero_demo: 'Смотреть демо',
+    reddit_title: 'Ответ всегда был «нет».',
+    reddit_sub: 'До DualProfile единственным решением было получить второй номер. Теперь нет.',
+    reddit_1_q: '"Есть ли способ показывать разным людям разные фото профиля?"',
+    reddit_1_a: 'Лучший ответ: Нет.',
+    reddit_2_q: '"Разное фото профиля в веб-версии и приложении — возможно ли это?"',
+    reddit_2_a: 'Лучший ответ: Только если у вас два номера телефона.',
+    reddit_3_q: '"WhatsApp должен поддерживать несколько фото профиля."',
+    reddit_3_a: 'Лучший ответ: [удалено]',
+    until_now: 'До сегодняшнего дня.',
+    how_title: 'Настройте один раз. Работает автоматически.',
+    how_sub: 'Три шага — и готово навсегда.',
+    step1_title: 'Установите DualProfile и загрузите свои фото.',
+    step1_sub: 'Одно для работы. Одно для жизни.',
+    step2_title: 'Назначьте, какое фото видит каждый контакт.',
+    step2_sub: 'Занимает около 2 минут.',
+    step3_title: 'Они тоже устанавливают — ваше фото меняется автоматически.',
+    step3_sub: 'После настройки дополнительных шагов не нужно.',
+    callout_text: 'DualProfile работает, когда оба установили расширение. Отправьте ссылку — настройка займёт 3 минуты.',
+    callout_btn: 'Скопировать ссылку для установки',
+    features_title: 'Всё что нужно',
+    features_sub: 'Простые и мощные функции для пользователей, которые хотят контролировать свою идентичность в WhatsApp.',
+    feat1_title: 'Двойная загрузка', feat1_desc: 'Загружайте разные фото для разных контактов.',
+    feat2_title: 'Предпросмотр в реальном времени', feat2_desc: 'Смотрите, что видит каждый контакт, до переключения.',
+    feat3_title: 'Приватность прежде всего', feat3_desc: 'Всё работает локально в браузере. Ваши изображения никогда не покидают устройство.',
+    pricing_title: 'Простые цены', pricing_sub: 'Начните бесплатно. Обновитесь когда будете готовы.',
+    free_label: 'Бесплатно', free_sub: 'Начните без карты', free_forever: 'навсегда',
+    pro_label: 'Pro', pro_sub: 'Для продвинутых пользователей', pro_mo: 'в месяц',
+    annual_label: 'Годовой', annual_sub: 'Экономия по сравнению с ежемесячным', annual_yr: 'в год · ~£4,92/мес',
+    lifetime_label: 'Пожизненный', lifetime_sub: 'Платите один раз, пользуйтесь всегда', lifetime_once: 'единовременный платёж',
+    badge_popular: 'ПОПУЛЯРНЫЙ', badge_value: 'ЛУЧШАЯ ЦЕНА',
+    feat_2contacts: 'До 2 контактов', feat_preview: 'Режим предпросмотра', feat_p2p: 'P2P-синхронизация',
+    feat_chrome: 'Chrome и Edge', feat_unlimited: 'Неограниченные контакты',
+    feat_priority: 'Приоритетная поддержка', feat_future: 'Все будущие функции', feat_nofee: 'Без регулярных платежей',
+    btn_add_chrome: 'Добавить в Chrome', btn_get_pro: 'Получить Pro', btn_get_annual: 'Получить Годовой', btn_get_lifetime: 'Получить Пожизненный',
+    viral_title: 'Функция, которую WhatsApp так и не создал.',
+    viral_sub: 'Бесплатно для начала. Работает в WhatsApp Web в Chrome и Edge.',
+    viral_cta: 'Добавить в Chrome — Бесплатно', viral_note: 'Бесплатный план включает 2 контакта · Без кредитной карты',
+    faq_title: 'Часто задаваемые вопросы', faq_sub: 'Есть вопросы? У нас есть ответы.',
+    faq_1_q: 'Нужно ли моему контакту что-то устанавливать?',
+    faq_1_a: 'Да — DualProfile работает по принципу P2P. Когда вы назначаете фото контакту и у него установлен DualProfile, ваше фото появляется на его экране автоматически.',
+    faq_2_q: 'Работает ли это в мобильном приложении WhatsApp?',
+    faq_2_a: 'Нет — DualProfile работает только в WhatsApp Web в Chrome или Edge на компьютере.',
+    faq_3_q: 'Как работает режим предпросмотра?',
+    faq_3_a: 'Режим предпросмотра показывает, что именно видит каждый контакт при просмотре вашего профиля.',
+    faq_4_q: 'Мои данные в безопасности?',
+    faq_4_a: 'Абсолютно. Все фото хранятся локально на вашем устройстве.',
+    footer_rights: 'Все права защищены.',
+    modal_title: 'Установить DualProfile',
+    modal_sub: 'Бесплатно для начала. 2 минуты настройки. Работает в WhatsApp Web.',
+    modal_btn: 'Добавить в Chrome — Бесплатно',
+    modal_note: '🔒 Бесплатный план включает 2 контакта. Без кредитной карты.',
+    footer_note: 'Данные не покидают ваше устройство.',
+    copied_msg: 'Скопировано!',
+    status_title: 'Текущий статус',
+    status_1_title: 'Режим предпросмотра',
+    status_1_desc: 'Смотрите, как вас видят другие',
+    status_2_title: 'P2P-синхронизация',
+    status_2_desc: 'Переключение профиля в реальном времени',
+    status_3_title: 'Групповые чаты',
+    status_3_desc: 'Пока не поддерживается',
+    usd_approx: '≈',
+  },
+};
+
+const LANG_OPTIONS = [
+  { code: 'en', flag: '🇬🇧', label: 'EN' },
+  { code: 'es', flag: '🇪🇸', label: 'ES' },
+  { code: 'fr', flag: '🇫🇷', label: 'FR' },
+  { code: 'pt', flag: '🇧🇷', label: 'PT' },
+  { code: 'de', flag: '🇩🇪', label: 'DE' },
+  { code: 'hi', flag: '🇮🇳', label: 'HI' },
+  { code: 'zh', flag: '🇨🇳', label: 'ZH' },
+  { code: 'ja', flag: '🇯🇵', label: 'JA' },
+  { code: 'ru', flag: '🇷🇺', label: 'RU' },
+];
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function Home() {
   const [email, setEmail] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState({ show: false, title: '', message: '' });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [lang, setLang] = useState('en');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('dp_site_lang') || navigator.language?.slice(0,2) || 'en';
+    const valid = Object.keys(LANGS);
+    setLang(valid.includes(saved) ? saved : 'en');
+  }, []);
+
+  const t = (key: string) => (LANGS[lang] && LANGS[lang][key]) || LANGS['en'][key] || key;
+
+  const changeLang = (code: string) => {
+    setLang(code);
+    localStorage.setItem('dp_site_lang', code);
+  };
 
   const showToast = (title: string, message: string) => {
     setToast({ show: true, title, message });
@@ -48,22 +725,10 @@ export default function Home() {
   }, []);
 
   const faqs = [
-    {
-      question: "Does my contact need to install anything?",
-      answer: "Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your photo appears on their screen automatically. Share the install link with them and setup takes about 3 minutes."
-    },
-    {
-      question: "Does this work on the WhatsApp mobile app?",
-      answer: "No — DualProfile works on WhatsApp Web (web.whatsapp.com) in Chrome or Edge on desktop only. The mobile app is not supported."
-    },
-    {
-      question: "How does Preview Mode work?",
-      answer: "Preview Mode shows you exactly what each contact sees when they view your profile. It's a local simulation that demonstrates how your different photos will appear to specific contacts."
-    },
-    {
-      question: "Is my data secure?",
-      answer: "Absolutely. All photos and data are stored locally on your device. Nothing is uploaded to our servers or shared with third parties."
-    }
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') },
+    { question: t('faq_4_q'), answer: t('faq_4_a') },
   ];
 
   return (
@@ -136,14 +801,31 @@ export default function Home() {
               <span>DualProfile</span>
             </div>
             <div className="nav-links">
-              <a href="#features">Features</a>
-              <a href="#demo">Demo</a>
-              <a href="#pricing">Pricing</a>
-              <a href="#faq">FAQ</a>
+              <a href="#features">{t('nav_features')}</a>
+              <a href="#demo">{t('nav_demo')}</a>
+              <a href="#pricing">{t('nav_pricing')}</a>
+              <a href="#faq">{t('nav_faq')}</a>
             </div>
-            <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
-              Add to Chrome — It's Free
-            </a>
+            <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
+              <div style={{display:'flex',gap:'3px',flexWrap:'wrap' as const}}>
+                {LANG_OPTIONS.map(l => (
+                  <button key={l.code} onClick={() => changeLang(l.code)} style={{
+                    background: lang === l.code ? 'rgba(37,211,102,0.15)' : 'rgba(255,255,255,0.04)',
+                    border: lang === l.code ? '1px solid rgba(37,211,102,0.4)' : '1px solid rgba(255,255,255,0.08)',
+                    color: lang === l.code ? '#25D366' : '#6b7280',
+                    borderRadius: '20px', padding: '3px 7px', cursor: 'pointer',
+                    fontSize: '10px', fontWeight: '700', fontFamily: 'inherit',
+                    display: 'flex', alignItems: 'center', gap: '3px',
+                    transition: 'all 0.15s ease'
+                  }}>
+                    <span>{l.flag}</span><span>{l.label}</span>
+                  </button>
+                ))}
+              </div>
+              <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
+                {t('nav_cta')}
+              </a>
+            </div>
           </div>
         </nav>
 
@@ -166,7 +848,7 @@ export default function Home() {
               letterSpacing: '0.2px'
             }}>
               <span style={{width:'8px',height:'8px',borderRadius:'50%',background:'#25D366',display:'inline-block',boxShadow:'0 0 6px #25D366'}}></span>
-              Live on Chrome Web Store · Free to install
+              {t('live_badge')}
             </div>
             
             {/* Main Headline */}
@@ -176,9 +858,9 @@ export default function Home() {
               lineHeight: '1.1',
               marginBottom: '16px'
             }}>
-              People have been asking<br />WhatsApp for years.<br />
+              {t('hero_h1_1')}<br />{t('hero_h1_2')}<br />
               <span style={{fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: '600', color: '#25D366'}}>
-                Now it exists.
+                {t('hero_now')}
               </span>
             </h1>
             
@@ -188,7 +870,7 @@ export default function Home() {
               marginBottom: '32px',
               opacity: '0.9'
             }}>
-              Show different profile photos to different contacts — your boss sees one, your friends see another. Same number. Same WhatsApp.
+              {t('hero_sub')}
             </p>
             
             {/* CTA Buttons */}
@@ -203,7 +885,7 @@ export default function Home() {
                   marginRight: '16px'
                 }}
               >
-                Add to Chrome — It's Free
+                {t('hero_cta')}
               </button>
               <button 
                 className="btn btn-outline btn-lg"
@@ -214,7 +896,7 @@ export default function Home() {
                   minWidth: '200px'
                 }}
               >
-                Watch Demo
+                {t('hero_demo')}
               </button>
             </div>
           </div>
@@ -250,7 +932,7 @@ export default function Home() {
               textAlign: 'center',
               fontSize: '14px'
             }}>
-              🔒 This works entirely on WhatsApp Web. No chat data is stored.
+              {t('demo_privacy')}
             </div>
             <p className="demo-caption" style={{
               marginTop: '12px',
@@ -258,7 +940,7 @@ export default function Home() {
               opacity: '0.8',
               textAlign: 'center'
             }}>
-              Watch how Preview Mode shows exactly what each contact sees.
+              {t('demo_caption')}
             </p>
           </div>
         </section>
@@ -280,18 +962,14 @@ export default function Home() {
                 lineHeight: '1.1',
                 color: 'var(--foreground, #ffffff)'
               }}>
-                "Your boss sees professional you.<br />
-                Your friends see the real you."
+                {t('viral_title')}
               </h2>
               <div className="viral-subheadline" style={{
-                fontSize: 'clamp(24px, 4vw, 36px)',
-                fontWeight: '600',
-                color: '#25D366',
+                fontSize: 'clamp(18px, 3vw, 24px)',
+                color: '#9ca3af',
                 marginBottom: '32px',
-                fontStyle: 'italic'
               }}>
-                Same WhatsApp.<br />
-                Different realities.
+                {t('viral_sub')}
               </div>
               <button 
                 className="btn btn-primary"
@@ -310,8 +988,9 @@ export default function Home() {
                   boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
                 }}
               >
-                Add to Chrome — It's Free
+                {t('viral_cta')}
               </button>
+              <p style={{marginTop:'12px',fontSize:'14px',color:'#6b7280'}}>{t('viral_note')}</p>
             </div>
           </div>
         </section>
@@ -320,10 +999,8 @@ export default function Home() {
         <section className="social-proof-section">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">The answer was always "no."</h2>
-              <p className="section-subtitle">
-                Before DualProfile, the only solution was to get a second phone number. Not anymore.
-              </p>
+              <h2 className="section-title">{t('reddit_title')}</h2>
+              <p className="section-subtitle">{t('reddit_sub')}</p>
             </div>
             <div className="reddit-posts-grid">
               <div className="reddit-post glass-card">
@@ -335,12 +1012,10 @@ export default function Home() {
                   <div className="post-stats">6 upvotes · 7 comments</div>
                 </div>
                 <div className="post-content">
-                  <h4>"Is there a way to display different profile pictures to different people?"</h4>
-                  <p>"Can I have group A view picture A while group B sees picture B simultaneously?"</p>
-                  <div className="reddit-answer">Top answer: Nope.</div>
+                  <h4>{t('reddit_1_q')}</h4>
+                  <div className="reddit-answer">{t('reddit_1_a')}</div>
                 </div>
               </div>
-
               <div className="reddit-post glass-card">
                 <div className="post-header">
                   <div className="post-meta">
@@ -350,11 +1025,10 @@ export default function Home() {
                   <div className="post-stats">7 upvotes · 3 comments</div>
                 </div>
                 <div className="post-content">
-                  <h4>"Different profile picture between web and app — is it possible?"</h4>
-                  <div className="reddit-answer">Top answer: Only if you have two phone numbers.</div>
+                  <h4>{t('reddit_2_q')}</h4>
+                  <div className="reddit-answer">{t('reddit_2_a')}</div>
                 </div>
               </div>
-
               <div className="reddit-post glass-card">
                 <div className="post-header">
                   <div className="post-meta">
@@ -364,31 +1038,16 @@ export default function Home() {
                   <div className="post-stats">9 upvotes · 3 comments</div>
                 </div>
                 <div className="post-content">
-                  <h4>"WhatsApp should start multiple profile photo"</h4>
-                  <p>"My close circle should see one photo, other contacts see another."</p>
-                  <div className="reddit-answer">Top answer: [deleted]</div>
+                  <h4>{t('reddit_3_q')}</h4>
+                  <div className="reddit-answer">{t('reddit_3_a')}</div>
                 </div>
               </div>
             </div>
-            <div style={{
-              textAlign: 'center',
-              marginTop: '48px',
-              paddingTop: '32px',
-              borderTop: '1px solid rgba(37,211,102,0.2)'
-            }}>
-              <span style={{
-                fontSize: 'clamp(24px, 4vw, 36px)',
-                fontWeight: '800',
-                color: '#25D366',
-                letterSpacing: '-0.5px'
-              }}>Until now.</span>
+            <div style={{textAlign: 'center', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(37,211,102,0.2)'}}>
+              <span style={{fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: '800', color: '#25D366', letterSpacing: '-0.5px'}}>{t('until_now')}</span>
               <div style={{marginTop: '24px'}}>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                  style={{fontSize: '18px', padding: '14px 32px'}}
-                >
-                  Add to Chrome — It's Free
+                <button className="btn btn-primary" onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')} style={{fontSize: '18px', padding: '14px 32px'}}>
+                  {t('hero_cta')}
                 </button>
               </div>
             </div>
@@ -399,65 +1058,33 @@ export default function Home() {
         <section id="how-it-works" className="how-it-works">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Set up once with someone. Works automatically.</h2>
-              <p className="section-subtitle">
-                Three steps and you're done — forever.
-              </p>
+              <h2 className="section-title">{t('how_title')}</h2>
+              <p className="section-subtitle">{t('how_sub')}</p>
             </div>
             <div className="steps-grid">
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">1</div>
-                <h3 className="step-title">You install DualProfile and upload your photos.</h3>
-                <p className="step-description">One for work. One for life.</p>
+                <h3 className="step-title">{t('step1_title')}</h3>
+                <p className="step-description">{t('step1_sub')}</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">2</div>
-                <h3 className="step-title">You assign which photo each contact sees.</h3>
-                <p className="step-description">Takes about 2 minutes.</p>
+                <h3 className="step-title">{t('step2_title')}</h3>
+                <p className="step-description">{t('step2_sub')}</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">3</div>
-                <h3 className="step-title">They install too — your photo switches automatically.</h3>
-                <p className="step-description">No extra steps once they're set up.</p>
+                <h3 className="step-title">{t('step3_title')}</h3>
+                <p className="step-description">{t('step3_sub')}</p>
               </div>
             </div>
-            <div style={{
-              marginTop: '48px',
-              background: 'rgba(37,211,102,0.07)',
-              border: '1px solid rgba(37,211,102,0.25)',
-              borderRadius: '16px',
-              padding: '28px 32px',
-              display: 'flex',
-              flexWrap: 'wrap' as const,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '16px'
-            }}>
+            <div style={{marginTop: '48px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
               <p style={{margin: 0, color: '#d1d5db', fontSize: '1rem', lineHeight: '1.6', flex: '1 1 300px'}}>
-                <strong style={{color: '#ffffff'}}>DualProfile works when both people have it installed.</strong><br/>
-                Send someone the link — setup takes 3 minutes.
+                {t('callout_text')}
               </p>
-              <button
-                style={{
-                  background: 'transparent',
-                  border: '1px solid rgba(37,211,102,0.5)',
-                  color: '#25D366',
-                  padding: '10px 24px',
-                  borderRadius: '8px',
-                  fontSize: '0.95rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap' as const,
-                  transition: 'all 0.2s ease',
-                  flexShrink: 0
-                }}
-                onClick={() => {
-                  navigator.clipboard.writeText('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc');
-                  const btn = document.activeElement as HTMLButtonElement;
-                  if (btn) { btn.textContent = 'Copied!'; setTimeout(() => { btn.textContent = 'Copy install link'; }, 2500); }
-                }}
-              >
-                Copy install link
+              <button style={{background: 'transparent', border: '1px solid rgba(37,211,102,0.5)', color: '#25D366', padding: '10px 24px', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap' as const, transition: 'all 0.2s ease', flexShrink: 0}}
+                onClick={() => { navigator.clipboard.writeText('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc'); const btn = document.activeElement as HTMLButtonElement; if (btn) { btn.textContent = t('copied_msg') || 'Copied!'; setTimeout(() => { btn.textContent = t('callout_btn'); }, 2500); } }}>
+                {t('callout_btn')}
               </button>
             </div>
           </div>
@@ -467,27 +1094,27 @@ export default function Home() {
         <section className="current-status">
           <div className="container">
             <div className="status-card glass-card">
-              <h2 className="status-title">Current Status</h2>
+              <h2 className="status-title">{t('status_title')}</h2>
               <div className="status-grid">
                 <div className="status-item">
                   <div className="status-icon available">✓</div>
                   <div className="status-text">
-                    <strong>Preview Mode</strong>
-                    <p>See how others would see your profile</p>
+                    <strong>{t('status_1_title')}</strong>
+                    <p>{t('status_1_desc')}</p>
                   </div>
                 </div>
                 <div className="status-item">
                   <div className="status-icon available">✓</div>
                   <div className="status-text">
-                    <strong>P2P Sync</strong>
-                    <p>Real-time profile switching now live</p>
+                    <strong>{t('status_2_title')}</strong>
+                    <p>{t('status_2_desc')}</p>
                   </div>
                 </div>
                 <div className="status-item">
                   <div className="status-icon not-available">—</div>
                   <div className="status-text">
-                    <strong>Group Chats</strong>
-                    <p>Not supported yet</p>
+                    <strong>{t('status_3_title')}</strong>
+                    <p>{t('status_3_desc')}</p>
                   </div>
                 </div>
               </div>
@@ -499,9 +1126,9 @@ export default function Home() {
         <section id="features" className="features">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Everything You Need</h2>
+              <h2 className="section-title">{t('features_title')}</h2>
               <p className="section-subtitle">
-                Simple, powerful features designed for privacy-conscious users who want control over their WhatsApp identity.
+                {t('features_sub')}
               </p>
             </div>
             <div className="features-grid">
@@ -513,10 +1140,8 @@ export default function Home() {
                     <polyline points="21 15 16 10 5 21"></polyline>
                   </svg>
                 </div>
-                <h3 className="feature-title">Dual Uploads</h3>
-                <p className="feature-description">
-                  Upload different profile photos for different contacts. Your work colleagues see one image, your friends see another.
-                </p>
+                <h3 className="feature-title">{t('feat1_title')}</h3>
+                <p className="feature-description">{t('feat1_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll">
                 <div className="feature-icon">
@@ -525,9 +1150,9 @@ export default function Home() {
                     <circle cx="12" cy="12" r="3"></circle>
                   </svg>
                 </div>
-                <h3 className="feature-title">Live Test Preview</h3>
+                <h3 className="feature-title">{t('feat2_title')}</h3>
                 <p className="feature-description">
-                  See exactly what each contact sees before you switch. No more guessing—preview your identity changes in real-time.
+                  {t('feat2_desc')}
                 </p>
               </div>
               <div className="feature-card glass-card animate-on-scroll">
@@ -536,10 +1161,8 @@ export default function Home() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                   </svg>
                 </div>
-                <h3 className="feature-title">Privacy First</h3>
-                <p className="feature-description">
-                  All logic runs locally in your browser. Your images and data never leave your device. Zero cloud storage.
-                </p>
+                <h3 className="feature-title">{t('feat3_title')}</h3>
+                <p className="feature-description">{t('feat3_desc')}</p>
               </div>
             </div>
           </div>
@@ -549,8 +1172,8 @@ export default function Home() {
         <section id="pricing" className="features" style={{paddingTop: '2rem'}}>
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Simple Pricing</h2>
-              <p className="section-subtitle">Start free. Upgrade when you're ready.</p>
+              <h2 className="section-title">{t('pricing_title')}</h2>
+              <p className="section-subtitle">{t('pricing_sub')}</p>
             </div>
             <div style={{
               display: 'grid',
@@ -561,12 +1184,12 @@ export default function Home() {
             }}>
               {/* Free */}
               <div className="glass-card" style={{padding: '2rem', textAlign: 'center'}}>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Free</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Get started, no card needed</p>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('free_sub')}</p>
                 <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>forever</p>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('free_forever')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
-                  {['Up to 2 contacts', 'Preview mode', 'P2P photo sync', 'Chrome & Edge support'].map(f => (
+                  {[t('feat_2contacts'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -574,7 +1197,7 @@ export default function Home() {
                 </ul>
                 <button className="btn btn-outline" style={{width: '100%'}}
                   onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
-                  Add to Chrome
+                  {t('btn_add_chrome')}
                 </button>
               </div>
 
@@ -588,14 +1211,14 @@ export default function Home() {
                   background: '#25D366', color: '#000',
                   fontSize: '0.75rem', fontWeight: '700',
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
-                }}>POPULAR</div>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Pro</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>For power users</p>
+                }}>{ t('badge_popular')}</div>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
                 <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $12.50 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per month</p>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('pro_mo')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
-                  {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
+                  {[t('feat_unlimited'), t('feat_preview'), t('feat_p2p'), t('feat_priority'), t('feat_future')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -603,7 +1226,7 @@ export default function Home() {
                 </ul>
                 <button className="btn btn-primary" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c', '_blank')}>
-                  Get Pro
+                  {t('btn_get_pro')}
                 </button>
               </div>
 
@@ -617,14 +1240,14 @@ export default function Home() {
                   background: 'rgba(37,211,102,0.15)', color: '#25D366',
                   fontSize: '0.75rem', fontWeight: '700',
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
-                }}>BEST VALUE</div>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Annual</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Save vs monthly</p>
+                }}>{ t('badge_value')}</div>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('annual_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('annual_sub')}</p>
                 <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£59</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $74 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>per year · ~£4.92/mo</p>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('annual_yr')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
-                  {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features'].map(f => (
+                  {[t('feat_unlimited'), t('feat_preview'), t('feat_p2p'), t('feat_priority'), t('feat_future')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -632,19 +1255,19 @@ export default function Home() {
                 </ul>
                 <button className="btn btn-outline" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/eedf7e9a-3865-4dd5-934f-a81f0d9a2202', '_blank')}>
-                  Get Annual
+                  {t('btn_get_annual')}
                 </button>
               </div>
 
               {/* Lifetime */}
               <div className="glass-card" style={{padding: '2rem', textAlign: 'center'}}>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>Lifetime</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>Pay once, own it forever</p>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('lifetime_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('lifetime_sub')}</p>
                 <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£79</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.25rem'}}>≈ $99 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>one-time</p>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('lifetime_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left'}}>
-                  {['Unlimited contacts', 'Preview mode', 'P2P photo sync', 'Priority support', 'All future features', 'No recurring fees'].map(f => (
+                  {[t('feat_unlimited'), t('feat_preview'), t('feat_p2p'), t('feat_priority'), t('feat_future'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -652,7 +1275,7 @@ export default function Home() {
                 </ul>
                 <button className="btn btn-outline" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}>
-                  Get Lifetime
+                  {t('btn_get_lifetime')}
                 </button>
               </div>
             </div>
@@ -663,9 +1286,9 @@ export default function Home() {
         <section id="early-access" className="early-access">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">The feature WhatsApp never built.</h2>
+              <h2 className="section-title">{t('viral_title')}</h2>
               <p className="section-subtitle">
-                Free to start. Works on WhatsApp Web in Chrome and Edge.
+                {t('viral_sub')}
               </p>
             </div>
             <div className="early-access-card glass-card">
@@ -673,10 +1296,10 @@ export default function Home() {
                 className="btn btn-primary btn-lg"
                 onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
               >
-                Add to Chrome — It's Free
+                {t('viral_cta')}
               </button>
               <p style={{marginTop: '12px', fontSize: '14px', color: '#9ca3af'}}>
-                Free plan includes 2 contacts · No credit card needed
+                {t('viral_note')}
               </p>
             </div>
           </div>
@@ -685,8 +1308,8 @@ export default function Home() {
         <section id="faq" className="faq">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">Frequently Asked Questions</h2>
-              <p className="section-subtitle">Got questions? We've got answers.</p>
+              <h2 className="section-title">{t('faq_title')}</h2>
+              <p className="section-subtitle">{t('faq_sub')}</p>
             </div>
             <div className="faq-list">
               {faqs.map((faq, index) => (
@@ -716,18 +1339,12 @@ export default function Home() {
         <footer className="footer">
           <div className="container">
             <div className="footer-content">
-              <p>© 2026 DualProfile. All rights reserved.</p>
+              <p>© 2026 DualProfile. {t('footer_rights')}</p>
               <div className="footer-links">
-                <a href="/privacy" className="footer-link">
-                  Privacy Policy
-                </a>
-                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">
-                  Support
-                </a>
+                <a href="/privacy" className="footer-link">Privacy Policy</a>
+                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Support</a>
               </div>
-              <p className="footer-note">
-                No data leaves your device — all control is local.
-              </p>
+              <p className="footer-note">{t('footer_note')}</p>
             </div>
           </div>
         </footer>
@@ -742,10 +1359,8 @@ export default function Home() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <h2 className="modal-title">Install DualProfile</h2>
-            <p className="modal-subtitle">
-              Free to start. Takes 2 minutes to set up. Works on WhatsApp Web in Chrome and Edge.
-            </p>
+            <h2 className="modal-title">{t('modal_title')}</h2>
+            <p className="modal-subtitle">{t('modal_sub')}</p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
@@ -754,11 +1369,9 @@ export default function Home() {
                 showToast("Opening Chrome Web Store...", "Add DualProfile to Chrome to get started.");
               }}
             >
-              Add to Chrome — It's Free
+              {t('modal_btn')}
             </button>
-            <p className="modal-privacy">
-              🔒 Free plan includes 2 contacts. No credit card needed.
-            </p>
+            <p className="modal-privacy">{t('modal_note')}</p>
           </div>
         </div>
 
