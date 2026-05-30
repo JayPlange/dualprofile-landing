@@ -672,6 +672,11 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [lang, setLang] = useState('en');
 
+  const showToast = (title: string, message: string) => {
+    setToast({ show: true, title, message });
+    setTimeout(() => setToast({ show: false, title: '', message: '' }), 4000);
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem('dp_site_lang') || navigator.language?.slice(0,2) || 'en';
     const valid = Object.keys(LANGS);
@@ -685,12 +690,7 @@ export default function Home() {
     localStorage.setItem('dp_site_lang', code);
   };
 
-  const showToast = (title: string, message: string) => {
-    setToast({ show: true, title, message });
-    setTimeout(() => setToast({ show: false, title: '', message: '' }), 4000);
-  };
-
-    const toggleFaq = (index: number) => {
+  const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
@@ -2089,6 +2089,43 @@ export default function Home() {
         }
 
         /* Navbar */
+        .lang-switcher {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          align-items: center;
+          margin-left: 8px;
+        }
+        .lang-btn {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 14px;
+          padding: 3px 7px;
+          font-size: 10px;
+          font-weight: 700;
+          color: #6b7280;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          white-space: nowrap;
+        }
+        .lang-btn:hover {
+          border-color: rgba(37,211,102,0.4);
+          color: #d1d5db;
+          background: rgba(255,255,255,0.05);
+        }
+        .lang-btn.active {
+          border-color: rgba(37,211,102,0.5);
+          background: rgba(37,211,102,0.1);
+          color: #25D366;
+        }
+        @media (max-width: 768px) {
+          .lang-switcher { display: none; }
+          .lang-switcher-mobile { display: flex !important; }
+        }
+
         .navbar {
           position: fixed;
           top: 0;
