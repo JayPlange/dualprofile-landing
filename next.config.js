@@ -20,7 +20,7 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "img-src 'self' https://res.cloudinary.com data:",
+              "img-src 'self' https://res.cloudinary.com https://twemoji.maxcdn.com data:",
               "script-src 'self' 'unsafe-inline' https://dualprofile.kit.com",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",

@@ -144,8 +144,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'Chats grupales',
     status_3_desc: 'Aún no compatible',
     usd_approx: '≈',
-    demo_privacy: "🔒 Fonctionne entièrement sur WhatsApp Web. Aucune donnée de chat n'est stockée.",
-    demo_caption: 'Voyez comment le mode aperçu montre exactement ce que chaque contact voit.',
+    demo_privacy: '🔒 Funciona completamente en WhatsApp Web. No se almacenan datos de chat.',
+    demo_caption: 'Ve cómo el modo de vista previa muestra exactamente lo que ve cada contacto.',
   },
   fr: {
     nav_features: 'Fonctionnalités', nav_demo: 'Démo', nav_pricing: 'Tarifs', nav_faq: 'FAQ',
@@ -216,8 +216,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'Chats de groupe',
     status_3_desc: 'Pas encore pris en charge',
     usd_approx: '≈',
-    demo_privacy: '🔒 Funciona inteiramente no WhatsApp Web. Nenhum dado de chat é armazenado.',
-    demo_caption: 'Veja como o modo de prévia mostra exatamente o que cada contato vê.',
+    demo_privacy: '🔒 Fonctionne entièrement sur WhatsApp Web. Aucune donnée de chat n'est stockée.',
+    demo_caption: 'Voyez comment le mode aperçu montre exactement ce que chaque contact voit.',
   },
   pt: {
     nav_features: 'Recursos', nav_demo: 'Demo', nav_pricing: 'Preços', nav_faq: 'FAQ',
@@ -288,8 +288,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'Chats em grupo',
     status_3_desc: 'Ainda não suportado',
     usd_approx: '≈',
-    demo_privacy: '🔒 Funktioniert vollständig in WhatsApp Web. Keine Chat-Daten werden gespeichert.',
-    demo_caption: 'Sieh, wie der Vorschaumodus genau zeigt, was jeder Kontakt sieht.',
+    demo_privacy: '🔒 Funciona inteiramente no WhatsApp Web. Nenhum dado de chat é armazenado.',
+    demo_caption: 'Veja como o modo de prévia mostra exatamente o que cada contato vê.',
   },
   de: {
     nav_features: 'Funktionen', nav_demo: 'Demo', nav_pricing: 'Preise', nav_faq: 'FAQ',
@@ -360,8 +360,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'Gruppenunterhaltungen',
     status_3_desc: 'Noch nicht unterstützt',
     usd_approx: '≈',
-    demo_privacy: '🔒 यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।',
-    demo_caption: 'देखें कि पूर्वावलोकन मोड दिखाता है कि प्रत्येक संपर्क वास्तव में क्या देखता है।',
+    demo_privacy: '🔒 Funktioniert vollständig in WhatsApp Web. Keine Chat-Daten werden gespeichert.',
+    demo_caption: 'Sieh, wie der Vorschaumodus genau zeigt, was jeder Kontakt sieht.',
   },
   hi: {
     nav_features: 'सुविधाएँ', nav_demo: 'डेमो', nav_pricing: 'मूल्य', nav_faq: 'FAQ',
@@ -432,8 +432,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'समूह चैट',
     status_3_desc: 'अभी समर्थित नहीं',
     usd_approx: '≈',
-    demo_privacy: '🔒 完全在 WhatsApp Web 上运行。不存储任何聊天数据。',
-    demo_caption: '查看预览模式如何准确显示每个联系人看到的内容。',
+    demo_privacy: '🔒 यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।',
+    demo_caption: 'देखें कि पूर्वावलोकन मोड दिखाता है कि प्रत्येक संपर्क वास्तव में क्या देखता है।',
   },
   zh: {
     nav_features: '功能', nav_demo: '演示', nav_pricing: '定价', nav_faq: '常见问题',
@@ -504,8 +504,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: '群聊',
     status_3_desc: '暂不支持',
     usd_approx: '≈',
-    demo_privacy: '🔒 これは完全にWhatsApp Webで動作します。チャットデータは保存されません。',
-    demo_caption: 'プレビューモードが各連絡先に見える内容を正確に表示する様子をご覧ください。',
+    demo_privacy: '🔒 完全在 WhatsApp Web 上运行。不存储任何聊天数据。',
+    demo_caption: '查看预览模式如何准确显示每个联系人看到的内容。',
   },
   ja: {
     nav_features: '機能', nav_demo: 'デモ', nav_pricing: '料金', nav_faq: 'よくある質問',
@@ -576,8 +576,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_3_title: 'グループチャット',
     status_3_desc: 'まだサポートされていません',
     usd_approx: '≈',
-    demo_privacy: '🔒 Работает полностью в WhatsApp Web. Данные чатов не хранятся.',
-    demo_caption: 'Посмотрите, как режим предпросмотра показывает именно то, что видит каждый контакт.',
+    demo_privacy: '🔒 これは完全にWhatsApp Webで動作します。チャットデータは保存されません。',
+    demo_caption: 'プレビューモードが各連絡先に見える内容を正確に表示する様子をご覧ください。',
   },
   ru: {
     nav_features: 'Функции', nav_demo: 'Демо', nav_pricing: 'Цены', nav_faq: 'FAQ',
@@ -639,6 +639,8 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_btn: 'Добавить в Chrome — Бесплатно',
     modal_note: '🔒 Бесплатный план включает 2 контакта. Без кредитной карты.',
     footer_note: 'Данные не покидают ваше устройство.',
+    demo_privacy: '🔒 Работает полностью в WhatsApp Web. Данные чатов не хранятся.',
+    demo_caption: 'Посмотрите, как режим предпросмотра показывает именно то, что видит каждый контакт.',
     copied_msg: 'Скопировано!',
     status_title: 'Текущий статус',
     status_1_title: 'Режим предпросмотра',
@@ -652,15 +654,15 @@ const LANGS: Record<string, Record<string, string>> = {
 };
 
 const LANG_OPTIONS = [
-  { code: 'en', flag: '🇬🇧', label: 'EN' },
-  { code: 'es', flag: '🇪🇸', label: 'ES' },
-  { code: 'fr', flag: '🇫🇷', label: 'FR' },
-  { code: 'pt', flag: '🇧🇷', label: 'PT' },
-  { code: 'de', flag: '🇩🇪', label: 'DE' },
-  { code: 'hi', flag: '🇮🇳', label: 'HI' },
-  { code: 'zh', flag: '🇨🇳', label: 'ZH' },
-  { code: 'ja', flag: '🇯🇵', label: 'JA' },
-  { code: 'ru', flag: '🇷🇺', label: 'RU' },
+  { code: 'en', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ec-1f1e7.svg', label: 'EN' },
+  { code: 'es', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ea-1f1f8.svg', label: 'ES' },
+  { code: 'fr', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1eb-1f1f7.svg', label: 'FR' },
+  { code: 'pt', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e7-1f1f7.svg', label: 'PT' },
+  { code: 'de', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e9-1f1ea.svg', label: 'DE' },
+  { code: 'hi', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f3.svg', label: 'HI' },
+  { code: 'zh', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e8-1f1f3.svg', label: 'ZH' },
+  { code: 'ja', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ef-1f1f5.svg', label: 'JA' },
+  { code: 'ru', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1f7-1f1fa.svg', label: 'RU' },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -818,7 +820,7 @@ export default function Home() {
                     display: 'flex', alignItems: 'center', gap: '3px',
                     transition: 'all 0.15s ease'
                   }}>
-                    <span>{l.flag}</span><span>{l.label}</span>
+                    <img src={l.flag} alt={l.label} width="14" height="14" style={{display:'inline-block',verticalAlign:'middle',marginRight:'2px'}} /><span>{l.label}</span>
                   </button>
                 ))}
               </div>
@@ -2108,8 +2110,15 @@ export default function Home() {
           transition: all 0.15s ease;
           display: flex;
           align-items: center;
-          gap: 2px;
+          gap: 3px;
           white-space: nowrap;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .lang-btn .flag {
+          font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', sans-serif;
+          font-size: 13px;
+          line-height: 1;
+          display: inline-block;
         }
         .lang-btn:hover {
           border-color: rgba(37,211,102,0.4);
@@ -2122,8 +2131,14 @@ export default function Home() {
           color: #25D366;
         }
         @media (max-width: 768px) {
-          .lang-switcher { display: none; }
-          .lang-switcher-mobile { display: flex !important; }
+          .lang-switcher { 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            justify-content: center;
+            padding: 8px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+          }
         }
 
         .navbar {

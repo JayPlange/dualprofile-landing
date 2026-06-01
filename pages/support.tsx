@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
+const LANG_OPTIONS = [
+  { code: 'en', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ec-1f1e7.svg', label: 'EN' },
+  { code: 'es', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ea-1f1f8.svg', label: 'ES' },
+  { code: 'fr', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1eb-1f1f7.svg', label: 'FR' },
+  { code: 'pt', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e7-1f1f7.svg', label: 'PT' },
+  { code: 'de', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e9-1f1ea.svg', label: 'DE' },
+  { code: 'hi', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f3.svg', label: 'HI' },
+  { code: 'zh', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1e8-1f1f3.svg', label: 'ZH' },
+  { code: 'ja', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ef-1f1f5.svg', label: 'JA' },
+  { code: 'ru', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1f7-1f1fa.svg', label: 'RU' },
+];
+
 export default function Support() {
+  const [lang, setLang] = useState('en');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('dp_site_lang') || navigator.language?.slice(0,2) || 'en';
+    const valid = LANG_OPTIONS.map(l => l.code);
+    setLang(valid.includes(saved) ? saved : 'en');
+  }, []);
+
+  const changeLang = (code: string) => {
+    setLang(code);
+    localStorage.setItem('dp_site_lang', code);
+  };
+
   return (
     <>
       <Head>
         <title>Support — DualProfile</title>
         <meta name="description" content="Get help with DualProfile - installation, troubleshooting, and frequently asked questions" />
         <link rel="icon" href="/favicon.png" />
+      </Head>
+
+      {/* Navbar with language switcher */}
+      <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
+        <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
+          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+          <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
+        </a>
+        <div style={{display:'flex',flexWrap:'wrap',gap:'4px',alignItems:'center'}}>
+          {LANG_OPTIONS.map(l => (
+            <button key={l.code} onClick={() => changeLang(l.code)} style={{
+              background: lang === l.code ? 'rgba(37,211,102,0.1)' : 'transparent',
+              border: lang === l.code ? '1px solid rgba(37,211,102,0.5)' : '1px solid rgba(255,255,255,0.12)',
+              borderRadius:'14px',padding:'3px 7px',fontSize:'10px',fontWeight:700,
+              color: lang === l.code ? '#25D366' : '#6b7280',
+              cursor:'pointer',display:'flex',alignItems:'center',gap:'2px',
+            }}>
+              <img src={l.flag} alt={l.label} width="13" height="13" style={{display:'inline-block',verticalAlign:'middle'}} />
+              <span>{l.label}</span>
+            </button>
+          ))}
+        </div>
+        <a href="/" style={{background:'#25D366',color:'#000',padding:'8px 16px',borderRadius:'20px',fontWeight:700,fontSize:'13px',textDecoration:'none'}}>← Home</a>
+      </nav>
         <link rel="apple-touch-icon" href="/favicon.png" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta http-equiv="X-Content-Type-Options" content="nosniff" />
