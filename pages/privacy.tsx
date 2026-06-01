@@ -33,30 +33,7 @@ export default function Privacy() {
         <meta name="description" content="DualProfile Privacy Policy — How we protect your data and privacy" />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-      </Head>
-
-      {/* Navbar with language switcher */}
-      <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
-        <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
-          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
-          <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
-        </a>
-        <div style={{display:'flex',flexWrap:'wrap',gap:'4px',alignItems:'center'}}>
-          {LANG_OPTIONS.map(l => (
-            <button key={l.code} onClick={() => changeLang(l.code)} style={{
-              background: lang === l.code ? 'rgba(37,211,102,0.1)' : 'transparent',
-              border: lang === l.code ? '1px solid rgba(37,211,102,0.5)' : '1px solid rgba(255,255,255,0.12)',
-              borderRadius:'14px',padding:'3px 7px',fontSize:'10px',fontWeight:700,
-              color: lang === l.code ? '#25D366' : '#6b7280',
-              cursor:'pointer',display:'flex',alignItems:'center',gap:'2px',
-            }}>
-              <img src={l.flag} alt={l.label} width="13" height="13" style={{display:'inline-block',verticalAlign:'middle'}} />
-              <span>{l.label}</span>
-            </button>
-          ))}
-        </div>
-        <a href="/" style={{background:'#25D366',color:'#000',padding:'8px 16px',borderRadius:'20px',fontWeight:700,fontSize:'13px',textDecoration:'none'}}>← Home</a>
-      </nav>
+      
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta http-equiv="X-Content-Type-Options" content="nosniff" />
         <style dangerouslySetInnerHTML={{
@@ -281,6 +258,29 @@ export default function Privacy() {
           `
         }} />
       </Head>
+
+      {/* Navbar with language switcher */}
+      <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
+        <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
+          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+          <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
+        </a>
+        <div style={{display:'flex',flexWrap:'wrap',gap:'4px',alignItems:'center'}}>
+          {LANG_OPTIONS.map(l => (
+            <button key={l.code} onClick={() => changeLang(l.code)} style={{
+              background: lang === l.code ? 'rgba(37,211,102,0.1)' : 'transparent',
+              border: lang === l.code ? '1px solid rgba(37,211,102,0.5)' : '1px solid rgba(255,255,255,0.12)',
+              borderRadius:'14px',padding:'3px 7px',fontSize:'10px',fontWeight:700,
+              color: lang === l.code ? '#25D366' : '#6b7280',
+              cursor:'pointer',display:'flex',alignItems:'center',gap:'2px',
+            }}>
+              <img src={l.flag} alt={l.label} width="13" height="13" style={{display:'inline-block',verticalAlign:'middle'}} />
+              <span>{l.label}</span>
+            </button>
+          ))}
+        </div>
+        <a href="/" style={{background:'#25D366',color:'#000',padding:'8px 16px',borderRadius:'20px',fontWeight:700,fontSize:'13px',textDecoration:'none'}}>← Home</a>
+      </nav>
 
       <div className="bg-dark text-white">
         <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
