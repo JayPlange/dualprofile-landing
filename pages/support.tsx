@@ -320,14 +320,14 @@ export default function Support() {
             </button>
           ))}
         </div>
-        <a href="/" style={{background:'#25D366',color:'#000',padding:'8px 16px',borderRadius:'20px',fontWeight:700,fontSize:'13px',textDecoration:'none'}}>← Home</a>
+        <a href="/" style={{background:'#25D366',color:'#000',padding:'8px 16px',borderRadius:'20px',fontWeight:700,fontSize:'13px',textDecoration:'none'}}>&larr; Home</a>
       </nav>
 
       <div className="bg-dark text-white">
         <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <div style={{marginBottom: '2rem'}}>
             <a href="/" className="text-gray-400 hover:text-brand-green transition mb-8 inline-block" style={{marginBottom: '1rem', display: 'inline-block'}}>
-              ← Back to DualProfile
+              &larr; Back to DualProfile
             </a>
             <h1 className="text-4xl font-bold mb-4">Support</h1>
             <p className="text-gray-400">Get help with DualProfile - installation, troubleshooting, and answers to common questions.</p>
