@@ -673,6 +673,7 @@ export default function Home() {
   const [toast, setToast] = useState({ show: false, title: '', message: '' });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [lang, setLang] = useState('en');
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
 
   const showToast = (title: string, message: string) => {
     setToast({ show: true, title, message });
@@ -807,9 +808,9 @@ export default function Home() {
               <a href="#demo">{t('nav_demo')}</a>
               <a href="#pricing">{t('nav_pricing')}</a>
               <a href="#faq">{t('nav_faq')}</a>
-            </div>
             <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
-              <div style={{display:'flex',gap:'3px',flexWrap:'wrap' as const}}>
+              {/* Desktop lang switcher */}
+              <div className="lang-switcher-desktop">
                 {LANG_OPTIONS.map(l => (
                   <button key={l.code} onClick={() => changeLang(l.code)} style={{
                     background: lang === l.code ? 'rgba(37,211,102,0.15)' : 'rgba(255,255,255,0.04)',
@@ -823,6 +824,43 @@ export default function Home() {
                     <img src={l.flag} alt={l.label} width="14" height="14" style={{display:'inline-block',verticalAlign:'middle',marginRight:'2px'}} /><span>{l.label}</span>
                   </button>
                 ))}
+              </div>
+              {/* Mobile lang switcher - compact dropdown */}
+              <div className="lang-switcher-mobile" style={{position:'relative' as const}}>
+                <button onClick={() => setLangMenuOpen((v: boolean) => !v)} style={{
+                  background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',
+                  borderRadius:'20px',padding:'5px 9px',cursor:'pointer',color:'#d1d5db',
+                  fontSize:'11px',fontWeight:'700',fontFamily:'inherit',
+                  display:'flex',alignItems:'center',gap:'4px'
+                }}>
+                  <img src={LANG_OPTIONS.find(l => l.code === lang)?.flag || LANG_OPTIONS[0].flag} alt={lang.toUpperCase()} width="14" height="14" style={{verticalAlign:'middle'}} />
+                  <span>{lang.toUpperCase()}</span>
+                  <span style={{fontSize:'8px',opacity:0.6}}>&#9660;</span>
+                </button>
+                {langMenuOpen && (
+                  <div style={{
+                    position:'absolute' as const,right:0,top:'calc(100% + 6px)',
+                    background:'#1a1a1a',border:'1px solid rgba(255,255,255,0.12)',
+                    borderRadius:'12px',padding:'6px',zIndex:200,
+                    display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'4px',minWidth:'156px',
+                    boxShadow:'0 8px 32px rgba(0,0,0,0.5)'
+                  }}>
+                    {LANG_OPTIONS.map(l => (
+                      <button key={l.code} onClick={() => { changeLang(l.code); setLangMenuOpen(false); }} style={{
+                        background: lang === l.code ? 'rgba(37,211,102,0.15)' : 'transparent',
+                        border: lang === l.code ? '1px solid rgba(37,211,102,0.3)' : '1px solid transparent',
+                        borderRadius:'8px',padding:'5px 4px',cursor:'pointer',
+                        color: lang === l.code ? '#25D366' : '#9ca3af',
+                        fontSize:'11px',fontWeight:'700',fontFamily:'inherit',
+                        display:'flex',alignItems:'center',gap:'3px'
+                      }}>
+                        <img src={l.flag} alt={l.label} width="13" height="13" style={{verticalAlign:'middle'}} />
+                        <span>{l.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               </div>
               <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
                 {t('nav_cta')}
@@ -2088,6 +2126,21 @@ export default function Home() {
 
         .btn-full {
           width: 100%;
+        }
+
+        /* Navbar language switcher — responsive */
+        .lang-switcher-desktop {
+          display: flex;
+          gap: 3px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+        .lang-switcher-mobile {
+          display: none;
+        }
+        @media (max-width: 900px) {
+          .lang-switcher-desktop { display: none !important; }
+          .lang-switcher-mobile { display: block !important; }
         }
 
         /* Navbar */
