@@ -1855,7 +1855,7 @@ export default function Home() {
               <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'8px'}}>
                 <span style={{fontSize:'13px',color:'#FF4500',fontWeight:'700',letterSpacing:'0.5px'}}>r/DigitalPrivacy</span>
                 <span style={{fontSize:'12px',color:'rgba(255,255,255,0.25)'}}>·</span>
-                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.3)'}}>6 days ago</span>
+                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.3)'}}>Jun 1, 2026</span>
               </div>
               <p style={{fontSize:'clamp(15px,2vw,18px)',color:'#e5e7eb',fontStyle:'italic',lineHeight:'1.6',marginBottom:'12px'}}>
                 &ldquo;{t('social_quote')}&rdquo;
