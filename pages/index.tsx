@@ -1852,7 +1852,11 @@ export default function Home() {
             <h2 style={{fontSize:'clamp(20px,3vw,28px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('social_title')}</h2>
             {/* Reddit quote */}
             <div style={{background:'rgba(255,69,0,0.06)',border:'1px solid rgba(255,69,0,0.2)',borderLeft:'4px solid #FF4500',borderRadius:'12px',padding:'24px 28px',marginBottom:'32px',textAlign:'left' as const}}>
-              <div style={{fontSize:'13px',color:'#FF4500',fontWeight:'700',marginBottom:'8px',letterSpacing:'0.5px'}}>r/DigitalPrivacy</div>
+              <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'8px'}}>
+                <span style={{fontSize:'13px',color:'#FF4500',fontWeight:'700',letterSpacing:'0.5px'}}>r/DigitalPrivacy</span>
+                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.25)'}}>·</span>
+                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.3)'}}>6 days ago</span>
+              </div>
               <p style={{fontSize:'clamp(15px,2vw,18px)',color:'#e5e7eb',fontStyle:'italic',lineHeight:'1.6',marginBottom:'12px'}}>
                 &ldquo;{t('social_quote')}&rdquo;
               </p>
