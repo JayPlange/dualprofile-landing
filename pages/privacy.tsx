@@ -39,7 +39,7 @@ export default function Privacy() {
         <style dangerouslySetInnerHTML={{
           __html: `
             body { 
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
               background-color: #0b0b0f;
               color: #ffffff;
               margin: 0;

@@ -1286,7 +1286,7 @@ export default function Home() {
         })}} />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js" />
       </Head>
 
@@ -1673,23 +1673,6 @@ export default function Home() {
               <p className="section-subtitle">{t('features_sub')}</p>
             </div>
 
-            {/* Identity examples */}
-            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:'16px',marginBottom:'48px'}}>
-              {[
-                {who: t('identity_boss'), sees: t('identity_boss_sees'), color: '#25D366'},
-                {who: t('identity_friends'), sees: t('identity_friends_sees'), color: '#a78bfa'},
-                {who: t('identity_family'), sees: t('identity_family_sees'), color: '#60a5fa'},
-              ].map((item, i) => (
-                <div key={i} style={{background:'rgba(255,255,255,0.04)',border:`1px solid ${item.color}30`,borderRadius:'14px',padding:'20px',textAlign:'center' as const}}>
-                  <div style={{width:'48px',height:'48px',borderRadius:'50%',background:`${item.color}20`,border:`2px solid ${item.color}40`,margin:'0 auto 12px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'20px'}}>
-                    {i===0?'💼':i===1?'😄':'👨‍👩‍👧'}
-                  </div>
-                  <div style={{fontWeight:'700',color:'#fff',marginBottom:'4px'}}>{item.who}</div>
-                  <div style={{fontSize:'13px',color:'rgba(255,255,255,0.5)'}}>{item.sees}</div>
-                </div>
-              ))}
-            </div>
-
             {/* 4 Pro features */}
             <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))'}}>
               {/* Photo History - flagship */}
@@ -1698,7 +1681,7 @@ export default function Home() {
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 </div>
-                <h3 className="feature-title">⭐ {t('feat1_title')}</h3>
+                <h3 className="feature-title"><span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',width:'18px',height:'18px',marginRight:'6px',verticalAlign:'middle'}}><svg viewBox="0 0 24 24" fill="#25D366" width="16" height="16"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span>{t('feat1_title')}</h3>
                 <p className="feature-description">{t('feat1_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
@@ -2028,7 +2011,7 @@ export default function Home() {
         }
 
         body {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           line-height: 1.6;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
