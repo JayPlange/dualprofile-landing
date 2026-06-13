@@ -11,6 +11,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: 'Start free trial',
     hero_cta_sub: `3 days full access · No credit card required`,
     hero_social_proof: `Installed in 40+ countries · No paid marketing`,
+    share_hook_1: `Your boss and your best friend have been seeing the same WhatsApp photo of you.`,
+    share_hook_2: `Until now.`,
+    share_hook_3: `WhatsApp never made this possible. So we did.`,
     hero_demo: 'Watch Demo',
     live_badge: `3-day free trial on every install · No credit card`,
     nav_features: 'Features',
@@ -93,11 +96,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: 'What happens after the 3-day trial?',
     faq_3_a: 'After the trial, you keep 1 contact on the free plan forever. Upgrade to Pro anytime for unlimited contacts and all Pro features.',
     faq_4_q: 'Is my data secure?',
-    faq_4_a: 'Absolutely. All photos are stored locally on your device. Nothing is uploaded to our servers.',
+    faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     footer_rights: 'All rights reserved.',
-    footer_note: `No data leaves your device — all control is local.`,
+    footer_note: `Your photos are synced securely — only the contacts you choose can see them.`,
     copied_msg: 'Copied!',
     callout_btn: 'Copy install link',
+    preview_callout: `Don't want to wait for your contacts to install? Use Preview Mode to see exactly how you'd appear to anyone — right away.`,
     demo_privacy: `🔒 This works entirely on WhatsApp Web. No chat data is stored.`,
     demo_caption: 'Watch how Preview Mode shows exactly what each contact sees.',
     how_title: 'Set up once with someone. Works automatically.',
@@ -138,6 +142,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: 'Iniciar prueba gratis',
     hero_cta_sub: `3 dias acceso completo · Sin tarjeta de credito`,
     hero_social_proof: `Instalado en mas de 40 paises · Sin marketing pagado`,
+    share_hook_1: `Tu jefe y tu mejor amigo han estado viendo la misma foto tuya en WhatsApp.`,
+    share_hook_2: `Hasta ahora.`,
+    share_hook_3: `WhatsApp nunca hizo esto posible. Asi que lo hicimos nosotros.`,
     hero_demo: 'Ver demo',
     live_badge: `Prueba de 3 dias en cada instalacion · Sin tarjeta`,
     nav_features: 'Funciones',
@@ -220,11 +227,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: 'Que pasa despues de la prueba de 3 dias?',
     faq_3_a: 'Despues de la prueba, conservas 1 contacto en el plan gratuito para siempre. Actualiza a Pro cuando quieras.',
     faq_4_q: 'Mis datos estan seguros?',
-    faq_4_a: 'Absolutamente. Todas las fotos se almacenan localmente en tu dispositivo.',
+    faq_4_a: 'Tus fotos se sincronizan de forma segura para que solo las vean los contactos que elijas. Nunca leemos tus mensajes ni accedemos a tus chats.',
     footer_rights: 'Todos los derechos reservados.',
-    footer_note: `Ningun dato sale de tu dispositivo — todo el control es local.`,
+    footer_note: `Tus fotos se sincronizan de forma segura — solo los contactos que elijas pueden verlas.`,
     copied_msg: 'Copiado!',
     callout_btn: 'Copiar enlace de instalacion',
+    preview_callout: `No quieres esperar a que tus contactos instalen? Usa el Modo de Vista Previa para ver al instante como apareces ante cualquiera.`,
     demo_privacy: `🔒 Funciona completamente en WhatsApp Web. No se almacenan datos de chat.`,
     demo_caption: 'Ve como el modo de vista previa muestra exactamente lo que ve cada contacto.',
     how_title: 'Configura una vez. Funciona automaticamente.',
@@ -265,6 +273,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: `Commencer l'essai gratuit`,
     hero_cta_sub: `3 jours acces complet · Sans carte de credit`,
     hero_social_proof: `Installe dans plus de 40 pays · Sans marketing paye`,
+    share_hook_1: `Votre patron et votre meilleur ami voient la meme photo de vous sur WhatsApp.`,
+    share_hook_2: `Jusqu'a maintenant.`,
+    share_hook_3: `WhatsApp n'a jamais rendu cela possible. Alors on l'a fait.`,
     hero_demo: 'Voir la demo',
     live_badge: `Essai de 3 jours a chaque installation · Sans carte`,
     nav_features: 'Fonctionnalites',
@@ -347,11 +358,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: `Que se passe-t-il apres l'essai de 3 jours ?`,
     faq_3_a: `Apres l'essai, vous gardez 1 contact sur le plan gratuit pour toujours. Passez a Pro quand vous voulez.`,
     faq_4_q: 'Mes donnees sont-elles en securite ?',
-    faq_4_a: 'Absolument. Toutes les photos sont stockees localement sur votre appareil.',
+    faq_4_a: 'Vos photos sont synchronisees de maniere securisee afin de n\'apparaitre qu\'aux contacts que vous choisissez. Nous ne lisons jamais vos messages et n\'accedons jamais a vos discussions.',
     footer_rights: 'Tous droits reserves.',
-    footer_note: `Aucune donnee ne quitte votre appareil — tout le controle est local.`,
+    footer_note: `Vos photos sont synchronisees en toute securite — seuls les contacts que vous choisissez peuvent les voir.`,
     copied_msg: 'Copie !',
     callout_btn: `Copier le lien d'installation`,
+    preview_callout: `Vous ne voulez pas attendre que vos contacts s'installent ? Utilisez le Mode Apercu pour voir instantanement comment vous apparaitriez a n'importe qui.`,
     demo_privacy: `🔒 Fonctionne entierement sur WhatsApp Web. Aucune donnee de chat n'est stockee.`,
     demo_caption: 'Voyez comment le mode apercu montre exactement ce que chaque contact voit.',
     how_title: 'Configurez une fois. Fonctionne automatiquement.',
@@ -392,6 +404,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: 'Iniciar teste gratis',
     hero_cta_sub: `3 dias acesso completo · Sem cartao de credito`,
     hero_social_proof: `Instalado em mais de 40 paises · Sem marketing pago`,
+    share_hook_1: `Seu chefe e seu melhor amigo veem a mesma foto sua no WhatsApp.`,
+    share_hook_2: `Até agora.`,
+    share_hook_3: `O WhatsApp nunca tornou isso possível. Então nós fizemos.`,
     hero_demo: 'Ver demo',
     live_badge: `Teste de 3 dias em cada instalacao · Sem cartao`,
     nav_features: 'Recursos',
@@ -474,11 +489,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: 'O que acontece apos o teste de 3 dias?',
     faq_3_a: 'Apos o teste, voce mantem 1 contato no plano gratuito para sempre. Atualize para Pro quando quiser.',
     faq_4_q: 'Meus dados estao seguros?',
-    faq_4_a: 'Com certeza. Todas as fotos sao armazenadas localmente no seu dispositivo.',
+    faq_4_a: 'Suas fotos sao sincronizadas com seguranca para aparecerem apenas aos contatos que voce escolher. Nunca lemos suas mensagens nem acessamos seus chats.',
     footer_rights: 'Todos os direitos reservados.',
-    footer_note: `Nenhum dado sai do seu dispositivo — todo o controle e local.`,
+    footer_note: `Suas fotos sao sincronizadas com seguranca — apenas os contatos que voce escolher podem ve-las.`,
     copied_msg: 'Copiado!',
     callout_btn: 'Copiar link de instalacao',
+    preview_callout: `Nao quer esperar seus contatos instalarem? Use o Modo de Pre-visualizacao para ver instantaneamente como voce apareceria para qualquer pessoa.`,
     demo_privacy: `🔒 Funciona inteiramente no WhatsApp Web. Nenhum dado de chat e armazenado.`,
     demo_caption: 'Veja como o modo de previa mostra exatamente o que cada contato ve.',
     how_title: 'Configure uma vez. Funciona automaticamente.',
@@ -519,6 +535,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: 'Kostenlose Testversion starten',
     hero_cta_sub: `3 Tage Vollzugang · Keine Kreditkarte`,
     hero_social_proof: `In uber 40 Landern installiert · Ohne bezahltes Marketing`,
+    share_hook_1: `Dein Chef und dein bester Freund sehen dasselbe WhatsApp-Foto von dir.`,
+    share_hook_2: `Bis jetzt.`,
+    share_hook_3: `WhatsApp hat das nie ermoglicht. Also haben wir es getan.`,
     hero_demo: 'Demo ansehen',
     live_badge: `3-Tage-Testversion bei jeder Installation · Keine Karte`,
     nav_features: 'Funktionen',
@@ -601,11 +620,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: 'Was passiert nach der 3-tagigen Testversion?',
     faq_3_a: 'Nach der Testversion behaltst du 1 Kontakt im kostenlosen Plan fur immer. Upgrade auf Pro jederzeit.',
     faq_4_q: 'Sind meine Daten sicher?',
-    faq_4_a: 'Absolut. Alle Fotos werden lokal auf deinem Gerat gespeichert.',
+    faq_4_a: 'Deine Fotos werden sicher synchronisiert, sodass sie nur fur die von dir ausgewahlten Kontakte sichtbar sind. Wir lesen niemals deine Nachrichten oder greifen auf deine Chats zu.',
     footer_rights: 'Alle Rechte vorbehalten.',
-    footer_note: `Keine Daten verlassen dein Gerat — alle Kontrolle ist lokal.`,
+    footer_note: `Deine Fotos werden sicher synchronisiert — nur die von dir ausgewahlten Kontakte konnen sie sehen.`,
     copied_msg: 'Kopiert!',
     callout_btn: 'Installationslink kopieren',
+    preview_callout: `Du willst nicht warten, bis deine Kontakte installieren? Nutze den Vorschaumodus, um sofort zu sehen, wie du fur jeden erscheinen wurdest.`,
     demo_privacy: `🔒 Funktioniert vollstandig in WhatsApp Web. Keine Chat-Daten werden gespeichert.`,
     demo_caption: 'Sieh, wie der Vorschaumodus genau zeigt, was jeder Kontakt sieht.',
     how_title: 'Einmal einrichten. Funktioniert automatisch.',
@@ -646,6 +666,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: `मुफ्त ट्रायल शुरू करें`,
     hero_cta_sub: `3 दिन पूर्ण एक्सेस · कोई क्रेडिट कार्ड नहीं`,
     hero_social_proof: `40+ देशों में इंस्टॉल · बिना पेड मार्केटिंग के`,
+    share_hook_1: `आपके बॉस और आपके सबसे अच्छे दोस्त को व्हाट्सएप पर आपकी एक ही फोटो दिख रही है।`,
+    share_hook_2: `अब तक।`,
+    share_hook_3: `व्हाट्सएप ने यह कभी संभव नहीं बनाया। इसलिए हमने बनाया।`,
     hero_demo: `डेमो देखें`,
     live_badge: `हर इंस्टॉल पर 3 दिन का ट्रायल · कोई कार्ड नहीं`,
     nav_features: `सुविधाएँ`,
@@ -728,11 +751,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: `3 दिन के ट्रायल के बाद क्या होता है?`,
     faq_3_a: `ट्रायल के बाद 1 कॉन्टैक्ट मुफ्त प्लान में हमेशा रहता है। जब चाहें Pro में अपग्रेड करें।`,
     faq_4_q: `क्या मेरा डेटा सुरक्षित है?`,
-    faq_4_a: `बिल्कुल। सभी फोटो आपके डिवाइस पर स्थानीय रूप से संग्रहीत हैं।`,
+    faq_4_a: `आपकी फ़ोटो सुरक्षित रूप से सिंक की जाती हैं ताकि वे केवल आपके चुने हुए संपर्कों को दिखें। हम कभी भी आपके मैसेज नहीं पढ़ते या आपकी चैट तक नहीं पहुँचते।`,
     footer_rights: `सर्वाधिकार सुरक्षित।`,
-    footer_note: `कोई डेटा आपके डिवाइस से नहीं जाता — सारा नियंत्रण स्थानीय है।`,
+    footer_note: `आपकी फ़ोटो सुरक्षित रूप से सिंक होती हैं — केवल आपके चुने हुए संपर्क ही उन्हें देख सकते हैं।`,
     copied_msg: `कॉपी किया!`,
     callout_btn: `इंस्टॉल लिंक कॉपी करें`,
+    preview_callout: `अपने संपर्कों के इंस्टॉल करने का इंतज़ार नहीं करना चाहते? प्रीव्यू मोड का उपयोग करें और तुरंत देखें कि आप किसी को भी कैसे दिखेंगे।`,
     demo_privacy: `🔒 यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।`,
     demo_caption: `देखें कि प्रिव्यू मोड प्रत्येक कॉन्टैक्ट को क्या दिखता है।`,
     how_title: `एक बार सेट करें। अपने आप काम करे।`,
@@ -773,6 +797,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: `开始免费试用`,
     hero_cta_sub: `3天完整访问 · 无需信用卡`,
     hero_social_proof: `已在40多个国家安装 · 无付费营销`,
+    share_hook_1: `你的老板和你最好的朋友在WhatsApp上看到的是同一张你的照片。`,
+    share_hook_2: `直到现在。`,
+    share_hook_3: `WhatsApp从未让这成为可能。所以我们做到了。`,
     hero_demo: `观看演示`,
     live_badge: `每次安装3天免费试用 · 无需信用卡`,
     nav_features: `功能`,
@@ -855,11 +882,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: `3天试用后会发生什么？`,
     faq_3_a: `试用结束后，您可以在免费计划中永久保留1个联系人。随时升级到Pro以获取无限联系人。`,
     faq_4_q: `我的数据安全吗？`,
-    faq_4_a: `绝对安全。所有照片都存储在您的本地设备上。`,
+    faq_4_a: `您的照片会安全同步，仅对您选择的联系人可见。我们绝不会读取您的消息或访问您的聊天记录。`,
     footer_rights: `保留所有权利。`,
-    footer_note: `数据不离开您的设备 — 所有控制均在本地。`,
+    footer_note: `您的照片会安全同步 — 只有您选择的联系人才能看到。`,
     copied_msg: `已复制！`,
     callout_btn: `复制安装链接`,
+    preview_callout: `不想等联系人安装？使用预览模式立即查看您在任何人眼中的样子。`,
     demo_privacy: `🔒 完全在WhatsApp Web上运行。不存储任何聊天数据。`,
     demo_caption: `查看预览模式如何准确显示每个联系人看到的内容。`,
     how_title: `一次设置。自动运行。`,
@@ -900,6 +928,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: `無料トライアルを開始`,
     hero_cta_sub: `3日間フルアクセス・クレジットカード不要`,
     hero_social_proof: `40カ国以上でインストール・有料マーケティングなし`,
+    share_hook_1: `あなたの上司と一番の友人は、WhatsAppで同じあなたの写真を見ています。`,
+    share_hook_2: `今までは。`,
+    share_hook_3: `WhatsAppはこれを実現しませんでした。だから私たちが作りました。`,
     hero_demo: `デモを見る`,
     live_badge: `毎回インストール時に3日間の無料トライアル・カード不要`,
     nav_features: `機能`,
@@ -982,11 +1013,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: `3日間のトライアル後はどうなりますか？`,
     faq_3_a: `トライアル後は無料プランで1コンタクトを永久に保持できます。いつでもProにアップグレード可能です。`,
     faq_4_q: `データは安全ですか？`,
-    faq_4_a: `もちろんです。すべての写真はデバイスにローカルで保存されます。`,
+    faq_4_a: `あなたの写真は安全に同期され、選択した連絡先にのみ表示されます。メッセージを読んだり、チャットにアクセスすることは一切ありません。`,
     footer_rights: `全著作権所有。`,
-    footer_note: `データはデバイスを離れません — 全ての制御はローカルです。`,
+    footer_note: `あなたの写真は安全に同期されます — 選択した連絡先だけが見ることができます。`,
     copied_msg: `コピーしました！`,
     callout_btn: `インストールリンクをコピー`,
+    preview_callout: `連絡先のインストールを待ちたくないですか？プレビューモードを使えば、誰にどう見えるかを今すぐ確認できます。`,
     demo_privacy: `🔒 これは完全にWhatsApp Webで動作します。チャットデータは保存されません。`,
     demo_caption: `プレビューモードが各コンタクトに見える内容を正確に表示する様子をご覧ください。`,
     how_title: `一度設定すれば自動で動作します。`,
@@ -1027,6 +1059,9 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_cta: `Начать бесплатный пробный период`,
     hero_cta_sub: `3 дня полный доступ · Без кредитной карты`,
     hero_social_proof: `Установлено в 40+ странах · Без платной рекламы`,
+    share_hook_1: `Ваш начальник и лучший друг видят одно и то же фото вас в WhatsApp.`,
+    share_hook_2: `До сих пор.`,
+    share_hook_3: `WhatsApp никогда не делал это возможным. Поэтому мы сделали.`,
     hero_demo: `Смотреть демо`,
     live_badge: `3-дневный пробный период при каждой установке · Без карты`,
     nav_features: `Функции`,
@@ -1109,11 +1144,12 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_3_q: `Что происходит после 3-дневного пробного периода?`,
     faq_3_a: `После пробного периода вы сохраняете 1 контакт в бесплатном плане навсегда. Обновляйтесь до Pro в любое время.`,
     faq_4_q: `Мои данные в безопасности?`,
-    faq_4_a: `Абсолютно. Все фото хранятся локально на вашем устройстве.`,
+    faq_4_a: `Ваши фото надёжно синхронизируются и видны только выбранным вами контактам. Мы никогда не читаем ваши сообщения и не получаем доступ к чатам.`,
     footer_rights: `Все права защищены.`,
-    footer_note: `Данные не покидают ваше устройство — весь контроль локален.`,
+    footer_note: `Ваши фото надёжно синхронизируются — видеть их могут только выбранные вами контакты.`,
     copied_msg: `Скопировано!`,
     callout_btn: `Скопировать ссылку для установки`,
+    preview_callout: `Не хотите ждать, пока ваши контакты установят расширение? Используйте Режим предпросмотра, чтобы сразу увидеть, как вы будете выглядеть для любого человека.`,
     demo_privacy: `🔒 Работает полностью в WhatsApp Web. Данные чатов не хранятся.`,
     demo_caption: `Посмотрите, как режим предпросмотра показывает именно то, что видит каждый контакт.`,
     how_title: `Настройте один раз. Работает автоматически.`,
@@ -1445,6 +1481,44 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Share Hook — distribution primitive, first scroll breakpoint */}
+        <section className="share-hook" style={{
+          padding: '60px 20px',
+          textAlign: 'center',
+          background: 'rgba(255,255,255,0.02)',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}>
+          <div style={{maxWidth: '720px', margin: '0 auto'}}>
+            <p style={{
+              fontSize: 'clamp(20px, 3.2vw, 28px)',
+              fontWeight: 600,
+              lineHeight: 1.5,
+              color: 'rgba(255,255,255,0.92)',
+              marginBottom: '14px',
+            }}>
+              {t('share_hook_1')}
+            </p>
+            <p style={{
+              fontSize: 'clamp(28px, 5vw, 40px)',
+              fontWeight: 800,
+              lineHeight: 1.2,
+              color: '#25D366',
+              marginBottom: '14px',
+              letterSpacing: '-0.5px',
+            }}>
+              {t('share_hook_2')}
+            </p>
+            <p style={{
+              fontSize: 'clamp(16px, 2.4vw, 20px)',
+              color: 'rgba(255,255,255,0.55)',
+              fontStyle: 'italic',
+            }}>
+              {t('share_hook_3')}
+            </p>
+          </div>
+        </section>
+
         {/* Demo Section - Fixed Video Embed */}
         <section id="demo" className="demo">
           <div className="demo-container">
@@ -1621,7 +1695,13 @@ export default function Home() {
                 <p className="step-description">{t('step3_sub')}</p>
               </div>
             </div>
-            <div style={{marginTop: '48px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
+            {/* Preview Mode promotion — solves cold-start, visible before deep scroll */}
+            <div style={{marginTop: '32px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px 28px', textAlign: 'center' as const}}>
+              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6'}}>
+                ⚡ {t('preview_callout')}
+              </p>
+            </div>
+            <div style={{marginTop: '24px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
               <p style={{margin: 0, color: '#d1d5db', fontSize: '1rem', lineHeight: '1.6', flex: '1 1 300px'}}>
                 {t('callout_text')}
               </p>
