@@ -1467,7 +1467,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="hero-buttons" style={{marginBottom: '24px'}}>
               <button 
-                className="btn btn-outline btn-lg btn-primary"
+                className="btn btn-lg btn-primary"
                 onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
                 style={{
                   fontSize: 'clamp(16px, 2.5vw, 18px)',
