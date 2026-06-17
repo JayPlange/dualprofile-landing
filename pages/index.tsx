@@ -6,6 +6,7 @@ const LANGS: Record<string, Record<string, string>> = {
   en: {
     hero_h1_1: 'Stop showing the same version',
     hero_h1_2: 'of yourself to everyone.',
+    hero_h1_new: 'Your WhatsApp profile photo, customized per contact.',
     hero_now: `WhatsApp assumes you're the same person to everyone. You're not.`,
     hero_sub: `Your boss, clients, family, and friends don't all know the same you. So why should they all see the same profile photo?`,
     hero_cta: 'Start free trial',
@@ -1422,19 +1423,30 @@ export default function Home() {
               {t('live_badge')}
             </div>
             
-            {/* Main Headline */}
+            {/* Main Headline — new primary phrase */}
             <h1 className="hero-title" style={{
               fontSize: 'clamp(32px, 6vw, 56px)',
               fontWeight: '700',
               lineHeight: '1.1',
               marginBottom: '16px'
             }}>
-              {t('hero_h1_1')}<br />{t('hero_h1_2')}<br />
-              <span style={{fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: '600', color: '#25D366'}}>
+              {t('hero_h1_new')}
+            </h1>
+
+            {/* Demoted identity-first line — was the primary H1, now a lighter subheadline */}
+            <p className="hero-subtitle-demoted" style={{
+              fontSize: 'clamp(18px, 3.2vw, 26px)',
+              fontWeight: '400',
+              lineHeight: '1.3',
+              marginBottom: '12px',
+              opacity: '0.85'
+            }}>
+              {t('hero_h1_1')} {t('hero_h1_2')}{' '}
+              <span style={{fontWeight: '600', color: '#25D366'}}>
                 {t('hero_now')}
               </span>
-            </h1>
-            
+            </p>
+
             {/* Subheading */}
             <p className="hero-subtitle" style={{
               fontSize: 'clamp(18px, 3vw, 22px)',
