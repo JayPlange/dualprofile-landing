@@ -138,6 +138,7 @@ const LANGS: Record<string, Record<string, string>> = {
   es: {
     hero_h1_1: 'Deja de mostrar la misma',
     hero_h1_2: 'version de ti a todos.',
+    hero_h1_new: 'Tu foto de perfil de WhatsApp, personalizada por contacto.',
     hero_now: 'WhatsApp asume que eres la misma persona para todos. No lo eres.',
     hero_sub: 'Tu jefe, clientes, familia y amigos no te conocen igual. Por que todos ven la misma foto de perfil?',
     hero_cta: 'Iniciar prueba gratis',
@@ -269,6 +270,7 @@ const LANGS: Record<string, Record<string, string>> = {
   fr: {
     hero_h1_1: 'Arretez de montrer la meme version',
     hero_h1_2: 'de vous-meme a tout le monde.',
+    hero_h1_new: 'Votre photo de profil WhatsApp, personnalisee par contact.',
     hero_now: `WhatsApp suppose que vous etes la meme personne pour tout le monde. Vous ne l'etes pas.`,
     hero_sub: 'Votre patron, vos clients, votre famille et vos amis ne vous connaissent pas de la meme facon. Pourquoi devraient-ils tous voir la meme photo de profil?',
     hero_cta: `Commencer l'essai gratuit`,
@@ -400,6 +402,7 @@ const LANGS: Record<string, Record<string, string>> = {
   pt: {
     hero_h1_1: 'Pare de mostrar a mesma versao',
     hero_h1_2: 'de si mesmo para todos.',
+    hero_h1_new: 'Sua foto de perfil do WhatsApp, personalizada por contato.',
     hero_now: 'O WhatsApp assume que voce e a mesma pessoa para todos. Nao e.',
     hero_sub: 'Seu chefe, clientes, familia e amigos nao te conhecem do mesmo jeito. Por que todos deveriam ver a mesma foto de perfil?',
     hero_cta: 'Iniciar teste gratis',
@@ -531,6 +534,7 @@ const LANGS: Record<string, Record<string, string>> = {
   de: {
     hero_h1_1: 'Hore auf, jedem die gleiche Version',
     hero_h1_2: 'von dir zu zeigen.',
+    hero_h1_new: 'Dein WhatsApp-Profilbild, individuell pro Kontakt.',
     hero_now: 'WhatsApp geht davon aus, dass du fur alle dieselbe Person bist. Das bist du nicht.',
     hero_sub: 'Dein Chef, Kunden, Familie und Freunde kennen nicht alle dasselbe du. Warum sollten sie alle dasselbe Profilbild sehen?',
     hero_cta: 'Kostenlose Testversion starten',
@@ -662,6 +666,7 @@ const LANGS: Record<string, Record<string, string>> = {
   hi: {
     hero_h1_1: `सभी को खुद का एक ही रूप`,
     hero_h1_2: `दिखाना बंद करें।`,
+    hero_h1_new: `आपकी WhatsApp प्रोफ़ाइल फ़ोटो, हर संपर्क के लिए अलग।`,
     hero_now: `WhatsApp मानता है कि आप सभी के लिए एक ही व्यक्ति हैं। आप नहीं हैं।`,
     hero_sub: `आपका बॉस, क्लाइंट, परिवार और दोस्त सभी आपको एक जैसे नहीं जानते। तो सभी को एक ही प्रोफाइल फोटो क्यों दिखनी चाहिए?`,
     hero_cta: `मुफ्त ट्रायल शुरू करें`,
@@ -793,6 +798,7 @@ const LANGS: Record<string, Record<string, string>> = {
   zh: {
     hero_h1_1: `停止向所有人展示`,
     hero_h1_2: `同一个你。`,
+    hero_h1_new: `您的WhatsApp头像，按联系人个性化设置。`,
     hero_now: `WhatsApp 假设你对每个人都是同一个人。你不是。`,
     hero_sub: `你的老板、客户、家人和朋友对你的了解各不相同。为什么他们都应该看到同一张头像？`,
     hero_cta: `开始免费试用`,
@@ -924,6 +930,7 @@ const LANGS: Record<string, Record<string, string>> = {
   ja: {
     hero_h1_1: `誰に対しても同じ自分を`,
     hero_h1_2: `見せるのをやめましょう。`,
+    hero_h1_new: `WhatsAppのプロフィール写真を、連絡先ごとにカスタマイズ。`,
     hero_now: `WhatsAppはあなたが誰に対しても同じ人物だと思っています。そうではありません。`,
     hero_sub: `上司、クライアント、家族、友人は皆、異なる「あなた」を知っています。なぜ全員が同じプロフィール写真を見るべきなのでしょうか？`,
     hero_cta: `無料トライアルを開始`,
@@ -1055,6 +1062,7 @@ const LANGS: Record<string, Record<string, string>> = {
   ru: {
     hero_h1_1: `Перестаньте показывать всем`,
     hero_h1_2: `одну и ту же версию себя.`,
+    hero_h1_new: `Ваше фото профиля WhatsApp — индивидуально для каждого контакта.`,
     hero_now: `WhatsApp считает, что вы одинаковы для всех. Это не так.`,
     hero_sub: `Ваш начальник, клиенты, семья и друзья знают вас по-разному. Почему все они должны видеть одно и то же фото профиля?`,
     hero_cta: `Начать бесплатный пробный период`,
