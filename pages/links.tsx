@@ -76,7 +76,7 @@ export default function LinksPage() {
                   <path d="M3 12h18M12 3c2.5 2.7 3.8 6 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-6-3.8-9s1.3-6.3 3.8-9z" />
                 </svg>
                 <div className="lh-row-text">
-                  <span className="lh-row-label">Landing Page</span>
+                  <span className="lh-row-label">DualProfile</span>
                   <span className="lh-row-sub">vivaup.org</span>
                 </div>
               </div>
