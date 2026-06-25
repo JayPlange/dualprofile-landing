@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { photoBase64 } from "../data/photoData";
+import { noiseBase64 } from "../data/noiseData";
 
 export default function LinksPage() {
   return (
@@ -10,7 +11,7 @@ export default function LinksPage() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -21,6 +22,7 @@ export default function LinksPage() {
           --parchment: #f7f4ed;
           --brass: #b8923d;
           --brass-soft: #d9c28c;
+          --brass-dim: #8a6f32;
           --slate: #707a8a;
           --slate-light: #a4acba;
           --line: rgba(247, 244, 237, 0.12);
@@ -33,12 +35,11 @@ export default function LinksPage() {
         }
 
         body {
-          background: var(--ink);
-          background-image: radial-gradient(
-            circle at 50% 0%,
-            rgba(184, 146, 61, 0.08),
-            transparent 55%
-          );
+          background-color: var(--ink);
+          background-image: url("data:image/png;base64,${noiseBase64}"),
+            radial-gradient(circle at 50% 0%, rgba(184, 146, 61, 0.1), transparent 55%);
+          background-size: 128px 128px, cover;
+          background-repeat: repeat, no-repeat;
           color: var(--parchment);
           font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
@@ -54,11 +55,17 @@ export default function LinksPage() {
 
           <h1 className="lh-name">Edwin Plange</h1>
           <div className="lh-tick" />
-          <div className="lh-title">Founder &amp; Forward Deployed Engineer</div>
+          <div className="lh-title">Founder | FDE | Ex-KPMG</div>
           <p className="lh-subtitle">
-            Building DualProfile. Ex-KPMG. Helping teams ship AI-driven workflows that hold up in
-            production.
+            Builder of DualProfile &mdash; a Chrome extension for multi-identity WhatsApp Web,
+            with users across the US, Spain &amp; beyond.
           </p>
+
+          <div className="lh-stamps">
+            <span className="lh-stamp lh-stamp-1">US</span>
+            <span className="lh-stamp lh-stamp-2">ES</span>
+          </div>
+
           <p className="lh-verse">&ldquo;The wealth of the nations shall come to you.&rdquo; &mdash; Isaiah 60:5</p>
 
           <nav className="lh-links">
@@ -130,7 +137,6 @@ export default function LinksPage() {
 
           <div className="lh-footer">
             <div className="lh-footer-loc">Accra, Ghana</div>
-            <div className="lh-footer-ex">Ex&#8209;KPMG</div>
           </div>
         </div>
       </main>
@@ -154,9 +160,9 @@ export default function LinksPage() {
 
         .lh-avatar-wrap {
           position: relative;
-          width: 132px;
-          height: 132px;
-          margin-bottom: 22px;
+          width: 128px;
+          height: 128px;
+          margin-bottom: 20px;
         }
 
         .lh-avatar-ring {
@@ -168,8 +174,8 @@ export default function LinksPage() {
         }
 
         .lh-avatar {
-          width: 132px;
-          height: 132px;
+          width: 128px;
+          height: 128px;
           border-radius: 50%;
           object-fit: cover;
           display: block;
@@ -191,36 +197,65 @@ export default function LinksPage() {
           width: 36px;
           height: 2px;
           background: var(--brass);
-          margin: 14px 0;
+          margin: 13px 0;
         }
 
         .lh-title {
-          font-size: 13px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
+          font-family: "Fraunces", Georgia, serif;
+          font-weight: 500;
+          font-style: italic;
+          font-size: 15px;
+          letter-spacing: 0.01em;
           color: var(--brass-soft);
           text-align: center;
-          font-weight: 500;
-          margin-bottom: 4px;
+          margin-bottom: 14px;
         }
 
         .lh-subtitle {
           font-size: 13.5px;
           color: var(--slate-light);
           text-align: center;
-          margin-bottom: 30px;
-          max-width: 320px;
-          line-height: 1.5;
+          margin-bottom: 22px;
+          max-width: 330px;
+          line-height: 1.55;
+        }
+
+        .lh-stamps {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          margin-bottom: 26px;
+          flex-wrap: wrap;
+        }
+
+        .lh-stamp {
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          color: var(--brass-soft);
+          border: 1px solid var(--brass-dim);
+          border-radius: 3px;
+          padding: 3px 7px;
+          opacity: 0.85;
+        }
+
+        .lh-stamp-1 {
+          transform: rotate(-2deg);
+        }
+        .lh-stamp-2 {
+          transform: rotate(1.5deg);
         }
 
         .lh-verse {
           font-family: "Fraunces", Georgia, serif;
           font-style: italic;
-          font-size: 13px;
-          color: var(--slate-light);
+          font-size: 12.5px;
+          color: var(--slate);
           text-align: center;
           letter-spacing: 0.01em;
-          margin-bottom: 34px;
+          margin-bottom: 30px;
         }
 
         .lh-links {
@@ -287,7 +322,7 @@ export default function LinksPage() {
         }
 
         .lh-footer {
-          margin-top: 36px;
+          margin-top: 32px;
           text-align: center;
         }
 
@@ -297,18 +332,12 @@ export default function LinksPage() {
           letter-spacing: 0.04em;
         }
 
-        .lh-footer-ex {
-          font-size: 10.5px;
-          color: var(--slate);
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          margin-top: 8px;
-          opacity: 0.75;
-        }
-
         @media (max-width: 360px) {
           .lh-name {
             font-size: 26px;
+          }
+          .lh-stamps {
+            gap: 5px;
           }
         }
       `}</style>
