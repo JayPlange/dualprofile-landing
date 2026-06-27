@@ -1214,6 +1214,43 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [lang, setLang] = useState('en');
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [wcMuted, setWcMuted] = useState(false);
+  const [wcConfettiDone, setWcConfettiDone] = useState(false);
+
+  // World Cup 2026 — tournament data
+  const WC_TEAMS = [
+    { day:1,  date:'2026-06-28', country:'Ghana',        flag:'🇬🇭', primary:'#006B3F', secondary:'#FCD116', slogan:'Stand proudly.' },
+    { day:2,  date:'2026-06-29', country:'Brazil',       flag:'🇧🇷', primary:'#009C3B', secondary:'#FFDF00', slogan:'Play beautifully.' },
+    { day:3,  date:'2026-06-30', country:'France',       flag:'🇫🇷', primary:'#002395', secondary:'#FFFFFF', slogan:'Be brilliant.' },
+    { day:4,  date:'2026-07-01', country:'Argentina',    flag:'🇦🇷', primary:'#74ACDF', secondary:'#FFFFFF', slogan:'Be unforgettable.' },
+    { day:5,  date:'2026-07-02', country:'Spain',        flag:'🇪🇸', primary:'#AA151B', secondary:'#F1BF00', slogan:'Own every room.' },
+    { day:6,  date:'2026-07-03', country:'Portugal',     flag:'🇵🇹', primary:'#006600', secondary:'#FF0000', slogan:'Show your best self.' },
+    { day:7,  date:'2026-07-04', country:'Germany',      flag:'🇩🇪', primary:'#1C1C1C', secondary:'#DD0000', slogan:'Precision matters.' },
+    { day:8,  date:'2026-07-05', country:'England',      flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', primary:'#1C1C1C', secondary:'#CF081F', slogan:'Keep it classic.' },
+    { day:9,  date:'2026-07-06', country:'Netherlands',  flag:'🇳🇱', primary:'#E77729', secondary:'#FFFFFF', slogan:'Be bold.' },
+    { day:10, date:'2026-07-07', country:'Japan',        flag:'🇯🇵', primary:'#BC002D', secondary:'#FFFFFF', slogan:'Thoughtful identities.' },
+    { day:11, date:'2026-07-08', country:'USA',          flag:'🇺🇸', primary:'#002868', secondary:'#BF0A30', slogan:'Make your mark.' },
+    { day:12, date:'2026-07-09', country:'Mexico',       flag:'🇲🇽', primary:'#006847', secondary:'#CE1126', slogan:'Show your colors.' },
+    { day:13, date:'2026-07-10', country:'Belgium',      flag:'🇧🇪', primary:'#1C1C1C', secondary:'#FAE042', slogan:'Quality over quantity.' },
+    { day:14, date:'2026-07-11', country:'Colombia',     flag:'🇨🇴', primary:'#FCD116', secondary:'#003087', slogan:'Express yourself.' },
+    { day:15, date:'2026-07-12', country:'Morocco',      flag:'🇲🇦', primary:'#C1272D', secondary:'#006233', slogan:'Defy expectations.' },
+    { day:16, date:'2026-07-13', country:'Switzerland',  flag:'🇨🇭', primary:'#D52B1E', secondary:'#FFFFFF', slogan:'Bold within.' },
+    { day:17, date:'2026-07-14', country:'South Africa', flag:'🇿🇦', primary:'#007A4D', secondary:'#FFB81C', slogan:'Many faces, one spirit.' },
+    { day:18, date:'2026-07-15', country:'Norway',       flag:'🇳🇴', primary:'#EF2B2D', secondary:'#FFFFFF', slogan:'Stand out from the crowd.' },
+    { day:19, date:'2026-07-16', country:'Australia',    flag:'🇦🇺', primary:'#00843D', secondary:'#FFD700', slogan:'Go your own way.' },
+    { day:20, date:'2026-07-17', country:'Canada',       flag:'🇨🇦', primary:'#CC0000', secondary:'#FFFFFF', slogan:'Show up everywhere.' },
+    { day:21, date:'2026-07-18', country:'Egypt',        flag:'🇪🇬', primary:'#C8102E', secondary:'#1C1C1C', slogan:'Timeless presence.' },
+    { day:22, date:'2026-07-19', country:'Final Day',    flag:'🏆',  primary:'#B8860B', secondary:'#FFD700', slogan:'One identity to rule them all.' },
+  ] as const;
+
+  const wcTodayStr = (() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  })();
+
+  const wcTeam = WC_TEAMS.find((t: any) => t.date === wcTodayStr) || null;
+  const wcDaysLeft = wcTeam ? Math.max(0, Math.round((new Date('2026-07-19').getTime() - new Date(wcTodayStr).getTime()) / 86400000)) : 0;
+  const wcActive = wcTeam !== null;
 
   const showToast = (title: string, message: string) => {
     setToast({ show: true, title, message });
@@ -1266,6 +1303,66 @@ export default function Home() {
       observer.disconnect();
     };
   }, []);
+
+  // World Cup — confetti + crowd sound on page load (once per session)
+  useEffect(() => {
+    if (!wcActive || typeof window === 'undefined') return;
+    const SESSION_KEY = 'dp_wc_site_celebrated';
+    if (sessionStorage.getItem(SESSION_KEY)) return;
+    sessionStorage.setItem(SESSION_KEY, '1');
+
+    // Confetti burst
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d')!;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = [wcTeam!.primary, wcTeam!.secondary, '#FFD700', '#FFFFFF', '#25D366'];
+    const particles = Array.from({ length: 100 }, () => ({
+      x: Math.random() * canvas.width, y: -10,
+      vx: (Math.random() - 0.5) * 4, vy: Math.random() * 4 + 1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: Math.random() * 8 + 3, rot: Math.random() * 360, rotV: (Math.random() - 0.5) * 8,
+    }));
+    let frame = 0; const MAX = 150;
+    const tick = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p: any) => {
+        p.x += p.vx; p.y += p.vy; p.rot += p.rotV; p.vy += 0.06;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color; ctx.globalAlpha = Math.max(0, 1 - frame / MAX);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.55);
+        ctx.restore();
+      });
+      frame++;
+      if (frame < MAX) requestAnimationFrame(tick); else canvas.remove();
+    };
+    setTimeout(() => requestAnimationFrame(tick), 300);
+
+    // Crowd sound unless muted
+    const muted = localStorage.getItem('dp_wc_site_muted') === '1';
+    if (!muted) {
+      try {
+        const actx = new ((window as any).AudioContext || (window as any).webkitAudioContext)();
+        const bufSize = Math.floor(actx.sampleRate * 1.2);
+        const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * 0.12;
+        const src = actx.createBufferSource();
+        src.buffer = buf;
+        const gain = actx.createGain();
+        const filter = actx.createBiquadFilter();
+        filter.type = 'bandpass'; filter.frequency.value = 700; filter.Q.value = 0.4;
+        src.connect(filter); filter.connect(gain); gain.connect(actx.destination);
+        gain.gain.setValueAtTime(0, actx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.35, actx.currentTime + 0.15);
+        gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 1.2);
+        src.start(); src.stop(actx.currentTime + 1.2);
+      } catch(e) {}
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wcActive]);
 
   const faqs = [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
@@ -1336,6 +1433,114 @@ export default function Home() {
       </Head>
 
       <div className="app">
+        {/* ── World Cup 2026 Announcement Bar ── */}
+        {wcActive && wcTeam && (
+          <div style={{
+            background: `linear-gradient(90deg, ${wcTeam.primary}ee 0%, color-mix(in srgb, ${wcTeam.primary} 60%, #0d0d0d) 100%)`,
+            borderBottom: `2px solid ${wcTeam.secondary}88`,
+            padding: '9px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap' as const,
+            gap: '8px',
+            position: 'relative' as const,
+            zIndex: 100,
+            overflow: 'hidden',
+          }}>
+            {/* Animated ball */}
+            <div style={{
+              position: 'absolute' as const,
+              left: 0, top: 0, bottom: 0,
+              width: '100%',
+              pointerEvents: 'none' as const,
+              overflow: 'hidden',
+            }}>
+              <span style={{
+                position: 'absolute' as const,
+                fontSize: '28px',
+                opacity: 0.08,
+                top: '-4px',
+                animation: 'wcBallScroll 18s linear infinite',
+              }}>⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽</span>
+            </div>
+
+            {/* Left — main info */}
+            <div style={{display:'flex', alignItems:'center', gap:'10px', position:'relative' as const, zIndex:1}}>
+              <span style={{fontSize:'20px', animation:'wcSpinSlow 8s linear infinite', display:'inline-block'}}>⚽</span>
+              <div>
+                <span style={{
+                  fontSize:'12px', fontWeight:'800', letterSpacing:'0.5px',
+                  color: '#FFFFFF', textTransform:'uppercase' as const,
+                }}>
+                  World Cup 2026 Edition
+                </span>
+                <span style={{margin:'0 8px', color:'rgba(255,255,255,0.4)'}}>·</span>
+                <span style={{fontSize:'12px', color:'rgba(255,255,255,0.8)', fontWeight:'500'}}>
+                  Day {wcTeam.day}/22
+                </span>
+                <span style={{margin:'0 8px', color:'rgba(255,255,255,0.4)'}}>·</span>
+                <span style={{fontSize:'16px'}}>{wcTeam.flag}</span>
+                <span style={{
+                  fontSize:'12px', fontWeight:'700',
+                  color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
+                  marginLeft:'4px',
+                }}>
+                  {wcTeam.country}
+                </span>
+                <span style={{
+                  fontSize:'11px', fontStyle:'italic' as const,
+                  color:'rgba(255,255,255,0.55)', marginLeft:'8px',
+                }}>
+                  "{wcTeam.slogan}"
+                </span>
+              </div>
+            </div>
+
+            {/* Right — days left + mute + CTA */}
+            <div style={{display:'flex', alignItems:'center', gap:'10px', position:'relative' as const, zIndex:1}}>
+              <span style={{
+                fontSize:'11px', fontWeight:'700',
+                color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
+                background:'rgba(255,255,255,0.1)',
+                padding:'3px 8px', borderRadius:'20px',
+                border:`1px solid ${wcTeam.secondary}44`,
+              }}>
+                {wcTeam.day === 22 ? '🏆 Final!' : `${wcDaysLeft}d left`}
+              </span>
+              <button
+                onClick={() => {
+                  const m = localStorage.getItem('dp_wc_site_muted') === '1';
+                  localStorage.setItem('dp_wc_site_muted', m ? '0' : '1');
+                  setWcMuted(!m);
+                }}
+                style={{
+                  background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.2)',
+                  borderRadius:'6px', padding:'3px 7px', cursor:'pointer',
+                  color:'rgba(255,255,255,0.7)', fontSize:'11px',
+                }}
+                title={wcMuted ? 'Unmute sounds' : 'Mute sounds'}
+              >
+                {wcMuted ? '🔇' : '🔊'}
+              </button>
+              <a
+                href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc"
+                target="_blank" rel="noreferrer"
+                style={{
+                  background: wcTeam.secondary === '#FFFFFF' ? 'rgba(255,255,255,0.15)' : wcTeam.secondary,
+                  color: wcTeam.secondary === '#FFFFFF' ? '#FFFFFF' : '#1a1a1a',
+                  fontSize:'11px', fontWeight:'800',
+                  padding:'5px 12px', borderRadius:'20px',
+                  textDecoration:'none', whiteSpace:'nowrap' as const,
+                  border:`1px solid ${wcTeam.secondary}66`,
+                }}
+              >
+                Get the extension ⚽
+              </a>
+            </div>
+          </div>
+        )}
+
         {/* Navbar */}
         <nav className="navbar">
           <div className="navbar-container">
@@ -3695,6 +3900,24 @@ export default function Home() {
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
           }
+        }
+
+        /* ── World Cup 2026 ──────────────────────────────────────────── */
+        @keyframes wcBallScroll {
+          from { transform: translateX(-200px); }
+          to   { transform: translateX(calc(100vw + 200px)); }
+        }
+        @keyframes wcSpinSlow {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        @keyframes wcPulse {
+          0%, 100% { transform: scale(1); }
+          50%       { transform: scale(1.1); }
+        }
+        @keyframes wcFadeSlideDown {
+          from { opacity: 0; transform: translateY(-10px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </>
