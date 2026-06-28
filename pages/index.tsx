@@ -1345,25 +1345,39 @@ export default function Home() {
       };
       requestAnimationFrame(tick);
 
-      // Crowd sound — now safe because triggered by user gesture (scroll/click)
+      // 3-layer stadium GOAAAL roar — 3 seconds, loud, same as extension
       const muted = localStorage.getItem('dp_wc_site_muted') === '1';
       if (!muted) {
         try {
-          const actx = new ((window as any).AudioContext || (window as any).webkitAudioContext)();
-          const bufSize = Math.floor(actx.sampleRate * 1.4);
-          const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
-          const data = buf.getChannelData(0);
-          for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * 0.12;
-          const src = actx.createBufferSource();
-          src.buffer = buf;
-          const gain = actx.createGain();
-          const filter = actx.createBiquadFilter();
-          filter.type = 'bandpass'; filter.frequency.value = 700; filter.Q.value = 0.4;
-          src.connect(filter); filter.connect(gain); gain.connect(actx.destination);
-          gain.gain.setValueAtTime(0, actx.currentTime);
-          gain.gain.linearRampToValueAtTime(0.4, actx.currentTime + 0.15);
-          gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 1.4);
-          src.start(); src.stop(actx.currentTime + 1.4);
+          const AudioCtx = (window as any).AudioContext || (window as any).webkitAudioContext;
+          if (AudioCtx) {
+            const actx = new AudioCtx();
+            actx.resume().then(() => {
+              const dur = 3.0;
+              const sr = actx.sampleRate;
+              const master = actx.createGain();
+              master.connect(actx.destination);
+              master.gain.setValueAtTime(0, actx.currentTime);
+              master.gain.linearRampToValueAtTime(0.9, actx.currentTime + 0.3);
+              master.gain.setValueAtTime(0.9, actx.currentTime + 1.5);
+              master.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+
+              [[300, 0.8, 0.55], [900, 0.5, 0.45], [2500, 0.3, 0.2]].forEach(([freq, q, vol]) => {
+                const buf = actx.createBuffer(1, Math.floor(sr * dur), sr);
+                const d = buf.getChannelData(0);
+                for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1);
+                const src = actx.createBufferSource(); src.buffer = buf;
+                const filt = actx.createBiquadFilter();
+                filt.type = 'bandpass'; filt.frequency.value = freq as number; filt.Q.value = q as number;
+                const g = actx.createGain();
+                g.gain.setValueAtTime(0, actx.currentTime);
+                g.gain.linearRampToValueAtTime(vol as number, actx.currentTime + 0.15);
+                g.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+                src.connect(filt); filt.connect(g); g.connect(master);
+                src.start(); src.stop(actx.currentTime + dur);
+              });
+            });
+          }
         } catch(e) {}
       }
     }
@@ -1551,8 +1565,8 @@ export default function Home() {
         {wcActive && wcTeam && (
           <div style={{
             position:'fixed' as const,
-            top:'64px', left:0, right:0,
-            zIndex:49,
+            top:'73px', left:0, right:0,
+            zIndex:51,
             background:`linear-gradient(90deg, ${wcTeam.primary}f0, color-mix(in srgb, ${wcTeam.primary} 55%, #0a0a0a))`,
             borderBottom:`1px solid ${wcTeam.secondary}55`,
             padding:'6px 20px',
@@ -1613,7 +1627,7 @@ export default function Home() {
         )}
 
         {/* Push content below fixed navbar + ticker when WC is active */}
-        <div style={{height: wcActive ? '104px' : '64px'}} />
+        <div style={{height: wcActive ? '118px' : '73px'}} />
 
         {/* Hero Section */}
         <section className="hero">
