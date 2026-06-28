@@ -1304,63 +1304,78 @@ export default function Home() {
     };
   }, []);
 
-  // World Cup — confetti + crowd sound on page load (once per session)
+  // World Cup — confetti + crowd sound on FIRST SCROLL (bypasses browser autoplay policy)
   useEffect(() => {
     if (!wcActive || typeof window === 'undefined') return;
     const SESSION_KEY = 'dp_wc_site_celebrated';
     if (sessionStorage.getItem(SESSION_KEY)) return;
-    sessionStorage.setItem(SESSION_KEY, '1');
 
-    // Confetti burst
-    const canvas = document.createElement('canvas');
-    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
-    document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d')!;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const colors = [wcTeam!.primary, wcTeam!.secondary, '#FFD700', '#FFFFFF', '#25D366'];
-    const particles = Array.from({ length: 100 }, () => ({
-      x: Math.random() * canvas.width, y: -10,
-      vx: (Math.random() - 0.5) * 4, vy: Math.random() * 4 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      size: Math.random() * 8 + 3, rot: Math.random() * 360, rotV: (Math.random() - 0.5) * 8,
-    }));
-    let frame = 0; const MAX = 150;
-    const tick = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p: any) => {
-        p.x += p.vx; p.y += p.vy; p.rot += p.rotV; p.vy += 0.06;
-        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate((p.rot * Math.PI) / 180);
-        ctx.fillStyle = p.color; ctx.globalAlpha = Math.max(0, 1 - frame / MAX);
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.55);
-        ctx.restore();
-      });
-      frame++;
-      if (frame < MAX) requestAnimationFrame(tick); else canvas.remove();
-    };
-    setTimeout(() => requestAnimationFrame(tick), 300);
+    function celebrateOnce() {
+      if (sessionStorage.getItem(SESSION_KEY)) return;
+      sessionStorage.setItem(SESSION_KEY, '1');
+      window.removeEventListener('scroll', celebrateOnce);
+      window.removeEventListener('click', celebrateOnce);
 
-    // Crowd sound unless muted
-    const muted = localStorage.getItem('dp_wc_site_muted') === '1';
-    if (!muted) {
-      try {
-        const actx = new ((window as any).AudioContext || (window as any).webkitAudioContext)();
-        const bufSize = Math.floor(actx.sampleRate * 1.2);
-        const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
-        const data = buf.getChannelData(0);
-        for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * 0.12;
-        const src = actx.createBufferSource();
-        src.buffer = buf;
-        const gain = actx.createGain();
-        const filter = actx.createBiquadFilter();
-        filter.type = 'bandpass'; filter.frequency.value = 700; filter.Q.value = 0.4;
-        src.connect(filter); filter.connect(gain); gain.connect(actx.destination);
-        gain.gain.setValueAtTime(0, actx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.35, actx.currentTime + 0.15);
-        gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 1.2);
-        src.start(); src.stop(actx.currentTime + 1.2);
-      } catch(e) {}
+      // Confetti burst
+      const canvas = document.createElement('canvas');
+      canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d')!;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const colors = [wcTeam!.primary, wcTeam!.secondary, '#FFD700', '#FFFFFF', '#25D366'];
+      const particles = Array.from({ length: 100 }, () => ({
+        x: Math.random() * canvas.width, y: -10,
+        vx: (Math.random() - 0.5) * 4, vy: Math.random() * 4 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * 8 + 3, rot: Math.random() * 360, rotV: (Math.random() - 0.5) * 8,
+      }));
+      let frame = 0; const MAX = 150;
+      const tick = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p: any) => {
+          p.x += p.vx; p.y += p.vy; p.rot += p.rotV; p.vy += 0.06;
+          ctx.save(); ctx.translate(p.x, p.y); ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color; ctx.globalAlpha = Math.max(0, 1 - frame / MAX);
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.55);
+          ctx.restore();
+        });
+        frame++;
+        if (frame < MAX) requestAnimationFrame(tick); else canvas.remove();
+      };
+      requestAnimationFrame(tick);
+
+      // Crowd sound — now safe because triggered by user gesture (scroll/click)
+      const muted = localStorage.getItem('dp_wc_site_muted') === '1';
+      if (!muted) {
+        try {
+          const actx = new ((window as any).AudioContext || (window as any).webkitAudioContext)();
+          const bufSize = Math.floor(actx.sampleRate * 1.4);
+          const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
+          const data = buf.getChannelData(0);
+          for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * 0.12;
+          const src = actx.createBufferSource();
+          src.buffer = buf;
+          const gain = actx.createGain();
+          const filter = actx.createBiquadFilter();
+          filter.type = 'bandpass'; filter.frequency.value = 700; filter.Q.value = 0.4;
+          src.connect(filter); filter.connect(gain); gain.connect(actx.destination);
+          gain.gain.setValueAtTime(0, actx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.4, actx.currentTime + 0.15);
+          gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 1.4);
+          src.start(); src.stop(actx.currentTime + 1.4);
+        } catch(e) {}
+      }
     }
+
+    // Attach to BOTH scroll and click — whichever comes first unblocks AudioContext
+    window.addEventListener('scroll', celebrateOnce, { once: true });
+    window.addEventListener('click', celebrateOnce, { once: true });
+
+    return () => {
+      window.removeEventListener('scroll', celebrateOnce);
+      window.removeEventListener('click', celebrateOnce);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wcActive]);
 
@@ -1433,120 +1448,38 @@ export default function Home() {
       </Head>
 
       <div className="app">
-        {/* ── World Cup 2026 Announcement Bar ── */}
-        {wcActive && wcTeam && (
-          <div style={{
-            background: `linear-gradient(90deg, ${wcTeam.primary}ee 0%, color-mix(in srgb, ${wcTeam.primary} 60%, #0d0d0d) 100%)`,
-            borderBottom: `2px solid ${wcTeam.secondary}88`,
-            padding: '9px 20px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap' as const,
-            gap: '8px',
-            position: 'relative' as const,
-            zIndex: 100,
-            overflow: 'hidden',
-          }}>
-            {/* Animated ball */}
-            <div style={{
-              position: 'absolute' as const,
-              left: 0, top: 0, bottom: 0,
-              width: '100%',
-              pointerEvents: 'none' as const,
-              overflow: 'hidden',
-            }}>
-              <span style={{
-                position: 'absolute' as const,
-                fontSize: '28px',
-                opacity: 0.08,
-                top: '-4px',
-                animation: 'wcBallScroll 18s linear infinite',
-              }}>⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽</span>
-            </div>
-
-            {/* Left — main info */}
-            <div style={{display:'flex', alignItems:'center', gap:'10px', position:'relative' as const, zIndex:1}}>
-              <span style={{fontSize:'20px', animation:'wcSpinSlow 8s linear infinite', display:'inline-block'}}>⚽</span>
-              <div>
-                <span style={{
-                  fontSize:'12px', fontWeight:'800', letterSpacing:'0.5px',
-                  color: '#FFFFFF', textTransform:'uppercase' as const,
-                }}>
-                  World Cup 2026 Edition
-                </span>
-                <span style={{margin:'0 8px', color:'rgba(255,255,255,0.4)'}}>·</span>
-                <span style={{fontSize:'12px', color:'rgba(255,255,255,0.8)', fontWeight:'500'}}>
-                  Day {wcTeam.day}/22
-                </span>
-                <span style={{margin:'0 8px', color:'rgba(255,255,255,0.4)'}}>·</span>
-                <span style={{fontSize:'16px'}}>{wcTeam.flag}</span>
-                <span style={{
-                  fontSize:'12px', fontWeight:'700',
-                  color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
-                  marginLeft:'4px',
-                }}>
-                  {wcTeam.country}
-                </span>
-                <span style={{
-                  fontSize:'11px', fontStyle:'italic' as const,
-                  color:'rgba(255,255,255,0.55)', marginLeft:'8px',
-                }}>
-                  "{wcTeam.slogan}"
-                </span>
-              </div>
-            </div>
-
-            {/* Right — days left + mute + CTA */}
-            <div style={{display:'flex', alignItems:'center', gap:'10px', position:'relative' as const, zIndex:1}}>
-              <span style={{
-                fontSize:'11px', fontWeight:'700',
-                color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
-                background:'rgba(255,255,255,0.1)',
-                padding:'3px 8px', borderRadius:'20px',
-                border:`1px solid ${wcTeam.secondary}44`,
-              }}>
-                {wcTeam.day === 22 ? '🏆 Final!' : `${wcDaysLeft}d left`}
-              </span>
-              <button
-                onClick={() => {
-                  const m = localStorage.getItem('dp_wc_site_muted') === '1';
-                  localStorage.setItem('dp_wc_site_muted', m ? '0' : '1');
-                  setWcMuted(!m);
-                }}
-                style={{
-                  background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.2)',
-                  borderRadius:'6px', padding:'3px 7px', cursor:'pointer',
-                  color:'rgba(255,255,255,0.7)', fontSize:'11px',
-                }}
-                title={wcMuted ? 'Unmute sounds' : 'Mute sounds'}
-              >
-                {wcMuted ? '🔇' : '🔊'}
-              </button>
-              <a
-                href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc"
-                target="_blank" rel="noreferrer"
-                style={{
-                  background: wcTeam.secondary === '#FFFFFF' ? 'rgba(255,255,255,0.15)' : wcTeam.secondary,
-                  color: wcTeam.secondary === '#FFFFFF' ? '#FFFFFF' : '#1a1a1a',
-                  fontSize:'11px', fontWeight:'800',
-                  padding:'5px 12px', borderRadius:'20px',
-                  textDecoration:'none', whiteSpace:'nowrap' as const,
-                  border:`1px solid ${wcTeam.secondary}66`,
-                }}
-              >
-                Get the extension ⚽
-              </a>
-            </div>
-          </div>
-        )}
-
         {/* Navbar */}
         <nav className="navbar">
           <div className="navbar-container">
             <div className="logo">
-              <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="32" height="32" />
+              <div style={{position:'relative' as const, display:'inline-flex', alignItems:'center'}}>
+                <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="32" height="32" />
+                {wcActive && (
+                  <span style={{
+                    position:'absolute' as const,
+                    bottom:'-3px', right:'-6px',
+                    fontSize:'13px', lineHeight:'1',
+                    filter:'drop-shadow(0 1px 2px rgba(0,0,0,0.5))',
+                    animation:'wcSpinSlow 10s linear infinite',
+                    display:'inline-block',
+                  }}>⚽</span>
+                )}
+              </div>
               <span>DualProfile</span>
+              {wcActive && wcTeam && (
+                <span style={{
+                  fontSize:'10px', fontWeight:'700',
+                  background:`${wcTeam.primary}`,
+                  color: wcTeam.secondary === '#FFFFFF' ? '#fff' : wcTeam.secondary,
+                  padding:'2px 7px', borderRadius:'20px',
+                  letterSpacing:'0.3px',
+                  border:`1px solid ${wcTeam.secondary}55`,
+                  whiteSpace:'nowrap' as const,
+                  display:'inline-flex', alignItems:'center', gap:'4px',
+                }}>
+                  {wcTeam.flag} WC 2026
+                </span>
+              )}
             </div>
             <div className="nav-links">
               <a href="#features">{t('nav_features')}</a>
@@ -1613,6 +1546,74 @@ export default function Home() {
             </div>
           </div>
         </nav>
+
+        {/* ── WC Slim Ticker (fixed, sits below navbar at top:64px) ── */}
+        {wcActive && wcTeam && (
+          <div style={{
+            position:'fixed' as const,
+            top:'64px', left:0, right:0,
+            zIndex:49,
+            background:`linear-gradient(90deg, ${wcTeam.primary}f0, color-mix(in srgb, ${wcTeam.primary} 55%, #0a0a0a))`,
+            borderBottom:`1px solid ${wcTeam.secondary}55`,
+            padding:'6px 20px',
+            display:'flex', alignItems:'center',
+            justifyContent:'space-between',
+            gap:'8px', overflow:'hidden',
+          }}>
+            {/* Scrolling background balls */}
+            <div style={{position:'absolute' as const, inset:0, overflow:'hidden', pointerEvents:'none' as const}}>
+              <span style={{
+                position:'absolute' as const, top:'1px', left:0,
+                fontSize:'20px', opacity:0.07, whiteSpace:'nowrap' as const,
+                animation:'wcBallScroll 22s linear infinite',
+              }}>⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽ ⚽</span>
+            </div>
+            {/* Left */}
+            <div style={{display:'flex', alignItems:'center', gap:'8px', position:'relative' as const, zIndex:1, color:'#fff', fontSize:'11px'}}>
+              <span style={{fontWeight:'800', textTransform:'uppercase' as const, letterSpacing:'0.5px', fontSize:'10px'}}>
+                ⚽ World Cup 2026
+              </span>
+              <span style={{opacity:0.35}}>·</span>
+              <span style={{opacity:0.8}}>Day {wcTeam.day}/22</span>
+              <span style={{opacity:0.35}}>·</span>
+              <span style={{fontSize:'13px'}}>{wcTeam.flag}</span>
+              <span style={{
+                fontWeight:'700',
+                color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
+              }}>{wcTeam.country}</span>
+              <span style={{opacity:0.5, fontStyle:'italic' as const, fontSize:'10px'}}>
+                "{wcTeam.slogan}"
+              </span>
+            </div>
+            {/* Right */}
+            <div style={{display:'flex', alignItems:'center', gap:'8px', position:'relative' as const, zIndex:1, flexShrink:0}}>
+              <span style={{
+                fontWeight:'700', fontSize:'10px',
+                color: wcTeam.secondary === '#FFFFFF' ? '#e5e7eb' : wcTeam.secondary,
+                background:'rgba(255,255,255,0.08)',
+                padding:'2px 8px', borderRadius:'20px',
+                border:`1px solid ${wcTeam.secondary}33`,
+              }}>
+                {wcTeam.day === 22 ? '🏆 Final!' : `${wcDaysLeft}d left`}
+              </span>
+              <button
+                onClick={() => {
+                  const m = localStorage.getItem('dp_wc_site_muted') === '1';
+                  localStorage.setItem('dp_wc_site_muted', m ? '0' : '1');
+                  setWcMuted(!m);
+                }}
+                style={{
+                  background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.15)',
+                  borderRadius:'6px', padding:'2px 6px', cursor:'pointer',
+                  color:'rgba(255,255,255,0.6)', fontSize:'11px', fontFamily:'inherit',
+                }}
+              >{wcMuted ? '🔇' : '🔊'}</button>
+            </div>
+          </div>
+        )}
+
+        {/* Push content below fixed navbar + ticker when WC is active */}
+        <div style={{height: wcActive ? '104px' : '64px'}} />
 
         {/* Hero Section */}
         <section className="hero">
