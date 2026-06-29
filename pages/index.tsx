@@ -1243,6 +1243,49 @@ export default function Home() {
     { day:22, date:'2026-07-19', country:'Final Day',    flag:'🏆',  primary:'#B8860B', secondary:'#FFD700', slogan:'One identity to rule them all.' },
   ] as const;
 
+  // Cultural pattern generator — matches extension worldcupTheme.js
+  const getWCPattern = (team: any): string => {
+    if (!team) return '';
+    const c1 = team.secondary + '20';
+    const c2 = team.primary   + '28';
+    const patterns: Record<string, string> = {
+      kente:     `repeating-linear-gradient(45deg,${c1} 0,${c1} 5px,transparent 5px,transparent 15px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 3px,transparent 3px,transparent 10px)`,
+      carnival:  `repeating-radial-gradient(ellipse 40px 20px at 0% 50%,${c1} 0,${c1} 2px,transparent 2px,transparent 40px),repeating-radial-gradient(ellipse 40px 20px at 50% 0%,${c2} 0,${c2} 2px,transparent 2px,transparent 40px)`,
+      fleur:     `repeating-linear-gradient(90deg,${c1} 0,${c1} 1px,transparent 1px,transparent 24px),repeating-linear-gradient(60deg,${c2} 0,${c2} 1px,transparent 1px,transparent 24px),repeating-linear-gradient(-60deg,${c1} 0,${c1} 1px,transparent 1px,transparent 24px)`,
+      sun:       `repeating-conic-gradient(${c1} 0deg,${c1} 6deg,transparent 6deg,transparent 12deg),radial-gradient(circle at 50% 50%,${c2} 0%,transparent 45%)`,
+      mosaic:    `repeating-linear-gradient(45deg,${c1} 0,${c1} 2px,transparent 2px,transparent 12px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 2px,transparent 2px,transparent 12px)`,
+      azulejo:   `repeating-linear-gradient(0deg,${c1} 0,${c1} 1px,transparent 1px,transparent 18px),repeating-linear-gradient(90deg,${c1} 0,${c1} 1px,transparent 1px,transparent 18px),repeating-linear-gradient(45deg,${c2} 0,${c2} 1px,transparent 1px,transparent 18px)`,
+      bauhaus:   `repeating-linear-gradient(0deg,${c1} 0,${c1} 3px,transparent 3px,transparent 20px),repeating-linear-gradient(90deg,${c2} 0,${c2} 1px,transparent 1px,transparent 30px)`,
+      cross:     `repeating-linear-gradient(0deg,${c1} 0,${c1} 2px,transparent 2px,transparent 20px),repeating-linear-gradient(90deg,${c1} 0,${c1} 2px,transparent 2px,transparent 20px)`,
+      tulip:     `repeating-radial-gradient(circle 8px at 50% 50%,${c1} 0,${c1} 2px,transparent 2px,transparent 16px),repeating-linear-gradient(90deg,${c2} 0,${c2} 1px,transparent 1px,transparent 32px)`,
+      seigaiha:  `repeating-radial-gradient(circle 14px at 0% 14px,transparent 12px,${c1} 12px,${c1} 14px,transparent 14px),repeating-radial-gradient(circle 14px at 14px 0,transparent 12px,${c2} 12px,${c2} 14px,transparent 14px)`,
+      stars:     `repeating-linear-gradient(0deg,${c1} 0,${c1} 2px,transparent 2px,transparent 14px),radial-gradient(circle 2px at 7px 7px,${c2} 100%,transparent 100%)`,
+      aztec:     `repeating-linear-gradient(45deg,${c1} 0,${c1} 4px,transparent 4px,transparent 8px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 2px,transparent 2px,transparent 16px)`,
+      lace:      `repeating-linear-gradient(45deg,${c1} 0,${c1} 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,${c1} 0,${c1} 1px,transparent 1px,transparent 8px)`,
+      mochila:   `repeating-linear-gradient(60deg,${c1} 0,${c1} 3px,transparent 3px,transparent 10px),repeating-linear-gradient(-60deg,${c2} 0,${c2} 3px,transparent 3px,transparent 10px)`,
+      zellige:   `repeating-linear-gradient(30deg,${c1} 0,${c1} 1px,transparent 1px,transparent 10px),repeating-linear-gradient(-30deg,${c2} 0,${c2} 1px,transparent 1px,transparent 10px),repeating-linear-gradient(90deg,${c1} 0,${c1} 1px,transparent 1px,transparent 10px)`,
+      boubou:    `repeating-linear-gradient(170deg,${c1} 0,${c1} 3px,transparent 3px,transparent 12px),repeating-linear-gradient(10deg,${c2} 0,${c2} 2px,transparent 2px,transparent 18px)`,
+      viking:    `repeating-linear-gradient(60deg,${c1} 0,${c1} 3px,transparent 3px,transparent 12px),repeating-linear-gradient(-60deg,${c1} 0,${c1} 3px,transparent 3px,transparent 12px),repeating-linear-gradient(0deg,${c2} 0,${c2} 1px,transparent 1px,transparent 24px)`,
+      aboriginal:`radial-gradient(circle 2px at 8px 8px,${c1} 100%,transparent 100%),radial-gradient(circle 3px at 24px 16px,${c2} 100%,transparent 100%),radial-gradient(circle 2px at 16px 24px,${c1} 100%,transparent 100%)`,
+      maple:     `repeating-linear-gradient(45deg,${c1} 0,${c1} 2px,transparent 2px,transparent 16px),repeating-linear-gradient(-45deg,${c1} 0,${c1} 2px,transparent 2px,transparent 16px)`,
+      hieroglyph:`repeating-linear-gradient(0deg,${c1} 0,${c1} 1px,transparent 1px,transparent 16px),repeating-linear-gradient(90deg,${c2} 0,${c2} 1px,transparent 1px,transparent 24px),repeating-linear-gradient(45deg,${c1} 0,${c1} 1px,transparent 1px,transparent 24px)`,
+      confetti:  `repeating-linear-gradient(45deg,${c1} 0,${c1} 4px,transparent 4px,transparent 10px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 4px,transparent 4px,transparent 10px)`,
+    };
+    // Map country to pattern
+    const countryPattern: Record<string, string> = {
+      'Ghana': 'kente', 'Brazil': 'carnival', 'France': 'fleur',
+      'Argentina': 'sun', 'Spain': 'mosaic', 'Portugal': 'azulejo',
+      'Germany': 'bauhaus', 'England': 'cross', 'Netherlands': 'tulip',
+      'Japan': 'seigaiha', 'USA': 'stars', 'Mexico': 'aztec',
+      'Belgium': 'lace', 'Colombia': 'mochila', 'Morocco': 'zellige',
+      'Switzerland': 'cross', 'Senegal': 'boubou', 'Norway': 'viking',
+      'Australia': 'aboriginal', 'Canada': 'maple', 'Egypt': 'hieroglyph',
+      'Final Day': 'confetti',
+    };
+    const key = countryPattern[team.country] || 'cross';
+    return patterns[key] || '';
+  };
+
   const wcTodayStr = (() => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -1567,7 +1610,7 @@ export default function Home() {
             position:'fixed' as const,
             top:'73px', left:0, right:0,
             zIndex:51,
-            background:`linear-gradient(90deg, ${wcTeam.primary}f0, color-mix(in srgb, ${wcTeam.primary} 55%, #0a0a0a))`,
+            background:`${getWCPattern(wcTeam)}, linear-gradient(90deg, ${wcTeam.primary}f0, color-mix(in srgb, ${wcTeam.primary} 55%, #0a0a0a))`,
             borderBottom:`1px solid ${wcTeam.secondary}55`,
             padding:'6px 20px',
             display:'flex', alignItems:'center',
@@ -1628,6 +1671,55 @@ export default function Home() {
 
         {/* Push content below fixed navbar + ticker when WC is active */}
         <div style={{height: wcActive ? '118px' : '73px'}} />
+
+        {/* WC Cultural Band — full-width country theme strip */}
+        {wcActive && wcTeam && (
+          <div style={{
+            width:'100%',
+            background:`${getWCPattern(wcTeam)}, linear-gradient(135deg, ${wcTeam.primary}cc 0%, color-mix(in srgb, ${wcTeam.primary} 40%, #0a0a0a) 100%)`,
+            borderBottom:`2px solid ${wcTeam.secondary}66`,
+            padding:'20px 24px',
+            display:'flex', alignItems:'center',
+            justifyContent:'space-between',
+            flexWrap:'wrap' as const,
+            gap:'12px',
+            position:'relative' as const,
+            overflow:'hidden',
+          }}>
+            {/* Glow overlay */}
+            <div style={{
+              position:'absolute' as const, inset:0,
+              background:`radial-gradient(ellipse 60% 100% at 0% 50%, ${wcTeam.primary}44, transparent)`,
+              pointerEvents:'none' as const,
+            }}/>
+            {/* Left — flag + identity */}
+            <div style={{display:'flex', alignItems:'center', gap:'16px', position:'relative' as const, zIndex:1}}>
+              <span style={{fontSize:'52px', lineHeight:1, filter:'drop-shadow(0 2px 8px rgba(0,0,0,0.5))'}}>
+                {wcTeam.flag}
+              </span>
+              <div>
+                <div style={{fontSize:'11px', fontWeight:'800', textTransform:'uppercase' as const, letterSpacing:'2px', color:`${wcTeam.secondary === '#FFFFFF' ? 'rgba(255,255,255,0.6)' : wcTeam.secondary}`, marginBottom:'2px'}}>
+                  ⚽ World Cup 2026 · Day {wcTeam.day}/22
+                </div>
+                <div style={{fontSize:'26px', fontWeight:'900', color:'#FFFFFF', lineHeight:1.1, textShadow:'0 2px 12px rgba(0,0,0,0.5)'}}>
+                  {wcTeam.country}
+                </div>
+                <div style={{fontSize:'14px', fontStyle:'italic' as const, color:`${wcTeam.secondary === '#FFFFFF' ? 'rgba(255,255,255,0.75)' : wcTeam.secondary}`, marginTop:'4px'}}>
+                  "{wcTeam.slogan}"
+                </div>
+              </div>
+            </div>
+            {/* Right — days left */}
+            <div style={{position:'relative' as const, zIndex:1, textAlign:'right' as const}}>
+              <div style={{fontSize:'36px', fontWeight:'900', color: wcTeam.secondary === '#FFFFFF' ? '#FFFFFF' : wcTeam.secondary, lineHeight:1, textShadow:'0 2px 8px rgba(0,0,0,0.4)'}}>
+                {wcDaysLeft}
+              </div>
+              <div style={{fontSize:'10px', textTransform:'uppercase' as const, letterSpacing:'1px', color:'rgba(255,255,255,0.5)', marginTop:'2px'}}>
+                days left
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Hero Section */}
         <section className="hero">
