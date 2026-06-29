@@ -1235,7 +1235,7 @@ export default function Home() {
     { day:14, date:'2026-07-11', country:'Colombia',     flag:'🇨🇴', primary:'#FCD116', secondary:'#003087', slogan:'Express yourself.' },
     { day:15, date:'2026-07-12', country:'Morocco',      flag:'🇲🇦', primary:'#C1272D', secondary:'#006233', slogan:'Defy expectations.' },
     { day:16, date:'2026-07-13', country:'Switzerland',  flag:'🇨🇭', primary:'#D52B1E', secondary:'#FFFFFF', slogan:'Bold within.' },
-    { day:17, date:'2026-07-14', country:'South Africa', flag:'🇿🇦', primary:'#007A4D', secondary:'#FFB81C', slogan:'Many faces, one spirit.' },
+    { day:17, date:'2026-07-14', country:'Senegal', flag:'🇸🇳', primary:'#00853F', secondary:'#FDEF42', slogan:'Rise and shine.' },
     { day:18, date:'2026-07-15', country:'Norway',       flag:'🇳🇴', primary:'#EF2B2D', secondary:'#FFFFFF', slogan:'Stand out from the crowd.' },
     { day:19, date:'2026-07-16', country:'Australia',    flag:'🇦🇺', primary:'#00843D', secondary:'#FFD700', slogan:'Go your own way.' },
     { day:20, date:'2026-07-17', country:'Canada',       flag:'🇨🇦', primary:'#CC0000', secondary:'#FFFFFF', slogan:'Show up everywhere.' },
