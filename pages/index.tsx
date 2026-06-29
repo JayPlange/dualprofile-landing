@@ -1219,8 +1219,8 @@ export default function Home() {
 
   // World Cup 2026 — tournament data
   const WC_TEAMS = [
-    { day:1,  date:'2026-06-28', country:'Ghana',        flag:'🇬🇭', primary:'#006B3F', secondary:'#FCD116', slogan:'Stand proudly.' },
-    { day:2,  date:'2026-06-29', country:'Brazil',       flag:'🇧🇷', primary:'#009C3B', secondary:'#FFDF00', slogan:'Play beautifully.' },
+    { day:1,  date:'2026-06-29', country:'Ghana',        flag:'🇬🇭', primary:'#006B3F', secondary:'#FCD116', slogan:'Stand proudly.' },
+    { day:2,  date:'2026-06-28', country:'Brazil',       flag:'🇧🇷', primary:'#009C3B', secondary:'#FFDF00', slogan:'Play beautifully.' },
     { day:3,  date:'2026-06-30', country:'France',       flag:'🇫🇷', primary:'#002395', secondary:'#FFFFFF', slogan:'Be brilliant.' },
     { day:4,  date:'2026-07-01', country:'Argentina',    flag:'🇦🇷', primary:'#74ACDF', secondary:'#FFFFFF', slogan:'Be unforgettable.' },
     { day:5,  date:'2026-07-02', country:'Spain',        flag:'🇪🇸', primary:'#AA151B', secondary:'#F1BF00', slogan:'Own every room.' },
