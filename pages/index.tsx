@@ -35,8 +35,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Annual',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: 'Different people see a different you.',
-    identity_sub: 'Assign any photo to any contact. They see it automatically.',
+    identity_title: "You wouldn't talk to your boss like you talk to your best friend.",
+    identity_sub: "So don't show them the same photo either. Assign any photo to any contact — DualProfile switches it automatically.",
     identity_boss: 'Your boss',
     identity_boss_sees: 'Sees your professional headshot',
     identity_friends: 'Your friends',
@@ -169,8 +169,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Anual',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: 'Personas diferentes ven un tu diferente.',
-    identity_sub: 'Asigna cualquier foto a cualquier contacto. Lo ven automaticamente.',
+    identity_title: 'No hablarias con tu jefe igual que con tu mejor amigo.',
+    identity_sub: 'Entonces no les muestres la misma foto tampoco. Asigna cualquier foto a cualquier contacto — DualProfile la cambia automaticamente.',
     identity_boss: 'Tu jefe',
     identity_boss_sees: 'Ve tu foto profesional',
     identity_friends: 'Tus amigos',
@@ -303,8 +303,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Annuel',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: 'Des personnes differentes vous voient differemment.',
-    identity_sub: `Attribuez n'importe quelle photo a n'importe quel contact. Ils la voient automatiquement.`,
+    identity_title: 'Vous ne parleriez pas a votre patron comme a votre meilleur ami.',
+    identity_sub: `Alors ne leur montrez pas la meme photo non plus. Attribuez n'importe quelle photo a n'importe quel contact — DualProfile la change automatiquement.`,
     identity_boss: 'Votre patron',
     identity_boss_sees: 'Voit votre photo professionnelle',
     identity_friends: 'Vos amis',
@@ -437,8 +437,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Anual',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: 'Pessoas diferentes veem uma versao diferente de voce.',
-    identity_sub: 'Atribua qualquer foto a qualquer contato. Eles veem automaticamente.',
+    identity_title: 'Voce nao falaria com seu chefe como fala com seu melhor amigo.',
+    identity_sub: 'Entao nao mostre a mesma foto para eles tambem. Atribua qualquer foto a qualquer contato — o DualProfile troca automaticamente.',
     identity_boss: 'Seu chefe',
     identity_boss_sees: 'Ve sua foto profissional',
     identity_friends: 'Seus amigos',
@@ -571,8 +571,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Jährlich',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: 'Verschiedene Personen sehen ein anderes du.',
-    identity_sub: 'Weise jedem Kontakt ein beliebiges Foto zu. Sie sehen es automatisch.',
+    identity_title: 'Mit deinem Chef sprichst du nicht so wie mit deinem besten Freund.',
+    identity_sub: 'Warum solltest du ihnen dann dasselbe Foto zeigen? Weise jedem Kontakt ein beliebiges Foto zu — DualProfile wechselt automatisch.',
     identity_boss: 'Dein Chef',
     identity_boss_sees: 'Sieht dein professionelles Foto',
     identity_friends: 'Deine Freunde',
@@ -705,8 +705,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'वार्षिक',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: `अलग-अलग लोग आपका अलग रूप देखते हैं।`,
-    identity_sub: `किसी भी कॉन्टैक्ट को कोई भी फोटो असाइन करें। वे इसे अपने आप देखते हैं।`,
+    identity_title: `आप अपने बॉस से वैसे बात नहीं करते जैसे अपने सबसे अच्छे दोस्त से करते हैं।`,
+    identity_sub: `तो उन्हें वही फोटो भी मत दिखाइए। किसी भी कॉन्टैक्ट को कोई भी फोटो असाइन करें — DualProfile इसे अपने आप बदल देता है।`,
     identity_boss: `आपका बॉस`,
     identity_boss_sees: `प्रोफेशनल फोटो देखता है`,
     identity_friends: `आपके दोस्त`,
@@ -839,8 +839,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: '年度',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: `不同的人看到不同的你。`,
-    identity_sub: `为任何联系人分配任何照片。他们会自动看到。`,
+    identity_title: `你不会用对老板的方式跟最好的朋友说话。`,
+    identity_sub: `那也别让他们看到同一张照片。给任何联系人分配任何照片——DualProfile会自动切换。`,
     identity_boss: `您的老板`,
     identity_boss_sees: `看到您的专业照片`,
     identity_friends: `您的朋友`,
@@ -973,8 +973,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: '年間',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: `異なる人が異なるあなたを見ます。`,
-    identity_sub: `どのコンタクトにもどの写真でも割り当て可能。自動的に表示されます。`,
+    identity_title: `上司と親友では話し方が違うはず。`,
+    identity_sub: `なら見せる写真も同じである必要はありません。どのコンタクトにもどの写真でも割り当てられます——DualProfileが自動的に切り替えます。`,
     identity_boss: `上司`,
     identity_boss_sees: `プロフェッショナルな写真を見る`,
     identity_friends: `友達`,
@@ -1107,8 +1107,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_pro_badge: 'Pro',
     feat_annual_badge: 'Годовой',
     feat_lifetime_badge: 'Lifetime',
-    identity_title: `Разные люди видят разного вас.`,
-    identity_sub: `Назначьте любое фото любому контакту. Они увидят его автоматически.`,
+    identity_title: `Вы же не говорите с начальником так, как с лучшим другом.`,
+    identity_sub: `Так зачем показывать им одно и то же фото? Назначьте любое фото любому контакту — DualProfile переключит его автоматически.`,
     identity_boss: `Ваш начальник`,
     identity_boss_sees: `Видит ваше профессиональное фото`,
     identity_friends: `Ваши друзья`,
@@ -1833,6 +1833,39 @@ export default function Home() {
             <p style={{fontSize:'12px',color:'rgba(255,255,255,0.3)',letterSpacing:'0.5px',textTransform:'uppercase' as const}}>
               {t('hero_social_proof')}
             </p>
+          </div>
+        </section>
+
+        {/* Identity Section — concrete proof of the hero's thesis */}
+        <section id="identity" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">{t('identity_title')}</h2>
+              <p className="section-subtitle">{t('identity_sub')}</p>
+            </div>
+            <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))'}}>
+              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
+                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </div>
+                <h3 className="feature-title">{t('identity_boss')}</h3>
+                <p className="feature-description">{t('identity_boss_sees')}</p>
+              </div>
+              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
+                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h3 className="feature-title">{t('identity_friends')}</h3>
+                <p className="feature-description">{t('identity_friends_sees')}</p>
+              </div>
+              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
+                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <h3 className="feature-title">{t('identity_family')}</h3>
+                <p className="feature-description">{t('identity_family_sees')}</p>
+              </div>
+            </div>
           </div>
         </section>
 
