@@ -2243,9 +2243,9 @@ export default function Home() {
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
                     <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_trial')}</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
+                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
