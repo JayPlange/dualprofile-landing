@@ -4,11 +4,11 @@ import Head from 'next/head';
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
   en: {
-    hero_h1_1: 'Stop showing the same version',
-    hero_h1_2: 'of yourself to everyone.',
-    hero_h1_new: 'Your WhatsApp profile photo, customized per contact.',
-    hero_now: `WhatsApp assumes you're the same person to everyone. You're not.`,
-    hero_sub: `Your boss, clients, family, and friends don't all know the same you. So why should they all see the same profile photo?`,
+    hero_h1_1: 'So why does your photo',
+    hero_h1_2: 'say the same thing to everyone,',
+    hero_h1_new: "You already change how you talk depending on who's listening.",
+    hero_now: `when you don't?`,
+    hero_sub: `DualProfile gives your boss, your clients, and your closest friends their own version of you on WhatsApp — switched automatically, per contact.`,
     hero_cta: 'Install free',
     hero_cta_sub: `Free forever · 1 contact · Upgrade anytime`,
     hero_social_proof: `Installed in 40+ countries · No paid marketing`,
@@ -33,6 +33,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: 'Multi-Device Sync',
     feat4_desc: 'Your preferences sync across all your devices automatically.',
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Annual',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: 'Different people see a different you.',
     identity_sub: 'Assign any photo to any contact. They see it automatically.',
     identity_boss: 'Your boss',
@@ -136,11 +138,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contact free forever · No credit card required`,
   },
   es: {
-    hero_h1_1: 'Deja de mostrar la misma',
-    hero_h1_2: 'version de ti a todos.',
-    hero_h1_new: 'Tu foto de perfil de WhatsApp, personalizada por contacto.',
-    hero_now: 'WhatsApp asume que eres la misma persona para todos. No lo eres.',
-    hero_sub: 'Tu jefe, clientes, familia y amigos no te conocen igual. Por que todos ven la misma foto de perfil?',
+    hero_h1_1: 'Entonces, por que tu foto',
+    hero_h1_2: 'dice lo mismo a todos,',
+    hero_h1_new: 'Ya cambias tu forma de hablar segun quien te escucha.',
+    hero_now: 'cuando tu no?',
+    hero_sub: 'DualProfile le da a tu jefe, tus clientes y tus amigos mas cercanos su propia version de ti en WhatsApp — cambiada automaticamente, por contacto.',
     hero_cta: 'Iniciar prueba gratis',
     hero_cta_sub: `Gratis para siempre · 1 contacto · Actualiza cuando quieras`,
     hero_social_proof: `Instalado en mas de 40 paises · Sin marketing pagado`,
@@ -165,6 +167,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: 'Sincronizacion Multi-Dispositivo',
     feat4_desc: 'Tus preferencias se sincronizan en todos tus dispositivos automaticamente.',
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Anual',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: 'Personas diferentes ven un tu diferente.',
     identity_sub: 'Asigna cualquier foto a cualquier contacto. Lo ven automaticamente.',
     identity_boss: 'Tu jefe',
@@ -268,11 +272,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contacto gratis para siempre · Sin tarjeta de credito`,
   },
   fr: {
-    hero_h1_1: 'Arretez de montrer la meme version',
-    hero_h1_2: 'de vous-meme a tout le monde.',
-    hero_h1_new: 'Votre photo de profil WhatsApp, personnalisee par contact.',
-    hero_now: `WhatsApp suppose que vous etes la meme personne pour tout le monde. Vous ne l'etes pas.`,
-    hero_sub: 'Votre patron, vos clients, votre famille et vos amis ne vous connaissent pas de la meme facon. Pourquoi devraient-ils tous voir la meme photo de profil?',
+    hero_h1_1: 'Alors pourquoi votre photo',
+    hero_h1_2: "dit-elle la meme chose a tout le monde,",
+    hero_h1_new: 'Vous changez deja votre facon de parler selon qui vous ecoute.',
+    hero_now: `quand ce n'est pas votre cas ?`,
+    hero_sub: 'DualProfile donne a votre patron, vos clients et vos amis proches leur propre version de vous sur WhatsApp — changee automatiquement, par contact.',
     hero_cta: `Commencer l'essai gratuit`,
     hero_cta_sub: `Gratuit pour toujours · 1 contact · Mettez a niveau quand vous voulez`,
     hero_social_proof: `Installe dans plus de 40 pays · Sans marketing paye`,
@@ -297,6 +301,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: 'Synchronisation Multi-Appareils',
     feat4_desc: 'Vos preferences se synchronisent sur tous vos appareils automatiquement.',
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Annuel',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: 'Des personnes differentes vous voient differemment.',
     identity_sub: `Attribuez n'importe quelle photo a n'importe quel contact. Ils la voient automatiquement.`,
     identity_boss: 'Votre patron',
@@ -400,11 +406,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contact gratuit pour toujours · Sans carte de credit`,
   },
   pt: {
-    hero_h1_1: 'Pare de mostrar a mesma versao',
-    hero_h1_2: 'de si mesmo para todos.',
-    hero_h1_new: 'Sua foto de perfil do WhatsApp, personalizada por contato.',
-    hero_now: 'O WhatsApp assume que voce e a mesma pessoa para todos. Nao e.',
-    hero_sub: 'Seu chefe, clientes, familia e amigos nao te conhecem do mesmo jeito. Por que todos deveriam ver a mesma foto de perfil?',
+    hero_h1_1: 'Entao por que sua foto',
+    hero_h1_2: 'diz a mesma coisa para todos,',
+    hero_h1_new: 'Voce ja muda a forma como fala dependendo de quem esta ouvindo.',
+    hero_now: 'quando voce nao?',
+    hero_sub: 'O DualProfile da ao seu chefe, seus clientes e seus amigos mais proximos a propria versao de voce no WhatsApp — trocada automaticamente, por contato.',
     hero_cta: 'Iniciar teste gratis',
     hero_cta_sub: `Gratis para sempre · 1 contato · Atualize quando quiser`,
     hero_social_proof: `Instalado em mais de 40 paises · Sem marketing pago`,
@@ -429,6 +435,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: 'Sincronizacao Multi-Dispositivo',
     feat4_desc: 'Suas preferencias sincronizam em todos os dispositivos automaticamente.',
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Anual',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: 'Pessoas diferentes veem uma versao diferente de voce.',
     identity_sub: 'Atribua qualquer foto a qualquer contato. Eles veem automaticamente.',
     identity_boss: 'Seu chefe',
@@ -532,11 +540,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contato gratis para sempre · Sem cartao de credito`,
   },
   de: {
-    hero_h1_1: 'Hore auf, jedem die gleiche Version',
-    hero_h1_2: 'von dir zu zeigen.',
-    hero_h1_new: 'Dein WhatsApp-Profilbild, individuell pro Kontakt.',
-    hero_now: 'WhatsApp geht davon aus, dass du fur alle dieselbe Person bist. Das bist du nicht.',
-    hero_sub: 'Dein Chef, Kunden, Familie und Freunde kennen nicht alle dasselbe du. Warum sollten sie alle dasselbe Profilbild sehen?',
+    hero_h1_1: 'Warum sagt dein Foto',
+    hero_h1_2: 'dann jedem dasselbe,',
+    hero_h1_new: 'Du sprichst schon anders, je nachdem, wer zuhort.',
+    hero_now: 'wenn du es nicht tust?',
+    hero_sub: 'DualProfile gibt deinem Chef, deinen Kunden und deinen engsten Freunden ihre eigene Version von dir auf WhatsApp — automatisch gewechselt, pro Kontakt.',
     hero_cta: 'Kostenlose Testversion starten',
     hero_cta_sub: `Fur immer kostenlos · 1 Kontakt · Jederzeit upgraden`,
     hero_social_proof: `In uber 40 Landern installiert · Ohne bezahltes Marketing`,
@@ -561,6 +569,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: 'Mehrgerate-Synchronisation',
     feat4_desc: 'Deine Einstellungen synchronisieren sich automatisch auf allen deinen Geraten.',
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Jährlich',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: 'Verschiedene Personen sehen ein anderes du.',
     identity_sub: 'Weise jedem Kontakt ein beliebiges Foto zu. Sie sehen es automatisch.',
     identity_boss: 'Dein Chef',
@@ -664,11 +674,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 Kontakt kostenlos fur immer · Keine Kreditkarte erforderlich`,
   },
   hi: {
-    hero_h1_1: `सभी को खुद का एक ही रूप`,
-    hero_h1_2: `दिखाना बंद करें।`,
-    hero_h1_new: `आपकी WhatsApp प्रोफ़ाइल फ़ोटो, हर संपर्क के लिए अलग।`,
-    hero_now: `WhatsApp मानता है कि आप सभी के लिए एक ही व्यक्ति हैं। आप नहीं हैं।`,
-    hero_sub: `आपका बॉस, क्लाइंट, परिवार और दोस्त सभी आपको एक जैसे नहीं जानते। तो सभी को एक ही प्रोफाइल फोटो क्यों दिखनी चाहिए?`,
+    hero_h1_1: `तो फिर आपकी फोटो`,
+    hero_h1_2: `सबको एक जैसी बात क्यों कहती है,`,
+    hero_h1_new: `आप पहले से ही सुनने वाले के हिसाब से बात करने का तरीका बदलते हैं।`,
+    hero_now: `जब आप नहीं कहते?`,
+    hero_sub: `DualProfile आपके बॉस, आपके क्लाइंट्स और आपके करीबी दोस्तों को WhatsApp पर आपका अपना अलग रूप देता है — हर कॉन्टैक्ट के हिसाब से अपने आप बदलते हुए।`,
     hero_cta: `मुफ्त ट्रायल शुरू करें`,
     hero_cta_sub: `हमेशा मुफ़्त · 1 संपर्क · कभी भी अपग्रेड करें`,
     hero_social_proof: `40+ देशों में इंस्टॉल · बिना पेड मार्केटिंग के`,
@@ -693,6 +703,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: `मल्टी-डिवाइस सिंक`,
     feat4_desc: `आपकी प्राथमिकताएं सभी डिवाइस पर अपने आप सिंक होती हैं।`,
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'वार्षिक',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: `अलग-अलग लोग आपका अलग रूप देखते हैं।`,
     identity_sub: `किसी भी कॉन्टैक्ट को कोई भी फोटो असाइन करें। वे इसे अपने आप देखते हैं।`,
     identity_boss: `आपका बॉस`,
@@ -796,11 +808,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 कॉन्टैक्ट हमेशा मुफ़्त · क्रेडिट कार्ड की ज़रूरत नहीं`,
   },
   zh: {
-    hero_h1_1: `停止向所有人展示`,
-    hero_h1_2: `同一个你。`,
-    hero_h1_new: `您的WhatsApp头像，按联系人个性化设置。`,
-    hero_now: `WhatsApp 假设你对每个人都是同一个人。你不是。`,
-    hero_sub: `你的老板、客户、家人和朋友对你的了解各不相同。为什么他们都应该看到同一张头像？`,
+    hero_h1_1: `那为什么你的照片`,
+    hero_h1_2: `对所有人都一样，`,
+    hero_h1_new: `你和不同的人说话方式本来就不一样。`,
+    hero_now: `而你却不是？`,
+    hero_sub: `DualProfile 让你的老板、客户和最亲密的朋友在WhatsApp上看到属于他们的那个你——按联系人自动切换。`,
     hero_cta: `开始免费试用`,
     hero_cta_sub: `永久免费 · 1个联系人 · 随时升级`,
     hero_social_proof: `已在40多个国家安装 · 无付费营销`,
@@ -825,6 +837,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: `多设备同步`,
     feat4_desc: `您的偏好设置会在所有设备上自动同步。`,
     feat_pro_badge: 'Pro',
+    feat_annual_badge: '年度',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: `不同的人看到不同的你。`,
     identity_sub: `为任何联系人分配任何照片。他们会自动看到。`,
     identity_boss: `您的老板`,
@@ -928,11 +942,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3天完整访问 · 1个联系人永久免费 · 无需信用卡`,
   },
   ja: {
-    hero_h1_1: `誰に対しても同じ自分を`,
-    hero_h1_2: `見せるのをやめましょう。`,
-    hero_h1_new: `WhatsAppのプロフィール写真を、連絡先ごとにカスタマイズ。`,
-    hero_now: `WhatsAppはあなたが誰に対しても同じ人物だと思っています。そうではありません。`,
-    hero_sub: `上司、クライアント、家族、友人は皆、異なる「あなた」を知っています。なぜ全員が同じプロフィール写真を見るべきなのでしょうか？`,
+    hero_h1_1: `なのになぜ、あなたの写真は`,
+    hero_h1_2: `誰に対しても同じで、`,
+    hero_h1_new: `話す相手によって話し方はすでに変えているはず。`,
+    hero_now: `あなた自身は違うのに？`,
+    hero_sub: `DualProfileは、上司、クライアント、親しい友人それぞれに、WhatsApp上であなたなりの見え方を届けます——連絡先ごとに自動で切り替わります。`,
     hero_cta: `無料トライアルを開始`,
     hero_cta_sub: `永久無料 · 1件の連絡先 · いつでもアップグレード`,
     hero_social_proof: `40カ国以上でインストール・有料マーケティングなし`,
@@ -957,6 +971,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: `マルチデバイス同期`,
     feat4_desc: `設定が全デバイスに自動的に同期されます。`,
     feat_pro_badge: 'Pro',
+    feat_annual_badge: '年間',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: `異なる人が異なるあなたを見ます。`,
     identity_sub: `どのコンタクトにもどの写真でも割り当て可能。自動的に表示されます。`,
     identity_boss: `上司`,
@@ -1060,11 +1076,11 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3日間フルアクセス・1コンタクト永久無料・カード不要`,
   },
   ru: {
-    hero_h1_1: `Перестаньте показывать всем`,
-    hero_h1_2: `одну и ту же версию себя.`,
-    hero_h1_new: `Ваше фото профиля WhatsApp — индивидуально для каждого контакта.`,
-    hero_now: `WhatsApp считает, что вы одинаковы для всех. Это не так.`,
-    hero_sub: `Ваш начальник, клиенты, семья и друзья знают вас по-разному. Почему все они должны видеть одно и то же фото профиля?`,
+    hero_h1_1: `Так почему же ваше фото`,
+    hero_h1_2: `выглядит одинаково для всех,`,
+    hero_h1_new: `Вы уже говорите по-разному в зависимости от того, кто слушает.`,
+    hero_now: `хотя вы — нет?`,
+    hero_sub: `DualProfile показывает вашему начальнику, клиентам и близким друзьям их собственную версию вас в WhatsApp — переключается автоматически, по каждому контакту.`,
     hero_cta: `Начать бесплатный пробный период`,
     hero_cta_sub: `Бесплатно навсегда · 1 контакт · Обновите когда угодно`,
     hero_social_proof: `Установлено в 40+ странах · Без платной рекламы`,
@@ -1089,6 +1105,8 @@ const LANGS: Record<string, Record<string, string>> = {
     feat4_title: `Многоустройственная синхронизация`,
     feat4_desc: `Ваши настройки автоматически синхронизируются на всех устройствах.`,
     feat_pro_badge: 'Pro',
+    feat_annual_badge: 'Годовой',
+    feat_lifetime_badge: 'Lifetime',
     identity_title: `Разные люди видят разного вас.`,
     identity_sub: `Назначьте любое фото любому контакту. Они увидят его автоматически.`,
     identity_boss: `Ваш начальник`,
@@ -2102,7 +2120,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat1_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_annual_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
@@ -2110,7 +2128,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat2_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_lifetime_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                 </div>
@@ -2118,7 +2136,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat3_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_lifetime_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
