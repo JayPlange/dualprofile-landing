@@ -48,13 +48,13 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'No credit card required',
     free_forever: 'forever',
     pro_label: 'Pro',
-    pro_sub: 'Unlimited contacts',
+    pro_sub: 'Unlimited contacts + Photo History',
     pro_mo: '/month',
     annual_label: 'Annual',
-    annual_sub: 'Unlimited + bulk assign',
+    annual_sub: 'Bulk assign + Scheduled Photos',
     annual_yr: '/year',
     lifetime_label: 'Lifetime',
-    lifetime_sub: 'Bulk assign + all future features',
+    lifetime_sub: 'Export, Sync, Priority + future features',
     lifetime_once: 'one-time',
     badge_popular: 'POPULAR',
     badge_value: 'BEST VALUE',
@@ -76,7 +76,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Get Annual',
     btn_get_lifetime: 'Get Lifetime',
     trial_title: 'Try DualProfile free, upgrade when ready.',
-    trial_desc: 'Start with 1 contact, free forever. Upgrade to Pro for unlimited contacts and all features. Annual plan adds bulk assignment — assign hundreds of contacts in seconds, not minutes.',
+    trial_desc: 'Start with 1 contact, free forever. Pro unlocks unlimited contacts and Photo History & Revert. Annual adds bulk contact assignment and Scheduled Photos. Lifetime adds Export/Import, Multi-Device Sync and Priority Support — plus every future feature.',
     trial_cta: 'Install free',
     social_title: 'Real people. Real use cases.',
     social_quote: 'having your boss see something professional while mates get the real you is pretty handy',
@@ -94,8 +94,8 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_1_a: `Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your photo appears on their screen automatically. Share the install link — setup takes about 3 minutes.`,
     faq_2_q: 'Does this work on the WhatsApp mobile app?',
     faq_2_a: `No — DualProfile works on WhatsApp Web in Chrome or Edge on desktop only.`,
-    faq_3_q: 'What is the difference between Pro and Annual?',
-    faq_3_a: 'Pro gives you unlimited contacts and all core features. Annual adds bulk contact assignment — select and assign hundreds of contacts at once instead of one by one. Both include Photo History, Scheduled Photos, and Multi-Device Sync.',
+    faq_3_q: 'What is the difference between Pro, Annual, and Lifetime?',
+    faq_3_a: 'Pro gives you unlimited contacts and Photo History & Revert. Annual includes everything in Pro plus bulk contact assignment and Scheduled Photos. Lifetime includes everything in Annual plus Export/Import, Multi-Device Sync, Priority Support, and all future features — for a one-time payment.',
     faq_4_q: 'Is my data secure?',
     faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     footer_rights: 'All rights reserved.',
@@ -1239,8 +1239,8 @@ export default function Home() {
     { day:18, date:'2026-07-15', country:'Norway',       flag:'🇳🇴', primary:'#EF2B2D', secondary:'#002868', slogan:'Stand out from the crowd.' },
     { day:19, date:'2026-07-16', country:'Japan',         flag:'🇯🇵', primary:'#BC002D', secondary:'#FFFFFF', slogan:'Thoughtful identities.' },
     { day:20, date:'2026-07-17', country:'Portugal',     flag:'🇵🇹', primary:'#006600', secondary:'#FF0000', slogan:'Show your best self.' },
-    { day:21, date:'2026-07-18', country:'Algeria',       flag:'🇩🇿', primary:'#006233', secondary:'#FFFFFF', slogan:'The desert blooms.' },
-    { day:22, date:'2026-07-19', country:'Final Day',    flag:'🏆',  primary:'#B8860B', secondary:'#FFD700', slogan:'One identity to rule them all.' },
+    { day:21, date:'2026-07-18', country:'France 🆚 England', flag:'🇫🇷🏴󠁧󠁢󠁥󠁮󠁧󠁿', primary:'#002395', secondary:'#CF081F', slogan:'3rd Place Playoff · Kickoff 9:00 PM' },
+    { day:22, date:'2026-07-19', country:'Spain 🆚 Argentina', flag:'🏆🇪🇸🇦🇷',  primary:'#AA151B', secondary:'#74ACDF', slogan:'The Final · Kickoff 7:00 PM' },
   ] as const;
 
   // Cultural pattern generator — matches extension worldcupTheme.js
@@ -1270,6 +1270,7 @@ export default function Home() {
       maple:     `repeating-linear-gradient(45deg,${c1} 0,${c1} 2px,transparent 2px,transparent 16px),repeating-linear-gradient(-45deg,${c1} 0,${c1} 2px,transparent 2px,transparent 16px)`,
       hieroglyph:`repeating-linear-gradient(0deg,${c1} 0,${c1} 1px,transparent 1px,transparent 16px),repeating-linear-gradient(90deg,${c2} 0,${c2} 1px,transparent 1px,transparent 24px),repeating-linear-gradient(45deg,${c1} 0,${c1} 1px,transparent 1px,transparent 24px)`,
       confetti:  `repeating-linear-gradient(45deg,${c1} 0,${c1} 4px,transparent 4px,transparent 10px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 4px,transparent 4px,transparent 10px)`,
+      faceoff:   `repeating-linear-gradient(45deg,${c1} 0,${c1} 3px,transparent 3px,transparent 18px),repeating-linear-gradient(-45deg,${c2} 0,${c2} 3px,transparent 3px,transparent 18px)`,
     };
     // Map country to pattern
     const countryPattern: Record<string, string> = {
@@ -1283,6 +1284,8 @@ export default function Home() {
       'Paraguay': 'stripes', 'Ivory Coast': 'kente', 'Sweden': 'nordic',
       'Cape Verde': 'waves', 'Algeria': 'arabesque',
       'Final Day': 'confetti',
+      'France 🆚 England': 'faceoff',
+      'Spain 🆚 Argentina': 'confetti',
     };
     const key = countryPattern[team.country] || 'cross';
     return patterns[key] || '';
@@ -2150,7 +2153,7 @@ export default function Home() {
                 <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('free_forever')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {[t('feat_trial'), t('feat_contacts_free'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
+                  {[t('feat_contacts_free'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2179,12 +2182,12 @@ export default function Home() {
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $12.50 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('pro_mo')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {/* Bulk assignment — highlighted as the key differentiator */}
+                  {/* Photo History & Revert — Pro's key differentiator */}
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
                     <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_trial')}</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_photo_history')}</span>
                   </li>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_export'), t('feat_sync'), t('feat_priority')].map(f => (
+                  {[t('feat_contacts_pro'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2213,7 +2216,12 @@ export default function Home() {
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $74 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('annual_yr')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_export'), t('feat_sync'), t('feat_priority')].map(f => (
+                  {/* Bulk assignment — Annual's key differentiator over Pro */}
+                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
+                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_trial')}</span>
+                  </li>
+                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_p2p'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2237,7 +2245,7 @@ export default function Home() {
                     <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_trial')}</span>
                   </li>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_export'), t('feat_sync'), t('feat_nofee')].map(f => (
+                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
