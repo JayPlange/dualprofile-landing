@@ -1316,7 +1316,13 @@ export default function Home() {
 
   const wcTeam = WC_TEAMS.find((t: any) => t.date === wcTodayStr) || null;
   const wcDaysLeft = wcTeam ? Math.max(0, Math.round((new Date('2026-07-19').getTime() - new Date(wcTodayStr).getTime()) / 86400000)) : 0;
-  const wcActive = wcTeam !== null;
+  // Campaign retired — tournament ended 2026-07-19. Forcing this false (rather
+  // than deleting WC_TEAMS/the ~500 lines of wcActive-gated JSX below) is the
+  // low-risk fix: every banner, confetti effect, and layout spacer already
+  // checks `wcActive &&` before rendering, so this one flag turns all of it
+  // off cleanly. A follow-up cleanup can delete the dead code once confirmed
+  // nothing else references it.
+  const wcActive = false;
 
   const showToast = (title: string, message: string) => {
     setToast({ show: true, title, message });
