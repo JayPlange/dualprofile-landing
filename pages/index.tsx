@@ -4,6 +4,9 @@ import Head from 'next/head';
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
   en: {
+    feat_future: `All future features included`,
+    feat_everything_free: `Everything in Free`,
+    pro_once: `one-time · no subscription`,
     hero_h1_1: 'So why does your photo',
     hero_h1_2: 'say the same thing to everyone,',
     hero_h1_new: "You already change how you talk depending on who's listening.",
@@ -44,13 +47,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: 'Your family',
     identity_family_sees: 'See whatever version you choose',
     pricing_title: 'Simple, honest pricing.',
-    pricing_sub: 'Free to install. 1 contact free forever. Upgrade when ready.',
+    pricing_sub: `Free forever for everything you actually need. One optional upgrade.`,
     free_label: 'Free',
-    free_sub: '1 contact, always free',
+    free_sub: `Unlimited contacts + Scheduled Photos`,
     free_trial_note: 'No credit card required',
     free_forever: 'forever',
     pro_label: 'Pro',
-    pro_sub: 'Unlimited contacts + Photo History',
+    pro_sub: `Everything free, plus history and backup`,
     pro_mo: '/month',
     annual_label: 'Annual',
     annual_sub: 'Bulk assign + Scheduled Photos',
@@ -61,7 +64,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: 'POPULAR',
     badge_value: 'BEST VALUE',
     usd_approx: 'approx.',
-    feat_contacts_free: '1 contact',
+    feat_contacts_free: `Unlimited contacts`,
     feat_contacts_pro: 'Unlimited contacts',
     feat_trial: 'Bulk contact assignment',
     feat_preview: 'Live preview mode',
@@ -78,7 +81,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Get Annual',
     btn_get_lifetime: 'Get Lifetime',
     trial_title: 'Try DualProfile free, upgrade when ready.',
-    trial_desc: 'Start with 1 contact, free forever. Pro unlocks unlimited contacts and Photo History & Revert. Annual adds bulk contact assignment and Scheduled Photos. Lifetime adds Export/Import, Multi-Device Sync and Priority Support — plus every future feature.',
+    trial_desc: `Free gives you unlimited contacts and Scheduled Photos — your photo switches automatically by day and time, and nobody else has to install anything. Pro is a single £29 payment that adds Photo History & Revert, bulk assignment, Export/Import, Multi-Device Sync and priority support.`,
     trial_cta: 'Install free',
     social_title: 'Real people. Real use cases.',
     social_quote: 'having your boss see something professional while mates get the real you is pretty handy',
@@ -87,17 +90,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: 'No paid marketing',
     social_stat3: 'Featured on r/DigitalPrivacy',
     viral_title: 'One WhatsApp. Multiple identities. You decide who sees what.',
-    viral_sub: 'Free to install. 1 contact free forever. Upgrade anytime.',
+    viral_sub: `Free to install. Unlimited contacts, free forever.`,
     viral_cta: 'Install free',
-    viral_note: `1 contact free forever · Upgrade to Pro for unlimited`,
+    viral_note: `Unlimited contacts free forever · Pro is £29 once, never a subscription`,
     faq_title: 'Frequently Asked Questions',
     faq_sub: `Got questions? We've got answers.`,
     faq_1_q: 'Does my contact need to install anything?',
     faq_1_a: `Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your photo appears on their screen automatically. Share the install link — setup takes about 3 minutes.`,
     faq_2_q: 'Does this work on the WhatsApp mobile app?',
     faq_2_a: `No — DualProfile works on WhatsApp Web in Chrome or Edge on desktop only.`,
-    faq_3_q: 'What is the difference between Pro, Annual, and Lifetime?',
-    faq_3_a: 'Pro gives you unlimited contacts and Photo History & Revert. Annual includes everything in Pro plus bulk contact assignment and Scheduled Photos. Lifetime includes everything in Annual plus Export/Import, Multi-Device Sync, Priority Support, and all future features — for a one-time payment.',
+    faq_3_q: `What is free, and what does Pro add?`,
+    faq_3_a: `Free gives you unlimited contacts and Scheduled Photos, forever, with no card required. Pro is a one-time £29 payment — not a subscription — and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
     faq_4_q: 'Is my data secure?',
     faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     footer_rights: 'All rights reserved.',
@@ -138,6 +141,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contact free forever · No credit card required`,
   },
   es: {
+    feat_future: `Todas las funciones futuras incluidas`,
+    feat_everything_free: `Todo lo de Gratis`,
+    pro_once: `pago unico · sin suscripcion`,
     hero_h1_1: 'Entonces, por que tu foto',
     hero_h1_2: 'dice lo mismo a todos,',
     hero_h1_new: 'Ya cambias tu forma de hablar segun quien te escucha.',
@@ -178,13 +184,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: 'Tu familia',
     identity_family_sees: 'Ven la version que elijas',
     pricing_title: 'Precios simples y honestos.',
-    pricing_sub: 'Instala gratis. 1 contacto para siempre. Actualiza cuando estes listo.',
+    pricing_sub: `Gratis para siempre en todo lo esencial. Una mejora opcional.`,
     free_label: 'Gratis',
-    free_sub: '1 contacto, siempre gratis',
+    free_sub: `Contactos ilimitados + Fotos programadas`,
     free_trial_note: 'Sin tarjeta de credito',
     free_forever: 'para siempre',
     pro_label: 'Pro',
-    pro_sub: 'Contactos ilimitados',
+    pro_sub: `Todo lo gratuito, mas historial y respaldo`,
     pro_mo: '/mes',
     annual_label: 'Anual',
     annual_sub: 'Ilimitados + asignacion masiva',
@@ -195,7 +201,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: 'POPULAR',
     badge_value: 'MEJOR VALOR',
     usd_approx: 'aprox.',
-    feat_contacts_free: '1 contacto',
+    feat_contacts_free: `Contactos ilimitados`,
     feat_contacts_pro: 'Contactos ilimitados',
     feat_trial: 'Asignacion masiva de contactos',
     feat_preview: 'Vista previa en vivo',
@@ -212,7 +218,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obtener Anual',
     btn_get_lifetime: 'Obtener De por vida',
     trial_title: 'Prueba DualProfile gratis, actualiza cuando estes listo.',
-    trial_desc: 'Cada instalacion incluye 3 dias de acceso Pro completo. Historial de fotos, fotos programadas, contactos ilimitados. Sin tarjeta de credito.',
+    trial_desc: `Gratis incluye contactos ilimitados y Fotos programadas: tu foto cambia sola por dia y hora, y nadie mas necesita instalar nada. Pro es un pago unico de £29 que anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
     trial_cta: 'Instalar gratis',
     social_title: 'Personas reales. Casos de uso reales.',
     social_quote: 'que tu jefe vea algo profesional mientras tus amigos ven el verdadero tu es muy util',
@@ -221,17 +227,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: 'Sin marketing pagado',
     social_stat3: 'Destacado en r/DigitalPrivacy',
     viral_title: 'Un WhatsApp. Multiples identidades. Tu decides quien ve que.',
-    viral_sub: 'Inicia tu prueba gratis de 3 dias. Sin tarjeta de credito.',
+    viral_sub: `Gratis de instalar. Contactos ilimitados, gratis para siempre.`,
     viral_cta: 'Iniciar prueba gratis',
-    viral_note: `1 contacto gratis para siempre · Actualiza a Pro para ilimitados`,
+    viral_note: `Contactos ilimitados gratis para siempre · Pro son £29 una vez, nunca suscripcion`,
     faq_title: 'Preguntas frecuentes',
     faq_sub: 'Tienes preguntas? Tenemos respuestas.',
     faq_1_q: 'Mi contacto necesita instalar algo?',
     faq_1_a: `Si — DualProfile funciona de igual a igual. Cuando asignas una foto y tu contacto tiene DualProfile, tu foto aparece automaticamente en su pantalla.`,
     faq_2_q: 'Funciona en la app movil de WhatsApp?',
     faq_2_a: `No — DualProfile funciona solo en WhatsApp Web en Chrome o Edge en escritorio.`,
-    faq_3_q: 'Que pasa despues de la prueba de 3 dias?',
-    faq_3_a: 'Despues de la prueba, conservas 1 contacto en el plan gratuito para siempre. Actualiza a Pro cuando quieras.',
+    faq_3_q: `Que es gratis y que anade Pro?`,
+    faq_3_a: `Gratis te da contactos ilimitados y Fotos programadas, para siempre, sin tarjeta. Pro es un pago unico de £29 (no una suscripcion) y anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
     faq_4_q: 'Mis datos estan seguros?',
     faq_4_a: 'Tus fotos se sincronizan de forma segura para que solo las vean los contactos que elijas. Nunca leemos tus mensajes ni accedemos a tus chats.',
     footer_rights: 'Todos los derechos reservados.',
@@ -272,6 +278,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contacto gratis para siempre · Sin tarjeta de credito`,
   },
   fr: {
+    feat_future: `Toutes les futures fonctionnalites incluses`,
+    feat_everything_free: `Tout ce qui est dans Gratuit`,
+    pro_once: `paiement unique · sans abonnement`,
     hero_h1_1: 'Alors pourquoi votre photo',
     hero_h1_2: "dit-elle la meme chose a tout le monde,",
     hero_h1_new: 'Vous changez deja votre facon de parler selon qui vous ecoute.',
@@ -312,13 +321,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: 'Votre famille',
     identity_family_sees: 'Voient la version que vous choisissez',
     pricing_title: 'Tarification simple et honnete.',
-    pricing_sub: 'Installation gratuite. 1 contact pour toujours. Passez a Pro quand vous etes pret.',
+    pricing_sub: `Gratuit pour toujours pour l'essentiel. Une seule option payante.`,
     free_label: 'Gratuit',
-    free_sub: '1 contact, toujours gratuit',
+    free_sub: `Contacts illimites + Photos programmees`,
     free_trial_note: 'Sans carte de credit',
     free_forever: 'pour toujours',
     pro_label: 'Pro',
-    pro_sub: 'Contacts illimites',
+    pro_sub: `Tout le gratuit, plus historique et sauvegarde`,
     pro_mo: '/mois',
     annual_label: 'Annuel',
     annual_sub: 'Illimites + assignation groupee',
@@ -329,7 +338,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: 'POPULAIRE',
     badge_value: 'MEILLEURE VALEUR',
     usd_approx: 'approx.',
-    feat_contacts_free: '1 contact',
+    feat_contacts_free: `Contacts illimites`,
     feat_contacts_pro: 'Contacts illimites',
     feat_trial: 'Assignation groupee de contacts',
     feat_preview: 'Apercu en direct',
@@ -346,7 +355,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obtenir Annuel',
     btn_get_lifetime: 'Obtenir A vie',
     trial_title: 'Essayez tout gratuitement pendant 3 jours.',
-    trial_desc: `Chaque installation inclut 3 jours d'acces Pro complet. Historique, photos programmees, contacts illimites. Sans carte de credit.`,
+    trial_desc: `Le gratuit inclut les contacts illimites et les Photos programmees : votre photo change automatiquement selon le jour et l'heure, sans que personne d'autre installe quoi que ce soit. Pro est un paiement unique de £29 qui ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
     trial_cta: 'Installer gratuitement',
     social_title: `Des vrais gens. De vrais cas d'usage.`,
     social_quote: `que votre patron voit quelque chose de professionnel pendant que vos amis voient le vrai vous, c'est vraiment pratique`,
@@ -355,17 +364,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: 'Sans marketing paye',
     social_stat3: 'Mis en avant sur r/DigitalPrivacy',
     viral_title: 'Un WhatsApp. Plusieurs identites. Vous decidez qui voit quoi.',
-    viral_sub: 'Commencez votre essai gratuit de 3 jours. Sans carte de credit.',
+    viral_sub: `Installation gratuite. Contacts illimites, gratuits pour toujours.`,
     viral_cta: `Commencer l'essai gratuit`,
-    viral_note: `1 contact gratuit pour toujours · Passez a Pro pour illimite`,
+    viral_note: `Contacts illimites gratuits pour toujours · Pro c'est £29 une fois, jamais un abonnement`,
     faq_title: 'Questions frequentes',
     faq_sub: 'Des questions ? Nous avons des reponses.',
     faq_1_q: 'Mon contact doit-il installer quelque chose ?',
     faq_1_a: `Oui — DualProfile fonctionne en pair-a-pair. Quand vous attribuez une photo et que votre contact a DualProfile, votre photo apparait automatiquement.`,
     faq_2_q: `Cela fonctionne-t-il sur l'app mobile WhatsApp ?`,
     faq_2_a: `Non — DualProfile fonctionne uniquement sur WhatsApp Web dans Chrome ou Edge.`,
-    faq_3_q: `Que se passe-t-il apres l'essai de 3 jours ?`,
-    faq_3_a: `Apres l'essai, vous gardez 1 contact sur le plan gratuit pour toujours. Passez a Pro quand vous voulez.`,
+    faq_3_q: `Qu'est-ce qui est gratuit et qu'apporte Pro ?`,
+    faq_3_a: `Le gratuit vous donne des contacts illimites et les Photos programmees, pour toujours, sans carte bancaire. Pro est un paiement unique de £29 (pas un abonnement) et ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
     faq_4_q: 'Mes donnees sont-elles en securite ?',
     faq_4_a: 'Vos photos sont synchronisees de maniere securisee afin de n\'apparaitre qu\'aux contacts que vous choisissez. Nous ne lisons jamais vos messages et n\'accedons jamais a vos discussions.',
     footer_rights: 'Tous droits reserves.',
@@ -406,6 +415,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contact gratuit pour toujours · Sans carte de credit`,
   },
   pt: {
+    feat_future: `Todas as funcionalidades futuras incluidas`,
+    feat_everything_free: `Tudo do plano Gratis`,
+    pro_once: `pagamento unico · sem subscricao`,
     hero_h1_1: 'Entao por que sua foto',
     hero_h1_2: 'diz a mesma coisa para todos,',
     hero_h1_new: 'Voce ja muda a forma como fala dependendo de quem esta ouvindo.',
@@ -446,13 +458,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: 'Sua familia',
     identity_family_sees: 'Veem a versao que voce escolher',
     pricing_title: 'Precos simples e honestos.',
-    pricing_sub: 'Instale gratis. 1 contato para sempre. Atualize quando estiver pronto.',
+    pricing_sub: `Gratis para sempre no que importa. Uma melhoria opcional.`,
     free_label: 'Gratis',
-    free_sub: '1 contato, sempre gratis',
+    free_sub: `Contactos ilimitados + Fotos agendadas`,
     free_trial_note: 'Sem cartao de credito',
     free_forever: 'para sempre',
     pro_label: 'Pro',
-    pro_sub: 'Contatos ilimitados',
+    pro_sub: `Tudo do gratis, mais historico e backup`,
     pro_mo: '/mes',
     annual_label: 'Anual',
     annual_sub: 'Ilimitados + atribuicao em massa',
@@ -463,7 +475,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: 'POPULAR',
     badge_value: 'MELHOR VALOR',
     usd_approx: 'aprox.',
-    feat_contacts_free: '1 contato',
+    feat_contacts_free: `Contactos ilimitados`,
     feat_contacts_pro: 'Contatos ilimitados',
     feat_trial: 'Atribuicao em massa de contatos',
     feat_preview: 'Previa ao vivo',
@@ -480,7 +492,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obter Anual',
     btn_get_lifetime: 'Obter Vitalicio',
     trial_title: 'Experimente tudo gratuitamente por 3 dias.',
-    trial_desc: 'Cada instalacao inclui 3 dias de acesso Pro completo. Historico de fotos, fotos programadas, contatos ilimitados. Sem cartao.',
+    trial_desc: `O gratis inclui contactos ilimitados e Fotos agendadas: a sua foto muda sozinha por dia e hora, e mais ninguem precisa de instalar nada. Pro e um pagamento unico de £29 que acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
     trial_cta: 'Instalar gratis',
     social_title: 'Pessoas reais. Casos de uso reais.',
     social_quote: 'ter seu chefe vendo algo profissional enquanto seus amigos veem o voce de verdade e muito util',
@@ -489,17 +501,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: 'Sem marketing pago',
     social_stat3: 'Destaque no r/DigitalPrivacy',
     viral_title: 'Um WhatsApp. Multiplas identidades. Voce decide quem ve o que.',
-    viral_sub: 'Inicie seu teste gratis de 3 dias. Sem cartao de credito.',
+    viral_sub: `Instalacao gratuita. Contactos ilimitados, gratis para sempre.`,
     viral_cta: 'Iniciar teste gratis',
-    viral_note: `1 contato gratis para sempre · Atualize para Pro para ilimitados`,
+    viral_note: `Contactos ilimitados gratis para sempre · Pro sao £29 uma vez, nunca subscricao`,
     faq_title: 'Perguntas frequentes',
     faq_sub: 'Tem duvidas? Temos respostas.',
     faq_1_q: 'Meu contato precisa instalar algo?',
     faq_1_a: `Sim — DualProfile funciona ponto a ponto. Quando voce atribui uma foto e seu contato tem DualProfile, sua foto aparece automaticamente.`,
     faq_2_q: 'Funciona no app movel do WhatsApp?',
     faq_2_a: `Nao — DualProfile funciona apenas no WhatsApp Web no Chrome ou Edge.`,
-    faq_3_q: 'O que acontece apos o teste de 3 dias?',
-    faq_3_a: 'Apos o teste, voce mantem 1 contato no plano gratuito para sempre. Atualize para Pro quando quiser.',
+    faq_3_q: `O que e gratis e o que o Pro acrescenta?`,
+    faq_3_a: `O gratis da-lhe contactos ilimitados e Fotos agendadas, para sempre, sem cartao. Pro e um pagamento unico de £29 (nao e subscricao) e acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
     faq_4_q: 'Meus dados estao seguros?',
     faq_4_a: 'Suas fotos sao sincronizadas com seguranca para aparecerem apenas aos contatos que voce escolher. Nunca lemos suas mensagens nem acessamos seus chats.',
     footer_rights: 'Todos os direitos reservados.',
@@ -540,6 +552,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 contato gratis para sempre · Sem cartao de credito`,
   },
   de: {
+    feat_future: `Alle zukunftigen Funktionen inklusive`,
+    feat_everything_free: `Alles aus Kostenlos`,
+    pro_once: `einmalig · kein Abo`,
     hero_h1_1: 'Warum sagt dein Foto',
     hero_h1_2: 'dann jedem dasselbe,',
     hero_h1_new: 'Du sprichst schon anders, je nachdem, wer zuhort.',
@@ -580,13 +595,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: 'Deine Familie',
     identity_family_sees: 'Sehen die Version, die du wahlst',
     pricing_title: 'Einfache, ehrliche Preise.',
-    pricing_sub: 'Kostenlos installieren. 1 Kontakt fur immer. Jederzeit upgraden.',
+    pricing_sub: `Fur immer kostenlos fur alles Wesentliche. Ein optionales Upgrade.`,
     free_label: 'Kostenlos',
-    free_sub: '1 Kontakt, immer kostenlos',
+    free_sub: `Unbegrenzte Kontakte + Geplante Fotos`,
     free_trial_note: 'Keine Kreditkarte erforderlich',
     free_forever: 'fur immer',
     pro_label: 'Pro',
-    pro_sub: 'Unbegrenzte Kontakte',
+    pro_sub: `Alles Kostenlose, plus Verlauf und Backup`,
     pro_mo: '/Monat',
     annual_label: 'Jahrlich',
     annual_sub: 'Unbegrenzt + Massenzuweisung',
@@ -597,7 +612,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: 'BELIEBT',
     badge_value: 'BESTES ANGEBOT',
     usd_approx: 'ca.',
-    feat_contacts_free: '1 Kontakt',
+    feat_contacts_free: `Unbegrenzte Kontakte`,
     feat_contacts_pro: 'Unbegrenzte Kontakte',
     feat_trial: 'Massenzuweisung von Kontakten',
     feat_preview: 'Live-Vorschau',
@@ -614,7 +629,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Jahrlich holen',
     btn_get_lifetime: 'Lebenslang holen',
     trial_title: '3 Tage lang alles kostenlos ausprobieren.',
-    trial_desc: 'Jede Installation enthalt 3 Tage vollen Pro-Zugang. Fotoverlauf, geplante Fotos, unbegrenzte Kontakte. Ohne Kreditkarte.',
+    trial_desc: `Kostenlos enthalt unbegrenzte Kontakte und Geplante Fotos: Dein Foto wechselt automatisch nach Tag und Uhrzeit, und niemand sonst muss etwas installieren. Pro ist eine einmalige Zahlung von £29 und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
     trial_cta: 'Kostenlos installieren',
     social_title: 'Echte Menschen. Echte Anwendungsfalle.',
     social_quote: 'dass dein Chef etwas Professionelles sieht wahrend Freunde das echte du sehen, ist echt praktisch',
@@ -623,17 +638,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: 'Ohne bezahltes Marketing',
     social_stat3: 'Vorgestellt auf r/DigitalPrivacy',
     viral_title: 'Ein WhatsApp. Mehrere Identitaten. Du entscheidest, wer was sieht.',
-    viral_sub: 'Starte deine kostenlose 3-Tage-Testversion. Keine Kreditkarte.',
+    viral_sub: `Kostenlos installieren. Unbegrenzte Kontakte, fur immer gratis.`,
     viral_cta: 'Kostenlose Testversion starten',
-    viral_note: `1 Kontakt kostenlos fur immer · Auf Pro upgraden fur unbegrenzt`,
+    viral_note: `Unbegrenzte Kontakte fur immer gratis · Pro kostet einmalig £29, niemals ein Abo`,
     faq_title: 'Haufig gestellte Fragen',
     faq_sub: 'Fragen? Wir haben Antworten.',
     faq_1_q: 'Muss mein Kontakt auch etwas installieren?',
     faq_1_a: `Ja — DualProfile funktioniert Peer-to-Peer. Wenn du ein Foto zuweist und dein Kontakt DualProfile hat, erscheint dein Foto automatisch.`,
     faq_2_q: 'Funktioniert es in der mobilen WhatsApp-App?',
     faq_2_a: `Nein — DualProfile funktioniert nur in WhatsApp Web in Chrome oder Edge.`,
-    faq_3_q: 'Was passiert nach der 3-tagigen Testversion?',
-    faq_3_a: 'Nach der Testversion behaltst du 1 Kontakt im kostenlosen Plan fur immer. Upgrade auf Pro jederzeit.',
+    faq_3_q: `Was ist kostenlos und was bringt Pro?`,
+    faq_3_a: `Kostenlos gibt dir unbegrenzte Kontakte und Geplante Fotos, fur immer, ohne Kreditkarte. Pro ist eine einmalige Zahlung von £29 (kein Abo) und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
     faq_4_q: 'Sind meine Daten sicher?',
     faq_4_a: 'Deine Fotos werden sicher synchronisiert, sodass sie nur fur die von dir ausgewahlten Kontakte sichtbar sind. Wir lesen niemals deine Nachrichten oder greifen auf deine Chats zu.',
     footer_rights: 'Alle Rechte vorbehalten.',
@@ -674,6 +689,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 Kontakt kostenlos fur immer · Keine Kreditkarte erforderlich`,
   },
   hi: {
+    feat_future: `सभी भविष्य के फ़ीचर शामिल`,
+    feat_everything_free: `मुफ़्त प्लान का सब कुछ`,
+    pro_once: `एक बार भुगतान · कोई सब्सक्रिप्शन नहीं`,
     hero_h1_1: `तो फिर आपकी फोटो`,
     hero_h1_2: `सबको एक जैसी बात क्यों कहती है,`,
     hero_h1_new: `आप पहले से ही सुनने वाले के हिसाब से बात करने का तरीका बदलते हैं।`,
@@ -714,13 +732,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: `आपका परिवार`,
     identity_family_sees: `आपकी पसंद का रूप देखता है`,
     pricing_title: `सरल, ईमानदार मूल्य।`,
-    pricing_sub: `मुफ़्त इंस्टॉल करें। 1 कॉन्टैक्ट हमेशा मुफ़्त। जब चाहें अपग्रेड करें।`,
+    pricing_sub: `जो चाहिए वो हमेशा मुफ़्त। एक वैकल्पिक अपग्रेड।`,
     free_label: `मुफ्त`,
-    free_sub: `1 कॉन्टैक्ट, हमेशा मुफ़्त`,
+    free_sub: `असीमित कॉन्टैक्ट + शेड्यूल्ड फ़ोटो`,
     free_trial_note: `क्रेडिट कार्ड की ज़रूरत नहीं`,
     free_forever: `हमेशा के लिए`,
     pro_label: 'Pro',
-    pro_sub: `असीमित कॉन्टैक्ट`,
+    pro_sub: `सब कुछ मुफ़्त, साथ में हिस्ट्री और बैकअप`,
     pro_mo: `/माह`,
     annual_label: `वार्षिक`,
     annual_sub: `असीमित + बल्क असाइन`,
@@ -731,7 +749,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: `लोकप्रिय`,
     badge_value: `सर्वोत्तम मूल्य`,
     usd_approx: `लगभग`,
-    feat_contacts_free: `1 कॉन्टैक्ट`,
+    feat_contacts_free: `असीमित कॉन्टैक्ट`,
     feat_contacts_pro: `असीमित कॉन्टैक्ट`,
     feat_trial: `बल्क कॉन्टैक्ट असाइनमेंट`,
     feat_preview: `लाइव प्रिव्यू`,
@@ -748,7 +766,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `वार्षिक लें`,
     btn_get_lifetime: `आजीवन लें`,
     trial_title: `3 दिन सब कुछ मुफ्त में आजमाएं।`,
-    trial_desc: `हर इंस्टॉल में 3 दिन का पूर्ण Pro एक्सेस शामिल है। फोटो इतिहास, शेड्यूल्ड फोटो, असीमित कॉन्टैक्ट। बिना क्रेडिट कार्ड।`,
+    trial_desc: `मुफ़्त में असीमित कॉन्टैक्ट और शेड्यूल्ड फ़ोटो मिलती हैं — आपकी फ़ोटो दिन और समय के हिसाब से अपने आप बदलती है, और किसी और को कुछ इंस्टॉल करने की ज़रूरत नहीं। Pro एक बार का £29 भुगतान है जिसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता मिलती है।`,
     trial_cta: `मुफ़्त इंस्टॉल करें`,
     social_title: `असली लोग। असली उपयोग।`,
     social_quote: `बॉस को प्रोफेशनल फोटो और दोस्तों को असली आप दिखाना बहुत काम का है`,
@@ -757,17 +775,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: `बिना पेड मार्केटिंग के`,
     social_stat3: `r/DigitalPrivacy पर फीचर्ड`,
     viral_title: `एक WhatsApp। कई पहचान। आप तय करें कौन क्या देखे।`,
-    viral_sub: `3 दिन का मुफ्त ट्रायल शुरू करें। कोई क्रेडिट कार्ड नहीं।`,
+    viral_sub: `इंस्टॉल मुफ़्त। असीमित कॉन्टैक्ट, हमेशा मुफ़्त।`,
     viral_cta: `मुफ्त ट्रायल शुरू करें`,
-    viral_note: `1 कॉन्टैक्ट हमेशा मुफ़्त · Pro में अपग्रेड करें असीमित के लिए`,
+    viral_note: `असीमित कॉन्टैक्ट हमेशा मुफ़्त · Pro एक बार £29, कभी सब्सक्रिप्शन नहीं`,
     faq_title: `अक्सर पूछे जाने वाले सवाल`,
     faq_sub: `सवाल हैं? जवाब हमारे पास हैं।`,
     faq_1_q: `क्या मेरे कॉन्टैक्ट को कुछ इंस्टॉल करना होगा?`,
     faq_1_a: `हाँ — DualProfile P2P काम करता है। जब आप फोटो असाइन करते हैं और कॉन्टैक्ट के पास DualProfile है, तो फोटो अपने आप दिखती है।`,
     faq_2_q: `क्या यह WhatsApp मोबाइल ऐप पर काम करता है?`,
     faq_2_a: `नहीं — DualProfile केवल डेस्कटॉप पर Chrome या Edge में WhatsApp Web पर काम करता है।`,
-    faq_3_q: `3 दिन के ट्रायल के बाद क्या होता है?`,
-    faq_3_a: `ट्रायल के बाद 1 कॉन्टैक्ट मुफ्त प्लान में हमेशा रहता है। जब चाहें Pro में अपग्रेड करें।`,
+    faq_3_q: `मुफ़्त में क्या है और Pro में क्या जुड़ता है?`,
+    faq_3_a: `मुफ़्त में असीमित कॉन्टैक्ट और शेड्यूल्ड फ़ोटो हमेशा के लिए मिलती हैं, बिना कार्ड के। Pro एक बार का £29 भुगतान है (सब्सक्रिप्शन नहीं) और इसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता जुड़ती है।`,
     faq_4_q: `क्या मेरा डेटा सुरक्षित है?`,
     faq_4_a: `आपकी फ़ोटो सुरक्षित रूप से सिंक की जाती हैं ताकि वे केवल आपके चुने हुए संपर्कों को दिखें। हम कभी भी आपके मैसेज नहीं पढ़ते या आपकी चैट तक नहीं पहुँचते।`,
     footer_rights: `सर्वाधिकार सुरक्षित।`,
@@ -808,6 +826,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `1 कॉन्टैक्ट हमेशा मुफ़्त · क्रेडिट कार्ड की ज़रूरत नहीं`,
   },
   zh: {
+    feat_future: `包含所有未来功能`,
+    feat_everything_free: `包含免费版全部功能`,
+    pro_once: `一次性付款 · 无订阅`,
     hero_h1_1: `那为什么你的照片`,
     hero_h1_2: `对所有人都一样，`,
     hero_h1_new: `你和不同的人说话方式本来就不一样。`,
@@ -848,13 +869,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: `您的家人`,
     identity_family_sees: `看到您选择的版本`,
     pricing_title: `简单透明的定价。`,
-    pricing_sub: `免费安装。1个联系人永久免费。随时升级。`,
+    pricing_sub: `真正需要的功能永久免费。一次可选升级。`,
     free_label: `免费`,
-    free_sub: `1个联系人，永久免费`,
+    free_sub: `无限联系人 + 定时头像`,
     free_trial_note: `无需信用卡`,
     free_forever: `永久`,
     pro_label: 'Pro',
-    pro_sub: `无限联系人`,
+    pro_sub: `免费版全部功能，外加历史与备份`,
     pro_mo: `/月`,
     annual_label: `年度`,
     annual_sub: `无限联系人 + 批量分配`,
@@ -865,7 +886,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: `热门`,
     badge_value: `最佳价值`,
     usd_approx: `约`,
-    feat_contacts_free: `1个联系人`,
+    feat_contacts_free: `无限联系人`,
     feat_contacts_pro: `无限联系人`,
     feat_trial: `批量联系人分配`,
     feat_preview: `实时预览`,
@@ -882,7 +903,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `获取年度`,
     btn_get_lifetime: `获取终身`,
     trial_title: `免费试用3天所有功能。`,
-    trial_desc: `每次安装包含3天完整Pro访问。照片历史、定时照片、无限联系人。无需信用卡。`,
+    trial_desc: `免费版提供无限联系人和定时头像——你的头像按日期和时间自动切换，对方无需安装任何东西。Pro 是一次性 £29 付款，增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
     trial_cta: `免费安装`,
     social_title: `真实用户。真实用例。`,
     social_quote: `让你的老板看到专业照片而朋友看到真实的你真的很方便`,
@@ -891,17 +912,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: `无付费营销`,
     social_stat3: `在r/DigitalPrivacy上获得推荐`,
     viral_title: `一个WhatsApp。多重身份。由你决定谁看到什么。`,
-    viral_sub: `开始您的3天免费试用。无需信用卡。`,
+    viral_sub: `免费安装。无限联系人，永久免费。`,
     viral_cta: `开始免费试用`,
-    viral_note: `3天完整访问 · 1个联系人永久免费 · 无需信用卡`,
+    viral_note: `无限联系人永久免费 · Pro 仅需一次性 £29，绝非订阅`,
     faq_title: `常见问题`,
     faq_sub: `有疑问？我们有解答。`,
     faq_1_q: `我的联系人需要安装什么吗？`,
     faq_1_a: `是的 — DualProfile采用P2P方式运行。当您分配照片且联系人安装了DualProfile后，您的照片会自动出现在对方屏幕上。`,
     faq_2_q: `这在WhatsApp手机应用上有效吗？`,
     faq_2_a: `不 — DualProfile仅在桌面版Chrome或Edge的WhatsApp Web上运行。`,
-    faq_3_q: `3天试用后会发生什么？`,
-    faq_3_a: `试用结束后，您可以在免费计划中永久保留1个联系人。随时升级到Pro以获取无限联系人。`,
+    faq_3_q: `免费版有什么？Pro 增加什么？`,
+    faq_3_a: `免费版永久提供无限联系人和定时头像，无需信用卡。Pro 是一次性 £29 付款（非订阅），增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
     faq_4_q: `我的数据安全吗？`,
     faq_4_a: `您的照片会安全同步，仅对您选择的联系人可见。我们绝不会读取您的消息或访问您的聊天记录。`,
     footer_rights: `保留所有权利。`,
@@ -942,6 +963,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3天完整访问 · 1个联系人永久免费 · 无需信用卡`,
   },
   ja: {
+    feat_future: `今後のすべての機能を含む`,
+    feat_everything_free: `無料版のすべて`,
+    pro_once: `買い切り · サブスクなし`,
     hero_h1_1: `なのになぜ、あなたの写真は`,
     hero_h1_2: `誰に対しても同じで、`,
     hero_h1_new: `話す相手によって話し方はすでに変えているはず。`,
@@ -982,13 +1006,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: `家族`,
     identity_family_sees: `あなたが選んだバージョンを見る`,
     pricing_title: `シンプルで正直な料金。`,
-    pricing_sub: `無料でインストール。1件の連絡先は永久無料。いつでもアップグレード。`,
+    pricing_sub: `本当に必要な機能はずっと無料。任意のアップグレードは1つだけ。`,
     free_label: `無料`,
-    free_sub: `1件の連絡先、永久無料`,
+    free_sub: `無制限のコンタクト + スケジュール写真`,
     free_trial_note: `クレジットカード不要`,
     free_forever: `永久`,
     pro_label: 'Pro',
-    pro_sub: `無制限のコンタクト`,
+    pro_sub: `無料版のすべて、さらに履歴とバックアップ`,
     pro_mo: `/月`,
     annual_label: `年間`,
     annual_sub: `無制限 + 一括割り当て`,
@@ -999,7 +1023,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: `人気`,
     badge_value: `最もお得`,
     usd_approx: `約`,
-    feat_contacts_free: `1コンタクト`,
+    feat_contacts_free: `無制限のコンタクト`,
     feat_contacts_pro: `無制限のコンタクト`,
     feat_trial: `一括連絡先割り当て`,
     feat_preview: `ライブプレビュー`,
@@ -1016,7 +1040,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `年間を取得`,
     btn_get_lifetime: `生涯を取得`,
     trial_title: `3日間全ての機能を無料でお試し。`,
-    trial_desc: `全インストールに3日間のフルProアクセスが含まれます。写真履歴、スケジュール写真、無制限コンタクト。クレジットカード不要。`,
+    trial_desc: `無料版では無制限のコンタクトとスケジュール写真が使えます。曜日と時刻に応じて写真が自動で切り替わり、相手側は何もインストールする必要がありません。Proは1回限りの£29で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
     trial_cta: `無料でインストール`,
     social_title: `リアルな人々。リアルな使い方。`,
     social_quote: `上司にはプロフェッショナルな写真を、友達には本当の自分を見せるのはとても便利`,
@@ -1025,17 +1049,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: `有料マーケティングなし`,
     social_stat3: `r/DigitalPrivacyで紹介`,
     viral_title: `1つのWhatsApp。複数のアイデンティティ。誰が何を見るかはあなたが決めます。`,
-    viral_sub: `3日間の無料トライアルを開始。クレジットカード不要。`,
+    viral_sub: `インストール無料。無制限のコンタクトがずっと無料。`,
     viral_cta: `無料トライアルを開始`,
-    viral_note: `3日間フルアクセス・1コンタクト永久無料・カード不要`,
+    viral_note: `無制限のコンタクトがずっと無料 · Proは1回£29のみ、サブスクではありません`,
     faq_title: `よくある質問`,
     faq_sub: `質問がありますか？答えがあります。`,
     faq_1_q: `コンタクトも何かインストールする必要がありますか？`,
     faq_1_a: `はい — DualProfileはP2Pで動作します。写真を割り当てたコンタクトがDualProfileをインストールすると、あなたの写真が自動的に表示されます。`,
     faq_2_q: `WhatsAppモバイルアプリで動作しますか？`,
     faq_2_a: `いいえ — DualProfileはデスクトップのChromeまたはEdgeのWhatsApp Webでのみ動作します。`,
-    faq_3_q: `3日間のトライアル後はどうなりますか？`,
-    faq_3_a: `トライアル後は無料プランで1コンタクトを永久に保持できます。いつでもProにアップグレード可能です。`,
+    faq_3_q: `無料版の内容とProの追加機能は？`,
+    faq_3_a: `無料版では無制限のコンタクトとスケジュール写真がずっと使え、カード登録も不要です。Proは1回限りの£29（サブスクではありません）で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
     faq_4_q: `データは安全ですか？`,
     faq_4_a: `あなたの写真は安全に同期され、選択した連絡先にのみ表示されます。メッセージを読んだり、チャットにアクセスすることは一切ありません。`,
     footer_rights: `全著作権所有。`,
@@ -1076,6 +1100,9 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3日間フルアクセス・1コンタクト永久無料・カード不要`,
   },
   ru: {
+    feat_future: `Все будущие функции включены`,
+    feat_everything_free: `Всё из бесплатного плана`,
+    pro_once: `разовый платёж · без подписки`,
     hero_h1_1: `Так почему же ваше фото`,
     hero_h1_2: `выглядит одинаково для всех,`,
     hero_h1_new: `Вы уже говорите по-разному в зависимости от того, кто слушает.`,
@@ -1116,13 +1143,13 @@ const LANGS: Record<string, Record<string, string>> = {
     identity_family: `Ваша семья`,
     identity_family_sees: `Видят выбранную вами версию`,
     pricing_title: `Простые и честные цены.`,
-    pricing_sub: `Установите бесплатно. 1 контакт навсегда бесплатно. Обновите когда угодно.`,
+    pricing_sub: `Всё нужное — бесплатно навсегда. Одно необязательное улучшение.`,
     free_label: `Бесплатно`,
-    free_sub: `1 контакт, навсегда бесплатно`,
+    free_sub: `Неограниченные контакты + Фото по расписанию`,
     free_trial_note: `Без кредитной карты`,
     free_forever: `навсегда`,
     pro_label: 'Pro',
-    pro_sub: `Неограниченные контакты`,
+    pro_sub: `Всё бесплатное, плюс история и резервные копии`,
     pro_mo: `/месяц`,
     annual_label: `Годовой`,
     annual_sub: `Безлимит + массовое назначение`,
@@ -1133,7 +1160,7 @@ const LANGS: Record<string, Record<string, string>> = {
     badge_popular: `ПОПУЛЯРНЫЙ`,
     badge_value: `ЛУЧШАЯ ЦЕНА`,
     usd_approx: `прибл.`,
-    feat_contacts_free: `1 контакт`,
+    feat_contacts_free: `Неограниченные контакты`,
     feat_contacts_pro: `Неограниченные контакты`,
     feat_trial: `Массовое назначение контактов`,
     feat_preview: `Предпросмотр в реальном времени`,
@@ -1150,7 +1177,7 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `Получить Годовой`,
     btn_get_lifetime: `Получить Пожизненный`,
     trial_title: `Попробуйте всё бесплатно в течение 3 дней.`,
-    trial_desc: `Каждая установка включает 3 дня полного Pro-доступа. История фото, запланированные фото, неограниченные контакты. Без кредитной карты.`,
+    trial_desc: `Бесплатно вы получаете неограниченные контакты и Фото по расписанию — фото меняется само по дню и времени, и никому больше ничего устанавливать не нужно. Pro — разовый платёж £29, добавляющий историю фото и откат, массовое назначение, экспорт/импорт, синхронизацию между устройствами и приоритетную поддержку.`,
     trial_cta: `Установить бесплатно`,
     social_title: `Реальные люди. Реальные случаи.`,
     social_quote: `то, что начальник видит что-то профессиональное, а друзья видят настоящего тебя — очень удобно`,
@@ -1159,17 +1186,17 @@ const LANGS: Record<string, Record<string, string>> = {
     social_stat2: `Без платной рекламы`,
     social_stat3: `Рекомендовано на r/DigitalPrivacy`,
     viral_title: `Один WhatsApp. Несколько идентичностей. Вы решаете, кто что видит.`,
-    viral_sub: `Начните 3-дневный бесплатный пробный период. Без кредитной карты.`,
+    viral_sub: `Установка бесплатна. Неограниченные контакты, бесплатно навсегда.`,
     viral_cta: `Начать бесплатный пробный период`,
-    viral_note: `1 контакт бесплатно навсегда · Обновитесь до Pro для безлимита`,
+    viral_note: `Неограниченные контакты бесплатно навсегда · Pro — £29 один раз, никогда не подписка`,
     faq_title: `Часто задаваемые вопросы`,
     faq_sub: `Есть вопросы? У нас есть ответы.`,
     faq_1_q: `Нужно ли моему контакту что-то устанавливать?`,
     faq_1_a: `Да — DualProfile работает по принципу P2P. Когда вы назначаете фото и у контакта установлен DualProfile, ваше фото появляется автоматически.`,
     faq_2_q: `Работает ли это в мобильном приложении WhatsApp?`,
     faq_2_a: `Нет — DualProfile работает только в WhatsApp Web в Chrome или Edge на компьютере.`,
-    faq_3_q: `Что происходит после 3-дневного пробного периода?`,
-    faq_3_a: `После пробного периода вы сохраняете 1 контакт в бесплатном плане навсегда. Обновляйтесь до Pro в любое время.`,
+    faq_3_q: `Что бесплатно и что добавляет Pro?`,
+    faq_3_a: `Бесплатно вы получаете неограниченные контакты и Фото по расписанию навсегда, без карты. Pro — разовый платёж £29 (не подписка), добавляющий историю фото и откат, массовое назначение, экспорт/импорт, синхронизацию между устройствами и приоритетную поддержку.`,
     faq_4_q: `Мои данные в безопасности?`,
     faq_4_a: `Ваши фото надёжно синхронизируются и видны только выбранным вами контактам. Мы никогда не читаем ваши сообщения и не получаем доступ к чатам.`,
     footer_rights: `Все права защищены.`,
@@ -1503,10 +1530,10 @@ export default function Home() {
           "applicationCategory": "BrowserApplication",
           "operatingSystem": "Chrome, Edge",
           "offers": [
-            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP" },
-            { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP", "billingIncrement": "P1M" },
-            { "@type": "Offer", "name": "Annual", "price": "59.00", "priceCurrency": "GBP", "billingIncrement": "P1Y" },
-            { "@type": "Offer", "name": "Lifetime", "price": "79.00", "priceCurrency": "GBP" }
+            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP",
+              "description": "Unlimited contacts and Scheduled Photos, free forever." },
+            { "@type": "Offer", "name": "Pro", "price": "29.00", "priceCurrency": "GBP",
+              "description": "One-time payment. Photo History, bulk assignment, export/import, multi-device sync." }
           ],
           "featureList": [
             "Show different profile photos to different WhatsApp contacts",
@@ -2195,21 +2222,28 @@ export default function Home() {
             </div>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: '1.5rem',
-              maxWidth: '1100px',
+              maxWidth: '760px',
               margin: '0 auto'
             }}>
               {/* Free */}
-              <div className="glass-card" style={{padding: '2rem', textAlign: 'center' as const}}>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1rem'}}>{t('free_sub')}</p>
+              <div className="glass-card" style={{padding: '2.25rem', textAlign: 'center' as const}}>
+                <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1rem'}}>{t('free_sub')}</p>
                 <div style={{background:'rgba(37,211,102,0.08)',border:'1px solid rgba(37,211,102,0.2)',borderRadius:'8px',padding:'8px 12px',marginBottom:'1rem',fontSize:'12px',color:'#25D366',fontWeight:'600'}}>
                   {t('free_trial_note')}
                 </div>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('free_forever')}</p>
+                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('free_forever')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
+                  {/* Scheduled Photos is the headline free feature: it needs no
+                      counterparty install, so it works for 100% of installers
+                      on day one. */}
+                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
+                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
+                  </li>
                   {[t('feat_contacts_free'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
@@ -2222,9 +2256,9 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Pro */}
+              {/* Pro — the only paid tier. One-time, no subscription. */}
               <div className="glass-card glow-primary" style={{
-                padding: '2rem', textAlign: 'center' as const,
+                padding: '2.25rem', textAlign: 'center' as const,
                 border: '1px solid rgba(37,211,102,0.4)', position: 'relative' as const
               }}>
                 <div style={{
@@ -2233,87 +2267,28 @@ export default function Home() {
                   fontSize: '0.75rem', fontWeight: '700',
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
                 }}>{t('badge_popular')}</div>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
-                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $12.50 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('pro_mo')}</p>
-                <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {/* Photo History & Revert — Pro's key differentiator */}
-                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_photo_history')}</span>
-                  </li>
-                  {[t('feat_contacts_pro'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
-                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-primary" style={{width: '100%'}}
-                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/b1aa498c-ba28-4e4a-a5b9-ac6ea0b6381c', '_blank')}>
-                  {t('btn_get_pro')}
-                </button>
-              </div>
-
-              {/* Annual */}
-              <div className="glass-card" style={{
-                padding: '2rem', textAlign: 'center' as const,
-                border: '1px solid rgba(37,211,102,0.2)', position: 'relative' as const
-              }}>
-                <div style={{
-                  position: 'absolute' as const, top: 0, right: 0,
-                  background: 'rgba(37,211,102,0.15)', color: '#25D366',
-                  fontSize: '0.75rem', fontWeight: '700',
-                  padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
-                }}>{t('badge_value')}</div>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('annual_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('annual_sub')}</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£59</div>
-                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $74 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('annual_yr')}</p>
-                <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {/* Bulk assignment — Annual's key differentiator over Pro */}
-                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_trial')}</span>
-                  </li>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_scheduled'), t('feat_p2p'), t('feat_chrome')].map(f => (
-                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-outline" style={{width: '100%'}}
-                  onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/eedf7e9a-3865-4dd5-934f-a81f0d9a2202', '_blank')}>
-                  {t('btn_get_annual')}
-                </button>
-              </div>
-
-              {/* Lifetime */}
-              <div className="glass-card" style={{padding: '2rem', textAlign: 'center' as const}}>
-                <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('lifetime_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.5rem'}}>{t('lifetime_sub')}</p>
-                <div style={{fontSize: '2.5rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£79</div>
-                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $99 USD</div>
-                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginBottom: '1.5rem'}}>{t('lifetime_once')}</p>
+                <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
+                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£29</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $37 USD</div>
+                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
                     <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_everything_free')}</span>
                   </li>
-                  {[t('feat_contacts_pro'), t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
+                  {[t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
                   ))}
                   <li style={{padding: '0.5rem 0', color: '#9ca3af', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontStyle: 'italic' as const}}>
-                    <span style={{color: '#6b7280'}}>+</span> All future features included
+                    <span style={{color: '#6b7280'}}>+</span> {t('feat_future')}
                   </li>
                 </ul>
-                <button className="btn btn-outline" style={{width: '100%'}}
+                <button className="btn btn-primary" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}>
-                  {t('btn_get_lifetime')}
+                  {t('btn_get_pro')}
                 </button>
               </div>
             </div>
