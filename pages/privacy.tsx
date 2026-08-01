@@ -420,7 +420,7 @@ export default function Privacy() {
               <ul>
                 <li>Convex (backend infrastructure)</li>
                 <li>Cloudinary (image hosting)</li>
-                <li>Lemon Squeezy (payment processing, if user upgrades to Pro, Annual, or Lifetime)</li>
+                <li>Lemon Squeezy (payment processing, if user upgrades to Pro)</li>
               </ul>
               <p style={{marginTop: '1rem', fontStyle: 'italic'}}>
                 These providers process data solely to enable service functionality.
