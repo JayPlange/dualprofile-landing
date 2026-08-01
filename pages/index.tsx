@@ -2186,7 +2186,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat1_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_annual_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('free_label')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
@@ -2194,7 +2194,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat2_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_lifetime_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                 </div>
@@ -2202,7 +2202,7 @@ export default function Home() {
                 <p className="feature-description">{t('feat3_desc')}</p>
               </div>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_lifetime_badge')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
