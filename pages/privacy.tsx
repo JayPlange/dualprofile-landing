@@ -306,7 +306,7 @@ export default function Privacy() {
 
           <div className="space-y-8 text-gray-300">
             <p style={{fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem'}}>
-              <strong style={{color: '#25D366'}}>DualProfile does not read or modify your WhatsApp messages — ever.</strong> Our extension operates as a visual overlay that only manages profile photo assignments. We have zero access to your chat content, message history, or conversation data.
+              <strong style={{color: '#25D366'}}>DualProfile does not read or modify your WhatsApp messages — ever.</strong> Our extension manages profile photo assignments and, with your explicit confirmation, scheduled photo changes to your own account. We have zero access to your chat content, message history, or conversation data.
             </p>
 
             {/* What Data We Collect */}
@@ -408,7 +408,6 @@ export default function Privacy() {
                 <li>All communication uses HTTPS encryption</li>
                 <li>Phone numbers are SHA-256 hashed before leaving your device</li>
                 <li>Profile photos are served through Cloudinary's secure infrastructure</li>
-                <li>Backend runs on encrypted AWS infrastructure</li>
                 <li>No raw phone numbers or message content are ever stored</li>
               </ul>
             </section>
@@ -431,7 +430,7 @@ export default function Privacy() {
             <section>
               <h2 className="section-title">Extension Scope Clarification</h2>
               <p>
-                DualProfile operates as a visual overlay for WhatsApp Web and does not modify WhatsApp's servers or core systems.
+                DualProfile operates primarily as a visual overlay for WhatsApp Web. Scheduled Photos is the one exception: with your explicit tap to confirm, it uploads your chosen photo through WhatsApp's own profile photo screen, the same action you would take by hand. Every other part of DualProfile, including per-contact photo assignment, never touches WhatsApp's servers at all.
               </p>
             </section>
 
