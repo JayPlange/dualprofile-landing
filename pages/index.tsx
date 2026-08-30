@@ -9,12 +9,65 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `one-time · no subscription`,
     hero_h1_1: 'So why does your photo',
     hero_h1_2: 'say the same thing to everyone,',
-    hero_h1_new: "You already change how you talk depending on who's listening.",
+    hero_h1_new: "One WhatsApp. Different photos for different people.",
     hero_now: `when you don't?`,
-    hero_sub: `DualProfile switches your real WhatsApp photo by day and time — professional at work, personal after, one tap to confirm. Want different people to see different photos too? Assign photos per contact, same account, no second number.`,
+    hero_sub: `Show your professional photo to work contacts and your personal photo to everyone else. Automatically.`,
+    // 2026-08-30 (Webb, product/marketing rewrite): the old hero led with
+    // a philosophical hook before saying what the product does. These two
+    // lines replace it, leading with the acquisition feature (works alone,
+    // no counterparty install) before the differentiation feature (needs
+    // both sides), per Webb's "Scheduled Photos = activation, P2P =
+    // differentiation" funnel.
+    hero_scheduled_note: `Scheduled Photos works on your own account — no one else installs anything.`,
+    hero_p2p_note: `Want different people to see different photos? Use Private Contact Sharing.`,
     hero_cta: 'Install free',
     hero_cta_sub: `Free forever · Unlimited contacts · Upgrade anytime`,
-    hero_social_proof: `Installed in 8+ countries · No paid marketing`,
+    hero_social_proof: `Built for people who use one WhatsApp account for work and life.`,
+    what_happens_where_title: `What happens where`,
+    what_contacts_see_label: `What your contacts see`,
+    what_contacts_see_val: `Your chosen photo. Nothing else changes for them.`,
+    what_phone_label: `What happens on your phone`,
+    what_phone_val: `Your WhatsApp profile photo updates automatically — on schedule, or the moment you assign it.`,
+    what_web_label: `What happens on WhatsApp Web`,
+    what_web_val: `The same photo syncs automatically. No separate setup needed.`,
+    what_requires_install_label: `What requires another installation`,
+    what_requires_install_val: `Only Private Contact Sharing (Pro). Scheduled Photos never needs anyone else to install anything.`,
+    // Visual demo strip -- 2026-08-30 (Webb): "Imagine: 8:59 AM Personal
+    // photo, 9:00 AM Switch now, WhatsApp desktop -> Professional photo,
+    // WhatsApp phone -> Professional photo. Then: One switch. Every
+    // device." Put directly after the hero rather than buried in the
+    // pricing/feature copy -- this is the strongest, most tangible proof
+    // of the product's core behaviour.
+    visual_demo_title: `One switch. Every device.`,
+    visual_demo_sub: `When Scheduled Photos switches, your real WhatsApp photo updates everywhere at once — no one else does anything.`,
+    visual_demo_time1: `8:59 AM`,
+    visual_demo_label1: `Personal photo`,
+    visual_demo_switch: `Switch now`,
+    visual_demo_time2: `9:00 AM`,
+    visual_demo_device1: `WhatsApp Desktop`,
+    visual_demo_device2: `WhatsApp Phone`,
+    visual_demo_label2: `Professional photo`,
+    // "Is this for me?" section -- 2026-08-30 (Webb): eliminate the
+    // confusion between the two features up front, before pricing, so a
+    // visitor self-selects rather than discovering the P2P requirement
+    // only after wanting to buy.
+    is_for_me_title: `Is this for me?`,
+    is_for_me_q1: `Want your WhatsApp photo to change automatically during the day?`,
+    is_for_me_q1_point1: `Works immediately`,
+    is_for_me_q1_point2: `No contact needs DualProfile`,
+    is_for_me_q1_point3: `Changes your actual WhatsApp photo`,
+    is_for_me_q1_point4: `Appears across your phone and computer`,
+    is_for_me_q2: `Want different people to see different photos?`,
+    is_for_me_q2_point1: `Yes`,
+    is_for_me_q2_point2: `Both people need DualProfile`,
+    is_for_me_q2_point3: `Works on WhatsApp Web`,
+    // Security section -- 2026-08-30 (Webb): "This is already one of your
+    // strongest messages... deserves much more prominence." Previously
+    // only demo_privacy, one small line under the video embed.
+    security_title: `We don't read your chats.`,
+    security_point1: `No chat data is ever stored or accessed.`,
+    security_point2: `Photos are synced securely — only the contacts you choose can ever see them.`,
+    security_point3: `Works entirely through WhatsApp Web. Nothing routes through a third-party server that reads your messages.`,
     share_hook_1: `Your boss and your best friend have been seeing the same WhatsApp photo of you.`,
     share_hook_2: `Until now.`,
     share_hook_3: `WhatsApp never made this possible. So we did.`,
@@ -53,7 +106,10 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'No credit card required',
     free_forever: 'forever',
     pro_label: 'Pro',
-    pro_sub: `Everything free, plus history and backup`,
+    // 2026-08-30 (Webb): "Everything free, plus history and backup" was
+    // too abstract to justify a payment decision -- name the actual
+    // unlocks instead.
+    pro_sub: `Photo history, bulk assignment, export/import & multi-device sync`,
     pro_mo: '/month',
     annual_label: 'Annual',
     annual_sub: 'Bulk assign + Scheduled Photos',
@@ -68,7 +124,11 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: 'Unlimited contacts',
     feat_trial: 'Bulk contact assignment',
     feat_preview: 'Live preview mode',
-    feat_p2p: 'P2P photo sync',
+    // 2026-08-30 (Webb): renamed from "P2P photo sync" -- that name reads
+    // like it works automatically once installed, when it actually
+    // requires the OTHER contact to also have DualProfile. See
+    // status_2_title/status_2_desc for the fuller requirement callout.
+    feat_p2p: 'Private contact-to-contact sharing',
     feat_chrome: 'Chrome & Edge',
     feat_photo_history: 'Photo History & Revert',
     feat_scheduled: 'Scheduled Photos',
@@ -81,18 +141,21 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Get Annual',
     btn_get_lifetime: 'Get Lifetime',
     trial_title: 'Try DualProfile free, upgrade when ready.',
-    trial_desc: `Free gives you Scheduled Photos — your real photo switches by day and time, one tap to confirm, visible on every device, no one else needs to install anything — plus unlimited per-contact assignments. Pro is a single £29 payment that adds Photo History & Revert, bulk assignment, Export/Import, Multi-Device Sync and priority support.`,
+    trial_desc: `Free gives you Scheduled Photos — your real photo switches by day and time, one tap to confirm, visible on every device, no one else needs to install anything — plus unlimited per-contact assignments. Pro is a single £9.99 payment that adds Photo History & Revert, bulk assignment, Export/Import, Multi-Device Sync and priority support.`,
     trial_cta: 'Install free',
     social_title: 'Real people. Real use cases.',
     social_quote: 'having your boss see something professional while mates get the real you is pretty handy',
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: 'Installed in 8+ countries',
+    // 2026-08-30 (Webb): "Installed in 8+ countries" is almost meaningless
+    // to a buyer -- replaced with an honest claim rather than a vanity
+    // metric. Real testimonials should replace this once there are some.
+    social_stat1: 'Built solo, for real work/life separation',
     social_stat2: 'No paid marketing',
     social_stat3: 'Featured on r/DigitalPrivacy',
     viral_title: 'One WhatsApp. Multiple identities. You decide who sees what.',
     viral_sub: `Free to install. Unlimited contacts, free forever.`,
     viral_cta: 'Install free',
-    viral_note: `Unlimited contacts free forever · Pro is £29 once, never a subscription`,
+    viral_note: `Unlimited contacts free forever · Pro is £9.99 once, never a subscription`,
     faq_title: 'Frequently Asked Questions',
     faq_sub: `Got questions? We've got answers.`,
     faq_1_q: 'Does my contact need to install anything?',
@@ -100,11 +163,20 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: 'Does this work on the WhatsApp mobile app?',
     faq_2_a: `Scheduled Photos changes your real WhatsApp photo, so once it switches, everyone sees it everywhere, mobile included. Per-contact assignment is different — it only shows on WhatsApp Web, and only to contacts who also have DualProfile installed.`,
     faq_3_q: `What is free, and what does Pro add?`,
-    faq_3_a: `Free gives you unlimited contacts and Scheduled Photos, forever, with no card required. Pro is a one-time £29 payment — not a subscription — and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
+    faq_3_a: `Free gives you unlimited contacts and Scheduled Photos, forever, with no card required. Pro is a one-time £9.99 payment — not a subscription — and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
     faq_4_q: 'Is my data secure?',
     faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     faq_5_q: `Does Scheduled Photos need anyone else to install DualProfile?`,
     faq_5_a: `No. It changes your own account's real photo, so nobody else needs anything installed — that's what makes it work from the very first day.`,
+    // Two entries added 2026-08-30 (Webb): the FAQ should only answer
+    // purchase-blocking questions. These two were missing outright --
+    // faq_6 directly addresses the exact expectation gap most likely
+    // behind an early refund (buying Pro expecting Private Contact
+    // Sharing to work without the other person installing anything).
+    faq_6_q: `What happens if the person I share with doesn't install DualProfile?`,
+    faq_6_a: `They keep seeing your normal WhatsApp photo. Private Contact Sharing only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
+    faq_7_q: `Is Pro a subscription?`,
+    faq_7_a: `No. Pro is a single one-time payment — £9.99, charged once. There's no recurring billing, no trial that auto-converts, and no expiry.`,
     footer_rights: 'All rights reserved.',
     footer_note: `Your photos are synced securely — only the contacts you choose can see them.`,
     copied_msg: 'Copied!',
@@ -133,8 +205,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Current Status',
     status_1_title: 'Preview Mode',
     status_1_desc: 'See how others would see your profile',
-    status_2_title: 'P2P Sync',
-    status_2_desc: 'Real-time profile switching now live',
+    status_2_title: 'Private Contact Sharing',
+    status_2_desc: 'Real-time profile switching now live — requires the other contact to have DualProfile installed too',
     status_3_title: 'Group Chats',
     status_3_desc: 'Not supported yet',
     modal_title: 'Install DualProfile',
@@ -148,12 +220,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `pago unico · sin suscripcion`,
     hero_h1_1: 'Entonces, por que tu foto',
     hero_h1_2: 'dice lo mismo a todos,',
-    hero_h1_new: 'Ya cambias tu forma de hablar segun quien te escucha.',
+    hero_h1_new: `Un WhatsApp. Fotos distintas para personas distintas.`,
     hero_now: 'cuando tu no?',
-    hero_sub: `DualProfile cambia tu foto real de WhatsApp segun el dia y la hora: profesional en el trabajo, personal despues, un toque para confirmar. ¿Quieres que distintas personas vean fotos distintas tambien? Asigna fotos por contacto, misma cuenta, sin segundo numero.`,
+    hero_sub: `Muestra tu foto profesional a tus contactos de trabajo y tu foto personal a todos los demas. Automaticamente.`,
     hero_cta: 'Iniciar prueba gratis',
     hero_cta_sub: `Gratis para siempre · Contactos ilimitados · Actualiza cuando quieras`,
-    hero_social_proof: `Instalado en mas de 8 paises · Sin marketing pagado`,
+    hero_social_proof: `Hecho para personas que usan una sola cuenta de WhatsApp para el trabajo y la vida personal.`,
+    hero_scheduled_note: `Fotos Programadas funciona en tu propia cuenta — nadie mas necesita instalar nada.`,
+    hero_p2p_note: `¿Quieres que personas distintas vean fotos distintas? Usa Compartir Fotos Privado.`,
+    visual_demo_title: `Un cambio. Todos los dispositivos.`,
+    visual_demo_sub: `Cambia tu foto una vez y se actualiza en todos los dispositivos donde tengas DualProfile conectado.`,
+    visual_demo_time1: `8:59 AM`,
+    visual_demo_label1: `Foto personal`,
+    visual_demo_time2: `9:00 AM`,
+    visual_demo_switch: `Cambiar ahora`,
+    visual_demo_label2: `Foto profesional`,
+    visual_demo_device1: `WhatsApp Escritorio`,
+    visual_demo_device2: `WhatsApp Movil`,
+    is_for_me_title: `¿Es esto para mi?`,
+    is_for_me_q1: `Fotos Programadas`,
+    is_for_me_q1_point1: `Funciona de inmediato`,
+    is_for_me_q1_point2: `Ningun contacto necesita DualProfile`,
+    is_for_me_q1_point3: `Cambia tu foto real de WhatsApp`,
+    is_for_me_q1_point4: `Aparece en tu telefono y tu ordenador`,
+    is_for_me_q2: `Fotos Privadas por Contacto`,
+    is_for_me_q2_point1: `Si, funciona igual`,
+    is_for_me_q2_point2: `Ambas personas necesitan DualProfile`,
+    is_for_me_q2_point3: `Funciona en WhatsApp Web`,
+    faq_6_q: `¿Que pasa si la persona con la que comparto no instala DualProfile?`,
+    faq_6_a: `Compartir Fotos Privado necesita que ambas partes tengan DualProfile instalado. Si no lo ha instalado, no vera tu foto asignada — Fotos Programadas sigue funcionando sin problema en tu propia cuenta.`,
+    faq_7_q: `¿Pro es una suscripcion?`,
+    faq_7_a: `No. Pro es un pago unico de £9.99. Lo conservas para siempre, incluidas las futuras funciones Pro, sin cobros recurrentes.`,
+    security_title: `Tu privacidad, por diseno`,
+    security_point1: `No leemos tus chats. No se almacenan datos de conversaciones.`,
+    security_point2: `Nunca vemos el contenido de tus mensajes — solo la foto que eliges mostrar.`,
+    security_point3: `Los nombres de tus contactos nunca se guardan en nuestros servidores.`,
+    what_happens_where_title: `Que pasa y donde`,
+    what_contacts_see_label: `Lo que ven tus contactos`,
+    what_contacts_see_val: `La foto que elegiste. Nada mas cambia para ellos.`,
+    what_phone_label: `Lo que pasa en tu telefono`,
+    what_phone_val: `Tu foto de perfil de WhatsApp se actualiza automaticamente, segun el horario o en el momento en que la asignes.`,
+    what_web_label: `Lo que pasa en WhatsApp Web`,
+    what_web_val: `La misma foto se sincroniza automaticamente. No necesitas configurar nada aparte.`,
+    what_requires_install_label: `Que requiere otra instalacion`,
+    what_requires_install_val: `Solo Compartir Fotos Privado (Pro). Fotos Programadas nunca necesita que nadie mas instale nada.`,
     share_hook_1: `Tu jefe y tu mejor amigo han estado viendo la misma foto tuya en WhatsApp.`,
     share_hook_2: `Hasta ahora.`,
     share_hook_3: `WhatsApp nunca hizo esto posible. Asi que lo hicimos nosotros.`,
@@ -192,7 +302,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'Sin tarjeta de credito',
     free_forever: 'para siempre',
     pro_label: 'Pro',
-    pro_sub: `Todo lo gratuito, mas historial y respaldo`,
+    pro_sub: `Historial de fotos, asignacion masiva, exportar/importar y sincronizacion multi-dispositivo`,
     pro_mo: '/mes',
     annual_label: 'Anual',
     annual_sub: 'Ilimitados + asignacion masiva',
@@ -207,7 +317,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: 'Contactos ilimitados',
     feat_trial: 'Asignacion masiva de contactos',
     feat_preview: 'Vista previa en vivo',
-    feat_p2p: 'Sincronizacion P2P',
+    feat_p2p: `Compartir fotos de contacto a contacto`,
     feat_chrome: 'Chrome y Edge',
     feat_photo_history: 'Historial y Revertir Fotos',
     feat_scheduled: 'Fotos Programadas',
@@ -220,18 +330,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obtener Anual',
     btn_get_lifetime: 'Obtener De por vida',
     trial_title: 'Prueba DualProfile gratis, actualiza cuando estes listo.',
-    trial_desc: `Gratis te da Fotos programadas: tu foto real cambia por dia y hora, un toque para confirmar, visible en todos tus dispositivos, nadie mas necesita instalar nada, ademas de asignaciones ilimitadas por contacto. Pro es un pago unico de £29 que anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
+    trial_desc: `Gratis te da Fotos programadas: tu foto real cambia por dia y hora, un toque para confirmar, visible en todos tus dispositivos, nadie mas necesita instalar nada, ademas de asignaciones ilimitadas por contacto. Pro es un pago unico de £9.99 que anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
     trial_cta: 'Instalar gratis',
     social_title: 'Personas reales. Casos de uso reales.',
     social_quote: 'que tu jefe vea algo profesional mientras tus amigos ven el verdadero tu es muy util',
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: 'Instalado en mas de 8 paises',
+    social_stat1: `Hecho en solitario, para una separacion real entre trabajo y vida personal.`,
     social_stat2: 'Sin marketing pagado',
     social_stat3: 'Destacado en r/DigitalPrivacy',
     viral_title: 'Un WhatsApp. Multiples identidades. Tu decides quien ve que.',
     viral_sub: `Gratis de instalar. Contactos ilimitados, gratis para siempre.`,
     viral_cta: 'Iniciar prueba gratis',
-    viral_note: `Contactos ilimitados gratis para siempre · Pro son £29 una vez, nunca suscripcion`,
+    viral_note: `Contactos ilimitados gratis para siempre · Pro son £9.99 una vez, nunca suscripcion`,
     faq_title: 'Preguntas frecuentes',
     faq_sub: 'Tienes preguntas? Tenemos respuestas.',
     faq_1_q: 'Mi contacto necesita instalar algo?',
@@ -239,7 +349,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: 'Funciona en la app movil de WhatsApp?',
     faq_2_a: `Las Fotos programadas cambian tu foto real de WhatsApp, asi que una vez que cambia, todos la ven en todas partes, incluido el movil. La asignacion por contacto es distinta: solo se ve en WhatsApp Web, y solo para los contactos que tambien tengan DualProfile instalado.`,
     faq_3_q: `Que es gratis y que anade Pro?`,
-    faq_3_a: `Gratis te da contactos ilimitados y Fotos programadas, para siempre, sin tarjeta. Pro es un pago unico de £29 (no una suscripcion) y anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
+    faq_3_a: `Gratis te da contactos ilimitados y Fotos programadas, para siempre, sin tarjeta. Pro es un pago unico de £9.99 (no una suscripcion) y anade Historial de fotos, asignacion masiva, Exportar/Importar, sincronizacion multi-dispositivo y soporte prioritario.`,
     faq_4_q: 'Mis datos estan seguros?',
     faq_4_a: 'Tus fotos se sincronizan de forma segura para que solo las vean los contactos que elijas. Nunca leemos tus mensajes ni accedemos a tus chats.',
     faq_5_q: `¿Las Fotos programadas necesitan que alguien mas instale DualProfile?`,
@@ -272,8 +382,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Estado actual',
     status_1_title: 'Modo vista previa',
     status_1_desc: 'Ve como te ven los demas',
-    status_2_title: 'Sincronizacion P2P',
-    status_2_desc: 'Cambio de perfil en tiempo real',
+    status_2_title: `Compartir Fotos Privado`,
+    status_2_desc: `Cambio de perfil en tiempo real — requiere que el otro contacto tambien tenga DualProfile instalado`,
     status_3_title: 'Chats grupales',
     status_3_desc: 'Aun no compatible',
     modal_title: 'Instalar DualProfile',
@@ -287,12 +397,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `paiement unique · sans abonnement`,
     hero_h1_1: 'Alors pourquoi votre photo',
     hero_h1_2: "dit-elle la meme chose a tout le monde,",
-    hero_h1_new: 'Vous changez deja votre facon de parler selon qui vous ecoute.',
+    hero_h1_new: `Un seul WhatsApp. Des photos differentes pour des personnes differentes.`,
     hero_now: `quand ce n'est pas votre cas ?`,
-    hero_sub: `DualProfile change votre vraie photo WhatsApp selon le jour et l'heure : professionnelle au travail, personnelle ensuite, une touche pour confirmer. Vous voulez aussi que des personnes differentes voient des photos differentes ? Assignez des photos par contact, meme compte, sans second numero.`,
+    hero_sub: `Montrez votre photo professionnelle a vos contacts de travail et votre photo personnelle a tous les autres. Automatiquement.`,
     hero_cta: `Commencer l'essai gratuit`,
     hero_cta_sub: `Gratuit pour toujours · Contacts illimites · Mettez a niveau quand vous voulez`,
-    hero_social_proof: `Installe dans plus de 8 pays · Sans marketing paye`,
+    hero_social_proof: `Concu pour les personnes qui utilisent un seul compte WhatsApp pour le travail et la vie personnelle.`,
+    hero_scheduled_note: `Photos Programmees fonctionne sur votre propre compte — personne d'autre n'a besoin d'installer quoi que ce soit.`,
+    hero_p2p_note: `Vous voulez que des personnes differentes voient des photos differentes ? Utilisez le Partage Prive entre Contacts.`,
+    visual_demo_title: `Un seul changement. Tous les appareils.`,
+    visual_demo_sub: `Changez votre photo une fois — elle se met a jour partout ou DualProfile est connecte.`,
+    visual_demo_time1: `8h59`,
+    visual_demo_label1: `Photo personnelle`,
+    visual_demo_time2: `9h00`,
+    visual_demo_switch: `Changer maintenant`,
+    visual_demo_label2: `Photo professionnelle`,
+    visual_demo_device1: `WhatsApp Bureau`,
+    visual_demo_device2: `WhatsApp Telephone`,
+    is_for_me_title: `Est-ce fait pour moi ?`,
+    is_for_me_q1: `Photos Programmees`,
+    is_for_me_q1_point1: `Fonctionne immediatement`,
+    is_for_me_q1_point2: `Aucun contact n'a besoin de DualProfile`,
+    is_for_me_q1_point3: `Change votre vraie photo WhatsApp`,
+    is_for_me_q1_point4: `Apparait sur votre telephone et votre ordinateur`,
+    is_for_me_q2: `Photos Privees par Contact`,
+    is_for_me_q2_point1: `Oui, fonctionne de la meme maniere`,
+    is_for_me_q2_point2: `Les deux personnes ont besoin de DualProfile`,
+    is_for_me_q2_point3: `Fonctionne sur WhatsApp Web`,
+    faq_6_q: `Que se passe-t-il si la personne avec qui je partage n'installe pas DualProfile ?`,
+    faq_6_a: `Le Partage Prive entre Contacts necessite que les deux parties aient DualProfile installe. Si elle ne l'a pas installe, elle ne verra pas la photo que vous lui avez attribuee — Photos Programmees continue de fonctionner normalement sur votre propre compte.`,
+    faq_7_q: `Pro est-il un abonnement ?`,
+    faq_7_a: `Non. Pro est un paiement unique de £9.99. Vous le gardez, y compris les futures fonctionnalites Pro, sans frais recurrents.`,
+    security_title: `Votre vie privee, par conception`,
+    security_point1: `Nous ne lisons pas vos discussions. Aucune donnee de conversation n'est stockee.`,
+    security_point2: `Nous ne voyons jamais le contenu des messages — seulement la photo que vous choisissez de montrer.`,
+    security_point3: `Les noms de vos contacts ne sont jamais stockes sur nos serveurs.`,
+    what_happens_where_title: `Ce qui se passe, et ou`,
+    what_contacts_see_label: `Ce que voient vos contacts`,
+    what_contacts_see_val: `La photo que vous avez choisie. Rien d'autre ne change pour eux.`,
+    what_phone_label: `Ce qui se passe sur votre telephone`,
+    what_phone_val: `Votre photo de profil WhatsApp se met a jour automatiquement, selon l'horaire ou des que vous l'attribuez.`,
+    what_web_label: `Ce qui se passe sur WhatsApp Web`,
+    what_web_val: `La meme photo se synchronise automatiquement. Aucune configuration separee n'est necessaire.`,
+    what_requires_install_label: `Ce qui necessite une autre installation`,
+    what_requires_install_val: `Seul le Partage Prive entre Contacts (Pro). Photos Programmees n'a jamais besoin que quelqu'un d'autre installe quoi que ce soit.`,
     share_hook_1: `Votre patron et votre meilleur ami voient la meme photo de vous sur WhatsApp.`,
     share_hook_2: `Jusqu'a maintenant.`,
     share_hook_3: `WhatsApp n'a jamais rendu cela possible. Alors on l'a fait.`,
@@ -331,7 +479,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'Sans carte de credit',
     free_forever: 'pour toujours',
     pro_label: 'Pro',
-    pro_sub: `Tout le gratuit, plus historique et sauvegarde`,
+    pro_sub: `Historique des photos, attribution groupee, export/import et synchronisation multi-appareils`,
     pro_mo: '/mois',
     annual_label: 'Annuel',
     annual_sub: 'Illimites + assignation groupee',
@@ -346,7 +494,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: 'Contacts illimites',
     feat_trial: 'Assignation groupee de contacts',
     feat_preview: 'Apercu en direct',
-    feat_p2p: 'Synchronisation P2P',
+    feat_p2p: `Partage prive de contact a contact`,
     feat_chrome: 'Chrome et Edge',
     feat_photo_history: 'Historique et Retour de Photos',
     feat_scheduled: 'Photos Programmees',
@@ -359,18 +507,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obtenir Annuel',
     btn_get_lifetime: 'Obtenir A vie',
     trial_title: 'Essayez tout gratuitement pendant 3 jours.',
-    trial_desc: `Le gratuit vous donne les Photos programmees : votre vraie photo change selon le jour et l'heure, une touche pour confirmer, visible sur tous vos appareils, personne d'autre n'a besoin d'installer quoi que ce soit, plus des assignations illimitees par contact. Pro est un paiement unique de £29 qui ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
+    trial_desc: `Le gratuit vous donne les Photos programmees : votre vraie photo change selon le jour et l'heure, une touche pour confirmer, visible sur tous vos appareils, personne d'autre n'a besoin d'installer quoi que ce soit, plus des assignations illimitees par contact. Pro est un paiement unique de £9.99 qui ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
     trial_cta: 'Installer gratuitement',
     social_title: `Des vrais gens. De vrais cas d'usage.`,
     social_quote: `que votre patron voit quelque chose de professionnel pendant que vos amis voient le vrai vous, c'est vraiment pratique`,
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: 'Installe dans plus de 8 pays',
+    social_stat1: `Cree en solo, pour une vraie separation entre vie professionnelle et personnelle.`,
     social_stat2: 'Sans marketing paye',
     social_stat3: 'Mis en avant sur r/DigitalPrivacy',
     viral_title: 'Un WhatsApp. Plusieurs identites. Vous decidez qui voit quoi.',
     viral_sub: `Installation gratuite. Contacts illimites, gratuits pour toujours.`,
     viral_cta: `Commencer l'essai gratuit`,
-    viral_note: `Contacts illimites gratuits pour toujours · Pro c'est £29 une fois, jamais un abonnement`,
+    viral_note: `Contacts illimites gratuits pour toujours · Pro c'est £9.99 une fois, jamais un abonnement`,
     faq_title: 'Questions frequentes',
     faq_sub: 'Des questions ? Nous avons des reponses.',
     faq_1_q: 'Mon contact doit-il installer quelque chose ?',
@@ -378,7 +526,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: `Cela fonctionne-t-il sur l'app mobile WhatsApp ?`,
     faq_2_a: `Les Photos programmees changent votre vraie photo WhatsApp, donc une fois le changement effectue, tout le monde la voit partout, y compris sur mobile. L'assignation par contact est differente : elle n'apparait que sur WhatsApp Web, et seulement pour les contacts qui ont aussi DualProfile installe.`,
     faq_3_q: `Qu'est-ce qui est gratuit et qu'apporte Pro ?`,
-    faq_3_a: `Le gratuit vous donne des contacts illimites et les Photos programmees, pour toujours, sans carte bancaire. Pro est un paiement unique de £29 (pas un abonnement) et ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
+    faq_3_a: `Le gratuit vous donne des contacts illimites et les Photos programmees, pour toujours, sans carte bancaire. Pro est un paiement unique de £9.99 (pas un abonnement) et ajoute l'Historique des photos, l'assignation groupee, l'Export/Import, la synchronisation multi-appareils et le support prioritaire.`,
     faq_4_q: 'Mes donnees sont-elles en securite ?',
     faq_4_a: 'Vos photos sont synchronisees de maniere securisee afin de n\'apparaitre qu\'aux contacts que vous choisissez. Nous ne lisons jamais vos messages et n\'accedons jamais a vos discussions.',
     faq_5_q: `Les Photos programmees necessitent-elles que quelqu'un d'autre installe DualProfile ?`,
@@ -411,8 +559,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Statut actuel',
     status_1_title: 'Mode apercu',
     status_1_desc: 'Voyez comment les autres vous voient',
-    status_2_title: 'Synchronisation P2P',
-    status_2_desc: 'Changement de profil en temps reel',
+    status_2_title: `Partage Prive entre Contacts`,
+    status_2_desc: `Changement de profil en temps reel — necessite que l'autre contact ait aussi DualProfile installe`,
     status_3_title: 'Chats de groupe',
     status_3_desc: 'Pas encore pris en charge',
     modal_title: 'Installer DualProfile',
@@ -426,12 +574,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `pagamento unico · sem subscricao`,
     hero_h1_1: 'Entao por que sua foto',
     hero_h1_2: 'diz a mesma coisa para todos,',
-    hero_h1_new: 'Voce ja muda a forma como fala dependendo de quem esta ouvindo.',
+    hero_h1_new: `Um so WhatsApp. Fotos diferentes para pessoas diferentes.`,
     hero_now: 'quando voce nao?',
-    hero_sub: `O DualProfile muda a sua foto real do WhatsApp consoante o dia e a hora: profissional no trabalho, pessoal depois, um toque para confirmar. Tambem quer que pessoas diferentes vejam fotos diferentes? Atribua fotos por contacto, mesma conta, sem segundo numero.`,
+    hero_sub: `Mostre a sua foto profissional aos contactos de trabalho e a sua foto pessoal a todos os outros. Automaticamente.`,
     hero_cta: 'Iniciar teste gratis',
     hero_cta_sub: `Gratis para sempre · Contatos ilimitados · Atualize quando quiser`,
-    hero_social_proof: `Instalado em mais de 8 paises · Sem marketing pago`,
+    hero_social_proof: `Feito para pessoas que usam uma unica conta de WhatsApp para o trabalho e a vida pessoal.`,
+    hero_scheduled_note: `Fotos Agendadas funciona na sua propria conta — mais ninguem precisa de instalar nada.`,
+    hero_p2p_note: `Quer que pessoas diferentes vejam fotos diferentes? Use a Partilha Privada por Contacto.`,
+    visual_demo_title: `Uma mudanca. Todos os dispositivos.`,
+    visual_demo_sub: `Mude a sua foto uma vez — ela atualiza-se em todos os dispositivos onde o DualProfile esta ligado.`,
+    visual_demo_time1: `8h59`,
+    visual_demo_label1: `Foto pessoal`,
+    visual_demo_time2: `9h00`,
+    visual_demo_switch: `Mudar agora`,
+    visual_demo_label2: `Foto profissional`,
+    visual_demo_device1: `WhatsApp Computador`,
+    visual_demo_device2: `WhatsApp Telemovel`,
+    is_for_me_title: `Isto e para mim?`,
+    is_for_me_q1: `Fotos Agendadas`,
+    is_for_me_q1_point1: `Funciona imediatamente`,
+    is_for_me_q1_point2: `Nenhum contacto precisa do DualProfile`,
+    is_for_me_q1_point3: `Muda a sua foto real do WhatsApp`,
+    is_for_me_q1_point4: `Aparece no seu telemovel e no computador`,
+    is_for_me_q2: `Fotos Privadas por Contacto`,
+    is_for_me_q2_point1: `Sim, funciona da mesma forma`,
+    is_for_me_q2_point2: `As duas pessoas precisam do DualProfile`,
+    is_for_me_q2_point3: `Funciona no WhatsApp Web`,
+    faq_6_q: `O que acontece se a pessoa com quem partilho nao instalar o DualProfile?`,
+    faq_6_a: `A Partilha Privada por Contacto exige que ambas as partes tenham o DualProfile instalado. Se a pessoa nao o instalou, nao vera a foto que lhe atribuiu — as Fotos Agendadas continuam a funcionar normalmente na sua propria conta.`,
+    faq_7_q: `O Pro e uma subscricao?`,
+    faq_7_a: `Nao. O Pro e um pagamento unico de £9.99. Fica com ele para sempre, incluindo futuras funcionalidades Pro, sem cobrancas recorrentes.`,
+    security_title: `A sua privacidade, por design`,
+    security_point1: `Nao lemos as suas conversas. Nenhum dado de conversa e armazenado.`,
+    security_point2: `Nunca vemos o conteudo das mensagens — apenas a foto que escolhe mostrar.`,
+    security_point3: `Os nomes dos seus contactos nunca sao guardados nos nossos servidores.`,
+    what_happens_where_title: `O que acontece, e onde`,
+    what_contacts_see_label: `O que os seus contactos veem`,
+    what_contacts_see_val: `A foto que escolheu. Mais nada muda para eles.`,
+    what_phone_label: `O que acontece no seu telemovel`,
+    what_phone_val: `A sua foto de perfil do WhatsApp atualiza-se automaticamente, conforme o horario ou assim que a atribui.`,
+    what_web_label: `O que acontece no WhatsApp Web`,
+    what_web_val: `A mesma foto sincroniza-se automaticamente. Nao e preciso nenhuma configuracao separada.`,
+    what_requires_install_label: `O que requer outra instalacao`,
+    what_requires_install_val: `Apenas a Partilha Privada por Contacto (Pro). As Fotos Agendadas nunca precisam que mais ninguem instale nada.`,
     share_hook_1: `Seu chefe e seu melhor amigo veem a mesma foto sua no WhatsApp.`,
     share_hook_2: `Até agora.`,
     share_hook_3: `O WhatsApp nunca tornou isso possível. Então nós fizemos.`,
@@ -470,7 +656,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'Sem cartao de credito',
     free_forever: 'para sempre',
     pro_label: 'Pro',
-    pro_sub: `Tudo do gratis, mais historico e backup`,
+    pro_sub: `Historico de fotos, atribuicao em massa, exportar/importar e sincronizacao entre dispositivos`,
     pro_mo: '/mes',
     annual_label: 'Anual',
     annual_sub: 'Ilimitados + atribuicao em massa',
@@ -485,7 +671,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: 'Contatos ilimitados',
     feat_trial: 'Atribuicao em massa de contatos',
     feat_preview: 'Previa ao vivo',
-    feat_p2p: 'Sincronizacao P2P',
+    feat_p2p: `Partilha privada de contacto para contacto`,
     feat_chrome: 'Chrome e Edge',
     feat_photo_history: 'Historico e Reversao de Fotos',
     feat_scheduled: 'Fotos Programadas',
@@ -498,18 +684,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Obter Anual',
     btn_get_lifetime: 'Obter Vitalicio',
     trial_title: 'Experimente tudo gratuitamente por 3 dias.',
-    trial_desc: `O gratis da-lhe Fotos agendadas: a sua foto real muda por dia e hora, um toque para confirmar, visivel em todos os dispositivos, mais ninguem precisa de instalar nada, alem de atribuicoes ilimitadas por contacto. Pro e um pagamento unico de £29 que acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
+    trial_desc: `O gratis da-lhe Fotos agendadas: a sua foto real muda por dia e hora, um toque para confirmar, visivel em todos os dispositivos, mais ninguem precisa de instalar nada, alem de atribuicoes ilimitadas por contacto. Pro e um pagamento unico de £9.99 que acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
     trial_cta: 'Instalar gratis',
     social_title: 'Pessoas reais. Casos de uso reais.',
     social_quote: 'ter seu chefe vendo algo profissional enquanto seus amigos veem o voce de verdade e muito util',
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: 'Instalado em mais de 8 paises',
+    social_stat1: `Criado a solo, para uma separacao real entre trabalho e vida pessoal.`,
     social_stat2: 'Sem marketing pago',
     social_stat3: 'Destaque no r/DigitalPrivacy',
     viral_title: 'Um WhatsApp. Multiplas identidades. Voce decide quem ve o que.',
     viral_sub: `Instalacao gratuita. Contactos ilimitados, gratis para sempre.`,
     viral_cta: 'Iniciar teste gratis',
-    viral_note: `Contactos ilimitados gratis para sempre · Pro sao £29 uma vez, nunca subscricao`,
+    viral_note: `Contactos ilimitados gratis para sempre · Pro sao £9.99 uma vez, nunca subscricao`,
     faq_title: 'Perguntas frequentes',
     faq_sub: 'Tem duvidas? Temos respostas.',
     faq_1_q: 'Meu contato precisa instalar algo?',
@@ -517,7 +703,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: 'Funciona no app movel do WhatsApp?',
     faq_2_a: `As Fotos agendadas mudam a sua foto real do WhatsApp, por isso, assim que muda, todos a veem em todo o lado, incluindo no telemovel. A atribuicao por contacto e diferente: so aparece no WhatsApp Web, e apenas para os contactos que tambem tenham o DualProfile instalado.`,
     faq_3_q: `O que e gratis e o que o Pro acrescenta?`,
-    faq_3_a: `O gratis da-lhe contactos ilimitados e Fotos agendadas, para sempre, sem cartao. Pro e um pagamento unico de £29 (nao e subscricao) e acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
+    faq_3_a: `O gratis da-lhe contactos ilimitados e Fotos agendadas, para sempre, sem cartao. Pro e um pagamento unico de £9.99 (nao e subscricao) e acrescenta Historico de fotos, atribuicao em massa, Exportar/Importar, sincronizacao multi-dispositivo e suporte prioritario.`,
     faq_4_q: 'Meus dados estao seguros?',
     faq_4_a: 'Suas fotos sao sincronizadas com seguranca para aparecerem apenas aos contatos que voce escolher. Nunca lemos suas mensagens nem acessamos seus chats.',
     faq_5_q: `As Fotos agendadas precisam que outra pessoa instale o DualProfile?`,
@@ -550,8 +736,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Status atual',
     status_1_title: 'Modo previa',
     status_1_desc: 'Veja como os outros te veem',
-    status_2_title: 'Sincronizacao P2P',
-    status_2_desc: 'Troca de perfil em tempo real',
+    status_2_title: `Partilha Privada por Contacto`,
+    status_2_desc: `Mudanca de perfil em tempo real — requer que o outro contacto tambem tenha o DualProfile instalado`,
     status_3_title: 'Chats em grupo',
     status_3_desc: 'Ainda nao suportado',
     modal_title: 'Instalar DualProfile',
@@ -565,12 +751,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `einmalig · kein Abo`,
     hero_h1_1: 'Warum sagt dein Foto',
     hero_h1_2: 'dann jedem dasselbe,',
-    hero_h1_new: 'Du sprichst schon anders, je nachdem, wer zuhort.',
+    hero_h1_new: `Ein WhatsApp. Verschiedene Fotos fur verschiedene Menschen.`,
     hero_now: 'wenn du es nicht tust?',
-    hero_sub: `DualProfile wechselt dein echtes WhatsApp-Foto nach Tag und Uhrzeit: beruflich bei der Arbeit, privat danach, ein Tipp zur Bestatigung. Sollen verschiedene Leute auch verschiedene Fotos sehen? Weise Fotos pro Kontakt zu, gleiches Konto, keine zweite Nummer.`,
+    hero_sub: `Zeige dein professionelles Foto deinen Arbeitskontakten und dein privates Foto allen anderen. Automatisch.`,
     hero_cta: 'Kostenlose Testversion starten',
     hero_cta_sub: `Fur immer kostenlos · Unbegrenzte Kontakte · Jederzeit upgraden`,
-    hero_social_proof: `In uber 8 Landern installiert · Ohne bezahltes Marketing`,
+    hero_social_proof: `Gemacht fur Menschen, die ein WhatsApp-Konto fur Arbeit und Privates nutzen.`,
+    hero_scheduled_note: `Geplante Fotos funktioniert auf deinem eigenen Konto — niemand sonst muss etwas installieren.`,
+    hero_p2p_note: `Sollen verschiedene Leute auch verschiedene Fotos sehen? Nutze die Private Kontaktfreigabe.`,
+    visual_demo_title: `Ein Wechsel. Jedes Gerat.`,
+    visual_demo_sub: `Andere dein Foto einmal — es aktualisiert sich uberall, wo DualProfile verbunden ist.`,
+    visual_demo_time1: `8:59 Uhr`,
+    visual_demo_label1: `Privates Foto`,
+    visual_demo_time2: `9:00 Uhr`,
+    visual_demo_switch: `Jetzt wechseln`,
+    visual_demo_label2: `Berufliches Foto`,
+    visual_demo_device1: `WhatsApp Desktop`,
+    visual_demo_device2: `WhatsApp Handy`,
+    is_for_me_title: `Ist das fur mich?`,
+    is_for_me_q1: `Geplante Fotos`,
+    is_for_me_q1_point1: `Funktioniert sofort`,
+    is_for_me_q1_point2: `Kein Kontakt braucht DualProfile`,
+    is_for_me_q1_point3: `Andert dein echtes WhatsApp-Foto`,
+    is_for_me_q1_point4: `Erscheint auf Handy und Computer`,
+    is_for_me_q2: `Private Kontaktfotos`,
+    is_for_me_q2_point1: `Ja, funktioniert genauso`,
+    is_for_me_q2_point2: `Beide Personen brauchen DualProfile`,
+    is_for_me_q2_point3: `Funktioniert in WhatsApp Web`,
+    faq_6_q: `Was passiert, wenn die Person, mit der ich teile, DualProfile nicht installiert?`,
+    faq_6_a: `Die Private Kontaktfreigabe erfordert, dass beide Seiten DualProfile installiert haben. Hat die Person es nicht installiert, sieht sie dein zugewiesenes Foto nicht — Geplante Fotos funktionieren trotzdem ganz normal auf deinem eigenen Konto.`,
+    faq_7_q: `Ist Pro ein Abonnement?`,
+    faq_7_a: `Nein. Pro ist eine einmalige Zahlung von £9.99. Du behaltst es dauerhaft, inklusive zukunftiger Pro-Funktionen, ohne wiederkehrende Kosten.`,
+    security_title: `Deine Privatsphare, von Anfang an`,
+    security_point1: `Wir lesen deine Chats nicht. Es werden keine Chat-Daten gespeichert.`,
+    security_point2: `Wir sehen niemals Nachrichteninhalte — nur das Foto, das du zeigen mochtest.`,
+    security_point3: `Kontaktnamen werden niemals auf unseren Servern gespeichert.`,
+    what_happens_where_title: `Was wo passiert`,
+    what_contacts_see_label: `Was deine Kontakte sehen`,
+    what_contacts_see_val: `Das von dir gewahlte Foto. Sonst andert sich fur sie nichts.`,
+    what_phone_label: `Was auf deinem Handy passiert`,
+    what_phone_val: `Dein WhatsApp-Profilfoto aktualisiert sich automatisch — nach Zeitplan oder sobald du es zuweist.`,
+    what_web_label: `Was in WhatsApp Web passiert`,
+    what_web_val: `Dasselbe Foto wird automatisch synchronisiert. Keine separate Einrichtung notig.`,
+    what_requires_install_label: `Was eine weitere Installation erfordert`,
+    what_requires_install_val: `Nur die Private Kontaktfreigabe (Pro). Geplante Fotos brauchen nie, dass jemand anderes etwas installiert.`,
     share_hook_1: `Dein Chef und dein bester Freund sehen dasselbe WhatsApp-Foto von dir.`,
     share_hook_2: `Bis jetzt.`,
     share_hook_3: `WhatsApp hat das nie ermoglicht. Also haben wir es getan.`,
@@ -609,7 +833,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: 'Keine Kreditkarte erforderlich',
     free_forever: 'fur immer',
     pro_label: 'Pro',
-    pro_sub: `Alles Kostenlose, plus Verlauf und Backup`,
+    pro_sub: `Foto-Verlauf, Massenzuweisung, Export/Import und Synchronisation auf mehreren Geraten`,
     pro_mo: '/Monat',
     annual_label: 'Jahrlich',
     annual_sub: 'Unbegrenzt + Massenzuweisung',
@@ -624,7 +848,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: 'Unbegrenzte Kontakte',
     feat_trial: 'Massenzuweisung von Kontakten',
     feat_preview: 'Live-Vorschau',
-    feat_p2p: 'P2P-Synchronisation',
+    feat_p2p: `Private Foto-Freigabe von Kontakt zu Kontakt`,
     feat_chrome: 'Chrome & Edge',
     feat_photo_history: 'Fotoverlauf & Zurucksetzen',
     feat_scheduled: 'Geplante Fotos',
@@ -637,18 +861,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: 'Jahrlich holen',
     btn_get_lifetime: 'Lebenslang holen',
     trial_title: '3 Tage lang alles kostenlos ausprobieren.',
-    trial_desc: `Kostenlos gibt dir Geplante Fotos: Dein echtes Foto wechselt nach Tag und Uhrzeit, ein Tipp zur Bestatigung, sichtbar auf allen Geraten, niemand sonst muss etwas installieren, dazu unbegrenzte Kontaktzuweisungen. Pro ist eine einmalige Zahlung von £29 und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
+    trial_desc: `Kostenlos gibt dir Geplante Fotos: Dein echtes Foto wechselt nach Tag und Uhrzeit, ein Tipp zur Bestatigung, sichtbar auf allen Geraten, niemand sonst muss etwas installieren, dazu unbegrenzte Kontaktzuweisungen. Pro ist eine einmalige Zahlung von £9.99 und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
     trial_cta: 'Kostenlos installieren',
     social_title: 'Echte Menschen. Echte Anwendungsfalle.',
     social_quote: 'dass dein Chef etwas Professionelles sieht wahrend Freunde das echte du sehen, ist echt praktisch',
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: 'In uber 8 Landern installiert',
+    social_stat1: `Solo entwickelt, fur eine echte Trennung von Arbeit und Privatleben.`,
     social_stat2: 'Ohne bezahltes Marketing',
     social_stat3: 'Vorgestellt auf r/DigitalPrivacy',
     viral_title: 'Ein WhatsApp. Mehrere Identitaten. Du entscheidest, wer was sieht.',
     viral_sub: `Kostenlos installieren. Unbegrenzte Kontakte, fur immer gratis.`,
     viral_cta: 'Kostenlose Testversion starten',
-    viral_note: `Unbegrenzte Kontakte fur immer gratis · Pro kostet einmalig £29, niemals ein Abo`,
+    viral_note: `Unbegrenzte Kontakte fur immer gratis · Pro kostet einmalig £9.99, niemals ein Abo`,
     faq_title: 'Haufig gestellte Fragen',
     faq_sub: 'Fragen? Wir haben Antworten.',
     faq_1_q: 'Muss mein Kontakt auch etwas installieren?',
@@ -656,7 +880,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: 'Funktioniert es in der mobilen WhatsApp-App?',
     faq_2_a: `Geplante Fotos andern dein echtes WhatsApp-Foto, sobald es wechselt, sieht es jeder uberall, auch auf dem Handy. Die Kontaktzuweisung ist anders: Sie erscheint nur in WhatsApp Web, und nur bei Kontakten, die DualProfile ebenfalls installiert haben.`,
     faq_3_q: `Was ist kostenlos und was bringt Pro?`,
-    faq_3_a: `Kostenlos gibt dir unbegrenzte Kontakte und Geplante Fotos, fur immer, ohne Kreditkarte. Pro ist eine einmalige Zahlung von £29 (kein Abo) und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
+    faq_3_a: `Kostenlos gibt dir unbegrenzte Kontakte und Geplante Fotos, fur immer, ohne Kreditkarte. Pro ist eine einmalige Zahlung von £9.99 (kein Abo) und erganzt Foto-Verlauf, Massenzuweisung, Export/Import, Multi-Gerate-Sync und bevorzugten Support.`,
     faq_4_q: 'Sind meine Daten sicher?',
     faq_4_a: 'Deine Fotos werden sicher synchronisiert, sodass sie nur fur die von dir ausgewahlten Kontakte sichtbar sind. Wir lesen niemals deine Nachrichten oder greifen auf deine Chats zu.',
     faq_5_q: `Muss fur Geplante Fotos noch jemand anderes DualProfile installieren?`,
@@ -689,8 +913,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Aktueller Status',
     status_1_title: 'Vorschaumodus',
     status_1_desc: 'Sieh, wie andere dich sehen',
-    status_2_title: 'P2P-Synchronisation',
-    status_2_desc: 'Echtzeit-Profilwechsel',
+    status_2_title: `Private Kontaktfreigabe`,
+    status_2_desc: `Echtzeit-Profilwechsel — erfordert, dass der andere Kontakt DualProfile ebenfalls installiert hat`,
     status_3_title: 'Gruppenunterhaltungen',
     status_3_desc: 'Noch nicht unterstutzt',
     modal_title: 'DualProfile installieren',
@@ -704,12 +928,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `एक बार भुगतान · कोई सब्सक्रिप्शन नहीं`,
     hero_h1_1: `तो फिर आपकी फोटो`,
     hero_h1_2: `सबको एक जैसी बात क्यों कहती है,`,
-    hero_h1_new: `आप पहले से ही सुनने वाले के हिसाब से बात करने का तरीका बदलते हैं।`,
+    hero_h1_new: `एक ही WhatsApp. अलग-अलग लोगों के लिए अलग-अलग फोटो।`,
     hero_now: `जब आप नहीं कहते?`,
-    hero_sub: `DualProfile आपकी असली WhatsApp फोटो दिन और समय के हिसाब से बदलता है — काम के दौरान प्रोफेशनल, बाद में पर्सनल, बदलाव कन्फर्म करने के लिए बस एक टैप। चाहते हैं कि अलग-अलग लोग अलग-अलग फोटो भी देखें? हर कॉन्टैक्ट के लिए फोटो असाइन करें, वही अकाउंट, दूसरा नंबर नहीं।`,
+    hero_sub: `अपने वर्क कॉन्टैक्ट्स को अपनी प्रोफेशनल फोटो दिखाएं और बाकी सबको अपनी पर्सनल फोटो। अपने आप।`,
     hero_cta: `मुफ्त ट्रायल शुरू करें`,
     hero_cta_sub: `हमेशा मुफ़्त · असीमित संपर्क · कभी भी अपग्रेड करें`,
-    hero_social_proof: `8+ देशों में इंस्टॉल · बिना पेड मार्केटिंग के`,
+    hero_social_proof: `उन लोगों के लिए बनाया गया जो काम और पर्सनल लाइफ के लिए एक ही WhatsApp अकाउंट इस्तेमाल करते हैं।`,
+    hero_scheduled_note: `शेड्यूल्ड फोटोज़ आपके अपने अकाउंट पर काम करता है — किसी और को कुछ भी इंस्टॉल करने की जरूरत नहीं।`,
+    hero_p2p_note: `चाहते हैं कि अलग-अलग लोग अलग-अलग फोटो देखें? प्राइवेट कॉन्टैक्ट शेयरिंग इस्तेमाल करें।`,
+    visual_demo_title: `एक स्विच। हर डिवाइस।`,
+    visual_demo_sub: `अपनी फोटो एक बार बदलें — यह हर उस डिवाइस पर अपडेट हो जाती है जहां DualProfile जुड़ा है।`,
+    visual_demo_time1: `सुबह 8:59`,
+    visual_demo_label1: `पर्सनल फोटो`,
+    visual_demo_time2: `सुबह 9:00`,
+    visual_demo_switch: `अभी स्विच करें`,
+    visual_demo_label2: `प्रोफेशनल फोटो`,
+    visual_demo_device1: `WhatsApp डेस्कटॉप`,
+    visual_demo_device2: `WhatsApp फोन`,
+    is_for_me_title: `क्या यह मेरे लिए है?`,
+    is_for_me_q1: `शेड्यूल्ड फोटोज़`,
+    is_for_me_q1_point1: `तुरंत काम करता है`,
+    is_for_me_q1_point2: `किसी भी कॉन्टैक्ट को DualProfile की जरूरत नहीं`,
+    is_for_me_q1_point3: `आपकी असली WhatsApp फोटो बदलता है`,
+    is_for_me_q1_point4: `आपके फोन और कंप्यूटर दोनों पर दिखता है`,
+    is_for_me_q2: `प्राइवेट कॉन्टैक्ट फोटोज़`,
+    is_for_me_q2_point1: `हां, वैसे ही काम करता है`,
+    is_for_me_q2_point2: `दोनों लोगों को DualProfile चाहिए`,
+    is_for_me_q2_point3: `WhatsApp Web पर काम करता है`,
+    faq_6_q: `अगर जिसके साथ मैं शेयर कर रहा हूं वो DualProfile इंस्टॉल नहीं करता तो क्या होगा?`,
+    faq_6_a: `प्राइवेट कॉन्टैक्ट शेयरिंग के लिए दोनों तरफ DualProfile इंस्टॉल होना जरूरी है। अगर उन्होंने इंस्टॉल नहीं किया, तो वो आपकी असाइन की गई फोटो नहीं देख पाएंगे — शेड्यूल्ड फोटोज़ फिर भी आपके अपने अकाउंट पर सही तरीके से काम करता रहेगा।`,
+    faq_7_q: `क्या Pro एक सब्सक्रिप्शन है?`,
+    faq_7_a: `नहीं। Pro सिर्फ एक बार का £9.99 का पेमेंट है। आप इसे हमेशा के लिए रखते हैं, भविष्य के Pro फीचर्स समेत, बिना किसी बार-बार लगने वाले चार्ज के।`,
+    security_title: `आपकी प्राइवेसी, शुरू से ही`,
+    security_point1: `हम आपकी चैट्स नहीं पढ़ते। कोई चैट डेटा स्टोर नहीं होता।`,
+    security_point2: `हम कभी भी मैसेज कंटेंट नहीं देखते — सिर्फ वो फोटो जो आप दिखाना चुनते हैं।`,
+    security_point3: `कॉन्टैक्ट नेम्स कभी हमारे सर्वर पर स्टोर नहीं होते।`,
+    what_happens_where_title: `क्या कहां होता है`,
+    what_contacts_see_label: `आपके कॉन्टैक्ट्स को क्या दिखता है`,
+    what_contacts_see_val: `आपकी चुनी हुई फोटो। उनके लिए बाकी कुछ नहीं बदलता।`,
+    what_phone_label: `आपके फोन पर क्या होता है`,
+    what_phone_val: `आपकी WhatsApp प्रोफाइल फोटो अपने आप अपडेट होती है — शेड्यूल के हिसाब से, या जैसे ही आप उसे असाइन करते हैं।`,
+    what_web_label: `WhatsApp Web पर क्या होता है`,
+    what_web_val: `वही फोटो अपने आप सिंक हो जाती है। किसी अलग सेटअप की जरूरत नहीं।`,
+    what_requires_install_label: `किसके लिए दूसरी इंस्टॉलेशन जरूरी है`,
+    what_requires_install_val: `सिर्फ प्राइवेट कॉन्टैक्ट शेयरिंग (Pro) के लिए। शेड्यूल्ड फोटोज़ के लिए कभी किसी और को कुछ इंस्टॉल करने की जरूरत नहीं होती।`,
     share_hook_1: `आपके बॉस और आपके सबसे अच्छे दोस्त को व्हाट्सएप पर आपकी एक ही फोटो दिख रही है।`,
     share_hook_2: `अब तक।`,
     share_hook_3: `व्हाट्सएप ने यह कभी संभव नहीं बनाया। इसलिए हमने बनाया।`,
@@ -748,7 +1010,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: `क्रेडिट कार्ड की ज़रूरत नहीं`,
     free_forever: `हमेशा के लिए`,
     pro_label: 'Pro',
-    pro_sub: `सब कुछ मुफ़्त, साथ में हिस्ट्री और बैकअप`,
+    pro_sub: `फोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इंपोर्ट और मल्टी-डिवाइस सिंक`,
     pro_mo: `/माह`,
     annual_label: `वार्षिक`,
     annual_sub: `असीमित + बल्क असाइन`,
@@ -763,7 +1025,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: `असीमित कॉन्टैक्ट`,
     feat_trial: `बल्क कॉन्टैक्ट असाइनमेंट`,
     feat_preview: `लाइव प्रिव्यू`,
-    feat_p2p: `P2P सिंक`,
+    feat_p2p: `कॉन्टैक्ट-टू-कॉन्टैक्ट प्राइवेट शेयरिंग`,
     feat_chrome: `Chrome और Edge`,
     feat_photo_history: `फोटो इतिहास और रिवर्ट`,
     feat_scheduled: `शेड्यूल्ड फोटो`,
@@ -776,18 +1038,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `वार्षिक लें`,
     btn_get_lifetime: `आजीवन लें`,
     trial_title: `3 दिन सब कुछ मुफ्त में आजमाएं।`,
-    trial_desc: `मुफ़्त में शेड्यूल्ड फ़ोटो मिलती है — आपकी असली फोटो दिन और समय के हिसाब से बदलती है, कन्फर्म करने के लिए बस एक टैप, हर डिवाइस पर दिखती है, किसी और को कुछ इंस्टॉल करने की ज़रूरत नहीं — साथ ही असीमित पर-कॉन्टैक्ट असाइनमेंट भी। Pro एक बार का £29 भुगतान है जिसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता मिलती है।`,
+    trial_desc: `मुफ़्त में शेड्यूल्ड फ़ोटो मिलती है — आपकी असली फोटो दिन और समय के हिसाब से बदलती है, कन्फर्म करने के लिए बस एक टैप, हर डिवाइस पर दिखती है, किसी और को कुछ इंस्टॉल करने की ज़रूरत नहीं — साथ ही असीमित पर-कॉन्टैक्ट असाइनमेंट भी। Pro एक बार का £9.99 भुगतान है जिसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता मिलती है।`,
     trial_cta: `मुफ़्त इंस्टॉल करें`,
     social_title: `असली लोग। असली उपयोग।`,
     social_quote: `बॉस को प्रोफेशनल फोटो और दोस्तों को असली आप दिखाना बहुत काम का है`,
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: `8+ देशों में इंस्टॉल`,
+    social_stat1: `अकेले बनाया गया, काम और पर्सनल लाइफ के असली अलगाव के लिए।`,
     social_stat2: `बिना पेड मार्केटिंग के`,
     social_stat3: `r/DigitalPrivacy पर फीचर्ड`,
     viral_title: `एक WhatsApp। कई पहचान। आप तय करें कौन क्या देखे।`,
     viral_sub: `इंस्टॉल मुफ़्त। असीमित कॉन्टैक्ट, हमेशा मुफ़्त।`,
     viral_cta: `मुफ्त ट्रायल शुरू करें`,
-    viral_note: `असीमित कॉन्टैक्ट हमेशा मुफ़्त · Pro एक बार £29, कभी सब्सक्रिप्शन नहीं`,
+    viral_note: `असीमित कॉन्टैक्ट हमेशा मुफ़्त · Pro एक बार £9.99, कभी सब्सक्रिप्शन नहीं`,
     faq_title: `अक्सर पूछे जाने वाले सवाल`,
     faq_sub: `सवाल हैं? जवाब हमारे पास हैं।`,
     faq_1_q: `क्या मेरे कॉन्टैक्ट को कुछ इंस्टॉल करना होगा?`,
@@ -795,7 +1057,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: `क्या यह WhatsApp मोबाइल ऐप पर काम करता है?`,
     faq_2_a: `शेड्यूल्ड फ़ोटो आपकी असली WhatsApp फोटो बदलती है, तो बदलने के बाद इसे हर कोई हर जगह देखता है, मोबाइल भी शामिल। पर-कॉन्टैक्ट असाइनमेंट अलग है — यह सिर्फ WhatsApp Web पर दिखता है, और सिर्फ उन कॉन्टैक्ट्स को जिनके पास भी DualProfile इंस्टॉल है।`,
     faq_3_q: `मुफ़्त में क्या है और Pro में क्या जुड़ता है?`,
-    faq_3_a: `मुफ़्त में असीमित कॉन्टैक्ट और शेड्यूल्ड फ़ोटो हमेशा के लिए मिलती हैं, बिना कार्ड के। Pro एक बार का £29 भुगतान है (सब्सक्रिप्शन नहीं) और इसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता जुड़ती है।`,
+    faq_3_a: `मुफ़्त में असीमित कॉन्टैक्ट और शेड्यूल्ड फ़ोटो हमेशा के लिए मिलती हैं, बिना कार्ड के। Pro एक बार का £9.99 भुगतान है (सब्सक्रिप्शन नहीं) और इसमें फ़ोटो हिस्ट्री, बल्क असाइनमेंट, एक्सपोर्ट/इम्पोर्ट, मल्टी-डिवाइस सिंक और प्राथमिकता सहायता जुड़ती है।`,
     faq_4_q: `क्या मेरा डेटा सुरक्षित है?`,
     faq_4_a: `आपकी फ़ोटो सुरक्षित रूप से सिंक की जाती हैं ताकि वे केवल आपके चुने हुए संपर्कों को दिखें। हम कभी भी आपके मैसेज नहीं पढ़ते या आपकी चैट तक नहीं पहुँचते।`,
     faq_5_q: `क्या शेड्यूल्ड फ़ोटो के लिए किसी और को DualProfile इंस्टॉल करना पड़ता है?`,
@@ -828,8 +1090,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: `वर्तमान स्थिति`,
     status_1_title: `प्रिव्यू मोड`,
     status_1_desc: `देखें दूसरे आपको कैसे देखते हैं`,
-    status_2_title: `P2P सिंक`,
-    status_2_desc: `रीयल-टाइम प्रोफाइल स्विचिंग`,
+    status_2_title: `प्राइवेट कॉन्टैक्ट शेयरिंग`,
+    status_2_desc: `रीयल-टाइम प्रोफाइल स्विचिंग — दूसरे कॉन्टैक्ट के पास भी DualProfile इंस्टॉल होना जरूरी है`,
     status_3_title: `ग्रुप चैट`,
     status_3_desc: `अभी समर्थित नहीं`,
     modal_title: `DualProfile इंस्टॉल करें`,
@@ -843,12 +1105,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `一次性付款 · 无订阅`,
     hero_h1_1: `那为什么你的照片`,
     hero_h1_2: `对所有人都一样，`,
-    hero_h1_new: `你和不同的人说话方式本来就不一样。`,
+    hero_h1_new: `同一个WhatsApp，给不同的人看不同的照片。`,
     hero_now: `而你却不是？`,
-    hero_sub: `DualProfile 按日期和时间切换你真实的 WhatsApp 头像——上班时专业，下班后随性，一键确认每次切换。也想让不同的人看到不同的照片？为每个联系人单独分配照片，同一个账号，无需第二个号码。`,
+    hero_sub: `让工作联系人看到你的职业照片，其他人看到你的私人照片。自动完成。`,
     hero_cta: `开始免费试用`,
     hero_cta_sub: `永久免费 · 无限联系人 · 随时升级`,
-    hero_social_proof: `已在8个国家安装 · 无付费营销`,
+    hero_social_proof: `为那些用同一个WhatsApp账号处理工作和生活的人打造。`,
+    hero_scheduled_note: `定时照片在你自己的账号上运行——不需要任何人安装任何东西。`,
+    hero_p2p_note: `想让不同的人看到不同的照片吗？使用私密联系人共享。`,
+    visual_demo_title: `切换一次，同步所有设备。`,
+    visual_demo_sub: `只需切换一次头像，DualProfile连接的所有设备都会同步更新。`,
+    visual_demo_time1: `上午8:59`,
+    visual_demo_label1: `私人照片`,
+    visual_demo_time2: `上午9:00`,
+    visual_demo_switch: `立即切换`,
+    visual_demo_label2: `职业照片`,
+    visual_demo_device1: `WhatsApp 桌面版`,
+    visual_demo_device2: `WhatsApp 手机版`,
+    is_for_me_title: `这适合我吗？`,
+    is_for_me_q1: `定时照片`,
+    is_for_me_q1_point1: `立即生效`,
+    is_for_me_q1_point2: `联系人无需安装DualProfile`,
+    is_for_me_q1_point3: `更改你真实的WhatsApp头像`,
+    is_for_me_q1_point4: `手机和电脑上都会同步显示`,
+    is_for_me_q2: `私密联系人照片`,
+    is_for_me_q2_point1: `是的，用法相同`,
+    is_for_me_q2_point2: `双方都需要安装DualProfile`,
+    is_for_me_q2_point3: `支持WhatsApp网页版`,
+    faq_6_q: `如果我分享的对象没有安装DualProfile会怎样？`,
+    faq_6_a: `私密联系人共享需要双方都安装DualProfile。如果对方没有安装，他们将看不到你分配的照片——但定时照片仍会在你自己的账号上正常运行。`,
+    faq_7_q: `Pro是订阅制吗？`,
+    faq_7_a: `不是。Pro是一次性付费£9.99。你将永久拥有它，包括未来的Pro功能，无需重复付费。`,
+    security_title: `隐私保护，从设计开始`,
+    security_point1: `我们不读取你的聊天记录。不存储任何聊天数据。`,
+    security_point2: `我们永远看不到消息内容——只看到你选择展示的照片。`,
+    security_point3: `联系人姓名永远不会存储在我们的服务器上。`,
+    what_happens_where_title: `各处会发生什么`,
+    what_contacts_see_label: `你的联系人会看到什么`,
+    what_contacts_see_val: `你选择的照片。对他们来说其他一切都不会改变。`,
+    what_phone_label: `你手机上会发生什么`,
+    what_phone_val: `你的WhatsApp头像会自动更新——按计划，或在你分配的那一刻。`,
+    what_web_label: `WhatsApp网页版会发生什么`,
+    what_web_val: `同一张照片会自动同步，无需额外设置。`,
+    what_requires_install_label: `什么情况需要额外安装`,
+    what_requires_install_val: `只有私密联系人共享（Pro）需要。定时照片从不需要任何人安装任何东西。`,
     share_hook_1: `你的老板和你最好的朋友在WhatsApp上看到的是同一张你的照片。`,
     share_hook_2: `直到现在。`,
     share_hook_3: `WhatsApp从未让这成为可能。所以我们做到了。`,
@@ -887,7 +1187,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: `无需信用卡`,
     free_forever: `永久`,
     pro_label: 'Pro',
-    pro_sub: `免费版全部功能，外加历史与备份`,
+    pro_sub: `照片历史记录、批量分配、导出/导入及多设备同步`,
     pro_mo: `/月`,
     annual_label: `年度`,
     annual_sub: `无限联系人 + 批量分配`,
@@ -902,7 +1202,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: `无限联系人`,
     feat_trial: `批量联系人分配`,
     feat_preview: `实时预览`,
-    feat_p2p: `P2P同步`,
+    feat_p2p: `联系人对联系人的私密共享`,
     feat_chrome: `Chrome和Edge`,
     feat_photo_history: `照片历史与恢复`,
     feat_scheduled: `定时照片`,
@@ -915,18 +1215,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `获取年度`,
     btn_get_lifetime: `获取终身`,
     trial_title: `免费试用3天所有功能。`,
-    trial_desc: `免费版为你提供定时头像——你真实的头像按日期和时间切换，一键确认，所有设备上都能看到，无需其他任何人安装任何东西，还有无限的按联系人分配功能。Pro 是一次性 £29 付款，增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
+    trial_desc: `免费版为你提供定时头像——你真实的头像按日期和时间切换，一键确认，所有设备上都能看到，无需其他任何人安装任何东西，还有无限的按联系人分配功能。Pro 是一次性 £9.99 付款，增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
     trial_cta: `免费安装`,
     social_title: `真实用户。真实用例。`,
     social_quote: `让你的老板看到专业照片而朋友看到真实的你真的很方便`,
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: `已在8个国家安装`,
+    social_stat1: `独立开发，只为真正区分工作与生活。`,
     social_stat2: `无付费营销`,
     social_stat3: `在r/DigitalPrivacy上获得推荐`,
     viral_title: `一个WhatsApp。多重身份。由你决定谁看到什么。`,
     viral_sub: `免费安装。无限联系人，永久免费。`,
     viral_cta: `开始免费试用`,
-    viral_note: `无限联系人永久免费 · Pro 仅需一次性 £29，绝非订阅`,
+    viral_note: `无限联系人永久免费 · Pro 仅需一次性 £9.99，绝非订阅`,
     faq_title: `常见问题`,
     faq_sub: `有疑问？我们有解答。`,
     faq_1_q: `我的联系人需要安装什么吗？`,
@@ -934,7 +1234,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: `这在WhatsApp手机应用上有效吗？`,
     faq_2_a: `定时头像会更改你真实的 WhatsApp 头像，所以一旦切换，所有人在任何地方都能看到，包括手机。按联系人分配则不同——它只在 WhatsApp Web 上显示，而且只有同样安装了 DualProfile 的联系人才能看到。`,
     faq_3_q: `免费版有什么？Pro 增加什么？`,
-    faq_3_a: `免费版永久提供无限联系人和定时头像，无需信用卡。Pro 是一次性 £29 付款（非订阅），增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
+    faq_3_a: `免费版永久提供无限联系人和定时头像，无需信用卡。Pro 是一次性 £9.99 付款（非订阅），增加头像历史与还原、批量分配、导出/导入、多设备同步和优先支持。`,
     faq_4_q: `我的数据安全吗？`,
     faq_4_a: `您的照片会安全同步，仅对您选择的联系人可见。我们绝不会读取您的消息或访问您的聊天记录。`,
     faq_5_q: `定时头像需要其他人也安装 DualProfile 吗？`,
@@ -967,8 +1267,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: `当前状态`,
     status_1_title: `预览模式`,
     status_1_desc: `查看他人如何看到您的资料`,
-    status_2_title: `P2P同步`,
-    status_2_desc: `实时个人资料切换`,
+    status_2_title: `私密联系人共享`,
+    status_2_desc: `实时头像切换——需要对方也安装DualProfile`,
     status_3_title: `群聊`,
     status_3_desc: `暂不支持`,
     modal_title: `安装DualProfile`,
@@ -982,12 +1282,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `買い切り · サブスクなし`,
     hero_h1_1: `なのになぜ、あなたの写真は`,
     hero_h1_2: `誰に対しても同じで、`,
-    hero_h1_new: `話す相手によって話し方はすでに変えているはず。`,
+    hero_h1_new: `1つのWhatsAppで、相手ごとに違う写真を。`,
     hero_now: `あなた自身は違うのに？`,
-    hero_sub: `DualProfileはあなたの本物のWhatsApp写真を曜日と時間帯で切り替えます——仕事中はプロフェッショナルに、それ以外はプライベートに、切り替えはワンタップで確認するだけ。相手によって違う写真を見せたい場合は？連絡先ごとに写真を割り当てることもできます。同じアカウントのまま、番号を増やす必要もありません。`,
+    hero_sub: `仕事の連絡先にはプロフェッショナルな写真を、それ以外の人には個人的な写真を表示します。自動的に。`,
     hero_cta: `無料トライアルを開始`,
     hero_cta_sub: `永久無料 · 無制限の連絡先 · いつでもアップグレード`,
-    hero_social_proof: `8カ国以上でインストール・有料マーケティングなし`,
+    hero_social_proof: `仕事とプライベートで1つのWhatsAppアカウントを使う人のために作られました。`,
+    hero_scheduled_note: `スケジュール写真はあなた自身のアカウントで動作します——他の誰かが何かをインストールする必要はありません。`,
+    hero_p2p_note: `相手によって違う写真を見せたいですか？プライベート連絡先共有をご利用ください。`,
+    visual_demo_title: `1回の切り替えで、すべてのデバイスに反映。`,
+    visual_demo_sub: `写真を一度切り替えるだけで、DualProfileが接続されているすべてのデバイスで更新されます。`,
+    visual_demo_time1: `午前8:59`,
+    visual_demo_label1: `個人用の写真`,
+    visual_demo_time2: `午前9:00`,
+    visual_demo_switch: `今すぐ切り替え`,
+    visual_demo_label2: `仕事用の写真`,
+    visual_demo_device1: `WhatsApp デスクトップ`,
+    visual_demo_device2: `WhatsApp スマートフォン`,
+    is_for_me_title: `これは自分に合っている？`,
+    is_for_me_q1: `スケジュール写真`,
+    is_for_me_q1_point1: `すぐに使える`,
+    is_for_me_q1_point2: `相手はDualProfileを必要としない`,
+    is_for_me_q1_point3: `実際のWhatsAppの写真を変更する`,
+    is_for_me_q1_point4: `スマートフォンとパソコンの両方に反映される`,
+    is_for_me_q2: `プライベート連絡先写真`,
+    is_for_me_q2_point1: `はい、同じように機能します`,
+    is_for_me_q2_point2: `両方がDualProfileを必要とします`,
+    is_for_me_q2_point3: `WhatsApp Webでも使えます`,
+    faq_6_q: `共有相手がDualProfileをインストールしなかった場合はどうなりますか？`,
+    faq_6_a: `プライベート連絡先共有には、双方がDualProfileをインストールしている必要があります。相手がインストールしていない場合、割り当てた写真は表示されません——ただしスケジュール写真は、あなた自身のアカウントで問題なく機能し続けます。`,
+    faq_7_q: `Proはサブスクリプションですか？`,
+    faq_7_a: `いいえ。Proは£9.99の一回限りの支払いです。今後のPro機能も含めて、追加料金なしでずっとご利用いただけます。`,
+    security_title: `設計段階からのプライバシー保護`,
+    security_point1: `チャットの内容は読み取りません。チャットデータは保存されません。`,
+    security_point2: `メッセージの内容を見ることは一切ありません——表示することを選んだ写真だけを扱います。`,
+    security_point3: `連絡先の名前が当社サーバーに保存されることはありません。`,
+    what_happens_where_title: `どこで何が起こるか`,
+    what_contacts_see_label: `連絡先に表示されるもの`,
+    what_contacts_see_val: `あなたが選んだ写真です。それ以外は相手にとって何も変わりません。`,
+    what_phone_label: `スマートフォンで起こること`,
+    what_phone_val: `WhatsAppのプロフィール写真が自動的に更新されます——スケジュール通り、または割り当てた瞬間に。`,
+    what_web_label: `WhatsApp Webで起こること`,
+    what_web_val: `同じ写真が自動的に同期されます。別途設定は必要ありません。`,
+    what_requires_install_label: `追加のインストールが必要な場合`,
+    what_requires_install_val: `プライベート連絡先共有（Pro）のみです。スケジュール写真は、他の誰かが何かをインストールする必要が一切ありません。`,
     share_hook_1: `あなたの上司と一番の友人は、WhatsAppで同じあなたの写真を見ています。`,
     share_hook_2: `今までは。`,
     share_hook_3: `WhatsAppはこれを実現しませんでした。だから私たちが作りました。`,
@@ -1026,7 +1364,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: `クレジットカード不要`,
     free_forever: `永久`,
     pro_label: 'Pro',
-    pro_sub: `無料版のすべて、さらに履歴とバックアップ`,
+    pro_sub: `写真の履歴、一括割り当て、エクスポート/インポート、複数デバイス間の同期`,
     pro_mo: `/月`,
     annual_label: `年間`,
     annual_sub: `無制限 + 一括割り当て`,
@@ -1041,7 +1379,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: `無制限のコンタクト`,
     feat_trial: `一括連絡先割り当て`,
     feat_preview: `ライブプレビュー`,
-    feat_p2p: `P2P同期`,
+    feat_p2p: `連絡先間のプライベート共有`,
     feat_chrome: `ChromeとEdge`,
     feat_photo_history: `写真履歴と元に戻す`,
     feat_scheduled: `スケジュール写真`,
@@ -1054,18 +1392,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `年間を取得`,
     btn_get_lifetime: `生涯を取得`,
     trial_title: `3日間全ての機能を無料でお試し。`,
-    trial_desc: `無料版ではスケジュール写真が使えます——本物の写真が曜日と時間帯で切り替わり、ワンタップで確認するだけ、すべてのデバイスに反映され、相手側は何もインストールする必要がありません。さらに連絡先ごとの無制限の割り当ても可能です。Proは買い切り£29で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
+    trial_desc: `無料版ではスケジュール写真が使えます——本物の写真が曜日と時間帯で切り替わり、ワンタップで確認するだけ、すべてのデバイスに反映され、相手側は何もインストールする必要がありません。さらに連絡先ごとの無制限の割り当ても可能です。Proは買い切り£9.99で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
     trial_cta: `無料でインストール`,
     social_title: `リアルな人々。リアルな使い方。`,
     social_quote: `上司にはプロフェッショナルな写真を、友達には本当の自分を見せるのはとても便利`,
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: `8カ国以上でインストール`,
+    social_stat1: `個人開発——仕事とプライベートを本当に分けるために。`,
     social_stat2: `有料マーケティングなし`,
     social_stat3: `r/DigitalPrivacyで紹介`,
     viral_title: `1つのWhatsApp。複数のアイデンティティ。誰が何を見るかはあなたが決めます。`,
     viral_sub: `インストール無料。無制限のコンタクトがずっと無料。`,
     viral_cta: `無料トライアルを開始`,
-    viral_note: `無制限のコンタクトがずっと無料 · Proは1回£29のみ、サブスクではありません`,
+    viral_note: `無制限のコンタクトがずっと無料 · Proは1回£9.99のみ、サブスクではありません`,
     faq_title: `よくある質問`,
     faq_sub: `質問がありますか？答えがあります。`,
     faq_1_q: `コンタクトも何かインストールする必要がありますか？`,
@@ -1073,7 +1411,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: `WhatsAppモバイルアプリで動作しますか？`,
     faq_2_a: `スケジュール写真は本物のWhatsApp写真を変更するので、切り替わると誰でもどこでも、モバイルでも見えるようになります。連絡先ごとの割り当ては違います——WhatsApp Webでしか表示されず、しかもDualProfileをインストールしている相手にしか見えません。`,
     faq_3_q: `無料版の内容とProの追加機能は？`,
-    faq_3_a: `無料版では無制限のコンタクトとスケジュール写真がずっと使え、カード登録も不要です。Proは1回限りの£29（サブスクではありません）で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
+    faq_3_a: `無料版では無制限のコンタクトとスケジュール写真がずっと使え、カード登録も不要です。Proは1回限りの£9.99（サブスクではありません）で、写真履歴と復元、一括割り当て、エクスポート/インポート、マルチデバイス同期、優先サポートが追加されます。`,
     faq_4_q: `データは安全ですか？`,
     faq_4_a: `あなたの写真は安全に同期され、選択した連絡先にのみ表示されます。メッセージを読んだり、チャットにアクセスすることは一切ありません。`,
     faq_5_q: `スケジュール写真を使うには、相手もDualProfileをインストールする必要がありますか？`,
@@ -1106,8 +1444,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: `現在のステータス`,
     status_1_title: `プレビューモード`,
     status_1_desc: `他のユーザーからどう見えるか確認`,
-    status_2_title: `P2P同期`,
-    status_2_desc: `リアルタイムプロフィール切り替え`,
+    status_2_title: `プライベート連絡先共有`,
+    status_2_desc: `リアルタイムのプロフィール切り替え——相手もDualProfileをインストールしている必要があります`,
     status_3_title: `グループチャット`,
     status_3_desc: `まだサポートされていません`,
     modal_title: `DualProfileをインストール`,
@@ -1121,12 +1459,50 @@ const LANGS: Record<string, Record<string, string>> = {
     pro_once: `разовый платёж · без подписки`,
     hero_h1_1: `Так почему же ваше фото`,
     hero_h1_2: `выглядит одинаково для всех,`,
-    hero_h1_new: `Вы уже говорите по-разному в зависимости от того, кто слушает.`,
+    hero_h1_new: `Один WhatsApp. Разные фото для разных людей.`,
     hero_now: `хотя вы — нет?`,
-    hero_sub: `DualProfile переключает ваше настоящее фото в WhatsApp по дням и времени: рабочее в течение дня, личное после — одно нажатие для подтверждения каждого переключения. Хотите, чтобы разные люди видели разные фото одновременно? Назначайте фото для каждого контакта отдельно, тот же аккаунт, без второго номера.`,
+    hero_sub: `Показывайте рабочим контактам профессиональное фото, а всем остальным — личное. Автоматически.`,
     hero_cta: `Начать бесплатный пробный период`,
     hero_cta_sub: `Бесплатно навсегда · Безлимитные контакты · Обновите когда угодно`,
-    hero_social_proof: `Установлено в 8+ странах · Без платной рекламы`,
+    hero_social_proof: `Создано для тех, кто использует один аккаунт WhatsApp для работы и личной жизни.`,
+    hero_scheduled_note: `Запланированные фото работают на вашем собственном аккаунте — никому больше ничего устанавливать не нужно.`,
+    hero_p2p_note: `Хотите, чтобы разные люди видели разные фото? Используйте Приватный обмен по контактам.`,
+    visual_demo_title: `Одно переключение. Все устройства.`,
+    visual_demo_sub: `Смените фото один раз — оно обновится на всех устройствах, где подключен DualProfile.`,
+    visual_demo_time1: `8:59`,
+    visual_demo_label1: `Личное фото`,
+    visual_demo_time2: `9:00`,
+    visual_demo_switch: `Переключить сейчас`,
+    visual_demo_label2: `Рабочее фото`,
+    visual_demo_device1: `WhatsApp на компьютере`,
+    visual_demo_device2: `WhatsApp на телефоне`,
+    is_for_me_title: `Подходит ли это мне?`,
+    is_for_me_q1: `Запланированные фото`,
+    is_for_me_q1_point1: `Работает сразу`,
+    is_for_me_q1_point2: `Контакту не нужен DualProfile`,
+    is_for_me_q1_point3: `Меняет ваше настоящее фото в WhatsApp`,
+    is_for_me_q1_point4: `Отображается и на телефоне, и на компьютере`,
+    is_for_me_q2: `Приватные фото для контактов`,
+    is_for_me_q2_point1: `Да, работает так же`,
+    is_for_me_q2_point2: `DualProfile нужен обоим`,
+    is_for_me_q2_point3: `Работает в WhatsApp Web`,
+    faq_6_q: `Что будет, если человек, с которым я делюсь фото, не установит DualProfile?`,
+    faq_6_a: `Для Приватного обмена по контактам нужно, чтобы DualProfile был установлен у обеих сторон. Если он не установлен, человек не увидит назначенное вами фото — Запланированные фото при этом продолжат нормально работать на вашем собственном аккаунте.`,
+    faq_7_q: `Pro — это подписка?`,
+    faq_7_a: `Нет. Pro — это разовый платеж £9.99. Вы получаете доступ навсегда, включая будущие функции Pro, без повторных списаний.`,
+    security_title: `Конфиденциальность заложена в основу`,
+    security_point1: `Мы не читаем ваши чаты. Данные переписки не сохраняются.`,
+    security_point2: `Мы никогда не видим содержимое сообщений — только фото, которое вы решили показать.`,
+    security_point3: `Имена контактов никогда не хранятся на наших серверах.`,
+    what_happens_where_title: `Что и где происходит`,
+    what_contacts_see_label: `Что видят ваши контакты`,
+    what_contacts_see_val: `Фото, которое вы выбрали. Больше для них ничего не меняется.`,
+    what_phone_label: `Что происходит на вашем телефоне`,
+    what_phone_val: `Ваше фото профиля WhatsApp обновляется автоматически — по расписанию или сразу после назначения.`,
+    what_web_label: `Что происходит в WhatsApp Web`,
+    what_web_val: `То же самое фото синхронизируется автоматически. Отдельная настройка не нужна.`,
+    what_requires_install_label: `Что требует дополнительной установки`,
+    what_requires_install_val: `Только Приватный обмен по контактам (Pro). Для Запланированных фото никогда не требуется, чтобы кто-то ещё что-то устанавливал.`,
     share_hook_1: `Ваш начальник и лучший друг видят одно и то же фото вас в WhatsApp.`,
     share_hook_2: `До сих пор.`,
     share_hook_3: `WhatsApp никогда не делал это возможным. Поэтому мы сделали.`,
@@ -1165,7 +1541,7 @@ const LANGS: Record<string, Record<string, string>> = {
     free_trial_note: `Без кредитной карты`,
     free_forever: `навсегда`,
     pro_label: 'Pro',
-    pro_sub: `Всё бесплатное, плюс история и резервные копии`,
+    pro_sub: `История фото, массовое назначение, экспорт/импорт и синхронизация между устройствами`,
     pro_mo: `/месяц`,
     annual_label: `Годовой`,
     annual_sub: `Безлимит + массовое назначение`,
@@ -1180,7 +1556,7 @@ const LANGS: Record<string, Record<string, string>> = {
     feat_contacts_pro: `Неограниченные контакты`,
     feat_trial: `Массовое назначение контактов`,
     feat_preview: `Предпросмотр в реальном времени`,
-    feat_p2p: `P2P-синхронизация`,
+    feat_p2p: `Приватный обмен фото между контактами`,
     feat_chrome: `Chrome и Edge`,
     feat_photo_history: `История фото и возврат`,
     feat_scheduled: `Запланированные фото`,
@@ -1193,18 +1569,18 @@ const LANGS: Record<string, Record<string, string>> = {
     btn_get_annual: `Получить Годовой`,
     btn_get_lifetime: `Получить Пожизненный`,
     trial_title: `Попробуйте всё бесплатно в течение 3 дней.`,
-    trial_desc: `Бесплатный план даёт Фото по расписанию: ваше настоящее фото меняется по дням и времени, одно нажатие для подтверждения, видно на всех устройствах, никому больше не нужно ничего устанавливать — плюс неограниченные назначения по контактам. Pro — это разовый платёж £29, который добавляет Историю фото, массовое назначение, Экспорт/Импорт, синхронизацию между устройствами и приоритетную поддержку.`,
+    trial_desc: `Бесплатный план даёт Фото по расписанию: ваше настоящее фото меняется по дням и времени, одно нажатие для подтверждения, видно на всех устройствах, никому больше не нужно ничего устанавливать — плюс неограниченные назначения по контактам. Pro — это разовый платёж £9.99, который добавляет Историю фото, массовое назначение, Экспорт/Импорт, синхронизацию между устройствами и приоритетную поддержку.`,
     trial_cta: `Установить бесплатно`,
     social_title: `Реальные люди. Реальные случаи.`,
     social_quote: `то, что начальник видит что-то профессиональное, а друзья видят настоящего тебя — очень удобно`,
     social_attr: 'Competitive_Log_8093, r/DigitalPrivacy',
-    social_stat1: `Установлено в 8+ странах`,
+    social_stat1: `Создано в одиночку, для настоящего разделения работы и личной жизни.`,
     social_stat2: `Без платной рекламы`,
     social_stat3: `Рекомендовано на r/DigitalPrivacy`,
     viral_title: `Один WhatsApp. Несколько идентичностей. Вы решаете, кто что видит.`,
     viral_sub: `Установка бесплатна. Неограниченные контакты, бесплатно навсегда.`,
     viral_cta: `Начать бесплатный пробный период`,
-    viral_note: `Неограниченные контакты бесплатно навсегда · Pro — £29 один раз, никогда не подписка`,
+    viral_note: `Неограниченные контакты бесплатно навсегда · Pro — £9.99 один раз, никогда не подписка`,
     faq_title: `Часто задаваемые вопросы`,
     faq_sub: `Есть вопросы? У нас есть ответы.`,
     faq_1_q: `Нужно ли моему контакту что-то устанавливать?`,
@@ -1212,7 +1588,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_2_q: `Работает ли это в мобильном приложении WhatsApp?`,
     faq_2_a: `Фото по расписанию меняет ваше настоящее фото в WhatsApp, поэтому после переключения его видят все и везде, включая мобильные устройства. Назначение по контактам работает иначе — оно видно только в WhatsApp Web и только тем контактам, у которых тоже установлен DualProfile.`,
     faq_3_q: `Что бесплатно и что добавляет Pro?`,
-    faq_3_a: `Бесплатно вы получаете неограниченные контакты и Фото по расписанию навсегда, без карты. Pro — разовый платёж £29 (не подписка), добавляющий историю фото и откат, массовое назначение, экспорт/импорт, синхронизацию между устройствами и приоритетную поддержку.`,
+    faq_3_a: `Бесплатно вы получаете неограниченные контакты и Фото по расписанию навсегда, без карты. Pro — разовый платёж £9.99 (не подписка), добавляющий историю фото и откат, массовое назначение, экспорт/импорт, синхронизацию между устройствами и приоритетную поддержку.`,
     faq_4_q: `Мои данные в безопасности?`,
     faq_4_a: `Ваши фото надёжно синхронизируются и видны только выбранным вами контактам. Мы никогда не читаем ваши сообщения и не получаем доступ к чатам.`,
     faq_5_q: `Нужно ли кому-то ещё устанавливать DualProfile для работы Фото по расписанию?`,
@@ -1245,8 +1621,8 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: `Текущий статус`,
     status_1_title: `Режим предпросмотра`,
     status_1_desc: `Смотрите, как вас видят другие`,
-    status_2_title: `P2P-синхронизация`,
-    status_2_desc: `Переключение профиля в реальном времени`,
+    status_2_title: `Приватный обмен по контактам`,
+    status_2_desc: `Переключение профиля в реальном времени — требует, чтобы у другого контакта тоже был установлен DualProfile`,
     status_3_title: `Групповые чаты`,
     status_3_desc: `Пока не поддерживается`,
     modal_title: `Установить DualProfile`,
@@ -1513,9 +1889,11 @@ export default function Home() {
   const faqs = [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') },
+    { question: t('faq_7_q'), answer: t('faq_7_a') },
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
-    { question: t('faq_5_q'), answer: t('faq_5_a') },
   ];
 
   return (
@@ -1551,7 +1929,7 @@ export default function Home() {
           "offers": [
             { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP",
               "description": "Unlimited contacts and Scheduled Photos, free forever." },
-            { "@type": "Offer", "name": "Pro", "price": "29.00", "priceCurrency": "GBP",
+            { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP",
               "description": "One-time payment. Photo History, bulk assignment, export/import, multi-device sync." }
           ],
           "featureList": [
@@ -1818,7 +2196,8 @@ export default function Home() {
               {t('live_badge')}
             </div>
             
-            {/* Main Headline — new primary phrase */}
+            {/* Main Headline — 2026-08-30 rewrite (Webb): brutally clear,
+                says what the product does before any philosophy. */}
             <h1 className="hero-title" style={{
               fontSize: 'clamp(32px, 6vw, 56px)',
               fontWeight: '700',
@@ -1828,29 +2207,25 @@ export default function Home() {
               {t('hero_h1_new')}
             </h1>
 
-            {/* Demoted identity-first line — was the primary H1, now a lighter subheadline */}
-            <p className="hero-subtitle-demoted" style={{
-              fontSize: 'clamp(18px, 3.2vw, 26px)',
-              fontWeight: '400',
-              lineHeight: '1.3',
-              marginBottom: '12px',
-              opacity: '0.85'
-            }}>
-              {t('hero_h1_1')} {t('hero_h1_2')}{' '}
-              <span style={{fontWeight: '600', color: '#25D366'}}>
-                {t('hero_now')}
-              </span>
-            </p>
-
             {/* Subheading */}
             <p className="hero-subtitle" style={{
               fontSize: 'clamp(18px, 3vw, 22px)',
-              marginBottom: '32px',
+              marginBottom: '20px',
               opacity: '0.9'
             }}>
               {t('hero_sub')}
             </p>
-            
+
+            {/* Activation vs. differentiation — the funnel Webb specified:
+                Scheduled Photos (no counterparty install) leads, Private
+                Contact Sharing (both sides need DualProfile) is secondary. */}
+            <p style={{fontSize: 'clamp(15px, 2vw, 17px)', marginBottom: '8px', opacity: '0.85', display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {t('hero_scheduled_note')}
+            </p>
+            <p className="hero-subtitle-demoted" style={{fontSize: 'clamp(15px, 2vw, 17px)', marginBottom: '32px', opacity: '0.7'}}>
+              {t('hero_p2p_note')}
+            </p>
+
             {/* CTA Buttons */}
             <div className="hero-buttons" style={{marginBottom: '24px'}}>
               <button 
@@ -1885,6 +2260,50 @@ export default function Home() {
             <p style={{fontSize:'12px',color:'rgba(255,255,255,0.3)',letterSpacing:'0.5px',textTransform:'uppercase' as const}}>
               {t('hero_social_proof')}
             </p>
+          </div>
+        </section>
+
+        {/* Visual Demo Strip — 2026-08-30 (Webb): the tangible "8:59am ->
+            Switch Now -> both devices update" proof, placed right after
+            the hero rather than buried later, since it's the strongest,
+            most concrete evidence of the product's core behaviour. */}
+        <section className="features" style={{paddingTop: '40px', paddingBottom: '40px'}}>
+          <div className="container" style={{maxWidth: '820px', margin: '0 auto'}}>
+            <div style={{
+              display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'center',
+              gap: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px', padding: '32px 28px'
+            }}>
+              {/* Before */}
+              <div style={{textAlign: 'center' as const, minWidth: '140px'}}>
+                <div style={{fontSize: '13px', color: '#9ca3af', marginBottom: '8px', fontWeight: '600'}}>{t('visual_demo_time1')}</div>
+                <div style={{width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>🙂</div>
+                <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label1')}</div>
+              </div>
+              {/* Arrow / switch */}
+              <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
+                <div style={{fontSize: '12px', color: '#6b7280', marginBottom: '6px'}}>{t('visual_demo_time2')}</div>
+                <div style={{
+                  background: '#25D366', color: '#000', fontWeight: '700', fontSize: '13px',
+                  padding: '8px 18px', borderRadius: '50px', display: 'inline-block'
+                }}>{t('visual_demo_switch')} →</div>
+              </div>
+              {/* After: both devices */}
+              <div style={{display: 'flex', gap: '20px'}}>
+                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
+                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
+                  <div style={{width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.4)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>💼</div>
+                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
+                </div>
+                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
+                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
+                  <div style={{width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.4)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>💼</div>
+                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
+                </div>
+              </div>
+            </div>
+            <p style={{textAlign: 'center' as const, marginTop: '20px', fontSize: 'clamp(18px,3vw,24px)', fontWeight: '700', color: '#fff'}}>{t('visual_demo_title')}</p>
+            <p style={{textAlign: 'center' as const, marginTop: '4px', fontSize: '14px', color: '#9ca3af', maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto'}}>{t('visual_demo_sub')}</p>
           </div>
         </section>
 
@@ -2002,56 +2421,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Viral Hook Section - NEW */}
-        <section id="viral-hook" className="viral-hook" style={{
-          padding: '100px 20px',
-          background: 'linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(18, 140, 126, 0.1) 100%)',
-          textAlign: 'center'
-        }}>
-          <div className="container" style={{maxWidth: '900px', margin: '0 auto'}}>
-            <div className="viral-message" style={{
-              marginBottom: '40px'
-            }}>
-              <h2 className="viral-headline" style={{
-                fontSize: 'clamp(36px, 6vw, 64px)',
-                fontWeight: '700',
-                marginBottom: '24px',
-                lineHeight: '1.1',
-                color: 'var(--foreground, #ffffff)'
-              }}>
-                {t('viral_title')}
-              </h2>
-              <div className="viral-subheadline" style={{
-                fontSize: 'clamp(18px, 3vw, 24px)',
-                color: '#9ca3af',
-                marginBottom: '32px',
-              }}>
-                {t('viral_sub')}
-              </div>
-              <button 
-                className="btn btn-primary"
-                onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-                style={{
-                  fontSize: 'clamp(18px, 3vw, 22px)',
-                  padding: '20px 40px',
-                  minWidth: '300px',
-                  background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                  border: 'none',
-                  borderRadius: '50px',
-                  color: 'white',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  boxShadow: '0 8px 32px rgba(37, 211, 102, 0.3)'
-                }}
-              >
-                {t('viral_cta')}
-              </button>
-              <p style={{marginTop:'12px',fontSize:'14px',color:'#6b7280'}}>{t('viral_note')}</p>
-            </div>
-          </div>
-        </section>
-
         {/* Social Proof Section */}
         <section className="social-proof-section">
           <div className="container">
@@ -2102,11 +2471,6 @@ export default function Home() {
             </div>
             <div style={{textAlign: 'center', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(37,211,102,0.2)'}}>
               <span style={{fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: '800', color: '#25D366', letterSpacing: '-0.5px'}}>{t('until_now')}</span>
-              <div style={{marginTop: '24px'}}>
-                <button className="btn btn-primary" onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')} style={{fontSize: '18px', padding: '14px 32px'}}>
-                  {t('hero_cta')}
-                </button>
-              </div>
             </div>
           </div>
         </section>
@@ -2232,6 +2596,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Is This For Me — 2026-08-30 (Webb): eliminate confusion between
+            Scheduled Photos (acquisition, no counterparty install) and
+            Private Contact Sharing (differentiation, both sides need
+            DualProfile) BEFORE pricing, not after a purchase. */}
+        <section id="is-this-for-me" className="features">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">{t('is_for_me_title')}</h2>
+            </div>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '820px', margin: '0 auto'}}>
+              <div className="glass-card" style={{padding: '1.75rem', border: '1px solid rgba(37,211,102,0.3)'}}>
+                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q1')}</p>
+                {[t('is_for_me_q1_point1'), t('is_for_me_q1_point2'), t('is_for_me_q1_point3'), t('is_for_me_q1_point4')].map(p => (
+                  <div key={p} style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
+                    <span style={{color: '#25D366', fontWeight: '700'}}>✅</span> {p}
+                  </div>
+                ))}
+              </div>
+              <div className="glass-card" style={{padding: '1.75rem'}}>
+                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q2')}</p>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
+                  <span style={{color: '#25D366', fontWeight: '700'}}>✅</span> {t('is_for_me_q2_point1')}
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
+                  <span style={{color: '#f59e0b', fontWeight: '700'}}>⚠️</span> {t('is_for_me_q2_point2')}
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
+                  <span style={{color: '#f59e0b', fontWeight: '700'}}>⚠️</span> {t('is_for_me_q2_point3')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
         <section id="pricing" className="features" style={{paddingTop: '2rem'}}>
           <div className="container">
@@ -2288,8 +2686,8 @@ export default function Home() {
                 }}>{t('badge_popular')}</div>
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
-                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£29</div>
-                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $37 USD</div>
+                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $13 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
@@ -2314,20 +2712,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Upgrade Callout */}
-        <section style={{padding:'60px 20px',background:'linear-gradient(135deg,rgba(37,211,102,0.08),rgba(18,140,126,0.08))',textAlign:'center' as const}}>
-          <div style={{maxWidth:'680px',margin:'0 auto'}}>
-            <div style={{fontSize:'clamp(22px,4vw,32px)',fontWeight:'700',color:'#fff',marginBottom:'16px',lineHeight:'1.3'}}>
-              {t('trial_title')}
+        {/* What Happens Where — 2026-08-30 (Webb): replaces the repeated
+            "install free" callout that sat here. This is a repeated-CTA cut,
+            not a content cut: the space now answers the exact question a
+            reader has right after seeing pricing — what does Pro actually
+            change, and where. */}
+        <section style={{padding:'60px 20px',textAlign:'center' as const}}>
+          <div style={{maxWidth:'860px',margin:'0 auto'}}>
+            <h2 style={{fontSize:'clamp(22px,4vw,32px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('what_happens_where_title')}</h2>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
+              {[
+                [t('what_contacts_see_label'), t('what_contacts_see_val')],
+                [t('what_phone_label'), t('what_phone_val')],
+                [t('what_web_label'), t('what_web_val')],
+                [t('what_requires_install_label'), t('what_requires_install_val')],
+              ].map(([label, val]) => (
+                <div key={label} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px'}}>
+                  <div style={{color: '#25D366', fontWeight: '700', fontSize: '0.9rem', marginBottom: '8px'}}>{label}</div>
+                  <div style={{color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5'}}>{val}</div>
+                </div>
+              ))}
             </div>
-            <p style={{color:'rgba(255,255,255,0.6)',fontSize:'16px',lineHeight:'1.7',marginBottom:'28px'}}>
-              {t('trial_desc')}
-            </p>
-            <button className="btn btn-primary btn-lg"
-              onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc','_blank')}
-              style={{fontSize:'17px',padding:'16px 40px'}}>
-              {t('trial_cta')}
-            </button>
           </div>
         </section>
 
@@ -2358,25 +2763,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Early access */}
-        <section id="early-access" className="early-access">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('viral_title')}</h2>
-              <p className="section-subtitle">
-                {t('viral_sub')}
-              </p>
-            </div>
-            <div className="early-access-card glass-card">
-              <button 
-                className="btn btn-primary btn-lg"
-                onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}
-              >
-                {t('viral_cta')}
-              </button>
-              <p style={{marginTop: '12px', fontSize: '14px', color: '#9ca3af'}}>
-                {t('viral_note')}
-              </p>
+        {/* Security — 2026-08-30 (Webb): elevated from a small line under
+            the demo video into its own prominent section. Placed right
+            before FAQ, matching Webb's proposed page order (pricing ->
+            security -> FAQ) since data-handling is exactly the kind of
+            objection that blocks a purchase decision. */}
+        <section id="security" style={{padding: '60px 20px', textAlign: 'center' as const}}>
+          <div style={{maxWidth: '720px', margin: '0 auto'}}>
+            <div style={{fontSize: '40px', marginBottom: '12px'}}>🔒</div>
+            <h2 style={{fontSize: 'clamp(24px,4vw,34px)', fontWeight: '800', color: '#fff', marginBottom: '24px'}}>{t('security_title')}</h2>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
+              {[t('security_point1'), t('security_point2'), t('security_point3')].map(p => (
+                <div key={p} style={{background: 'rgba(37,211,102,0.06)', border: '1px solid rgba(37,211,102,0.2)', borderRadius: '12px', padding: '18px 20px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '10px'}}>
+                  <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {p}
+                </div>
+              ))}
             </div>
           </div>
         </section>
