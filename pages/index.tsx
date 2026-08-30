@@ -2292,12 +2292,12 @@ export default function Home() {
               <div style={{display: 'flex', gap: '20px'}}>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
-                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
+                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
-                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
+                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
               </div>
@@ -2307,34 +2307,40 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Identity Section — concrete proof of the hero's thesis */}
+        {/* Identity Section — 2026-08-30 (Webb): rebuilt as an asymmetric
+            photo+list layout instead of a third centred icon-card grid in a
+            row, and swapped the generic icon-in-a-circle for the real
+            professional photo (dp-pro-2.jpg, no employer branding). */}
         <section id="identity" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
           <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('identity_title')}</h2>
-              <p className="section-subtitle">{t('identity_sub')}</p>
-            </div>
-            <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))'}}>
-              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
-                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <div className="identity-grid">
+              <img src="/dp-pro-2.jpg" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'cover', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
+              <div>
+                <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('identity_title')}</h2>
+                <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('identity_sub')}</p>
+                <div style={{display: 'flex', flexDirection: 'column' as const, gap: '18px'}}>
+                  <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    <div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_boss')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_boss_sees')}</div>
+                    </div>
+                  </div>
+                  <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_friends')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_friends_sees')}</div>
+                    </div>
+                  </div>
+                  <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_family')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_family_sees')}</div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="feature-title">{t('identity_boss')}</h3>
-                <p className="feature-description">{t('identity_boss_sees')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
-                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                </div>
-                <h3 className="feature-title">{t('identity_friends')}</h3>
-                <p className="feature-description">{t('identity_friends_sees')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{textAlign: 'center' as const}}>
-                <div className="feature-icon" style={{margin: '0 auto 16px'}}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                </div>
-                <h3 className="feature-title">{t('identity_family')}</h3>
-                <p className="feature-description">{t('identity_family_sees')}</p>
               </div>
             </div>
           </div>
@@ -2781,8 +2787,9 @@ export default function Home() {
             <h2 style={{fontSize: 'clamp(24px,4vw,34px)', fontWeight: '800', color: '#fff', marginBottom: '24px'}}>{t('security_title')}</h2>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
               {[t('security_point1'), t('security_point2'), t('security_point3')].map(p => (
-                <div key={p} style={{background: 'rgba(37,211,102,0.06)', border: '1px solid rgba(37,211,102,0.2)', borderRadius: '12px', padding: '18px 20px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '10px'}}>
-                  <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {p}
+                <div key={p} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '10px'}}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0, marginTop: '2px'}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  {p}
                 </div>
               ))}
             </div>
@@ -3925,6 +3932,21 @@ export default function Home() {
         @media (min-width: 768px) {
           .features-grid {
             grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        .identity-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.75rem;
+          align-items: center;
+          max-width: 860px;
+          margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+          .identity-grid {
+            grid-template-columns: minmax(180px, 240px) 1fr;
           }
         }
 
