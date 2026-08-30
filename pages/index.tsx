@@ -2292,12 +2292,12 @@ export default function Home() {
               <div style={{display: 'flex', gap: '20px'}}>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
-                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
+                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
-                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
+                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
               </div>
@@ -2310,12 +2310,11 @@ export default function Home() {
         {/* Identity Section — 2026-08-30 (Webb): rebuilt as an asymmetric
             photo+list layout instead of a third centred icon-card grid in a
             row, and swapped the generic icon-in-a-circle for the real
-            professional photo. TODO(Webb): swap /dp-pro.jpg for the
-            JPMorgan-free headshot once it's synced into public/. */}
+            professional photo (dp-pro-2.jpg, no employer branding). */}
         <section id="identity" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
           <div className="container">
             <div className="identity-grid">
-              <img src="/dp-pro.jpg" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'cover', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
+              <img src="/dp-pro-2.jpg" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'cover', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
               <div>
                 <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('identity_title')}</h2>
                 <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('identity_sub')}</p>
