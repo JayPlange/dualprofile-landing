@@ -182,7 +182,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: 'Copied!',
     callout_btn: 'Copy install link',
     preview_callout: `Don't want to wait for your contacts to install? Use Preview Mode to see exactly how you'd appear to anyone — right away.`,
-    demo_privacy: `🔒 This works entirely on WhatsApp Web. No chat data is stored.`,
+    demo_privacy: `This works entirely on WhatsApp Web. No chat data is stored.`,
     demo_caption: 'Watch how Preview Mode shows exactly what each contact sees.',
     how_title: 'Set up once with someone. Works automatically.',
     how_sub: `For per-contact photos. Scheduled Photos needs no setup with anyone else — just set your times and confirm each switch with one tap.`,
@@ -359,7 +359,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: 'Copiado!',
     callout_btn: 'Copiar enlace de instalacion',
     preview_callout: `No quieres esperar a que tus contactos instalen? Usa el Modo de Vista Previa para ver al instante como apareces ante cualquiera.`,
-    demo_privacy: `🔒 Funciona completamente en WhatsApp Web. No se almacenan datos de chat.`,
+    demo_privacy: `Funciona completamente en WhatsApp Web. No se almacenan datos de chat.`,
     demo_caption: 'Ve como el modo de vista previa muestra exactamente lo que ve cada contacto.',
     how_title: 'Configura una vez. Funciona automaticamente.',
     how_sub: `Para fotos por contacto. Las Fotos programadas no necesitan que nadie mas haga nada: solo configura tus horarios y confirma cada cambio con un toque.`,
@@ -536,7 +536,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: 'Copie !',
     callout_btn: `Copier le lien d'installation`,
     preview_callout: `Vous ne voulez pas attendre que vos contacts s'installent ? Utilisez le Mode Apercu pour voir instantanement comment vous apparaitriez a n'importe qui.`,
-    demo_privacy: `🔒 Fonctionne entierement sur WhatsApp Web. Aucune donnee de chat n'est stockee.`,
+    demo_privacy: `Fonctionne entierement sur WhatsApp Web. Aucune donnee de chat n'est stockee.`,
     demo_caption: 'Voyez comment le mode apercu montre exactement ce que chaque contact voit.',
     how_title: 'Configurez une fois. Fonctionne automatiquement.',
     how_sub: `Pour les photos par contact. Les Photos programmees ne necessitent aucune configuration avec qui que ce soit d'autre : reglez juste vos horaires et confirmez chaque changement d'une touche.`,
@@ -713,7 +713,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: 'Copiado!',
     callout_btn: 'Copiar link de instalacao',
     preview_callout: `Nao quer esperar seus contatos instalarem? Use o Modo de Pre-visualizacao para ver instantaneamente como voce apareceria para qualquer pessoa.`,
-    demo_privacy: `🔒 Funciona inteiramente no WhatsApp Web. Nenhum dado de chat e armazenado.`,
+    demo_privacy: `Funciona inteiramente no WhatsApp Web. Nenhum dado de chat e armazenado.`,
     demo_caption: 'Veja como o modo de previa mostra exatamente o que cada contato ve.',
     how_title: 'Configure uma vez. Funciona automaticamente.',
     how_sub: `Para fotos por contacto. As Fotos agendadas nao precisam de nenhuma configuracao com mais ninguem: basta definir os seus horarios e confirmar cada mudanca com um toque.`,
@@ -890,7 +890,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: 'Kopiert!',
     callout_btn: 'Installationslink kopieren',
     preview_callout: `Du willst nicht warten, bis deine Kontakte installieren? Nutze den Vorschaumodus, um sofort zu sehen, wie du fur jeden erscheinen wurdest.`,
-    demo_privacy: `🔒 Funktioniert vollstandig in WhatsApp Web. Keine Chat-Daten werden gespeichert.`,
+    demo_privacy: `Funktioniert vollstandig in WhatsApp Web. Keine Chat-Daten werden gespeichert.`,
     demo_caption: 'Sieh, wie der Vorschaumodus genau zeigt, was jeder Kontakt sieht.',
     how_title: 'Einmal einrichten. Funktioniert automatisch.',
     how_sub: `Fur Fotos pro Kontakt. Geplante Fotos brauchen keine Einrichtung mit jemand anderem: Stelle einfach deine Zeiten ein und bestatige jeden Wechsel mit einem Tipp.`,
@@ -1067,7 +1067,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: `कॉपी किया!`,
     callout_btn: `इंस्टॉल लिंक कॉपी करें`,
     preview_callout: `अपने संपर्कों के इंस्टॉल करने का इंतज़ार नहीं करना चाहते? प्रीव्यू मोड का उपयोग करें और तुरंत देखें कि आप किसी को भी कैसे दिखेंगे।`,
-    demo_privacy: `🔒 यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।`,
+    demo_privacy: `यह पूरी तरह WhatsApp Web पर काम करता है। कोई चैट डेटा संग्रहीत नहीं होता।`,
     demo_caption: `देखें कि प्रिव्यू मोड प्रत्येक कॉन्टैक्ट को क्या दिखता है।`,
     how_title: `एक बार सेट करें। अपने आप काम करे।`,
     how_sub: `यह पर-कॉन्टैक्ट फोटो के लिए है। शेड्यूल्ड फ़ोटो के लिए किसी और के साथ कोई सेटअप नहीं चाहिए — बस अपने समय सेट करें और हर बदलाव को एक टैप से कन्फर्म करें।`,
@@ -1244,7 +1244,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: `已复制！`,
     callout_btn: `复制安装链接`,
     preview_callout: `不想等联系人安装？使用预览模式立即查看您在任何人眼中的样子。`,
-    demo_privacy: `🔒 完全在WhatsApp Web上运行。不存储任何聊天数据。`,
+    demo_privacy: `完全在WhatsApp Web上运行。不存储任何聊天数据。`,
     demo_caption: `查看预览模式如何准确显示每个联系人看到的内容。`,
     how_title: `一次设置。自动运行。`,
     how_sub: `以上适用于按联系人分配照片。定时头像无需与任何人一起设置——只需设定好时间，每次切换一键确认即可。`,
@@ -1421,7 +1421,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: `コピーしました！`,
     callout_btn: `インストールリンクをコピー`,
     preview_callout: `連絡先のインストールを待ちたくないですか？プレビューモードを使えば、誰にどう見えるかを今すぐ確認できます。`,
-    demo_privacy: `🔒 これは完全にWhatsApp Webで動作します。チャットデータは保存されません。`,
+    demo_privacy: `これは完全にWhatsApp Webで動作します。チャットデータは保存されません。`,
     demo_caption: `プレビューモードが各コンタクトに見える内容を正確に表示する様子をご覧ください。`,
     how_title: `一度設定すれば自動で動作します。`,
     how_sub: `これは連絡先ごとの写真設定についてです。スケジュール写真は相手側の設定が一切不要です——時間帯を設定して、切り替えのたびにワンタップで確認するだけです。`,
@@ -1598,7 +1598,7 @@ const LANGS: Record<string, Record<string, string>> = {
     copied_msg: `Скопировано!`,
     callout_btn: `Скопировать ссылку для установки`,
     preview_callout: `Не хотите ждать, пока ваши контакты установят расширение? Используйте Режим предпросмотра, чтобы сразу увидеть, как вы будете выглядеть для любого человека.`,
-    demo_privacy: `🔒 Работает полностью в WhatsApp Web. Данные чатов не хранятся.`,
+    demo_privacy: `Работает полностью в WhatsApp Web. Данные чатов не хранятся.`,
     demo_caption: `Посмотрите, как режим предпросмотра показывает именно то, что видит каждый контакт.`,
     how_title: `Настройте один раз. Работает автоматически.`,
     how_sub: `Это про фото для конкретных контактов. Для Фото по расписанию не нужна настройка ни с чьей стороны: просто задайте время и подтверждайте каждое переключение одним нажатием.`,
@@ -2274,10 +2274,10 @@ export default function Home() {
               gap: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: '20px', padding: '32px 28px'
             }}>
-              {/* Before */}
+              {/* Before — real photo, not a placeholder */}
               <div style={{textAlign: 'center' as const, minWidth: '140px'}}>
                 <div style={{fontSize: '13px', color: '#9ca3af', marginBottom: '8px', fontWeight: '600'}}>{t('visual_demo_time1')}</div>
-                <div style={{width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>🙂</div>
+                <img src="/dp-casual.jpg" alt={t('visual_demo_label1')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(255,255,255,0.15)'}} />
                 <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label1')}</div>
               </div>
               {/* Arrow / switch */}
@@ -2288,16 +2288,16 @@ export default function Home() {
                   padding: '8px 18px', borderRadius: '50px', display: 'inline-block'
                 }}>{t('visual_demo_switch')} →</div>
               </div>
-              {/* After: both devices */}
+              {/* After: both devices, same real photo */}
               <div style={{display: 'flex', gap: '20px'}}>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
-                  <div style={{width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.4)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>💼</div>
+                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
                 <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
                   <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
-                  <div style={{width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.4)', margin: '0 auto 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px'}}>💼</div>
+                  <img src="/dp-pro.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
                   <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
                 </div>
               </div>
@@ -2406,8 +2406,10 @@ export default function Home() {
               borderRadius: '8px',
               marginTop: '16px',
               textAlign: 'center',
-              fontSize: '14px'
+              fontSize: '14px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
             }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{flexShrink: 0}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
               {t('demo_privacy')}
             </div>
             <p className="demo-caption" style={{
@@ -2501,8 +2503,9 @@ export default function Home() {
             </div>
             {/* Preview Mode promotion — solves cold-start, visible before deep scroll */}
             <div style={{marginTop: '32px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px 28px', textAlign: 'center' as const}}>
-              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6'}}>
-                ⚡ {t('preview_callout')}
+              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                {t('preview_callout')}
               </p>
             </div>
             <div style={{marginTop: '24px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
@@ -2610,20 +2613,24 @@ export default function Home() {
                 <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q1')}</p>
                 {[t('is_for_me_q1_point1'), t('is_for_me_q1_point2'), t('is_for_me_q1_point3'), t('is_for_me_q1_point4')].map(p => (
                   <div key={p} style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                    <span style={{color: '#25D366', fontWeight: '700'}}>✅</span> {p}
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    {p}
                   </div>
                 ))}
               </div>
               <div className="glass-card" style={{padding: '1.75rem'}}>
                 <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q2')}</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <span style={{color: '#25D366', fontWeight: '700'}}>✅</span> {t('is_for_me_q2_point1')}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  {t('is_for_me_q2_point1')}
                 </div>
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <span style={{color: '#f59e0b', fontWeight: '700'}}>⚠️</span> {t('is_for_me_q2_point2')}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  {t('is_for_me_q2_point2')}
                 </div>
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <span style={{color: '#f59e0b', fontWeight: '700'}}>⚠️</span> {t('is_for_me_q2_point3')}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  {t('is_for_me_q2_point3')}
                 </div>
               </div>
             </div>
@@ -2658,7 +2665,7 @@ export default function Home() {
                       counterparty install, so it works for 100% of installers
                       on day one. */}
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
                   {[t('feat_contacts_free'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
@@ -2691,7 +2698,7 @@ export default function Home() {
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <span style={{color: '#25D366', fontWeight: '700', fontSize: '1rem'}}>⚡</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_everything_free')}</span>
                   </li>
                   {[t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
@@ -2770,7 +2777,7 @@ export default function Home() {
             objection that blocks a purchase decision. */}
         <section id="security" style={{padding: '60px 20px', textAlign: 'center' as const}}>
           <div style={{maxWidth: '720px', margin: '0 auto'}}>
-            <div style={{fontSize: '40px', marginBottom: '12px'}}>🔒</div>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="1.5" style={{margin: '0 auto 12px', display: 'block'}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <h2 style={{fontSize: 'clamp(24px,4vw,34px)', fontWeight: '800', color: '#fff', marginBottom: '24px'}}>{t('security_title')}</h2>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
               {[t('security_point1'), t('security_point2'), t('security_point3')].map(p => (
