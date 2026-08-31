@@ -2700,7 +2700,7 @@ export default function Home() {
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
                 <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£29</div>
-                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $13 USD</div>
+                <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $39 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
