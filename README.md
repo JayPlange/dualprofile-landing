@@ -1,65 +1,48 @@
-# DualProfile Landing Page
+# DualProfile — Landing Page
 
-A production-ready landing page for the DualProfile Chrome extension.
+The marketing site for [DualProfile](https://github.com/JayPlange/DualProfile) at [vivaup.org](https://vivaup.org): explains the product, handles checkout via Lemon Squeezy, and captures email signups.
 
-## What's Fixed
+## Pages
 
-✅ **Become a Founding Member CTA** - Now links to Lemon Squeezy checkout (opens in new tab)  
-✅ **Join Waitlist CTA** - Functional form submission with Formspree integration  
-✅ **Trust Statement Added** - "This works entirely on WhatsApp Web. No chat data is stored."  
-✅ **Micro-text Added** - "Lifetime access. Early product. Full refund anytime before public launch."  
-✅ **Scarcity Line Added** - "Founding access capped. Price increases at public launch."  
-✅ **All CTAs Working** - No placeholder links, all buttons functional  
+| Route | Purpose |
+|---|---|
+| `/` | Main landing page |
+| `/links` | Link-in-bio style page |
+| `/privacy` | Privacy policy |
+| `/support` | Support/contact page |
+| `/welcome` | Post-signup page |
+| `/waitlist-confirmed` | Waitlist confirmation page |
 
-## Configuration Required
+## API Routes
 
-Replace these placeholder URLs in `pages/index.tsx`:
+| Route | Purpose |
+|---|---|
+| `/api/lemon-webhook` | Lemon Squeezy webhook receiver, HMAC-SHA256 signature verified (`crypto.timingSafeEqual`) before processing |
+| `/api/subscribe` | Email capture, rate-limited |
+| `/api/upload-image` | Image upload, rate-limited, size- and MIME-type-restricted (5MB max, jpeg/png/webp only) |
+| `/api/verify-pro` | Pro-status lookup, backed by an in-memory store the code itself flags as demo-only. Not called from this repo's own frontend or from the DualProfile extension — real entitlement checks run through Convex instead. Left in place pending confirmation it isn't used by anything external. |
 
-```typescript
-const LEMON_SQUEEZY_CHECKOUT_URL = "https://your-lemon-squeezy-checkout-url.com"; // TODO: Replace with actual URL
-const FORM_ENDPOINT = "https://formspree.io/f/your-form-id"; // TODO: Replace with actual Formspree URL
+## Security
+
+Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, and Permissions-Policy headers are set globally in `next.config.js`. The CSP explicitly allow-lists exactly what the site needs: Lemon Squeezy for checkout, Kit (ConvertKit) for email, Cloudinary for images, YouTube for embeds — nothing else.
+
+## Checkout
+
+The Lemon Squeezy checkout URL is wired directly into `pages/index.tsx`. There's currently no custom post-purchase redirect configured in Lemon Squeezy (confirmation modal and email receipt button links are both unset) — customers see Lemon Squeezy's own generic confirmation modal after purchase, not a page from this repo.
+
+## Running Locally
+
+```bash
+npm install
+npm run dev
 ```
 
-## Setup
+## Building
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Start development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-
-4. Deploy to Vercel:
-   ```bash
-   npm run build
-   # Deploy the `out` folder to Vercel
-   ```
-
-## Features
-
-- **Next.js 14** with TypeScript
-- **Static Export** ready for Vercel deployment
-- **Responsive Design** with mobile-first approach
-- **Form Submission** with fallback to localStorage
-- **Toast Notifications** for user feedback
-- **FAQ Accordion** with smooth animations
-- **Modern UI** with WhatsApp-inspired design
-
-## Deployment
-
-This project is configured for static export and can be deployed directly to Vercel. The `out` folder contains the built static files.
+```bash
+npm run build
+```
 
 ## Tech Stack
 
-- Next.js 14
-- TypeScript
-- CSS-in-JS (styled-jsx)
-- No external UI libraries (minimal dependencies)
+Next.js 14 (Pages Router), TypeScript, Lemon Squeezy, Kit (ConvertKit), Cloudinary.
