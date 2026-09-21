@@ -38,15 +38,6 @@ const LANGS: Record<string, Record<string, string>> = {
     // device." Put directly after the hero rather than buried in the
     // pricing/feature copy -- this is the strongest, most tangible proof
     // of the product's core behaviour.
-    visual_demo_title: `One switch. Every device.`,
-    visual_demo_sub: `When Scheduled Photos switches, your real WhatsApp photo updates everywhere at once — no one else does anything.`,
-    visual_demo_time1: `8:59 AM`,
-    visual_demo_label1: `Personal photo`,
-    visual_demo_switch: `Switch now`,
-    visual_demo_time2: `9:00 AM`,
-    visual_demo_device1: `WhatsApp Desktop`,
-    visual_demo_device2: `WhatsApp Phone`,
-    visual_demo_label2: `Professional photo`,
     // "Is this for me?" section -- 2026-08-30 (Webb): eliminate the
     // confusion between the two features up front, before pricing, so a
     // visitor self-selects rather than discovering the P2P requirement
@@ -228,15 +219,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Hecho para personas que usan una sola cuenta de WhatsApp para el trabajo y la vida personal.`,
     hero_scheduled_note: `Fotos Programadas funciona en tu propia cuenta — nadie mas necesita instalar nada.`,
     hero_p2p_note: `¿Quieres que personas distintas vean fotos distintas? Usa Compartir Fotos Privado.`,
-    visual_demo_title: `Un cambio. Todos los dispositivos.`,
-    visual_demo_sub: `Cambia tu foto una vez y se actualiza en todos los dispositivos donde tengas DualProfile conectado.`,
-    visual_demo_time1: `8:59 AM`,
-    visual_demo_label1: `Foto personal`,
-    visual_demo_time2: `9:00 AM`,
-    visual_demo_switch: `Cambiar ahora`,
-    visual_demo_label2: `Foto profesional`,
-    visual_demo_device1: `WhatsApp Escritorio`,
-    visual_demo_device2: `WhatsApp Movil`,
     is_for_me_title: `¿Es esto para mi?`,
     is_for_me_q1: `Fotos Programadas`,
     is_for_me_q1_point1: `Funciona de inmediato`,
@@ -405,15 +387,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Concu pour les personnes qui utilisent un seul compte WhatsApp pour le travail et la vie personnelle.`,
     hero_scheduled_note: `Photos Programmees fonctionne sur votre propre compte — personne d'autre n'a besoin d'installer quoi que ce soit.`,
     hero_p2p_note: `Vous voulez que des personnes differentes voient des photos differentes ? Utilisez le Partage Prive entre Contacts.`,
-    visual_demo_title: `Un seul changement. Tous les appareils.`,
-    visual_demo_sub: `Changez votre photo une fois — elle se met a jour partout ou DualProfile est connecte.`,
-    visual_demo_time1: `8h59`,
-    visual_demo_label1: `Photo personnelle`,
-    visual_demo_time2: `9h00`,
-    visual_demo_switch: `Changer maintenant`,
-    visual_demo_label2: `Photo professionnelle`,
-    visual_demo_device1: `WhatsApp Bureau`,
-    visual_demo_device2: `WhatsApp Telephone`,
     is_for_me_title: `Est-ce fait pour moi ?`,
     is_for_me_q1: `Photos Programmees`,
     is_for_me_q1_point1: `Fonctionne immediatement`,
@@ -582,15 +555,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Feito para pessoas que usam uma unica conta de WhatsApp para o trabalho e a vida pessoal.`,
     hero_scheduled_note: `Fotos Agendadas funciona na sua propria conta — mais ninguem precisa de instalar nada.`,
     hero_p2p_note: `Quer que pessoas diferentes vejam fotos diferentes? Use a Partilha Privada por Contacto.`,
-    visual_demo_title: `Uma mudanca. Todos os dispositivos.`,
-    visual_demo_sub: `Mude a sua foto uma vez — ela atualiza-se em todos os dispositivos onde o DualProfile esta ligado.`,
-    visual_demo_time1: `8h59`,
-    visual_demo_label1: `Foto pessoal`,
-    visual_demo_time2: `9h00`,
-    visual_demo_switch: `Mudar agora`,
-    visual_demo_label2: `Foto profissional`,
-    visual_demo_device1: `WhatsApp Computador`,
-    visual_demo_device2: `WhatsApp Telemovel`,
     is_for_me_title: `Isto e para mim?`,
     is_for_me_q1: `Fotos Agendadas`,
     is_for_me_q1_point1: `Funciona imediatamente`,
@@ -759,15 +723,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Gemacht fur Menschen, die ein WhatsApp-Konto fur Arbeit und Privates nutzen.`,
     hero_scheduled_note: `Geplante Fotos funktioniert auf deinem eigenen Konto — niemand sonst muss etwas installieren.`,
     hero_p2p_note: `Sollen verschiedene Leute auch verschiedene Fotos sehen? Nutze die Private Kontaktfreigabe.`,
-    visual_demo_title: `Ein Wechsel. Jedes Gerat.`,
-    visual_demo_sub: `Andere dein Foto einmal — es aktualisiert sich uberall, wo DualProfile verbunden ist.`,
-    visual_demo_time1: `8:59 Uhr`,
-    visual_demo_label1: `Privates Foto`,
-    visual_demo_time2: `9:00 Uhr`,
-    visual_demo_switch: `Jetzt wechseln`,
-    visual_demo_label2: `Berufliches Foto`,
-    visual_demo_device1: `WhatsApp Desktop`,
-    visual_demo_device2: `WhatsApp Handy`,
     is_for_me_title: `Ist das fur mich?`,
     is_for_me_q1: `Geplante Fotos`,
     is_for_me_q1_point1: `Funktioniert sofort`,
@@ -936,15 +891,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `उन लोगों के लिए बनाया गया जो काम और पर्सनल लाइफ के लिए एक ही WhatsApp अकाउंट इस्तेमाल करते हैं।`,
     hero_scheduled_note: `शेड्यूल्ड फोटोज़ आपके अपने अकाउंट पर काम करता है — किसी और को कुछ भी इंस्टॉल करने की जरूरत नहीं।`,
     hero_p2p_note: `चाहते हैं कि अलग-अलग लोग अलग-अलग फोटो देखें? प्राइवेट कॉन्टैक्ट शेयरिंग इस्तेमाल करें।`,
-    visual_demo_title: `एक स्विच। हर डिवाइस।`,
-    visual_demo_sub: `अपनी फोटो एक बार बदलें — यह हर उस डिवाइस पर अपडेट हो जाती है जहां DualProfile जुड़ा है।`,
-    visual_demo_time1: `सुबह 8:59`,
-    visual_demo_label1: `पर्सनल फोटो`,
-    visual_demo_time2: `सुबह 9:00`,
-    visual_demo_switch: `अभी स्विच करें`,
-    visual_demo_label2: `प्रोफेशनल फोटो`,
-    visual_demo_device1: `WhatsApp डेस्कटॉप`,
-    visual_demo_device2: `WhatsApp फोन`,
     is_for_me_title: `क्या यह मेरे लिए है?`,
     is_for_me_q1: `शेड्यूल्ड फोटोज़`,
     is_for_me_q1_point1: `तुरंत काम करता है`,
@@ -1113,15 +1059,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `为那些用同一个WhatsApp账号处理工作和生活的人打造。`,
     hero_scheduled_note: `定时照片在你自己的账号上运行——不需要任何人安装任何东西。`,
     hero_p2p_note: `想让不同的人看到不同的照片吗？使用私密联系人共享。`,
-    visual_demo_title: `切换一次，同步所有设备。`,
-    visual_demo_sub: `只需切换一次头像，DualProfile连接的所有设备都会同步更新。`,
-    visual_demo_time1: `上午8:59`,
-    visual_demo_label1: `私人照片`,
-    visual_demo_time2: `上午9:00`,
-    visual_demo_switch: `立即切换`,
-    visual_demo_label2: `职业照片`,
-    visual_demo_device1: `WhatsApp 桌面版`,
-    visual_demo_device2: `WhatsApp 手机版`,
     is_for_me_title: `这适合我吗？`,
     is_for_me_q1: `定时照片`,
     is_for_me_q1_point1: `立即生效`,
@@ -1290,15 +1227,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `仕事とプライベートで1つのWhatsAppアカウントを使う人のために作られました。`,
     hero_scheduled_note: `スケジュール写真はあなた自身のアカウントで動作します——他の誰かが何かをインストールする必要はありません。`,
     hero_p2p_note: `相手によって違う写真を見せたいですか？プライベート連絡先共有をご利用ください。`,
-    visual_demo_title: `1回の切り替えで、すべてのデバイスに反映。`,
-    visual_demo_sub: `写真を一度切り替えるだけで、DualProfileが接続されているすべてのデバイスで更新されます。`,
-    visual_demo_time1: `午前8:59`,
-    visual_demo_label1: `個人用の写真`,
-    visual_demo_time2: `午前9:00`,
-    visual_demo_switch: `今すぐ切り替え`,
-    visual_demo_label2: `仕事用の写真`,
-    visual_demo_device1: `WhatsApp デスクトップ`,
-    visual_demo_device2: `WhatsApp スマートフォン`,
     is_for_me_title: `これは自分に合っている？`,
     is_for_me_q1: `スケジュール写真`,
     is_for_me_q1_point1: `すぐに使える`,
@@ -1467,15 +1395,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Создано для тех, кто использует один аккаунт WhatsApp для работы и личной жизни.`,
     hero_scheduled_note: `Запланированные фото работают на вашем собственном аккаунте — никому больше ничего устанавливать не нужно.`,
     hero_p2p_note: `Хотите, чтобы разные люди видели разные фото? Используйте Приватный обмен по контактам.`,
-    visual_demo_title: `Одно переключение. Все устройства.`,
-    visual_demo_sub: `Смените фото один раз — оно обновится на всех устройствах, где подключен DualProfile.`,
-    visual_demo_time1: `8:59`,
-    visual_demo_label1: `Личное фото`,
-    visual_demo_time2: `9:00`,
-    visual_demo_switch: `Переключить сейчас`,
-    visual_demo_label2: `Рабочее фото`,
-    visual_demo_device1: `WhatsApp на компьютере`,
-    visual_demo_device2: `WhatsApp на телефоне`,
     is_for_me_title: `Подходит ли это мне?`,
     is_for_me_q1: `Запланированные фото`,
     is_for_me_q1_point1: `Работает сразу`,
@@ -2263,58 +2182,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Visual Demo Strip — 2026-08-30 (Webb): the tangible "8:59am ->
-            Switch Now -> both devices update" proof, placed right after
-            the hero rather than buried later, since it's the strongest,
-            most concrete evidence of the product's core behaviour. */}
-        <section className="features" style={{paddingTop: '40px', paddingBottom: '40px'}}>
-          <div className="container" style={{maxWidth: '820px', margin: '0 auto'}}>
-            <div style={{
-              display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'center',
-              gap: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '20px', padding: '32px 28px'
-            }}>
-              {/* Before — real photo, not a placeholder */}
-              <div style={{textAlign: 'center' as const, minWidth: '140px'}}>
-                <div style={{fontSize: '13px', color: '#9ca3af', marginBottom: '8px', fontWeight: '600'}}>{t('visual_demo_time1')}</div>
-                <img src="/dp-casual.jpg" alt={t('visual_demo_label1')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(255,255,255,0.15)'}} />
-                <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label1')}</div>
-              </div>
-              {/* Arrow / switch */}
-              <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                <div style={{fontSize: '12px', color: '#6b7280', marginBottom: '6px'}}>{t('visual_demo_time2')}</div>
-                <div style={{
-                  background: '#25D366', color: '#000', fontWeight: '700', fontSize: '13px',
-                  padding: '8px 18px', borderRadius: '50px', display: 'inline-block'
-                }}>{t('visual_demo_switch')} →</div>
-              </div>
-              {/* After: both devices, same real photo */}
-              <div style={{display: 'flex', gap: '20px'}}>
-                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
-                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
-                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
-                </div>
-                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
-                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
-                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
-                </div>
-              </div>
-            </div>
-            <p style={{textAlign: 'center' as const, marginTop: '20px', fontSize: 'clamp(18px,3vw,24px)', fontWeight: '700', color: '#fff'}}>{t('visual_demo_title')}</p>
-            <p style={{textAlign: 'center' as const, marginTop: '4px', fontSize: '14px', color: '#9ca3af', maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto'}}>{t('visual_demo_sub')}</p>
-          </div>
-        </section>
-
         {/* Identity Section — 2026-08-30 (Webb): rebuilt as an asymmetric
             photo+list layout instead of a third centred icon-card grid in a
             row, and swapped the generic icon-in-a-circle for the real
-            professional photo (dp-pro-2.jpg, no employer branding). */}
+            professional photo (dp-pro-2.jpg, no employer branding).
+            Swapped 2026-09-21 (Webb) for a real screenshot of the
+            extension's own Photos tab, since showing the actual product
+            UI is stronger evidence than a stock-style headshot. */}
         <section id="identity" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
           <div className="container">
             <div className="identity-grid">
-              <img src="/dp-pro-2.jpg" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'cover', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
+              <img src="/dp-photos-ui.png" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'contain', aspectRatio: '2/3', background: '#0b0f0d', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
               <div>
                 <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('identity_title')}</h2>
                 <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('identity_sub')}</p>
