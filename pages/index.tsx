@@ -19,7 +19,7 @@ const LANGS: Record<string, Record<string, string>> = {
     // both sides), per Webb's "Scheduled Photos = activation, P2P =
     // differentiation" funnel.
     hero_scheduled_note: `Scheduled Photos works on your own account — no one else installs anything.`,
-    hero_p2p_note: `Want different people to see different photos? Use Private Contact Sharing.`,
+    hero_p2p_note: `Want a specific contact to see a different photo? Use Per-Contact Photos.`,
     hero_cta: 'Install free',
     hero_cta_sub: `Free forever · Unlimited contacts · Upgrade anytime`,
     hero_social_proof: `Built for people who use one WhatsApp account for work and life.`,
@@ -31,7 +31,7 @@ const LANGS: Record<string, Record<string, string>> = {
     what_web_label: `What happens on WhatsApp Web`,
     what_web_val: `The same photo syncs automatically. No separate setup needed.`,
     what_requires_install_label: `What requires another installation`,
-    what_requires_install_val: `Only Private Contact Sharing (Pro). Scheduled Photos never needs anyone else to install anything.`,
+    what_requires_install_val: `Only Per-Contact Photos: both people need DualProfile installed. Scheduled Photos never needs anyone else to install anything.`,
     // Visual demo strip -- 2026-08-30 (Webb): "Imagine: 8:59 AM Personal
     // photo, 9:00 AM Switch now, WhatsApp desktop -> Professional photo,
     // WhatsApp phone -> Professional photo. Then: One switch. Every
@@ -119,7 +119,7 @@ const LANGS: Record<string, Record<string, string>> = {
     // like it works automatically once installed, when it actually
     // requires the OTHER contact to also have DualProfile. See
     // status_2_title/status_2_desc for the fuller requirement callout.
-    feat_p2p: 'Private contact-to-contact sharing',
+    feat_p2p: 'Per-Contact Photos (P2P sync)',
     feat_chrome: 'Chrome & Edge',
     feat_photo_history: 'Photo History & Revert',
     feat_scheduled: 'Scheduled Photos',
@@ -162,10 +162,10 @@ const LANGS: Record<string, Record<string, string>> = {
     // Two entries added 2026-08-30 (Webb): the FAQ should only answer
     // purchase-blocking questions. These two were missing outright --
     // faq_6 directly addresses the exact expectation gap most likely
-    // behind an early refund (buying Pro expecting Private Contact
-    // Sharing to work without the other person installing anything).
+    // behind an early refund (buying Pro expecting Per-Contact Photos
+    // to work without the other person installing anything).
     faq_6_q: `What happens if the person I share with doesn't install DualProfile?`,
-    faq_6_a: `They keep seeing your normal WhatsApp photo. Private Contact Sharing only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
+    faq_6_a: `They keep seeing your normal WhatsApp photo. Per-Contact Photos only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
     faq_7_q: `Is Pro a subscription?`,
     faq_7_a: `No. Pro is a single one-time payment — £9.99, charged once. There's no recurring billing, no trial that auto-converts, and no expiry.`,
     footer_rights: 'All rights reserved.',
@@ -196,16 +196,16 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Current Status',
     status_1_title: 'Preview Mode',
     status_1_desc: 'See how others would see your profile',
-    status_2_title: 'Private Contact Sharing',
-    status_2_desc: 'Real-time profile switching now live — requires the other contact to have DualProfile installed too',
+    status_2_title: 'Per-Contact Photos',
+    status_2_desc: 'Live. Requires the other contact to have DualProfile installed too.',
     status_3_title: 'Group Chats',
     status_3_desc: 'Not supported yet',
     modal_title: 'Install DualProfile',
     modal_sub: `Free to install. Scheduled Photos and unlimited contacts, free forever. No credit card required. Works on WhatsApp Web in Chrome and Edge.`,
     modal_btn: 'Install free',
     modal_note: `Unlimited contacts, free forever · No credit card required`,
-    // ── Positioning refactor: Scheduled Photos leads, Private Contact Sharing
-    // is Beta. New keys are English-only on purpose: other locales fall back to
+    // ── Positioning refactor: Scheduled Photos leads, Per-Contact Photos
+    // (P2P sync) is live as the secondary capability. New keys are English-only on purpose: other locales fall back to
     // English via t() until these are translated, which avoids showing the old
     // Private-Contact-Sharing-first claims next to the new hierarchy.
     sp_eyebrow: `For WhatsApp Web`,
@@ -257,12 +257,14 @@ const LANGS: Record<string, Record<string, string>> = {
     ifm_q1_p3: `Changes your actual WhatsApp photo`,
     ifm_q1_p4: `Shows on your phone and computer`,
     ifm_q2: `Want a specific contact to see a different photo?`,
-    ifm_q2_tag: `Beta`,
-    ifm_q2_p1: `Private Contact Sharing, still in beta`,
-    ifm_q2_p2: `Both people need DualProfile installed`,
-    ifm_q2_p3: `Shows on WhatsApp Web only`,
+    ifm_q2_tag: `Live`,
+    ifm_q2_p1: `Assign a specific photo to a specific contact`,
+    ifm_q2_p2: `P2P sync keeps the assignment working`,
+    ifm_q2_p3: `Both people need DualProfile installed`,
+    ifm_q2_p4: `Works on WhatsApp Web`,
+    ifm_q2_p5: `Group chats are not supported yet`,
     pr_sub: `Scheduled Photos is free. Pro adds deeper control and history. One optional upgrade, paid once.`,
-    feat_p2p_beta: `Private Contact Sharing (Beta)`,
+    feat_pcp: `Per-Contact Photos`,
     badge_once: `ONE-TIME`,
     wh_1_label: `What Scheduled Photos changes`,
     wh_1_val: `Your actual WhatsApp profile photo, at the times you set. Whoever looks sees the photo that is current.`,
@@ -271,23 +273,23 @@ const LANGS: Record<string, Record<string, string>> = {
     wh_3_label: `Where it works`,
     wh_3_val: `You set it up in WhatsApp Web on Chrome or Edge. Once your photo changes, it shows on your other devices too.`,
     wh_4_label: `What needs someone else`,
-    wh_4_val: `Only Private Contact Sharing (Beta): both people need DualProfile. Scheduled Photos never needs anyone else to install anything.`,
-    beta_badge: `Beta`,
-    beta_title: `Private Contact Sharing`,
-    beta_sub: `We're experimenting with another way to control how your profile appears to different people.`,
-    beta_body: `Show a different profile photo to a specific contact.`,
-    beta_req: `Both people need DualProfile installed.`,
-    beta_req_sub: `Your contact keeps seeing your normal WhatsApp photo until they install it too. It works on WhatsApp Web, and group chats are not supported yet.`,
-    bst_pcs_title: `Private Contact Sharing (Beta)`,
-    bst_pcs_desc: `Live, but still in beta. Requires the other contact to have DualProfile installed too.`,
-    beta_step3_title: `They install it too, and see the photo you chose.`,
+    wh_4_val: `Per-Contact Photos: both people need DualProfile installed. Scheduled Photos never needs anyone else to install anything.`,
+    pcp_badge: `Live`,
+    pcp_title: `Per-Contact Photos`,
+    pcp_sub: `Show a different profile photo to a specific contact.`,
+    pcp_body: `DualProfile's P2P sync lets you assign a photo to a specific contact. When they also have DualProfile installed, they see the photo you assigned to them.`,
+    pcp_req: `Both people need DualProfile installed.`,
+    pcp_req_sub: `Your contact keeps seeing your normal WhatsApp photo until they install it too. It works on WhatsApp Web, and group chats are not supported yet.`,
+    bst_pcs_title: `Per-Contact Photos`,
+    bst_pcs_desc: `Live. Requires the other contact to have DualProfile installed too.`,
+    pcp_step3_title: `They install it too, and see the photo you chose.`,
     sp_sec_2: `Photos you share with specific contacts are synced securely, and only those contacts can see them.`,
     sp_faq_1_q: `What does Scheduled Photos do?`,
     sp_faq_1_a: `It changes your actual WhatsApp profile photo at the times you set, for example a work photo during the day and a personal photo in the evening. You confirm each change with one tap when prompted.`,
-    sp_faq_2_a: `Scheduled Photos changes your real WhatsApp photo, so once it switches it shows on your phone too. Private Contact Sharing (Beta) is different: it only shows on WhatsApp Web, and only to contacts who also have DualProfile installed.`,
-    sp_faq_pcs_q: `What is Private Contact Sharing (Beta)?`,
-    sp_faq_pcs_a: `It lets you show a different profile photo to a specific contact. Both people need DualProfile installed, it only shows on WhatsApp Web, and it is still in beta. Group chats are not supported yet.`,
-    sp_faq_free_a: `Free gives you Scheduled Photos, Live Preview Mode, Private Contact Sharing (Beta) and unlimited contacts, forever, with no card required. Pro is a one-time £9.99 payment, not a subscription, and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
+    sp_faq_2_a: `Scheduled Photos changes your real WhatsApp photo, so once it switches it shows on your phone too. Per-Contact Photos is different: it only shows on WhatsApp Web, and only to contacts who also have DualProfile installed.`,
+    sp_faq_pcs_q: `What are Per-Contact Photos?`,
+    sp_faq_pcs_a: `They let you show a different profile photo to a specific contact. DualProfile's P2P sync keeps the assignment working, so both people need DualProfile installed. It works on WhatsApp Web. Group chats are not supported yet.`,
+    sp_faq_free_a: `Free gives you Scheduled Photos, Live Preview Mode, Per-Contact Photos and unlimited contacts, forever, with no card required. Pro is a one-time £9.99 payment, not a subscription, and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
   },
   es: {
     feat_future: `Todas las funciones futuras incluidas`,
@@ -1941,7 +1943,7 @@ export default function Home() {
             "Use different photos for work, evenings, weekends and events",
             "Confirm each scheduled change with one tap",
             "Free forever, with Pro as a one-time £9.99 upgrade",
-            "Private Contact Sharing (beta): both people need DualProfile installed",
+            "Per-Contact Photos (P2P sync): both people need DualProfile installed",
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
@@ -2439,8 +2441,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Which feature: separates Scheduled Photos (works alone) from the beta
-            Private Contact Sharing (both people need DualProfile). */}
+        {/* Which feature: separates Scheduled Photos (works alone) from
+            Per-Contact Photos (both people need DualProfile). */}
         <section id="is-this-for-me" className="features">
           <div className="container">
             <div className="section-header">
@@ -2458,20 +2460,24 @@ export default function Home() {
                 ))}
               </div>
               <div className="glass-card" style={{padding: '1.75rem'}}>
-                <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(245,158,11,0.15)', color: '#f59e0b', fontSize: '10px', fontWeight: '800', padding: '2px 8px', borderRadius: '10px', letterSpacing: '0.5px'}}>{t('ifm_q2_tag')}</span>
+                <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(37,211,102,0.15)', color: '#25D366', fontSize: '10px', fontWeight: '800', padding: '2px 8px', borderRadius: '10px', letterSpacing: '0.5px'}}>{t('ifm_q2_tag')}</span>
                 <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('ifm_q2')}</p>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                  {t('ifm_q2_p1')}
-                </div>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                  {t('ifm_q2_p2')}
-                </div>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                  {t('ifm_q2_p3')}
-                </div>
+                {[
+                  { text: t('ifm_q2_p1'), warn: false },
+                  { text: t('ifm_q2_p2'), warn: false },
+                  { text: t('ifm_q2_p3'), warn: true },
+                  { text: t('ifm_q2_p4'), warn: false },
+                  { text: t('ifm_q2_p5'), warn: true },
+                ].map(p => (
+                  <div key={p.text} style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
+                    {p.warn ? (
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    ) : (
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    )}
+                    {p.text}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -2508,7 +2514,7 @@ export default function Home() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
-                  {[t('feat_contacts_free'), t('feat_preview'), t('feat_p2p_beta'), t('feat_chrome')].map(f => (
+                  {[t('feat_contacts_free'), t('feat_preview'), t('feat_pcp'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2583,21 +2589,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Beta: Private Contact Sharing. Kept in full, but no longer the headline. */}
+        {/* Per-Contact Photos (P2P sync). Live secondary capability, not the headline. */}
         <section id="private-contact-sharing" className="features" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <div className="container">
             <div className="section-header">
-              <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(245,158,11,0.15)', color: '#f59e0b', border: '1px solid rgba(245,158,11,0.35)', fontSize: '12px', fontWeight: '800', padding: '3px 12px', borderRadius: '12px', letterSpacing: '0.5px'}}>{t('beta_badge')}</span>
-              <h2 className="section-title" style={{fontSize: 'clamp(24px, 4vw, 32px)'}}>{t('beta_title')}</h2>
-              <p className="section-subtitle">{t('beta_sub')}</p>
+              <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(37,211,102,0.15)', color: '#25D366', border: '1px solid rgba(37,211,102,0.35)', fontSize: '12px', fontWeight: '800', padding: '3px 12px', borderRadius: '12px', letterSpacing: '0.5px'}}>{t('pcp_badge')}</span>
+              <h2 className="section-title" style={{fontSize: 'clamp(24px, 4vw, 32px)'}}>{t('pcp_title')}</h2>
+              <p className="section-subtitle">{t('pcp_sub')}</p>
             </div>
             <div className="glass-card" style={{maxWidth: '760px', margin: '0 auto', padding: '1.75rem', borderLeft: '3px solid #f59e0b'}}>
-              <p style={{margin: '0 0 12px', color: '#fff', fontSize: '1.05rem', fontWeight: '600'}}>{t('beta_body')}</p>
+              <p style={{margin: '0 0 12px', color: '#fff', fontSize: '1.05rem', fontWeight: '600'}}>{t('pcp_body')}</p>
               <p style={{margin: '0 0 6px', color: '#f59e0b', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '8px'}}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                {t('beta_req')}
+                {t('pcp_req')}
               </p>
-              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6'}}>{t('beta_req_sub')}</p>
+              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6'}}>{t('pcp_req_sub')}</p>
             </div>
             <div className="steps-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', marginTop: '2rem'}}>
               <div className="step-card glass-card animate-on-scroll">
@@ -2612,7 +2618,7 @@ export default function Home() {
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">3</div>
-                <h3 className="step-title">{t('beta_step3_title')}</h3>
+                <h3 className="step-title">{t('pcp_step3_title')}</h3>
                 <p className="step-description">{t('step3_sub')}</p>
               </div>
             </div>
