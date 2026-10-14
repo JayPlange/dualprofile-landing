@@ -290,6 +290,30 @@ const LANGS: Record<string, Record<string, string>> = {
     sp_faq_pcs_q: `What are Per-Contact Photos?`,
     sp_faq_pcs_a: `They let you show a different profile photo to a specific contact. DualProfile's P2P sync keeps the assignment working, so both people need DualProfile installed. It works on WhatsApp Web. Group chats are not supported yet.`,
     sp_faq_free_a: `Free gives you Scheduled Photos, Live Preview Mode, Per-Contact Photos and unlimited contacts, forever, with no card required. Pro is a one-time £9.99 payment, not a subscription, and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
+    // ── v2 (2026-10-14): homepage sells Scheduled Photos only. Per-Contact
+    // Photos moved to /per-contact. English only for now; other languages
+    // fall back to these, exactly as the sp_* keys above already do.
+    v2_trust: `Free to use. Pro is an optional one-time £9.99, never a subscription.`,
+    v2_nav_how: `How it works`,
+    v2_badge_free: `Free`,
+    v2_ft_title: `Scheduled Photos is free. Pro adds photo history.`,
+    v2_pr_sub: `Scheduled Photos is free. Pro is one optional upgrade, paid once.`,
+    v2_free_sub: `Scheduled Photos, free forever`,
+    v2_free_1: `Choose the days and the time window`,
+    v2_free_2: `One-tap confirm for every switch`,
+    v2_pro_sub: `Photo history and priority support`,
+    v2_pro_pcp: `Pro features for Per-Contact Photos`,
+    v2_sec_2: `Your photos are stored securely and are only used to set your own profile photo.`,
+    v2_sec_3: `You approve every change. DualProfile never changes your photo without your tap.`,
+    v2_faq_mobile_a: `Yes. Once your photo switches, it is your real WhatsApp photo, so it shows in the mobile app and to all your contacts. You set it up in WhatsApp Web on Chrome or Edge.`,
+    v2_faq_ask_q: `Does it change my photo without asking?`,
+    v2_faq_ask_a: `No. When it is time to switch, DualProfile opens WhatsApp's own photo screen with the right photo ready, and nothing changes until you tap to confirm.`,
+    v2_faq_free_a: `Scheduled Photos is free, forever, with no card required. Pro is a one-time £9.99 payment that adds Photo History & Revert and priority support.`,
+    v2_footer_pcp: `Looking for per-contact photos? (experimental)`,
+    v2_footer_note: `Your photos are stored securely and only used to set your own profile photo.`,
+    v2_footer_disclaimer: `DualProfile is an independent product and is not affiliated with WhatsApp or Meta.`,
+    v2_modal_sub: `Free to install. Scheduled Photos is free forever, with no card required. Works on WhatsApp Web in Chrome and Edge.`,
+    v2_modal_note: `Free forever · No credit card required`,
   },
   es: {
     feat_future: `Todas las funciones futuras incluidas`,
@@ -1894,12 +1918,10 @@ export default function Home() {
   const faqs = [
     { question: t('sp_faq_1_q'), answer: t('sp_faq_1_a') },
     { question: t('faq_5_q'), answer: t('faq_5_a') },
-    { question: t('faq_2_q'), answer: t('sp_faq_2_a') },
+    { question: t('faq_2_q'), answer: t('v2_faq_mobile_a') },
+    { question: t('v2_faq_ask_q'), answer: t('v2_faq_ask_a') },
+    { question: t('faq_3_q'), answer: t('v2_faq_free_a') },
     { question: t('faq_7_q'), answer: t('faq_7_a') },
-    { question: t('faq_3_q'), answer: t('sp_faq_free_a') },
-    { question: t('sp_faq_pcs_q'), answer: t('sp_faq_pcs_a') },
-    { question: t('faq_6_q'), answer: t('faq_6_a') },
-    { question: t('faq_4_q'), answer: t('faq_4_a') },
   ];
 
   return (
@@ -1934,29 +1956,19 @@ export default function Home() {
           "operatingSystem": "Chrome, Edge",
           "offers": [
             { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP",
-              "description": "Unlimited contacts and Scheduled Photos, free forever." },
+              "description": "Scheduled Photos, free forever. No card required." },
             { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP",
-              "description": "One-time payment. Photo History, bulk assignment, export/import, multi-device sync." }
+              "description": "One-time payment. Photo History and Revert, priority support." }
           ],
           "featureList": [
             "Schedule when your WhatsApp profile photo changes",
             "Use different photos for work, evenings, weekends and events",
             "Confirm each scheduled change with one tap",
             "Free forever, with Pro as a one-time £9.99 upgrade",
-            "Per-Contact Photos (P2P sync): both people need DualProfile installed",
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
-          "screenshot": "https://vivaup.org/dualprofile-logo.png",
-          "video": {
-            "@type": "VideoObject",
-            "name": "DualProfile: Multiple WhatsApp Profile Photos (Control Who Sees What)",
-            "description": "See how DualProfile lets you show different WhatsApp profile photos to different contacts — your boss sees your professional photo, your friends see the real you.",
-            "thumbnailUrl": "https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg",
-            "uploadDate": "2026-05-01",
-            "contentUrl": "https://www.youtube.com/watch?v=mt8QzcG0_XQ",
-            "embedUrl": "https://www.youtube.com/embed/mt8QzcG0_XQ"
-          }
+          "screenshot": "https://vivaup.org/dualprofile-logo.png"
         })}} />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -2000,7 +2012,7 @@ export default function Home() {
             </div>
             <div className="nav-links">
               <a href="#features">{t('nav_features')}</a>
-              <a href="#demo">{t('nav_demo')}</a>
+              <a href="#how-it-works">{t('v2_nav_how')}</a>
               <a href="#pricing">{t('nav_pricing')}</a>
               <a href="#faq">{t('nav_faq')}</a>
             <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
@@ -2255,7 +2267,7 @@ export default function Home() {
             </div>
             {/* Sub-CTA: trial note */}
             <p style={{fontSize:'13px',color:'rgba(255,255,255,0.5)',marginBottom:'10px',letterSpacing:'0.3px'}}>
-              {t('sp_trust')}
+              {t('v2_trust')}
             </p>
             {/* Example schedule: plain text chips, not a UI mock-up. Labelled as an example. */}
             <div role="group" aria-label={t('sp_demo_label')} style={{margin: '26px 0 24px', display: 'inline-flex', flexDirection: 'column' as const, alignItems: 'center', gap: '10px'}}>
@@ -2393,12 +2405,12 @@ export default function Home() {
         <section id="features" className="features">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">{t('ft_title')}</h2>
+              <h2 className="section-title">{t('v2_ft_title')}</h2>
               <p className="section-subtitle">{t('ft_sub')}</p>
             </div>
             <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))'}}>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const,border:'1px solid rgba(37,211,102,0.3)'}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'#25D366',color:'#000',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('ft_badge_both')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'#25D366',color:'#000',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('v2_badge_free')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
@@ -2413,72 +2425,6 @@ export default function Home() {
                 <h3 className="feature-title">{t('feat2_title')}</h3>
                 <p className="feature-description">{t('feat2_desc')}</p>
               </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                </div>
-                <h3 className="feature-title">{t('feat_bulk_title')}</h3>
-                <p className="feature-description">{t('feat_bulk_desc')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                </div>
-                <h3 className="feature-title">{t('feat3_title')}</h3>
-                <p className="feature-description">{t('feat3_desc')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-                <h3 className="feature-title">{t('feat4_title')}</h3>
-                <p className="feature-description">{t('feat4_desc')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Which feature: separates Scheduled Photos (works alone) from
-            Per-Contact Photos (both people need DualProfile). */}
-        <section id="is-this-for-me" className="features">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('ifm_title')}</h2>
-            </div>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '820px', margin: '0 auto'}}>
-              <div className="glass-card" style={{padding: '1.75rem', border: '1px solid rgba(37,211,102,0.3)'}}>
-                <span style={{display: 'inline-block', marginBottom: '10px', background: '#25D366', color: '#000', fontSize: '10px', fontWeight: '800', padding: '2px 8px', borderRadius: '10px', letterSpacing: '0.5px'}}>{t('ifm_q1_tag')}</span>
-                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('ifm_q1')}</p>
-                {[t('ifm_q1_p1'), t('ifm_q1_p2'), t('ifm_q1_p3'), t('ifm_q1_p4')].map(p => (
-                  <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    {p}
-                  </div>
-                ))}
-              </div>
-              <div className="glass-card" style={{padding: '1.75rem'}}>
-                <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(37,211,102,0.15)', color: '#25D366', fontSize: '10px', fontWeight: '800', padding: '2px 8px', borderRadius: '10px', letterSpacing: '0.5px'}}>{t('ifm_q2_tag')}</span>
-                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('ifm_q2')}</p>
-                {[
-                  { text: t('ifm_q2_p1'), warn: false },
-                  { text: t('ifm_q2_p2'), warn: false },
-                  { text: t('ifm_q2_p3'), warn: true },
-                  { text: t('ifm_q2_p4'), warn: false },
-                  { text: t('ifm_q2_p5'), warn: true },
-                ].map(p => (
-                  <div key={p.text} style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                    {p.warn ? (
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                    ) : (
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    )}
-                    {p.text}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -2488,7 +2434,7 @@ export default function Home() {
           <div className="container">
             <div className="section-header">
               <h2 className="section-title">{t('pricing_title')}</h2>
-              <p className="section-subtitle">{t('pr_sub')}</p>
+              <p className="section-subtitle">{t('v2_pr_sub')}</p>
             </div>
             <div style={{
               display: 'grid',
@@ -2500,7 +2446,7 @@ export default function Home() {
               {/* Free */}
               <div className="glass-card" style={{padding: '2.25rem', textAlign: 'center' as const}}>
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1rem'}}>{t('free_sub')}</p>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1rem'}}>{t('v2_free_sub')}</p>
                 <div style={{background:'rgba(37,211,102,0.08)',border:'1px solid rgba(37,211,102,0.2)',borderRadius:'8px',padding:'8px 12px',marginBottom:'1rem',fontSize:'12px',color:'#25D366',fontWeight:'600'}}>
                   {t('free_trial_note')}
                 </div>
@@ -2514,7 +2460,7 @@ export default function Home() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
-                  {[t('feat_contacts_free'), t('feat_preview'), t('feat_pcp'), t('feat_chrome')].map(f => (
+                  {[t('v2_free_1'), t('v2_free_2'), t('feat_chrome')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2538,7 +2484,7 @@ export default function Home() {
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
                 }}>{t('badge_once')}</div>
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('v2_pro_sub')}</p>
                 <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $13 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
@@ -2547,11 +2493,14 @@ export default function Home() {
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                     <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_everything_free')}</span>
                   </li>
-                  {[t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
+                  {[t('feat_photo_history'), t('feat_priority'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
                   ))}
+                  <li style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                    <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> <a href="/per-contact" style={{color: '#d1d5db', textDecoration: 'underline', textUnderlineOffset: '3px'}}>{t('v2_pro_pcp')}</a>
+                  </li>
                   <li style={{padding: '0.5rem 0', color: '#9ca3af', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontStyle: 'italic' as const}}>
                     <span style={{color: '#6b7280'}}>+</span> {t('feat_future')}
                   </li>
@@ -2561,240 +2510,6 @@ export default function Home() {
                   {t('btn_get_pro')}
                 </button>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* What Happens Where — 2026-08-30 (Webb): replaces the repeated
-            "install free" callout that sat here. This is a repeated-CTA cut,
-            not a content cut: the space now answers the exact question a
-            reader has right after seeing pricing — what does Pro actually
-            change, and where. */}
-        <section style={{padding:'60px 20px',textAlign:'center' as const}}>
-          <div style={{maxWidth:'860px',margin:'0 auto'}}>
-            <h2 style={{fontSize:'clamp(22px,4vw,32px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('what_happens_where_title')}</h2>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
-              {[
-                [t('wh_1_label'), t('wh_1_val')],
-                [t('wh_2_label'), t('wh_2_val')],
-                [t('wh_3_label'), t('wh_3_val')],
-                [t('wh_4_label'), t('wh_4_val')],
-              ].map(([label, val]) => (
-                <div key={label} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px'}}>
-                  <div style={{color: '#25D366', fontWeight: '700', fontSize: '0.9rem', marginBottom: '8px'}}>{label}</div>
-                  <div style={{color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5'}}>{val}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Per-Contact Photos (P2P sync). Live secondary capability, not the headline. */}
-        <section id="private-contact-sharing" className="features" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-          <div className="container">
-            <div className="section-header">
-              <span style={{display: 'inline-block', marginBottom: '10px', background: 'rgba(37,211,102,0.15)', color: '#25D366', border: '1px solid rgba(37,211,102,0.35)', fontSize: '12px', fontWeight: '800', padding: '3px 12px', borderRadius: '12px', letterSpacing: '0.5px'}}>{t('pcp_badge')}</span>
-              <h2 className="section-title" style={{fontSize: 'clamp(24px, 4vw, 32px)'}}>{t('pcp_title')}</h2>
-              <p className="section-subtitle">{t('pcp_sub')}</p>
-            </div>
-            <div className="glass-card" style={{maxWidth: '760px', margin: '0 auto', padding: '1.75rem', borderLeft: '3px solid #f59e0b'}}>
-              <p style={{margin: '0 0 12px', color: '#fff', fontSize: '1.05rem', fontWeight: '600'}}>{t('pcp_body')}</p>
-              <p style={{margin: '0 0 6px', color: '#f59e0b', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '8px'}}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                {t('pcp_req')}
-              </p>
-              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6'}}>{t('pcp_req_sub')}</p>
-            </div>
-            <div className="steps-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', marginTop: '2rem'}}>
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">1</div>
-                <h3 className="step-title">{t('step1_title')}</h3>
-                <p className="step-description">{t('step1_sub')}</p>
-              </div>
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">2</div>
-                <h3 className="step-title">{t('step2_title')}</h3>
-                <p className="step-description">{t('step2_sub')}</p>
-              </div>
-              <div className="step-card glass-card animate-on-scroll">
-                <div className="step-number">3</div>
-                <h3 className="step-title">{t('pcp_step3_title')}</h3>
-                <p className="step-description">{t('step3_sub')}</p>
-              </div>
-            </div>
-            {/* Preview Mode (free): lets someone see the result without a second install */}
-            <div style={{marginTop: '32px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px 28px', textAlign: 'center' as const}}>
-              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                {t('preview_callout')}
-              </p>
-            </div>
-            <div style={{marginTop: '24px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
-              <p style={{margin: 0, color: '#d1d5db', fontSize: '1rem', lineHeight: '1.6', flex: '1 1 300px'}}>
-                {t('callout_text')}
-              </p>
-              <button style={{background: 'transparent', border: '1px solid rgba(37,211,102,0.5)', color: '#25D366', padding: '10px 24px', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap' as const, transition: 'all 0.2s ease', flexShrink: 0}}
-                onClick={() => { navigator.clipboard.writeText('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc'); const btn = document.activeElement as HTMLButtonElement; if (btn) { btn.textContent = t('copied_msg') || 'Copied!'; setTimeout(() => { btn.textContent = t('callout_btn') || 'Copy install link'; }, 2500); } }}>
-                {t('callout_btn')}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Demo Section - Fixed Video Embed */}
-        <section id="demo" className="demo">
-          <div className="demo-container">
-            <div className="demo-video-wrapper">
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
-                <iframe
-                  src="https://www.youtube.com/embed/mt8QzcG0_XQ?rel=0&modestbranding=1&autoplay=0"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '12px'
-                  }}
-                ></iframe>
-              </div>
-            </div>
-            <div className="trust-statement" style={{
-              background: 'rgba(37, 211, 102, 0.1)',
-              padding: '12px 20px',
-              borderRadius: '8px',
-              marginTop: '16px',
-              textAlign: 'center',
-              fontSize: '14px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{flexShrink: 0}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              {t('demo_privacy')}
-            </div>
-            <p className="demo-caption" style={{
-              marginTop: '12px',
-              fontSize: '16px',
-              opacity: '0.8',
-              textAlign: 'center'
-            }}>
-              {t('demo_caption')}
-            </p>
-          </div>
-        </section>
-
-        {/* Current Status Section */}
-        <section className="current-status">
-          <div className="container">
-            <div className="status-card glass-card">
-              <h2 className="status-title">{t('status_title')}</h2>
-              <div className="status-grid">
-                <div className="status-item">
-                  <div className="status-icon available">✓</div>
-                  <div className="status-text">
-                    <strong>{t('status_1_title')}</strong>
-                    <p>{t('status_1_desc')}</p>
-                  </div>
-                </div>
-                <div className="status-item">
-                  <div className="status-icon available">✓</div>
-                  <div className="status-text">
-                    <strong>{t('bst_pcs_title')}</strong>
-                    <p>{t('bst_pcs_desc')}</p>
-                  </div>
-                </div>
-                <div className="status-item">
-                  <div className="status-icon not-available">—</div>
-                  <div className="status-text">
-                    <strong>{t('status_3_title')}</strong>
-                    <p>{t('status_3_desc')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Social Proof Section */}
-        <section className="social-proof-section">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('reddit_title')}</h2>
-              <p className="section-subtitle">{t('reddit_sub')}</p>
-            </div>
-            <div className="reddit-posts-grid">
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">9 years ago</span>
-                  </div>
-                  <div className="post-stats">6 upvotes · 7 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_1_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_1_a')}</div>
-                </div>
-              </div>
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">5 years ago</span>
-                  </div>
-                  <div className="post-stats">7 upvotes · 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_2_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_2_a')}</div>
-                </div>
-              </div>
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">8 months ago</span>
-                  </div>
-                  <div className="post-stats">9 upvotes · 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_3_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_3_a')}</div>
-                </div>
-              </div>
-            </div>
-            <div style={{textAlign: 'center', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(37,211,102,0.2)'}}>
-              <span style={{fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: '800', color: '#25D366', letterSpacing: '-0.5px'}}>{t('until_now')}</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Social Proof */}
-        <section style={{padding:'60px 20px',textAlign:'center' as const}}>
-          <div style={{maxWidth:'800px',margin:'0 auto'}}>
-            <h2 style={{fontSize:'clamp(20px,3vw,28px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('social_title')}</h2>
-            {/* Reddit quote */}
-            <div style={{background:'rgba(255,69,0,0.06)',border:'1px solid rgba(255,69,0,0.2)',borderLeft:'4px solid #FF4500',borderRadius:'12px',padding:'24px 28px',marginBottom:'32px',textAlign:'left' as const}}>
-              <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'8px'}}>
-                <span style={{fontSize:'13px',color:'#FF4500',fontWeight:'700',letterSpacing:'0.5px'}}>r/DigitalPrivacy</span>
-                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.25)'}}>·</span>
-                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.3)'}}>Jun 1, 2026</span>
-              </div>
-              <p style={{fontSize:'clamp(15px,2vw,18px)',color:'#e5e7eb',fontStyle:'italic',lineHeight:'1.6',marginBottom:'12px'}}>
-                &ldquo;{t('social_quote')}&rdquo;
-              </p>
-              <div style={{fontSize:'12px',color:'rgba(255,255,255,0.35)'}}>{t('social_attr')}</div>
-            </div>
-            {/* Stats */}
-            <div style={{display:'flex',justifyContent:'center',gap:'32px',flexWrap:'wrap' as const}}>
-              {[t('social_stat1'), t('social_stat2'), t('social_stat3')].map((stat, i) => (
-                <div key={i} style={{background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:'10px',padding:'12px 20px',fontSize:'13px',color:'rgba(255,255,255,0.6)',fontWeight:'600'}}>
-                  {stat}
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -2809,7 +2524,7 @@ export default function Home() {
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="1.5" style={{margin: '0 auto 12px', display: 'block'}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <h2 style={{fontSize: 'clamp(24px,4vw,34px)', fontWeight: '800', color: '#fff', marginBottom: '24px'}}>{t('security_title')}</h2>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
-              {[t('security_point1'), t('sp_sec_2'), t('security_point3')].map(p => (
+              {[t('security_point1'), t('v2_sec_2'), t('v2_sec_3')].map(p => (
                 <div key={p} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '10px'}}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0, marginTop: '2px'}}><polyline points="20 6 9 17 4 12"></polyline></svg>
                   {p}
@@ -2858,7 +2573,11 @@ export default function Home() {
                 <a href="/privacy" className="footer-link">Privacy Policy</a>
                 <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Support</a>
               </div>
-              <p className="footer-note">{t('footer_note')}</p>
+              <p className="footer-note">{t('v2_footer_note')}</p>
+            </div>
+            <div style={{textAlign: 'center' as const, marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)'}}>
+              <a href="/per-contact" className="footer-link" style={{fontSize: '12px'}}>{t('v2_footer_pcp')}</a>
+              <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '8px'}}>{t('v2_footer_disclaimer')}</p>
             </div>
           </div>
         </footer>
@@ -2874,7 +2593,7 @@ export default function Home() {
               </svg>
             </button>
             <h2 className="modal-title">{t('modal_title')}</h2>
-            <p className="modal-subtitle">{t('modal_sub')}</p>
+            <p className="modal-subtitle">{t('v2_modal_sub')}</p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
@@ -2885,7 +2604,7 @@ export default function Home() {
             >
               {t('modal_btn')}
             </button>
-            <p className="modal-privacy">{t('modal_note')}</p>
+            <p className="modal-privacy">{t('v2_modal_note')}</p>
           </div>
         </div>
 
