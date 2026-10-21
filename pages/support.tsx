@@ -440,8 +440,18 @@ export default function Support() {
                 </div>
 
                 <div className="faq-item">
-                  <div className="faq-question">What is the free tier limit?</div>
-                  <div className="faq-answer">Up to 2 contacts for free. Upgrade to Pro for unlimited contacts and priority support.</div>
+                  <div className="faq-question">Is DualProfile free?</div>
+                  <div className="faq-answer">From 1 November 2026, DualProfile is Pro-only: £9.99, paid once, no subscription. If you already use it for free, your photos and settings are kept and come back as soon as you activate Pro.</div>
+                </div>
+
+                <div className="faq-item">
+                  <div className="faq-question">Where do I enter my licence key?</div>
+                  <div className="faq-answer">Open the DualProfile extension. Your key is in your Lemon Squeezy receipt email. If Pro is required and not active yet, the extension shows a box for the key straight away.</div>
+                </div>
+
+                <div className="faq-item">
+                  <div className="faq-question">Do my contacts need Pro to see the photo I assign them?</div>
+                  <div className="faq-answer">No. They need DualProfile installed with their WhatsApp number saved, but seeing photos assigned to them is free.</div>
                 </div>
               </div>
             </section>

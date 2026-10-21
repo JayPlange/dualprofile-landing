@@ -110,9 +110,10 @@ export default function PerContact() {
         </section>
 
         <section className="pc-card">
-          <h2 className="pc-h2">Pro for Per-Contact Photos</h2>
-          <p className="pc-p">Included in the same one-time £9.99 Pro. No subscription.</p>
+          <h2 className="pc-h2">Pricing</h2>
+          <p className="pc-p">Per-Contact Photos is part of DualProfile Pro: £9.99, paid once, no subscription. From 1 November 2026, DualProfile is Pro-only.</p>
           <ul className="pc-list">
+            <li><strong style={{color:'#fff'}}>Only you need Pro.</strong> The contacts you assign a photo to just need DualProfile installed, with their WhatsApp number saved, to see it.</li>
             <li><strong style={{color:'#fff'}}>Bulk Contact Assignment.</strong> Assign a photo to several contacts in one go.</li>
             <li><strong style={{color:'#fff'}}>Export &amp; Import.</strong> Back up your contact assignments as a file and restore them on any device.</li>
             <li><strong style={{color:'#fff'}}>Multi-Device Sync.</strong> Your preferences sync across your devices.</li>
@@ -140,7 +141,7 @@ export default function PerContact() {
         </section>
 
         <div style={{textAlign:'center',marginTop:'2.5rem'}}>
-          <a className="pc-btn" href={STORE} target="_blank" rel="noopener noreferrer">Install free</a>
+          <a className="pc-btn" href={STORE} target="_blank" rel="noopener noreferrer">Get DualProfile</a>
           <p style={{marginTop:'1rem'}}><a className="pc-back" href="/">&larr; Back to Scheduled Photos</a></p>
         </div>
 

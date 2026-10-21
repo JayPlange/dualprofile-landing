@@ -4,6 +4,26 @@ import Head from 'next/head';
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
   en: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Get DualProfile`,
+    po_trust: `£9.99 once. No subscription. Pro-only from 1 November 2026.`,
+    po_ft_title: `One licence. Every feature.`,
+    po_ft_sub: `Scheduled Photos, Photo History and Per-Contact Photos are all part of Pro.`,
+    po_pr_sub: `One plan, paid once. No subscription, no renewals.`,
+    po_pro_sub: `Everything DualProfile does`,
+    po_days: `Choose the days and the time window`,
+    po_confirm: `One-tap confirm for every switch`,
+    po_pcp: `Per-Contact Photos (experimental)`,
+    po_buy: `Get Pro · £9.99`,
+    po_have_key: `Already bought Pro?`,
+    po_install: `Install DualProfile and enter your licence key.`,
+    po_existing: `Already using DualProfile for free? It keeps working until 1 November 2026. Your photos and settings are kept, and come back as soon as you activate Pro.`,
+    po_faq_price_q: `How much does DualProfile cost?`,
+    po_faq_price_a: `£9.99, paid once. From 1 November 2026 there is no free plan. There is no subscription and no expiry, and one licence covers Scheduled Photos, Photo History & Revert, Per-Contact Photos and future updates.`,
+    po_faq_exist_q: `I use DualProfile for free today. What happens on 1 November 2026?`,
+    po_faq_exist_a: `The extension shows you a notice before the date. From 1 November 2026 you need Pro to keep using it. Your photos, contacts and schedule stay saved, and come back as soon as you activate Pro.`,
+    po_modal_sub: `Works on WhatsApp Web in Chrome and Edge. From 1 November 2026, DualProfile needs Pro: £9.99, paid once.`,
+    po_modal_note: `One-time £9.99 · No subscription`,
     feat_future: `All future features included`,
     feat_everything_free: `Everything in Free`,
     pro_once: `one-time · no subscription`,
@@ -72,7 +92,7 @@ const LANGS: Record<string, Record<string, string>> = {
     features_title: 'One WhatsApp. Multiple identities.',
     features_sub: 'You decide who sees what.',
     feat1_title: `Scheduled Photos`,
-    feat1_desc: `Your real WhatsApp photo switches by day and time — work photo 9-6, personal the rest of the time. One tap confirms each change, visible on every device, no one else needs to install anything.`,
+    feat1_desc: `Your real WhatsApp photo switches by day and time: work photo 9 to 6, personal the rest of the time. One tap confirms each change, it shows on every device, and no one else needs to install anything.`,
     feat2_title: `Photo History & Revert`,
     feat2_desc: `Restore any of your last 3 uploaded photos per slot. Changed your mind? One tap to go back.`,
     feat3_title: 'Export & Import',
@@ -158,7 +178,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_4_q: 'Is my data secure?',
     faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     faq_5_q: `Does Scheduled Photos need anyone else to install DualProfile?`,
-    faq_5_a: `No. It changes your own account's real photo, so nobody else needs anything installed — that's what makes it work from the very first day.`,
+    faq_5_a: `No. It changes your own account's real photo, so nobody else needs anything installed. That is what makes it work from the very first day.`,
     // Two entries added 2026-08-30 (Webb): the FAQ should only answer
     // purchase-blocking questions. These two were missing outright --
     // faq_6 directly addresses the exact expectation gap most likely
@@ -167,7 +187,7 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_6_q: `What happens if the person I share with doesn't install DualProfile?`,
     faq_6_a: `They keep seeing your normal WhatsApp photo. Per-Contact Photos only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
     faq_7_q: `Is Pro a subscription?`,
-    faq_7_a: `No. Pro is a single one-time payment — £9.99, charged once. There's no recurring billing, no trial that auto-converts, and no expiry.`,
+    faq_7_a: `No. Pro is a single one-time payment of £9.99. There's no recurring billing, no trial that auto-converts, and no expiry.`,
     footer_rights: 'All rights reserved.',
     footer_note: `Your photos are synced securely — only the contacts you choose can see them.`,
     copied_msg: 'Copied!',
@@ -316,6 +336,26 @@ const LANGS: Record<string, Record<string, string>> = {
     v2_modal_note: `Free forever · No credit card required`,
   },
   es: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obtener DualProfile`,
+    po_trust: `£9.99 una sola vez. Sin suscripción. Solo Pro desde el 1 de noviembre de 2026.`,
+    po_ft_title: `Una licencia. Todas las funciones.`,
+    po_ft_sub: `Fotos programadas, historial de fotos y fotos por contacto forman parte de Pro.`,
+    po_pr_sub: `Un plan, un solo pago. Sin suscripción ni renovaciones.`,
+    po_pro_sub: `Todo lo que hace DualProfile`,
+    po_days: `Elige los días y el horario`,
+    po_confirm: `Confirma cada cambio con un toque`,
+    po_pcp: `Fotos por contacto (experimental)`,
+    po_buy: `Obtener Pro · £9.99`,
+    po_have_key: `¿Ya compraste Pro?`,
+    po_install: `Instala DualProfile e introduce tu clave de licencia.`,
+    po_existing: `¿Ya usas DualProfile gratis? Seguirá funcionando hasta el 1 de noviembre de 2026. Tus fotos y ajustes se conservan y vuelven en cuanto actives Pro.`,
+    po_faq_price_q: `¿Cuánto cuesta DualProfile?`,
+    po_faq_price_a: `£9.99, un solo pago. Desde el 1 de noviembre de 2026 no hay plan gratuito. No hay suscripción ni caducidad, y una licencia incluye fotos programadas, historial y restauración de fotos, fotos por contacto y futuras actualizaciones.`,
+    po_faq_exist_q: `Hoy uso DualProfile gratis. ¿Qué pasa el 1 de noviembre de 2026?`,
+    po_faq_exist_a: `La extensión te avisa antes de esa fecha. Desde el 1 de noviembre de 2026 necesitas Pro para seguir usándola. Tus fotos, contactos y horario quedan guardados y vuelven en cuanto actives Pro.`,
+    po_modal_sub: `Funciona en WhatsApp Web con Chrome y Edge. Desde el 1 de noviembre de 2026, DualProfile requiere Pro: £9.99, un solo pago.`,
+    po_modal_note: `Pago único de £9.99 · Sin suscripción`,
     feat_future: `Todas las funciones futuras incluidas`,
     feat_everything_free: `Todo lo de Gratis`,
     pro_once: `pago unico · sin suscripcion`,
@@ -484,6 +524,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contactos ilimitados, gratis para siempre · Sin tarjeta de credito`,
   },
   fr: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obtenir DualProfile`,
+    po_trust: `9,99 £ en une fois. Sans abonnement. Uniquement Pro à partir du 1er novembre 2026.`,
+    po_ft_title: `Une licence. Toutes les fonctions.`,
+    po_ft_sub: `Photos programmées, historique des photos et photos par contact font toutes partie de Pro.`,
+    po_pr_sub: `Une seule offre, payée une fois. Sans abonnement ni renouvellement.`,
+    po_pro_sub: `Tout ce que fait DualProfile`,
+    po_days: `Choisissez les jours et la plage horaire`,
+    po_confirm: `Confirmation en un geste pour chaque changement`,
+    po_pcp: `Photos par contact (expérimental)`,
+    po_buy: `Passer à Pro · 9,99 £`,
+    po_have_key: `Déjà acheté Pro ?`,
+    po_install: `Installez DualProfile et saisissez votre clé de licence.`,
+    po_existing: `Vous utilisez DualProfile gratuitement ? Il fonctionne jusqu’au 1er novembre 2026. Vos photos et réglages sont conservés et reviennent dès que vous activez Pro.`,
+    po_faq_price_q: `Combien coûte DualProfile ?`,
+    po_faq_price_a: `9,99 £, payés une fois. À partir du 1er novembre 2026, il n’y a plus d’offre gratuite. Pas d’abonnement ni d’expiration : une licence couvre les photos programmées, l’historique et la restauration des photos, les photos par contact et les mises à jour futures.`,
+    po_faq_exist_q: `J’utilise DualProfile gratuitement. Que se passe-t-il le 1er novembre 2026 ?`,
+    po_faq_exist_a: `L’extension vous prévient avant cette date. À partir du 1er novembre 2026, Pro est nécessaire pour continuer. Vos photos, contacts et horaires restent enregistrés et reviennent dès que vous activez Pro.`,
+    po_modal_sub: `Fonctionne sur WhatsApp Web avec Chrome et Edge. À partir du 1er novembre 2026, DualProfile nécessite Pro : 9,99 £, payés une fois.`,
+    po_modal_note: `9,99 £ en une fois · Sans abonnement`,
     feat_future: `Toutes les futures fonctionnalites incluses`,
     feat_everything_free: `Tout ce qui est dans Gratuit`,
     pro_once: `paiement unique · sans abonnement`,
@@ -652,6 +712,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contacts illimites, gratuit pour toujours · Sans carte de credit`,
   },
   pt: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obter o DualProfile`,
+    po_trust: `£9.99 uma única vez. Sem subscrição. Só Pro a partir de 1 de novembro de 2026.`,
+    po_ft_title: `Uma licença. Todas as funcionalidades.`,
+    po_ft_sub: `Fotos agendadas, histórico de fotos e fotos por contacto fazem todas parte do Pro.`,
+    po_pr_sub: `Um plano, pago uma vez. Sem subscrição nem renovações.`,
+    po_pro_sub: `Tudo o que o DualProfile faz`,
+    po_days: `Escolha os dias e o horário`,
+    po_confirm: `Confirmação com um toque em cada troca`,
+    po_pcp: `Fotos por contacto (experimental)`,
+    po_buy: `Obter Pro · £9.99`,
+    po_have_key: `Já comprou o Pro?`,
+    po_install: `Instale o DualProfile e introduza a sua chave de licença.`,
+    po_existing: `Já usa o DualProfile grátis? Continua a funcionar até 1 de novembro de 2026. As suas fotos e definições são mantidas e voltam assim que ativar o Pro.`,
+    po_faq_price_q: `Quanto custa o DualProfile?`,
+    po_faq_price_a: `£9.99, pago uma vez. A partir de 1 de novembro de 2026 deixa de haver plano gratuito. Sem subscrição nem expiração: uma licença inclui fotos agendadas, histórico e reposição de fotos, fotos por contacto e atualizações futuras.`,
+    po_faq_exist_q: `Uso o DualProfile grátis. O que acontece a 1 de novembro de 2026?`,
+    po_faq_exist_a: `A extensão avisa-o antes da data. A partir de 1 de novembro de 2026 precisa do Pro para continuar a usá-la. As suas fotos, contactos e horário ficam guardados e voltam assim que ativar o Pro.`,
+    po_modal_sub: `Funciona no WhatsApp Web com Chrome e Edge. A partir de 1 de novembro de 2026, o DualProfile requer Pro: £9.99, pago uma vez.`,
+    po_modal_note: `Pagamento único de £9.99 · Sem subscrição`,
     feat_future: `Todas as funcionalidades futuras incluidas`,
     feat_everything_free: `Tudo do plano Gratis`,
     pro_once: `pagamento unico · sem subscricao`,
@@ -820,6 +900,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contatos ilimitados, gratis para sempre · Sem cartao de credito`,
   },
   de: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile holen`,
+    po_trust: `Einmalig 9,99 £. Kein Abo. Ab 1. November 2026 nur mit Pro.`,
+    po_ft_title: `Eine Lizenz. Alle Funktionen.`,
+    po_ft_sub: `Geplante Fotos, Fotoverlauf und Fotos pro Kontakt gehören alle zu Pro.`,
+    po_pr_sub: `Ein Tarif, einmal bezahlt. Kein Abo, keine Verlängerung.`,
+    po_pro_sub: `Alles, was DualProfile kann`,
+    po_days: `Tage und Zeitfenster wählen`,
+    po_confirm: `Jeder Wechsel mit einem Tipp bestätigt`,
+    po_pcp: `Fotos pro Kontakt (experimentell)`,
+    po_buy: `Pro holen · 9,99 £`,
+    po_have_key: `Pro schon gekauft?`,
+    po_install: `Installiere DualProfile und gib deinen Lizenzschlüssel ein.`,
+    po_existing: `Du nutzt DualProfile bisher kostenlos? Es funktioniert bis zum 1. November 2026. Deine Fotos und Einstellungen bleiben erhalten und sind sofort wieder da, wenn du Pro aktivierst.`,
+    po_faq_price_q: `Was kostet DualProfile?`,
+    po_faq_price_a: `9,99 £, einmalig. Ab dem 1. November 2026 gibt es keinen kostenlosen Tarif mehr. Kein Abo, kein Ablaufdatum: Eine Lizenz umfasst geplante Fotos, Fotoverlauf und Wiederherstellen, Fotos pro Kontakt und künftige Updates.`,
+    po_faq_exist_q: `Ich nutze DualProfile kostenlos. Was passiert am 1. November 2026?`,
+    po_faq_exist_a: `Die Erweiterung weist dich vorher darauf hin. Ab dem 1. November 2026 brauchst du Pro, um sie weiter zu nutzen. Deine Fotos, Kontakte und dein Zeitplan bleiben gespeichert und sind sofort wieder da, wenn du Pro aktivierst.`,
+    po_modal_sub: `Funktioniert mit WhatsApp Web in Chrome und Edge. Ab dem 1. November 2026 benötigt DualProfile Pro: 9,99 £, einmalig.`,
+    po_modal_note: `Einmalig 9,99 £ · Kein Abo`,
     feat_future: `Alle zukunftigen Funktionen inklusive`,
     feat_everything_free: `Alles aus Kostenlos`,
     pro_once: `einmalig · kein Abo`,
@@ -988,6 +1088,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Unbegrenzte Kontakte, kostenlos fur immer · Keine Kreditkarte erforderlich`,
   },
   hi: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile पाएँ`,
+    po_trust: `£9.99 एक बार। कोई सब्सक्रिप्शन नहीं। 1 नवंबर 2026 से केवल Pro।`,
+    po_ft_title: `एक लाइसेंस। हर फ़ीचर।`,
+    po_ft_sub: `शेड्यूल्ड फ़ोटो, फ़ोटो हिस्ट्री और हर कॉन्टैक्ट के लिए अलग फ़ोटो, सब Pro में शामिल हैं।`,
+    po_pr_sub: `एक प्लान, एक बार भुगतान। कोई सब्सक्रिप्शन या रिन्यूअल नहीं।`,
+    po_pro_sub: `DualProfile की हर सुविधा`,
+    po_days: `दिन और समय चुनें`,
+    po_confirm: `हर बदलाव एक टैप से कन्फ़र्म करें`,
+    po_pcp: `हर कॉन्टैक्ट के लिए अलग फ़ोटो (प्रयोगात्मक)`,
+    po_buy: `Pro लें · £9.99`,
+    po_have_key: `Pro पहले ही खरीद लिया?`,
+    po_install: `DualProfile इंस्टॉल करें और अपनी लाइसेंस की डालें।`,
+    po_existing: `अभी DualProfile मुफ़्त में इस्तेमाल कर रहे हैं? यह 1 नवंबर 2026 तक चलता रहेगा। आपकी फ़ोटो और सेटिंग्स सुरक्षित रहेंगी और Pro एक्टिवेट करते ही वापस आ जाएँगी।`,
+    po_faq_price_q: `DualProfile की कीमत क्या है?`,
+    po_faq_price_a: `£9.99, एक बार। 1 नवंबर 2026 से कोई मुफ़्त प्लान नहीं है। कोई सब्सक्रिप्शन या समय-सीमा नहीं, और एक लाइसेंस में शेड्यूल्ड फ़ोटो, फ़ोटो हिस्ट्री और रिवर्ट, हर कॉन्टैक्ट के लिए अलग फ़ोटो और आगे के अपडेट शामिल हैं।`,
+    po_faq_exist_q: `मैं अभी DualProfile मुफ़्त में इस्तेमाल करता हूँ। 1 नवंबर 2026 को क्या होगा?`,
+    po_faq_exist_a: `एक्सटेंशन आपको तारीख से पहले सूचना देगा। 1 नवंबर 2026 से इसे इस्तेमाल करते रहने के लिए Pro चाहिए। आपकी फ़ोटो, कॉन्टैक्ट और शेड्यूल सुरक्षित रहते हैं और Pro एक्टिवेट करते ही वापस आ जाते हैं।`,
+    po_modal_sub: `Chrome और Edge में WhatsApp Web पर चलता है। 1 नवंबर 2026 से DualProfile के लिए Pro चाहिए: £9.99, एक बार।`,
+    po_modal_note: `एक बार £9.99 · कोई सब्सक्रिप्शन नहीं`,
     feat_future: `सभी भविष्य के फ़ीचर शामिल`,
     feat_everything_free: `मुफ़्त प्लान का सब कुछ`,
     pro_once: `एक बार भुगतान · कोई सब्सक्रिप्शन नहीं`,
@@ -1156,6 +1276,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `असीमित संपर्क, हमेशा मुफ़्त · क्रेडिट कार्ड की ज़रूरत नहीं`,
   },
   zh: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `获取 DualProfile`,
+    po_trust: `一次性 £9.99，无订阅。自 2026年11月1日起仅限 Pro。`,
+    po_ft_title: `一个许可证，全部功能。`,
+    po_ft_sub: `定时头像、头像历史和按联系人头像都包含在 Pro 中。`,
+    po_pr_sub: `一个方案，一次付清。无订阅，无续费。`,
+    po_pro_sub: `DualProfile 的全部功能`,
+    po_days: `选择日期和时间段`,
+    po_confirm: `每次切换一键确认`,
+    po_pcp: `按联系人头像（实验功能）`,
+    po_buy: `获取 Pro · £9.99`,
+    po_have_key: `已经购买 Pro？`,
+    po_install: `安装 DualProfile 并输入你的许可证密钥。`,
+    po_existing: `正在免费使用 DualProfile？它会继续工作到 2026年11月1日。你的照片和设置都会保留，激活 Pro 后立即恢复。`,
+    po_faq_price_q: `DualProfile 多少钱？`,
+    po_faq_price_a: `£9.99，一次性付款。自 2026年11月1日起不再提供免费方案。无订阅、不过期，一个许可证包含定时头像、头像历史与恢复、按联系人头像以及未来更新。`,
+    po_faq_exist_q: `我现在免费使用 DualProfile，2026年11月1日会怎样？`,
+    po_faq_exist_a: `扩展会在此日期前提醒你。自 2026年11月1日起，需要 Pro 才能继续使用。你的照片、联系人和时间安排都会保存，激活 Pro 后立即恢复。`,
+    po_modal_sub: `适用于 Chrome 和 Edge 上的 WhatsApp Web。自 2026年11月1日起，DualProfile 需要 Pro：£9.99，一次性付款。`,
+    po_modal_note: `一次性 £9.99 · 无订阅`,
     feat_future: `包含所有未来功能`,
     feat_everything_free: `包含免费版全部功能`,
     pro_once: `一次性付款 · 无订阅`,
@@ -1324,6 +1464,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3天完整访问 · 无限联系人永久免费 · 无需信用卡`,
   },
   ja: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile を入手`,
+    po_trust: `£9.99 の買い切り。サブスクなし。2026年11月1日から Pro 専用。`,
+    po_ft_title: `ひとつのライセンスで、すべての機能。`,
+    po_ft_sub: `スケジュール写真、写真履歴、連絡先ごとの写真はすべて Pro に含まれます。`,
+    po_pr_sub: `プランはひとつ、支払いは一度だけ。サブスクも更新もありません。`,
+    po_pro_sub: `DualProfile のすべての機能`,
+    po_days: `曜日と時間帯を選択`,
+    po_confirm: `切り替えはワンタップで確認`,
+    po_pcp: `連絡先ごとの写真（試験運用）`,
+    po_buy: `Pro を入手 · £9.99`,
+    po_have_key: `Pro を購入済みですか？`,
+    po_install: `DualProfile をインストールしてライセンスキーを入力してください。`,
+    po_existing: `DualProfile を無料で使っていますか？2026年11月1日まではそのまま使えます。写真と設定は保存され、Pro を有効にするとすぐに戻ります。`,
+    po_faq_price_q: `DualProfile の料金は？`,
+    po_faq_price_a: `£9.99 の買い切りです。2026年11月1日以降、無料プランはありません。サブスクも有効期限もなく、ひとつのライセンスでスケジュール写真、写真履歴と復元、連絡先ごとの写真、今後のアップデートが使えます。`,
+    po_faq_exist_q: `今は DualProfile を無料で使っています。2026年11月1日に何が起きますか？`,
+    po_faq_exist_a: `期日の前に拡張機能でお知らせします。2026年11月1日からは、引き続き使うには Pro が必要です。写真、連絡先、スケジュールは保存されており、Pro を有効にするとすぐに戻ります。`,
+    po_modal_sub: `Chrome と Edge の WhatsApp Web で動作します。2026年11月1日から DualProfile には Pro（£9.99、買い切り）が必要です。`,
+    po_modal_note: `£9.99 の買い切り · サブスクなし`,
     feat_future: `今後のすべての機能を含む`,
     feat_everything_free: `無料版のすべて`,
     pro_once: `買い切り · サブスクなし`,
@@ -1492,6 +1652,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3日間フルアクセス・連絡先無制限で永久無料・カード不要`,
   },
   ru: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Получить DualProfile`,
+    po_trust: `£9.99 один раз. Без подписки. Только Pro с 1 ноября 2026 г.`,
+    po_ft_title: `Одна лицензия. Все функции.`,
+    po_ft_sub: `Фото по расписанию, история фото и фото для отдельных контактов входят в Pro.`,
+    po_pr_sub: `Один тариф, оплата один раз. Без подписки и продлений.`,
+    po_pro_sub: `Всё, что умеет DualProfile`,
+    po_days: `Выберите дни и время`,
+    po_confirm: `Каждая смена подтверждается одним касанием`,
+    po_pcp: `Фото для отдельных контактов (экспериментально)`,
+    po_buy: `Получить Pro · £9.99`,
+    po_have_key: `Уже купили Pro?`,
+    po_install: `Установите DualProfile и введите лицензионный ключ.`,
+    po_existing: `Пользуетесь DualProfile бесплатно? Он будет работать до 1 ноября 2026 г. Ваши фото и настройки сохранятся и вернутся сразу после активации Pro.`,
+    po_faq_price_q: `Сколько стоит DualProfile?`,
+    po_faq_price_a: `£9.99, разовый платёж. С 1 ноября 2026 г. бесплатного тарифа нет. Без подписки и срока действия: одна лицензия включает фото по расписанию, историю и восстановление фото, фото для отдельных контактов и будущие обновления.`,
+    po_faq_exist_q: `Я пользуюсь DualProfile бесплатно. Что будет 1 ноября 2026 г.?`,
+    po_faq_exist_a: `Расширение заранее предупредит вас. С 1 ноября 2026 г. для дальнейшего использования нужен Pro. Ваши фото, контакты и расписание сохранятся и вернутся сразу после активации Pro.`,
+    po_modal_sub: `Работает в WhatsApp Web в Chrome и Edge. С 1 ноября 2026 г. для DualProfile нужен Pro: £9.99, разовый платёж.`,
+    po_modal_note: `Разово £9.99 · Без подписки`,
     feat_future: `Все будущие функции включены`,
     feat_everything_free: `Всё из бесплатного плана`,
     pro_once: `разовый платёж · без подписки`,
@@ -1920,7 +2100,8 @@ export default function Home() {
     { question: t('faq_5_q'), answer: t('faq_5_a') },
     { question: t('faq_2_q'), answer: t('v2_faq_mobile_a') },
     { question: t('v2_faq_ask_q'), answer: t('v2_faq_ask_a') },
-    { question: t('faq_3_q'), answer: t('v2_faq_free_a') },
+    { question: t('po_faq_price_q'), answer: t('po_faq_price_a') },
+    { question: t('po_faq_exist_q'), answer: t('po_faq_exist_a') },
     { question: t('faq_7_q'), answer: t('faq_7_a') },
   ];
 
@@ -1928,7 +2109,7 @@ export default function Home() {
     <>
       <Head>
         <title>DualProfile: Schedule Your WhatsApp Profile Photo</title>
-        <meta name="description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Free Chrome and Edge extension for WhatsApp Web." />
+        <meta name="description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://vivaup.org/" />
 
@@ -1936,13 +2117,13 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://vivaup.org/" />
         <meta property="og:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
-        <meta property="og:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Free Chrome and Edge extension for WhatsApp Web." />
+        <meta property="og:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta property="og:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
-        <meta name="twitter:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Free Chrome and Edge extension for WhatsApp Web." />
+        <meta name="twitter:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta name="twitter:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Structured Data */}
@@ -1951,20 +2132,18 @@ export default function Home() {
           "@type": "SoftwareApplication",
           "name": "DualProfile",
           "url": "https://vivaup.org",
-          "description": "Schedule when your WhatsApp profile photo changes. Use a work photo by day and a personal photo after hours. Free Chrome and Edge extension for WhatsApp Web.",
+          "description": "Schedule when your WhatsApp profile photo changes. Use a work photo by day and a personal photo after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription.",
           "applicationCategory": "BrowserApplication",
           "operatingSystem": "Chrome, Edge",
           "offers": [
-            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP",
-              "description": "Scheduled Photos, free forever. No card required." },
             { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP",
-              "description": "One-time payment. Photo History and Revert, priority support." }
+              "description": "One-time payment, no subscription. Scheduled Photos, Photo History and Revert, Per-Contact Photos, priority support." }
           ],
           "featureList": [
             "Schedule when your WhatsApp profile photo changes",
             "Use different photos for work, evenings, weekends and events",
             "Confirm each scheduled change with one tap",
-            "Free forever, with Pro as a one-time £9.99 upgrade",
+            "One licence, £9.99 paid once, no subscription",
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
@@ -2069,8 +2248,8 @@ export default function Home() {
                 )}
               </div>
               </div>
-              <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
-                {t('nav_cta')}
+              <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary" style={{color: 'var(--primary-foreground)'}}>
+                {t('po_cta')}
               </a>
             </div>
           </div>
@@ -2251,7 +2430,7 @@ export default function Home() {
                   marginRight: '16px'
                 }}
               >
-                {t('hero_cta')}
+                {t('po_cta')}
               </button>
               <button 
                 className="btn btn-outline btn-lg"
@@ -2267,7 +2446,7 @@ export default function Home() {
             </div>
             {/* Sub-CTA: trial note */}
             <p style={{fontSize:'13px',color:'rgba(255,255,255,0.5)',marginBottom:'10px',letterSpacing:'0.3px'}}>
-              {t('v2_trust')}
+              {t('po_trust')}
             </p>
             {/* Example schedule: plain text chips, not a UI mock-up. Labelled as an example. */}
             <div role="group" aria-label={t('sp_demo_label')} style={{margin: '26px 0 24px', display: 'inline-flex', flexDirection: 'column' as const, alignItems: 'center', gap: '10px'}}>
@@ -2401,16 +2580,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features: Scheduled Photos (Free & Pro) first, then the Pro controls. */}
+        {/* Features: both are Pro (Pro-only from 1 November 2026). */}
         <section id="features" className="features">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">{t('v2_ft_title')}</h2>
-              <p className="section-subtitle">{t('ft_sub')}</p>
+              <h2 className="section-title">{t('po_ft_title')}</h2>
+              <p className="section-subtitle">{t('po_ft_sub')}</p>
             </div>
             <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))'}}>
               <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const,border:'1px solid rgba(37,211,102,0.3)'}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'#25D366',color:'#000',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('v2_badge_free')}</div>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'#25D366',color:'#000',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
@@ -2434,45 +2613,16 @@ export default function Home() {
           <div className="container">
             <div className="section-header">
               <h2 className="section-title">{t('pricing_title')}</h2>
-              <p className="section-subtitle">{t('v2_pr_sub')}</p>
+              <p className="section-subtitle">{t('po_pr_sub')}</p>
             </div>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: '1fr',
               gap: '1.5rem',
-              maxWidth: '760px',
+              maxWidth: '420px',
               margin: '0 auto'
             }}>
-              {/* Free */}
-              <div className="glass-card" style={{padding: '2.25rem', textAlign: 'center' as const}}>
-                <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1rem'}}>{t('v2_free_sub')}</p>
-                <div style={{background:'rgba(37,211,102,0.08)',border:'1px solid rgba(37,211,102,0.2)',borderRadius:'8px',padding:'8px 12px',marginBottom:'1rem',fontSize:'12px',color:'#25D366',fontWeight:'600'}}>
-                  {t('free_trial_note')}
-                </div>
-                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('free_forever')}</p>
-                <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {/* Scheduled Photos is the headline free feature: it needs no
-                      counterparty install, so it works for 100% of installers
-                      on day one. */}
-                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
-                  </li>
-                  {[t('v2_free_1'), t('v2_free_2'), t('feat_chrome')].map(f => (
-                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-outline" style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
-                  {t('btn_start_trial')}
-                </button>
-              </div>
-
-              {/* Pro — the only paid tier. One-time, no subscription. */}
+              {/* Pro: the only tier from 1 November 2026. One-time, no subscription. */}
               <div className="glass-card glow-primary" style={{
                 padding: '2.25rem', textAlign: 'center' as const,
                 border: '1px solid rgba(37,211,102,0.4)', position: 'relative' as const
@@ -2484,33 +2634,45 @@ export default function Home() {
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
                 }}>{t('badge_once')}</div>
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('v2_pro_sub')}</p>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('po_pro_sub')}</p>
                 <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $13 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_everything_free')}</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
-                  {[t('feat_photo_history'), t('feat_priority'), t('feat_nofee')].map(f => (
+                  {[t('po_days'), t('po_confirm'), t('feat_photo_history')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
                   ))}
                   <li style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                    <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> <a href="/per-contact" style={{color: '#d1d5db', textDecoration: 'underline', textUnderlineOffset: '3px'}}>{t('v2_pro_pcp')}</a>
+                    <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> <a href="/per-contact" style={{color: '#d1d5db', textDecoration: 'underline', textUnderlineOffset: '3px'}}>{t('po_pcp')}</a>
                   </li>
+                  {[t('feat_chrome'), t('feat_priority'), t('feat_nofee')].map(f => (
+                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
+                    </li>
+                  ))}
                   <li style={{padding: '0.5rem 0', color: '#9ca3af', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontStyle: 'italic' as const}}>
                     <span style={{color: '#6b7280'}}>+</span> {t('feat_future')}
                   </li>
                 </ul>
                 <button className="btn btn-primary" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}>
-                  {t('btn_get_pro')}
+                  {t('po_buy')}
                 </button>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginTop: '1rem', marginBottom: 0}}>
+                  {t('po_have_key')}{' '}
+                  <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noopener noreferrer" style={{color: '#25D366'}}>{t('po_install')}</a>
+                </p>
               </div>
             </div>
+            <p style={{maxWidth: '560px', margin: '1.5rem auto 0', textAlign: 'center' as const, color: '#9ca3af', fontSize: '0.9rem'}}>
+              {t('po_existing')}
+            </p>
           </div>
         </section>
 
@@ -2593,7 +2755,7 @@ export default function Home() {
               </svg>
             </button>
             <h2 className="modal-title">{t('modal_title')}</h2>
-            <p className="modal-subtitle">{t('v2_modal_sub')}</p>
+            <p className="modal-subtitle">{t('po_modal_sub')}</p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
@@ -2602,9 +2764,9 @@ export default function Home() {
                 showToast("Opening Chrome Web Store...", "Add DualProfile to Chrome to get started.");
               }}
             >
-              {t('modal_btn')}
+              {t('po_cta')}
             </button>
-            <p className="modal-privacy">{t('v2_modal_note')}</p>
+            <p className="modal-privacy">{t('po_modal_note')}</p>
           </div>
         </div>
 
