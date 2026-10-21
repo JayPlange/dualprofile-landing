@@ -4,6 +4,26 @@ import Head from 'next/head';
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
   en: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Get DualProfile`,
+    po_trust: `£9.99 once. No subscription. Pro-only from 1 November 2026.`,
+    po_ft_title: `One licence. Every feature.`,
+    po_ft_sub: `Scheduled Photos, Photo History and Per-Contact Photos are all part of Pro.`,
+    po_pr_sub: `One plan, paid once. No subscription, no renewals.`,
+    po_pro_sub: `Everything DualProfile does`,
+    po_days: `Choose the days and the time window`,
+    po_confirm: `One-tap confirm for every switch`,
+    po_pcp: `Per-Contact Photos (experimental)`,
+    po_buy: `Get Pro · £9.99`,
+    po_have_key: `Already bought Pro?`,
+    po_install: `Install DualProfile and enter your licence key.`,
+    po_existing: `Already using DualProfile for free? It keeps working until 1 November 2026. Your photos and settings are kept, and come back as soon as you activate Pro.`,
+    po_faq_price_q: `How much does DualProfile cost?`,
+    po_faq_price_a: `£9.99, paid once. From 1 November 2026 there is no free plan. There is no subscription and no expiry, and one licence covers Scheduled Photos, Photo History & Revert, Per-Contact Photos and future updates.`,
+    po_faq_exist_q: `I use DualProfile for free today. What happens on 1 November 2026?`,
+    po_faq_exist_a: `The extension shows you a notice before the date. From 1 November 2026 you need Pro to keep using it. Your photos, contacts and schedule stay saved, and come back as soon as you activate Pro.`,
+    po_modal_sub: `Works on WhatsApp Web in Chrome and Edge. From 1 November 2026, DualProfile needs Pro: £9.99, paid once.`,
+    po_modal_note: `One-time £9.99 · No subscription`,
     feat_future: `All future features included`,
     feat_everything_free: `Everything in Free`,
     pro_once: `one-time · no subscription`,
@@ -19,7 +39,7 @@ const LANGS: Record<string, Record<string, string>> = {
     // both sides), per Webb's "Scheduled Photos = activation, P2P =
     // differentiation" funnel.
     hero_scheduled_note: `Scheduled Photos works on your own account — no one else installs anything.`,
-    hero_p2p_note: `Want different people to see different photos? Use Private Contact Sharing.`,
+    hero_p2p_note: `Want a specific contact to see a different photo? Use Per-Contact Photos.`,
     hero_cta: 'Install free',
     hero_cta_sub: `Free forever · Unlimited contacts · Upgrade anytime`,
     hero_social_proof: `Built for people who use one WhatsApp account for work and life.`,
@@ -31,22 +51,13 @@ const LANGS: Record<string, Record<string, string>> = {
     what_web_label: `What happens on WhatsApp Web`,
     what_web_val: `The same photo syncs automatically. No separate setup needed.`,
     what_requires_install_label: `What requires another installation`,
-    what_requires_install_val: `Only Private Contact Sharing (Pro). Scheduled Photos never needs anyone else to install anything.`,
+    what_requires_install_val: `Only Per-Contact Photos: both people need DualProfile installed. Scheduled Photos never needs anyone else to install anything.`,
     // Visual demo strip -- 2026-08-30 (Webb): "Imagine: 8:59 AM Personal
     // photo, 9:00 AM Switch now, WhatsApp desktop -> Professional photo,
     // WhatsApp phone -> Professional photo. Then: One switch. Every
     // device." Put directly after the hero rather than buried in the
     // pricing/feature copy -- this is the strongest, most tangible proof
     // of the product's core behaviour.
-    visual_demo_title: `One switch. Every device.`,
-    visual_demo_sub: `When Scheduled Photos switches, your real WhatsApp photo updates everywhere at once — no one else does anything.`,
-    visual_demo_time1: `8:59 AM`,
-    visual_demo_label1: `Personal photo`,
-    visual_demo_switch: `Switch now`,
-    visual_demo_time2: `9:00 AM`,
-    visual_demo_device1: `WhatsApp Desktop`,
-    visual_demo_device2: `WhatsApp Phone`,
-    visual_demo_label2: `Professional photo`,
     // "Is this for me?" section -- 2026-08-30 (Webb): eliminate the
     // confusion between the two features up front, before pricing, so a
     // visitor self-selects rather than discovering the P2P requirement
@@ -81,7 +92,7 @@ const LANGS: Record<string, Record<string, string>> = {
     features_title: 'One WhatsApp. Multiple identities.',
     features_sub: 'You decide who sees what.',
     feat1_title: `Scheduled Photos`,
-    feat1_desc: `Your real WhatsApp photo switches by day and time — work photo 9-6, personal the rest of the time. One tap confirms each change, visible on every device, no one else needs to install anything.`,
+    feat1_desc: `Your real WhatsApp photo switches by day and time: work photo 9 to 6, personal the rest of the time. One tap confirms each change, it shows on every device, and no one else needs to install anything.`,
     feat2_title: `Photo History & Revert`,
     feat2_desc: `Restore any of your last 3 uploaded photos per slot. Changed your mind? One tap to go back.`,
     feat3_title: 'Export & Import',
@@ -128,7 +139,7 @@ const LANGS: Record<string, Record<string, string>> = {
     // like it works automatically once installed, when it actually
     // requires the OTHER contact to also have DualProfile. See
     // status_2_title/status_2_desc for the fuller requirement callout.
-    feat_p2p: 'Private contact-to-contact sharing',
+    feat_p2p: 'Per-Contact Photos (P2P sync)',
     feat_chrome: 'Chrome & Edge',
     feat_photo_history: 'Photo History & Revert',
     feat_scheduled: 'Scheduled Photos',
@@ -167,16 +178,16 @@ const LANGS: Record<string, Record<string, string>> = {
     faq_4_q: 'Is my data secure?',
     faq_4_a: 'Your photos are securely synced so they appear only to the contacts you choose. We never read your messages or access your chats.',
     faq_5_q: `Does Scheduled Photos need anyone else to install DualProfile?`,
-    faq_5_a: `No. It changes your own account's real photo, so nobody else needs anything installed — that's what makes it work from the very first day.`,
+    faq_5_a: `No. It changes your own account's real photo, so nobody else needs anything installed. That is what makes it work from the very first day.`,
     // Two entries added 2026-08-30 (Webb): the FAQ should only answer
     // purchase-blocking questions. These two were missing outright --
     // faq_6 directly addresses the exact expectation gap most likely
-    // behind an early refund (buying Pro expecting Private Contact
-    // Sharing to work without the other person installing anything).
+    // behind an early refund (buying Pro expecting Per-Contact Photos
+    // to work without the other person installing anything).
     faq_6_q: `What happens if the person I share with doesn't install DualProfile?`,
-    faq_6_a: `They keep seeing your normal WhatsApp photo. Private Contact Sharing only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
+    faq_6_a: `They keep seeing your normal WhatsApp photo. Per-Contact Photos only ever changes what a specific contact sees once THEY also have DualProfile installed — it never affects anyone else, and nothing breaks or looks wrong on their end either way.`,
     faq_7_q: `Is Pro a subscription?`,
-    faq_7_a: `No. Pro is a single one-time payment — £9.99, charged once. There's no recurring billing, no trial that auto-converts, and no expiry.`,
+    faq_7_a: `No. Pro is a single one-time payment of £9.99. There's no recurring billing, no trial that auto-converts, and no expiry.`,
     footer_rights: 'All rights reserved.',
     footer_note: `Your photos are synced securely — only the contacts you choose can see them.`,
     copied_msg: 'Copied!',
@@ -205,16 +216,146 @@ const LANGS: Record<string, Record<string, string>> = {
     status_title: 'Current Status',
     status_1_title: 'Preview Mode',
     status_1_desc: 'See how others would see your profile',
-    status_2_title: 'Private Contact Sharing',
-    status_2_desc: 'Real-time profile switching now live — requires the other contact to have DualProfile installed too',
+    status_2_title: 'Per-Contact Photos',
+    status_2_desc: 'Live. Requires the other contact to have DualProfile installed too.',
     status_3_title: 'Group Chats',
     status_3_desc: 'Not supported yet',
     modal_title: 'Install DualProfile',
     modal_sub: `Free to install. Scheduled Photos and unlimited contacts, free forever. No credit card required. Works on WhatsApp Web in Chrome and Edge.`,
     modal_btn: 'Install free',
     modal_note: `Unlimited contacts, free forever · No credit card required`,
+    // ── Positioning refactor: Scheduled Photos leads, Per-Contact Photos
+    // (P2P sync) is live as the secondary capability. New keys are English-only on purpose: other locales fall back to
+    // English via t() until these are translated, which avoids showing the old
+    // Private-Contact-Sharing-first claims next to the new hierarchy.
+    sp_eyebrow: `For WhatsApp Web`,
+    sp_h1: `Schedule your WhatsApp profile photo.`,
+    sp_sub: `Use different photos for work, weekends, events and everyday life, without creating another WhatsApp account.`,
+    sp_note: `Set your times, then confirm each switch with one tap. No one else needs to install anything.`,
+    sp_cta_secondary: `See how it works`,
+    sp_trust: `Free forever. No subscription. Works with WhatsApp Web.`,
+    sp_proof: `Built solo. No paid marketing. No chat data stored or accessed.`,
+    sp_demo_label: `Example schedule`,
+    sp_demo_t1: `8:00 AM`,
+    sp_demo_p1: `Work photo`,
+    sp_demo_switch: `Scheduled switch`,
+    sp_demo_t2: `6:00 PM`,
+    sp_demo_p2: `Personal photo`,
+    sp_demo_note: `Example only. You confirm each switch when DualProfile prompts you.`,
+    uc_title: `Your WhatsApp photo, on your schedule.`,
+    uc_sub: `Keep the right photo for the context you're in, without maintaining another WhatsApp account.`,
+    uc_img_alt: `The DualProfile extension, where you choose your photos`,
+    uc1_title: `Work and personal`,
+    uc1_desc: `Professional during the day. Personal after hours.`,
+    uc2_title: `Events and campaigns`,
+    uc2_desc: `Switch to an event, campaign or seasonal photo without remembering to change it by hand.`,
+    uc3_title: `Weekends and time off`,
+    uc3_desc: `A relaxed photo for evenings and weekends, a sharp one for the working week.`,
+    bridge_1: `Your boss and your best friend see the same WhatsApp photo of you.`,
+    bridge_2: `The right photo for the right time.`,
+    bridge_3: `WhatsApp has one profile photo. DualProfile helps you change it on a schedule.`,
+    flow_title: `Set it up once, then confirm each switch.`,
+    flow_sub: `Scheduled Photos works on your own account. No one else needs DualProfile.`,
+    flow1_title: `Install DualProfile`,
+    flow1_sub: `Add it to Chrome or Edge, then open WhatsApp Web.`,
+    flow2_title: `Choose your photos`,
+    flow2_sub: `Upload the photos you want to switch between, for example one for work and one for life.`,
+    flow3_title: `Schedule the switch`,
+    flow3_sub: `Pick the days and times, for example work photo 9 to 6 and personal the rest of the time.`,
+    flow4_title: `Confirm the change when prompted`,
+    flow4_sub: `One tap confirms each change. Your real WhatsApp photo updates.`,
+    ft_title: `Scheduled Photos is free. Pro adds deeper control and history.`,
+    ft_sub: `Start with the free extension. Upgrade once, if you want more.`,
+    ft_badge_both: `Free & Pro`,
+    feat_bulk_title: `Bulk Contact Assignment`,
+    feat_bulk_desc: `Assign a photo to several contacts in one go instead of one by one.`,
+    ifm_title: `Which feature do you need?`,
+    ifm_q1: `Want your WhatsApp photo to change on a schedule?`,
+    ifm_q1_tag: `Free & Pro`,
+    ifm_q1_p1: `Set your times once, confirm each switch`,
+    ifm_q1_p2: `No contact needs DualProfile`,
+    ifm_q1_p3: `Changes your actual WhatsApp photo`,
+    ifm_q1_p4: `Shows on your phone and computer`,
+    ifm_q2: `Want a specific contact to see a different photo?`,
+    ifm_q2_tag: `Live`,
+    ifm_q2_p1: `Assign a specific photo to a specific contact`,
+    ifm_q2_p2: `P2P sync keeps the assignment working`,
+    ifm_q2_p3: `Both people need DualProfile installed`,
+    ifm_q2_p4: `Works on WhatsApp Web`,
+    ifm_q2_p5: `Group chats are not supported yet`,
+    pr_sub: `Scheduled Photos is free. Pro adds deeper control and history. One optional upgrade, paid once.`,
+    feat_pcp: `Per-Contact Photos`,
+    badge_once: `ONE-TIME`,
+    wh_1_label: `What Scheduled Photos changes`,
+    wh_1_val: `Your actual WhatsApp profile photo, at the times you set. Whoever looks sees the photo that is current.`,
+    wh_2_label: `What you do`,
+    wh_2_val: `Confirm each switch with one tap when DualProfile prompts you.`,
+    wh_3_label: `Where it works`,
+    wh_3_val: `You set it up in WhatsApp Web on Chrome or Edge. Once your photo changes, it shows on your other devices too.`,
+    wh_4_label: `What needs someone else`,
+    wh_4_val: `Per-Contact Photos: both people need DualProfile installed. Scheduled Photos never needs anyone else to install anything.`,
+    pcp_badge: `Live`,
+    pcp_title: `Per-Contact Photos`,
+    pcp_sub: `Show a different profile photo to a specific contact.`,
+    pcp_body: `DualProfile's P2P sync lets you assign a photo to a specific contact. When they also have DualProfile installed, they see the photo you assigned to them.`,
+    pcp_req: `Both people need DualProfile installed.`,
+    pcp_req_sub: `Your contact keeps seeing your normal WhatsApp photo until they install it too. It works on WhatsApp Web, and group chats are not supported yet.`,
+    bst_pcs_title: `Per-Contact Photos`,
+    bst_pcs_desc: `Live. Requires the other contact to have DualProfile installed too.`,
+    pcp_step3_title: `They install it too, and see the photo you chose.`,
+    sp_sec_2: `Photos you share with specific contacts are synced securely, and only those contacts can see them.`,
+    sp_faq_1_q: `What does Scheduled Photos do?`,
+    sp_faq_1_a: `It changes your actual WhatsApp profile photo at the times you set, for example a work photo during the day and a personal photo in the evening. You confirm each change with one tap when prompted.`,
+    sp_faq_2_a: `Scheduled Photos changes your real WhatsApp photo, so once it switches it shows on your phone too. Per-Contact Photos is different: it only shows on WhatsApp Web, and only to contacts who also have DualProfile installed.`,
+    sp_faq_pcs_q: `What are Per-Contact Photos?`,
+    sp_faq_pcs_a: `They let you show a different profile photo to a specific contact. DualProfile's P2P sync keeps the assignment working, so both people need DualProfile installed. It works on WhatsApp Web. Group chats are not supported yet.`,
+    sp_faq_free_a: `Free gives you Scheduled Photos, Live Preview Mode, Per-Contact Photos and unlimited contacts, forever, with no card required. Pro is a one-time £9.99 payment, not a subscription, and adds Photo History & Revert, bulk contact assignment, Export/Import, Multi-Device Sync and priority support.`,
+    // ── v2 (2026-10-14): homepage sells Scheduled Photos only. Per-Contact
+    // Photos moved to /per-contact. English only for now; other languages
+    // fall back to these, exactly as the sp_* keys above already do.
+    v2_trust: `Free to use. Pro is an optional one-time £9.99, never a subscription.`,
+    v2_nav_how: `How it works`,
+    v2_badge_free: `Free`,
+    v2_ft_title: `Scheduled Photos is free. Pro adds photo history.`,
+    v2_pr_sub: `Scheduled Photos is free. Pro is one optional upgrade, paid once.`,
+    v2_free_sub: `Scheduled Photos, free forever`,
+    v2_free_1: `Choose the days and the time window`,
+    v2_free_2: `One-tap confirm for every switch`,
+    v2_pro_sub: `Photo history and priority support`,
+    v2_pro_pcp: `Pro features for Per-Contact Photos`,
+    v2_sec_2: `Your photos are stored securely and are only used to set your own profile photo.`,
+    v2_sec_3: `You approve every change. DualProfile never changes your photo without your tap.`,
+    v2_faq_mobile_a: `Yes. Once your photo switches, it is your real WhatsApp photo, so it shows in the mobile app and to all your contacts. You set it up in WhatsApp Web on Chrome or Edge.`,
+    v2_faq_ask_q: `Does it change my photo without asking?`,
+    v2_faq_ask_a: `No. When it is time to switch, DualProfile opens WhatsApp's own photo screen with the right photo ready, and nothing changes until you tap to confirm.`,
+    v2_faq_free_a: `Scheduled Photos is free, forever, with no card required. Pro is a one-time £9.99 payment that adds Photo History & Revert and priority support.`,
+    v2_footer_pcp: `Looking for per-contact photos? (experimental)`,
+    v2_footer_note: `Your photos are stored securely and only used to set your own profile photo.`,
+    v2_footer_disclaimer: `DualProfile is an independent product and is not affiliated with WhatsApp or Meta.`,
+    v2_modal_sub: `Free to install. Scheduled Photos is free forever, with no card required. Works on WhatsApp Web in Chrome and Edge.`,
+    v2_modal_note: `Free forever · No credit card required`,
   },
   es: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obtener DualProfile`,
+    po_trust: `£9.99 una sola vez. Sin suscripción. Solo Pro desde el 1 de noviembre de 2026.`,
+    po_ft_title: `Una licencia. Todas las funciones.`,
+    po_ft_sub: `Fotos programadas, historial de fotos y fotos por contacto forman parte de Pro.`,
+    po_pr_sub: `Un plan, un solo pago. Sin suscripción ni renovaciones.`,
+    po_pro_sub: `Todo lo que hace DualProfile`,
+    po_days: `Elige los días y el horario`,
+    po_confirm: `Confirma cada cambio con un toque`,
+    po_pcp: `Fotos por contacto (experimental)`,
+    po_buy: `Obtener Pro · £9.99`,
+    po_have_key: `¿Ya compraste Pro?`,
+    po_install: `Instala DualProfile e introduce tu clave de licencia.`,
+    po_existing: `¿Ya usas DualProfile gratis? Seguirá funcionando hasta el 1 de noviembre de 2026. Tus fotos y ajustes se conservan y vuelven en cuanto actives Pro.`,
+    po_faq_price_q: `¿Cuánto cuesta DualProfile?`,
+    po_faq_price_a: `£9.99, un solo pago. Desde el 1 de noviembre de 2026 no hay plan gratuito. No hay suscripción ni caducidad, y una licencia incluye fotos programadas, historial y restauración de fotos, fotos por contacto y futuras actualizaciones.`,
+    po_faq_exist_q: `Hoy uso DualProfile gratis. ¿Qué pasa el 1 de noviembre de 2026?`,
+    po_faq_exist_a: `La extensión te avisa antes de esa fecha. Desde el 1 de noviembre de 2026 necesitas Pro para seguir usándola. Tus fotos, contactos y horario quedan guardados y vuelven en cuanto actives Pro.`,
+    po_modal_sub: `Funciona en WhatsApp Web con Chrome y Edge. Desde el 1 de noviembre de 2026, DualProfile requiere Pro: £9.99, un solo pago.`,
+    po_modal_note: `Pago único de £9.99 · Sin suscripción`,
     feat_future: `Todas las funciones futuras incluidas`,
     feat_everything_free: `Todo lo de Gratis`,
     pro_once: `pago unico · sin suscripcion`,
@@ -228,15 +369,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Hecho para personas que usan una sola cuenta de WhatsApp para el trabajo y la vida personal.`,
     hero_scheduled_note: `Fotos Programadas funciona en tu propia cuenta — nadie mas necesita instalar nada.`,
     hero_p2p_note: `¿Quieres que personas distintas vean fotos distintas? Usa Compartir Fotos Privado.`,
-    visual_demo_title: `Un cambio. Todos los dispositivos.`,
-    visual_demo_sub: `Cambia tu foto una vez y se actualiza en todos los dispositivos donde tengas DualProfile conectado.`,
-    visual_demo_time1: `8:59 AM`,
-    visual_demo_label1: `Foto personal`,
-    visual_demo_time2: `9:00 AM`,
-    visual_demo_switch: `Cambiar ahora`,
-    visual_demo_label2: `Foto profesional`,
-    visual_demo_device1: `WhatsApp Escritorio`,
-    visual_demo_device2: `WhatsApp Movil`,
     is_for_me_title: `¿Es esto para mi?`,
     is_for_me_q1: `Fotos Programadas`,
     is_for_me_q1_point1: `Funciona de inmediato`,
@@ -392,6 +524,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contactos ilimitados, gratis para siempre · Sin tarjeta de credito`,
   },
   fr: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obtenir DualProfile`,
+    po_trust: `9,99 £ en une fois. Sans abonnement. Uniquement Pro à partir du 1er novembre 2026.`,
+    po_ft_title: `Une licence. Toutes les fonctions.`,
+    po_ft_sub: `Photos programmées, historique des photos et photos par contact font toutes partie de Pro.`,
+    po_pr_sub: `Une seule offre, payée une fois. Sans abonnement ni renouvellement.`,
+    po_pro_sub: `Tout ce que fait DualProfile`,
+    po_days: `Choisissez les jours et la plage horaire`,
+    po_confirm: `Confirmation en un geste pour chaque changement`,
+    po_pcp: `Photos par contact (expérimental)`,
+    po_buy: `Passer à Pro · 9,99 £`,
+    po_have_key: `Déjà acheté Pro ?`,
+    po_install: `Installez DualProfile et saisissez votre clé de licence.`,
+    po_existing: `Vous utilisez DualProfile gratuitement ? Il fonctionne jusqu’au 1er novembre 2026. Vos photos et réglages sont conservés et reviennent dès que vous activez Pro.`,
+    po_faq_price_q: `Combien coûte DualProfile ?`,
+    po_faq_price_a: `9,99 £, payés une fois. À partir du 1er novembre 2026, il n’y a plus d’offre gratuite. Pas d’abonnement ni d’expiration : une licence couvre les photos programmées, l’historique et la restauration des photos, les photos par contact et les mises à jour futures.`,
+    po_faq_exist_q: `J’utilise DualProfile gratuitement. Que se passe-t-il le 1er novembre 2026 ?`,
+    po_faq_exist_a: `L’extension vous prévient avant cette date. À partir du 1er novembre 2026, Pro est nécessaire pour continuer. Vos photos, contacts et horaires restent enregistrés et reviennent dès que vous activez Pro.`,
+    po_modal_sub: `Fonctionne sur WhatsApp Web avec Chrome et Edge. À partir du 1er novembre 2026, DualProfile nécessite Pro : 9,99 £, payés une fois.`,
+    po_modal_note: `9,99 £ en une fois · Sans abonnement`,
     feat_future: `Toutes les futures fonctionnalites incluses`,
     feat_everything_free: `Tout ce qui est dans Gratuit`,
     pro_once: `paiement unique · sans abonnement`,
@@ -405,15 +557,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Concu pour les personnes qui utilisent un seul compte WhatsApp pour le travail et la vie personnelle.`,
     hero_scheduled_note: `Photos Programmees fonctionne sur votre propre compte — personne d'autre n'a besoin d'installer quoi que ce soit.`,
     hero_p2p_note: `Vous voulez que des personnes differentes voient des photos differentes ? Utilisez le Partage Prive entre Contacts.`,
-    visual_demo_title: `Un seul changement. Tous les appareils.`,
-    visual_demo_sub: `Changez votre photo une fois — elle se met a jour partout ou DualProfile est connecte.`,
-    visual_demo_time1: `8h59`,
-    visual_demo_label1: `Photo personnelle`,
-    visual_demo_time2: `9h00`,
-    visual_demo_switch: `Changer maintenant`,
-    visual_demo_label2: `Photo professionnelle`,
-    visual_demo_device1: `WhatsApp Bureau`,
-    visual_demo_device2: `WhatsApp Telephone`,
     is_for_me_title: `Est-ce fait pour moi ?`,
     is_for_me_q1: `Photos Programmees`,
     is_for_me_q1_point1: `Fonctionne immediatement`,
@@ -569,6 +712,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contacts illimites, gratuit pour toujours · Sans carte de credit`,
   },
   pt: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Obter o DualProfile`,
+    po_trust: `£9.99 uma única vez. Sem subscrição. Só Pro a partir de 1 de novembro de 2026.`,
+    po_ft_title: `Uma licença. Todas as funcionalidades.`,
+    po_ft_sub: `Fotos agendadas, histórico de fotos e fotos por contacto fazem todas parte do Pro.`,
+    po_pr_sub: `Um plano, pago uma vez. Sem subscrição nem renovações.`,
+    po_pro_sub: `Tudo o que o DualProfile faz`,
+    po_days: `Escolha os dias e o horário`,
+    po_confirm: `Confirmação com um toque em cada troca`,
+    po_pcp: `Fotos por contacto (experimental)`,
+    po_buy: `Obter Pro · £9.99`,
+    po_have_key: `Já comprou o Pro?`,
+    po_install: `Instale o DualProfile e introduza a sua chave de licença.`,
+    po_existing: `Já usa o DualProfile grátis? Continua a funcionar até 1 de novembro de 2026. As suas fotos e definições são mantidas e voltam assim que ativar o Pro.`,
+    po_faq_price_q: `Quanto custa o DualProfile?`,
+    po_faq_price_a: `£9.99, pago uma vez. A partir de 1 de novembro de 2026 deixa de haver plano gratuito. Sem subscrição nem expiração: uma licença inclui fotos agendadas, histórico e reposição de fotos, fotos por contacto e atualizações futuras.`,
+    po_faq_exist_q: `Uso o DualProfile grátis. O que acontece a 1 de novembro de 2026?`,
+    po_faq_exist_a: `A extensão avisa-o antes da data. A partir de 1 de novembro de 2026 precisa do Pro para continuar a usá-la. As suas fotos, contactos e horário ficam guardados e voltam assim que ativar o Pro.`,
+    po_modal_sub: `Funciona no WhatsApp Web com Chrome e Edge. A partir de 1 de novembro de 2026, o DualProfile requer Pro: £9.99, pago uma vez.`,
+    po_modal_note: `Pagamento único de £9.99 · Sem subscrição`,
     feat_future: `Todas as funcionalidades futuras incluidas`,
     feat_everything_free: `Tudo do plano Gratis`,
     pro_once: `pagamento unico · sem subscricao`,
@@ -582,15 +745,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Feito para pessoas que usam uma unica conta de WhatsApp para o trabalho e a vida pessoal.`,
     hero_scheduled_note: `Fotos Agendadas funciona na sua propria conta — mais ninguem precisa de instalar nada.`,
     hero_p2p_note: `Quer que pessoas diferentes vejam fotos diferentes? Use a Partilha Privada por Contacto.`,
-    visual_demo_title: `Uma mudanca. Todos os dispositivos.`,
-    visual_demo_sub: `Mude a sua foto uma vez — ela atualiza-se em todos os dispositivos onde o DualProfile esta ligado.`,
-    visual_demo_time1: `8h59`,
-    visual_demo_label1: `Foto pessoal`,
-    visual_demo_time2: `9h00`,
-    visual_demo_switch: `Mudar agora`,
-    visual_demo_label2: `Foto profissional`,
-    visual_demo_device1: `WhatsApp Computador`,
-    visual_demo_device2: `WhatsApp Telemovel`,
     is_for_me_title: `Isto e para mim?`,
     is_for_me_q1: `Fotos Agendadas`,
     is_for_me_q1_point1: `Funciona imediatamente`,
@@ -746,6 +900,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Contatos ilimitados, gratis para sempre · Sem cartao de credito`,
   },
   de: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile holen`,
+    po_trust: `Einmalig 9,99 £. Kein Abo. Ab 1. November 2026 nur mit Pro.`,
+    po_ft_title: `Eine Lizenz. Alle Funktionen.`,
+    po_ft_sub: `Geplante Fotos, Fotoverlauf und Fotos pro Kontakt gehören alle zu Pro.`,
+    po_pr_sub: `Ein Tarif, einmal bezahlt. Kein Abo, keine Verlängerung.`,
+    po_pro_sub: `Alles, was DualProfile kann`,
+    po_days: `Tage und Zeitfenster wählen`,
+    po_confirm: `Jeder Wechsel mit einem Tipp bestätigt`,
+    po_pcp: `Fotos pro Kontakt (experimentell)`,
+    po_buy: `Pro holen · 9,99 £`,
+    po_have_key: `Pro schon gekauft?`,
+    po_install: `Installiere DualProfile und gib deinen Lizenzschlüssel ein.`,
+    po_existing: `Du nutzt DualProfile bisher kostenlos? Es funktioniert bis zum 1. November 2026. Deine Fotos und Einstellungen bleiben erhalten und sind sofort wieder da, wenn du Pro aktivierst.`,
+    po_faq_price_q: `Was kostet DualProfile?`,
+    po_faq_price_a: `9,99 £, einmalig. Ab dem 1. November 2026 gibt es keinen kostenlosen Tarif mehr. Kein Abo, kein Ablaufdatum: Eine Lizenz umfasst geplante Fotos, Fotoverlauf und Wiederherstellen, Fotos pro Kontakt und künftige Updates.`,
+    po_faq_exist_q: `Ich nutze DualProfile kostenlos. Was passiert am 1. November 2026?`,
+    po_faq_exist_a: `Die Erweiterung weist dich vorher darauf hin. Ab dem 1. November 2026 brauchst du Pro, um sie weiter zu nutzen. Deine Fotos, Kontakte und dein Zeitplan bleiben gespeichert und sind sofort wieder da, wenn du Pro aktivierst.`,
+    po_modal_sub: `Funktioniert mit WhatsApp Web in Chrome und Edge. Ab dem 1. November 2026 benötigt DualProfile Pro: 9,99 £, einmalig.`,
+    po_modal_note: `Einmalig 9,99 £ · Kein Abo`,
     feat_future: `Alle zukunftigen Funktionen inklusive`,
     feat_everything_free: `Alles aus Kostenlos`,
     pro_once: `einmalig · kein Abo`,
@@ -759,15 +933,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Gemacht fur Menschen, die ein WhatsApp-Konto fur Arbeit und Privates nutzen.`,
     hero_scheduled_note: `Geplante Fotos funktioniert auf deinem eigenen Konto — niemand sonst muss etwas installieren.`,
     hero_p2p_note: `Sollen verschiedene Leute auch verschiedene Fotos sehen? Nutze die Private Kontaktfreigabe.`,
-    visual_demo_title: `Ein Wechsel. Jedes Gerat.`,
-    visual_demo_sub: `Andere dein Foto einmal — es aktualisiert sich uberall, wo DualProfile verbunden ist.`,
-    visual_demo_time1: `8:59 Uhr`,
-    visual_demo_label1: `Privates Foto`,
-    visual_demo_time2: `9:00 Uhr`,
-    visual_demo_switch: `Jetzt wechseln`,
-    visual_demo_label2: `Berufliches Foto`,
-    visual_demo_device1: `WhatsApp Desktop`,
-    visual_demo_device2: `WhatsApp Handy`,
     is_for_me_title: `Ist das fur mich?`,
     is_for_me_q1: `Geplante Fotos`,
     is_for_me_q1_point1: `Funktioniert sofort`,
@@ -923,6 +1088,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `Unbegrenzte Kontakte, kostenlos fur immer · Keine Kreditkarte erforderlich`,
   },
   hi: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile पाएँ`,
+    po_trust: `£9.99 एक बार। कोई सब्सक्रिप्शन नहीं। 1 नवंबर 2026 से केवल Pro।`,
+    po_ft_title: `एक लाइसेंस। हर फ़ीचर।`,
+    po_ft_sub: `शेड्यूल्ड फ़ोटो, फ़ोटो हिस्ट्री और हर कॉन्टैक्ट के लिए अलग फ़ोटो, सब Pro में शामिल हैं।`,
+    po_pr_sub: `एक प्लान, एक बार भुगतान। कोई सब्सक्रिप्शन या रिन्यूअल नहीं।`,
+    po_pro_sub: `DualProfile की हर सुविधा`,
+    po_days: `दिन और समय चुनें`,
+    po_confirm: `हर बदलाव एक टैप से कन्फ़र्म करें`,
+    po_pcp: `हर कॉन्टैक्ट के लिए अलग फ़ोटो (प्रयोगात्मक)`,
+    po_buy: `Pro लें · £9.99`,
+    po_have_key: `Pro पहले ही खरीद लिया?`,
+    po_install: `DualProfile इंस्टॉल करें और अपनी लाइसेंस की डालें।`,
+    po_existing: `अभी DualProfile मुफ़्त में इस्तेमाल कर रहे हैं? यह 1 नवंबर 2026 तक चलता रहेगा। आपकी फ़ोटो और सेटिंग्स सुरक्षित रहेंगी और Pro एक्टिवेट करते ही वापस आ जाएँगी।`,
+    po_faq_price_q: `DualProfile की कीमत क्या है?`,
+    po_faq_price_a: `£9.99, एक बार। 1 नवंबर 2026 से कोई मुफ़्त प्लान नहीं है। कोई सब्सक्रिप्शन या समय-सीमा नहीं, और एक लाइसेंस में शेड्यूल्ड फ़ोटो, फ़ोटो हिस्ट्री और रिवर्ट, हर कॉन्टैक्ट के लिए अलग फ़ोटो और आगे के अपडेट शामिल हैं।`,
+    po_faq_exist_q: `मैं अभी DualProfile मुफ़्त में इस्तेमाल करता हूँ। 1 नवंबर 2026 को क्या होगा?`,
+    po_faq_exist_a: `एक्सटेंशन आपको तारीख से पहले सूचना देगा। 1 नवंबर 2026 से इसे इस्तेमाल करते रहने के लिए Pro चाहिए। आपकी फ़ोटो, कॉन्टैक्ट और शेड्यूल सुरक्षित रहते हैं और Pro एक्टिवेट करते ही वापस आ जाते हैं।`,
+    po_modal_sub: `Chrome और Edge में WhatsApp Web पर चलता है। 1 नवंबर 2026 से DualProfile के लिए Pro चाहिए: £9.99, एक बार।`,
+    po_modal_note: `एक बार £9.99 · कोई सब्सक्रिप्शन नहीं`,
     feat_future: `सभी भविष्य के फ़ीचर शामिल`,
     feat_everything_free: `मुफ़्त प्लान का सब कुछ`,
     pro_once: `एक बार भुगतान · कोई सब्सक्रिप्शन नहीं`,
@@ -936,15 +1121,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `उन लोगों के लिए बनाया गया जो काम और पर्सनल लाइफ के लिए एक ही WhatsApp अकाउंट इस्तेमाल करते हैं।`,
     hero_scheduled_note: `शेड्यूल्ड फोटोज़ आपके अपने अकाउंट पर काम करता है — किसी और को कुछ भी इंस्टॉल करने की जरूरत नहीं।`,
     hero_p2p_note: `चाहते हैं कि अलग-अलग लोग अलग-अलग फोटो देखें? प्राइवेट कॉन्टैक्ट शेयरिंग इस्तेमाल करें।`,
-    visual_demo_title: `एक स्विच। हर डिवाइस।`,
-    visual_demo_sub: `अपनी फोटो एक बार बदलें — यह हर उस डिवाइस पर अपडेट हो जाती है जहां DualProfile जुड़ा है।`,
-    visual_demo_time1: `सुबह 8:59`,
-    visual_demo_label1: `पर्सनल फोटो`,
-    visual_demo_time2: `सुबह 9:00`,
-    visual_demo_switch: `अभी स्विच करें`,
-    visual_demo_label2: `प्रोफेशनल फोटो`,
-    visual_demo_device1: `WhatsApp डेस्कटॉप`,
-    visual_demo_device2: `WhatsApp फोन`,
     is_for_me_title: `क्या यह मेरे लिए है?`,
     is_for_me_q1: `शेड्यूल्ड फोटोज़`,
     is_for_me_q1_point1: `तुरंत काम करता है`,
@@ -1100,6 +1276,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `असीमित संपर्क, हमेशा मुफ़्त · क्रेडिट कार्ड की ज़रूरत नहीं`,
   },
   zh: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `获取 DualProfile`,
+    po_trust: `一次性 £9.99，无订阅。自 2026年11月1日起仅限 Pro。`,
+    po_ft_title: `一个许可证，全部功能。`,
+    po_ft_sub: `定时头像、头像历史和按联系人头像都包含在 Pro 中。`,
+    po_pr_sub: `一个方案，一次付清。无订阅，无续费。`,
+    po_pro_sub: `DualProfile 的全部功能`,
+    po_days: `选择日期和时间段`,
+    po_confirm: `每次切换一键确认`,
+    po_pcp: `按联系人头像（实验功能）`,
+    po_buy: `获取 Pro · £9.99`,
+    po_have_key: `已经购买 Pro？`,
+    po_install: `安装 DualProfile 并输入你的许可证密钥。`,
+    po_existing: `正在免费使用 DualProfile？它会继续工作到 2026年11月1日。你的照片和设置都会保留，激活 Pro 后立即恢复。`,
+    po_faq_price_q: `DualProfile 多少钱？`,
+    po_faq_price_a: `£9.99，一次性付款。自 2026年11月1日起不再提供免费方案。无订阅、不过期，一个许可证包含定时头像、头像历史与恢复、按联系人头像以及未来更新。`,
+    po_faq_exist_q: `我现在免费使用 DualProfile，2026年11月1日会怎样？`,
+    po_faq_exist_a: `扩展会在此日期前提醒你。自 2026年11月1日起，需要 Pro 才能继续使用。你的照片、联系人和时间安排都会保存，激活 Pro 后立即恢复。`,
+    po_modal_sub: `适用于 Chrome 和 Edge 上的 WhatsApp Web。自 2026年11月1日起，DualProfile 需要 Pro：£9.99，一次性付款。`,
+    po_modal_note: `一次性 £9.99 · 无订阅`,
     feat_future: `包含所有未来功能`,
     feat_everything_free: `包含免费版全部功能`,
     pro_once: `一次性付款 · 无订阅`,
@@ -1113,15 +1309,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `为那些用同一个WhatsApp账号处理工作和生活的人打造。`,
     hero_scheduled_note: `定时照片在你自己的账号上运行——不需要任何人安装任何东西。`,
     hero_p2p_note: `想让不同的人看到不同的照片吗？使用私密联系人共享。`,
-    visual_demo_title: `切换一次，同步所有设备。`,
-    visual_demo_sub: `只需切换一次头像，DualProfile连接的所有设备都会同步更新。`,
-    visual_demo_time1: `上午8:59`,
-    visual_demo_label1: `私人照片`,
-    visual_demo_time2: `上午9:00`,
-    visual_demo_switch: `立即切换`,
-    visual_demo_label2: `职业照片`,
-    visual_demo_device1: `WhatsApp 桌面版`,
-    visual_demo_device2: `WhatsApp 手机版`,
     is_for_me_title: `这适合我吗？`,
     is_for_me_q1: `定时照片`,
     is_for_me_q1_point1: `立即生效`,
@@ -1277,6 +1464,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3天完整访问 · 无限联系人永久免费 · 无需信用卡`,
   },
   ja: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `DualProfile を入手`,
+    po_trust: `£9.99 の買い切り。サブスクなし。2026年11月1日から Pro 専用。`,
+    po_ft_title: `ひとつのライセンスで、すべての機能。`,
+    po_ft_sub: `スケジュール写真、写真履歴、連絡先ごとの写真はすべて Pro に含まれます。`,
+    po_pr_sub: `プランはひとつ、支払いは一度だけ。サブスクも更新もありません。`,
+    po_pro_sub: `DualProfile のすべての機能`,
+    po_days: `曜日と時間帯を選択`,
+    po_confirm: `切り替えはワンタップで確認`,
+    po_pcp: `連絡先ごとの写真（試験運用）`,
+    po_buy: `Pro を入手 · £9.99`,
+    po_have_key: `Pro を購入済みですか？`,
+    po_install: `DualProfile をインストールしてライセンスキーを入力してください。`,
+    po_existing: `DualProfile を無料で使っていますか？2026年11月1日まではそのまま使えます。写真と設定は保存され、Pro を有効にするとすぐに戻ります。`,
+    po_faq_price_q: `DualProfile の料金は？`,
+    po_faq_price_a: `£9.99 の買い切りです。2026年11月1日以降、無料プランはありません。サブスクも有効期限もなく、ひとつのライセンスでスケジュール写真、写真履歴と復元、連絡先ごとの写真、今後のアップデートが使えます。`,
+    po_faq_exist_q: `今は DualProfile を無料で使っています。2026年11月1日に何が起きますか？`,
+    po_faq_exist_a: `期日の前に拡張機能でお知らせします。2026年11月1日からは、引き続き使うには Pro が必要です。写真、連絡先、スケジュールは保存されており、Pro を有効にするとすぐに戻ります。`,
+    po_modal_sub: `Chrome と Edge の WhatsApp Web で動作します。2026年11月1日から DualProfile には Pro（£9.99、買い切り）が必要です。`,
+    po_modal_note: `£9.99 の買い切り · サブスクなし`,
     feat_future: `今後のすべての機能を含む`,
     feat_everything_free: `無料版のすべて`,
     pro_once: `買い切り · サブスクなし`,
@@ -1290,15 +1497,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `仕事とプライベートで1つのWhatsAppアカウントを使う人のために作られました。`,
     hero_scheduled_note: `スケジュール写真はあなた自身のアカウントで動作します——他の誰かが何かをインストールする必要はありません。`,
     hero_p2p_note: `相手によって違う写真を見せたいですか？プライベート連絡先共有をご利用ください。`,
-    visual_demo_title: `1回の切り替えで、すべてのデバイスに反映。`,
-    visual_demo_sub: `写真を一度切り替えるだけで、DualProfileが接続されているすべてのデバイスで更新されます。`,
-    visual_demo_time1: `午前8:59`,
-    visual_demo_label1: `個人用の写真`,
-    visual_demo_time2: `午前9:00`,
-    visual_demo_switch: `今すぐ切り替え`,
-    visual_demo_label2: `仕事用の写真`,
-    visual_demo_device1: `WhatsApp デスクトップ`,
-    visual_demo_device2: `WhatsApp スマートフォン`,
     is_for_me_title: `これは自分に合っている？`,
     is_for_me_q1: `スケジュール写真`,
     is_for_me_q1_point1: `すぐに使える`,
@@ -1454,6 +1652,26 @@ const LANGS: Record<string, Record<string, string>> = {
     modal_note: `3日間フルアクセス・連絡先無制限で永久無料・カード不要`,
   },
   ru: {
+    // Pro-only (2026-10-21): one tier, Pro required from 1 November 2026.
+    po_cta: `Получить DualProfile`,
+    po_trust: `£9.99 один раз. Без подписки. Только Pro с 1 ноября 2026 г.`,
+    po_ft_title: `Одна лицензия. Все функции.`,
+    po_ft_sub: `Фото по расписанию, история фото и фото для отдельных контактов входят в Pro.`,
+    po_pr_sub: `Один тариф, оплата один раз. Без подписки и продлений.`,
+    po_pro_sub: `Всё, что умеет DualProfile`,
+    po_days: `Выберите дни и время`,
+    po_confirm: `Каждая смена подтверждается одним касанием`,
+    po_pcp: `Фото для отдельных контактов (экспериментально)`,
+    po_buy: `Получить Pro · £9.99`,
+    po_have_key: `Уже купили Pro?`,
+    po_install: `Установите DualProfile и введите лицензионный ключ.`,
+    po_existing: `Пользуетесь DualProfile бесплатно? Он будет работать до 1 ноября 2026 г. Ваши фото и настройки сохранятся и вернутся сразу после активации Pro.`,
+    po_faq_price_q: `Сколько стоит DualProfile?`,
+    po_faq_price_a: `£9.99, разовый платёж. С 1 ноября 2026 г. бесплатного тарифа нет. Без подписки и срока действия: одна лицензия включает фото по расписанию, историю и восстановление фото, фото для отдельных контактов и будущие обновления.`,
+    po_faq_exist_q: `Я пользуюсь DualProfile бесплатно. Что будет 1 ноября 2026 г.?`,
+    po_faq_exist_a: `Расширение заранее предупредит вас. С 1 ноября 2026 г. для дальнейшего использования нужен Pro. Ваши фото, контакты и расписание сохранятся и вернутся сразу после активации Pro.`,
+    po_modal_sub: `Работает в WhatsApp Web в Chrome и Edge. С 1 ноября 2026 г. для DualProfile нужен Pro: £9.99, разовый платёж.`,
+    po_modal_note: `Разово £9.99 · Без подписки`,
     feat_future: `Все будущие функции включены`,
     feat_everything_free: `Всё из бесплатного плана`,
     pro_once: `разовый платёж · без подписки`,
@@ -1467,15 +1685,6 @@ const LANGS: Record<string, Record<string, string>> = {
     hero_social_proof: `Создано для тех, кто использует один аккаунт WhatsApp для работы и личной жизни.`,
     hero_scheduled_note: `Запланированные фото работают на вашем собственном аккаунте — никому больше ничего устанавливать не нужно.`,
     hero_p2p_note: `Хотите, чтобы разные люди видели разные фото? Используйте Приватный обмен по контактам.`,
-    visual_demo_title: `Одно переключение. Все устройства.`,
-    visual_demo_sub: `Смените фото один раз — оно обновится на всех устройствах, где подключен DualProfile.`,
-    visual_demo_time1: `8:59`,
-    visual_demo_label1: `Личное фото`,
-    visual_demo_time2: `9:00`,
-    visual_demo_switch: `Переключить сейчас`,
-    visual_demo_label2: `Рабочее фото`,
-    visual_demo_device1: `WhatsApp на компьютере`,
-    visual_demo_device2: `WhatsApp на телефоне`,
     is_for_me_title: `Подходит ли это мне?`,
     is_for_me_q1: `Запланированные фото`,
     is_for_me_q1_point1: `Работает сразу`,
@@ -1887,34 +2096,34 @@ export default function Home() {
   }, [wcActive]);
 
   const faqs = [
-    { question: t('faq_1_q'), answer: t('faq_1_a') },
-    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('sp_faq_1_q'), answer: t('sp_faq_1_a') },
     { question: t('faq_5_q'), answer: t('faq_5_a') },
-    { question: t('faq_6_q'), answer: t('faq_6_a') },
+    { question: t('faq_2_q'), answer: t('v2_faq_mobile_a') },
+    { question: t('v2_faq_ask_q'), answer: t('v2_faq_ask_a') },
+    { question: t('po_faq_price_q'), answer: t('po_faq_price_a') },
+    { question: t('po_faq_exist_q'), answer: t('po_faq_exist_a') },
     { question: t('faq_7_q'), answer: t('faq_7_a') },
-    { question: t('faq_3_q'), answer: t('faq_3_a') },
-    { question: t('faq_4_q'), answer: t('faq_4_a') },
   ];
 
   return (
     <>
       <Head>
-        <title>DualProfile — Show Different WhatsApp Photos to Different People</title>
-        <meta name="description" content="Your boss sees your professional photo. Your friends see the real you. DualProfile lets you assign different profile photos to different WhatsApp contacts. Free Chrome extension." />
+        <title>DualProfile: Schedule Your WhatsApp Profile Photo</title>
+        <meta name="description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://vivaup.org/" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://vivaup.org/" />
-        <meta property="og:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
-        <meta property="og:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
+        <meta property="og:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
+        <meta property="og:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta property="og:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DualProfile — Show Different WhatsApp Photos to Different People" />
-        <meta name="twitter:description" content="Your boss sees your professional photo. Your friends see the real you. Free Chrome extension for WhatsApp Web." />
+        <meta name="twitter:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
+        <meta name="twitter:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
         <meta name="twitter:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Structured Data */}
@@ -1923,33 +2132,22 @@ export default function Home() {
           "@type": "SoftwareApplication",
           "name": "DualProfile",
           "url": "https://vivaup.org",
-          "description": "Show different WhatsApp profile photos to different contacts. Your boss sees your professional photo, your friends see the real you. Free Chrome extension for WhatsApp Web.",
+          "description": "Schedule when your WhatsApp profile photo changes. Use a work photo by day and a personal photo after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription.",
           "applicationCategory": "BrowserApplication",
           "operatingSystem": "Chrome, Edge",
           "offers": [
-            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "GBP",
-              "description": "Unlimited contacts and Scheduled Photos, free forever." },
             { "@type": "Offer", "name": "Pro", "price": "9.99", "priceCurrency": "GBP",
-              "description": "One-time payment. Photo History, bulk assignment, export/import, multi-device sync." }
+              "description": "One-time payment, no subscription. Scheduled Photos, Photo History and Revert, Per-Contact Photos, priority support." }
           ],
           "featureList": [
-            "Show different profile photos to different WhatsApp contacts",
-            "Assign professional photo to work contacts",
-            "Assign casual photo to personal contacts",
-            "Peer-to-peer sync — no server storage",
+            "Schedule when your WhatsApp profile photo changes",
+            "Use different photos for work, evenings, weekends and events",
+            "Confirm each scheduled change with one tap",
+            "One licence, £9.99 paid once, no subscription",
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
-          "screenshot": "https://vivaup.org/dualprofile-logo.png",
-          "video": {
-            "@type": "VideoObject",
-            "name": "DualProfile: Multiple WhatsApp Profile Photos (Control Who Sees What)",
-            "description": "See how DualProfile lets you show different WhatsApp profile photos to different contacts — your boss sees your professional photo, your friends see the real you.",
-            "thumbnailUrl": "https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg",
-            "uploadDate": "2026-05-01",
-            "contentUrl": "https://www.youtube.com/watch?v=mt8QzcG0_XQ",
-            "embedUrl": "https://www.youtube.com/embed/mt8QzcG0_XQ"
-          }
+          "screenshot": "https://vivaup.org/dualprofile-logo.png"
         })}} />
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -1993,7 +2191,7 @@ export default function Home() {
             </div>
             <div className="nav-links">
               <a href="#features">{t('nav_features')}</a>
-              <a href="#demo">{t('nav_demo')}</a>
+              <a href="#how-it-works">{t('v2_nav_how')}</a>
               <a href="#pricing">{t('nav_pricing')}</a>
               <a href="#faq">{t('nav_faq')}</a>
             <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
@@ -2050,8 +2248,8 @@ export default function Home() {
                 )}
               </div>
               </div>
-              <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary">
-                {t('nav_cta')}
+              <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noreferrer" className="btn btn-primary" style={{color: 'var(--primary-foreground)'}}>
+                {t('po_cta')}
               </a>
             </div>
           </div>
@@ -2177,7 +2375,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            {/* P2P Hook - PRIMARY MESSAGE */}
+            {/* Eyebrow */}
             <div className="p2p-hook" style={{
               background: 'rgba(37,211,102,0.12)',
               color: '#25D366',
@@ -2193,18 +2391,17 @@ export default function Home() {
               letterSpacing: '0.2px'
             }}>
               <span style={{width:'8px',height:'8px',borderRadius:'50%',background:'#25D366',display:'inline-block',boxShadow:'0 0 6px #25D366'}}></span>
-              {t('live_badge')}
+              {t('sp_eyebrow')}
             </div>
             
-            {/* Main Headline — 2026-08-30 rewrite (Webb): brutally clear,
-                says what the product does before any philosophy. */}
+            {/* Main Headline: Scheduled Photos is the primary promise. */}
             <h1 className="hero-title" style={{
               fontSize: 'clamp(32px, 6vw, 56px)',
               fontWeight: '700',
               lineHeight: '1.1',
               marginBottom: '16px'
             }}>
-              {t('hero_h1_new')}
+              {t('sp_h1')}
             </h1>
 
             {/* Subheading */}
@@ -2213,17 +2410,12 @@ export default function Home() {
               marginBottom: '20px',
               opacity: '0.9'
             }}>
-              {t('hero_sub')}
+              {t('sp_sub')}
             </p>
 
-            {/* Activation vs. differentiation — the funnel Webb specified:
-                Scheduled Photos (no counterparty install) leads, Private
-                Contact Sharing (both sides need DualProfile) is secondary. */}
-            <p style={{fontSize: 'clamp(15px, 2vw, 17px)', marginBottom: '8px', opacity: '0.85', display: 'flex', alignItems: 'center', gap: '8px'}}>
-              <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {t('hero_scheduled_note')}
-            </p>
-            <p className="hero-subtitle-demoted" style={{fontSize: 'clamp(15px, 2vw, 17px)', marginBottom: '32px', opacity: '0.7'}}>
-              {t('hero_p2p_note')}
+            {/* How it behaves, stated plainly: the user confirms each switch. */}
+            <p style={{fontSize: 'clamp(15px, 2vw, 17px)', marginBottom: '32px', opacity: '0.85', display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {t('sp_note')}
             </p>
 
             {/* CTA Buttons */}
@@ -2238,106 +2430,78 @@ export default function Home() {
                   marginRight: '16px'
                 }}
               >
-                {t('hero_cta')}
+                {t('po_cta')}
               </button>
               <button 
                 className="btn btn-outline btn-lg"
-                onClick={() => document.getElementById('demo')?.scrollIntoView({behavior: 'smooth'})}
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({behavior: 'smooth'})}
                 style={{
                   fontSize: 'clamp(16px, 2.5vw, 18px)',
                   padding: '16px 32px',
                   minWidth: '200px'
                 }}
               >
-                {t('hero_demo')}
+                {t('sp_cta_secondary')}
               </button>
             </div>
             {/* Sub-CTA: trial note */}
             <p style={{fontSize:'13px',color:'rgba(255,255,255,0.5)',marginBottom:'10px',letterSpacing:'0.3px'}}>
-              {t('hero_cta_sub')}
+              {t('po_trust')}
             </p>
+            {/* Example schedule: plain text chips, not a UI mock-up. Labelled as an example. */}
+            <div role="group" aria-label={t('sp_demo_label')} style={{margin: '26px 0 24px', display: 'inline-flex', flexDirection: 'column' as const, alignItems: 'center', gap: '10px'}}>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' as const, gap: '12px'}}>
+                <div style={{background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '12px', padding: '12px 20px', textAlign: 'left' as const, minWidth: '150px'}}>
+                  <div style={{fontSize: '12px', color: '#9ca3af', fontWeight: '600'}}>{t('sp_demo_t1')}</div>
+                  <div style={{fontSize: '16px', color: '#fff', fontWeight: '700'}}>{t('sp_demo_p1')}</div>
+                </div>
+                <div aria-hidden="true" style={{display: 'flex', flexDirection: 'column' as const, alignItems: 'center', color: '#25D366', fontSize: '12px', fontWeight: '600', gap: '2px'}}>
+                  <span>{t('sp_demo_switch')}</span>
+                  <svg width="28" height="12" viewBox="0 0 28 12" fill="none" stroke="#25D366" strokeWidth="2"><line x1="1" y1="6" x2="26" y2="6"></line><polyline points="21 1 26 6 21 11"></polyline></svg>
+                </div>
+                <div style={{background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.35)', borderRadius: '12px', padding: '12px 20px', textAlign: 'left' as const, minWidth: '150px'}}>
+                  <div style={{fontSize: '12px', color: '#25D366', fontWeight: '600'}}>{t('sp_demo_t2')}</div>
+                  <div style={{fontSize: '16px', color: '#fff', fontWeight: '700'}}>{t('sp_demo_p2')}</div>
+                </div>
+              </div>
+              <p style={{margin: 0, fontSize: '12px', color: 'rgba(255,255,255,0.45)'}}>{t('sp_demo_note')}</p>
+            </div>
             {/* Social proof */}
             <p style={{fontSize:'12px',color:'rgba(255,255,255,0.3)',letterSpacing:'0.5px',textTransform:'uppercase' as const}}>
-              {t('hero_social_proof')}
+              {t('sp_proof')}
             </p>
           </div>
         </section>
 
-        {/* Visual Demo Strip — 2026-08-30 (Webb): the tangible "8:59am ->
-            Switch Now -> both devices update" proof, placed right after
-            the hero rather than buried later, since it's the strongest,
-            most concrete evidence of the product's core behaviour. */}
-        <section className="features" style={{paddingTop: '40px', paddingBottom: '40px'}}>
-          <div className="container" style={{maxWidth: '820px', margin: '0 auto'}}>
-            <div style={{
-              display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'center',
-              gap: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '20px', padding: '32px 28px'
-            }}>
-              {/* Before — real photo, not a placeholder */}
-              <div style={{textAlign: 'center' as const, minWidth: '140px'}}>
-                <div style={{fontSize: '13px', color: '#9ca3af', marginBottom: '8px', fontWeight: '600'}}>{t('visual_demo_time1')}</div>
-                <img src="/dp-casual.jpg" alt={t('visual_demo_label1')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(255,255,255,0.15)'}} />
-                <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label1')}</div>
-              </div>
-              {/* Arrow / switch */}
-              <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                <div style={{fontSize: '12px', color: '#6b7280', marginBottom: '6px'}}>{t('visual_demo_time2')}</div>
-                <div style={{
-                  background: '#25D366', color: '#000', fontWeight: '700', fontSize: '13px',
-                  padding: '8px 18px', borderRadius: '50px', display: 'inline-block'
-                }}>{t('visual_demo_switch')} →</div>
-              </div>
-              {/* After: both devices, same real photo */}
-              <div style={{display: 'flex', gap: '20px'}}>
-                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device1')}</div>
-                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '10px', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
-                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
-                </div>
-                <div style={{textAlign: 'center' as const, minWidth: '120px'}}>
-                  <div style={{fontSize: '11px', color: '#9ca3af', marginBottom: '6px', textTransform: 'uppercase' as const, letterSpacing: '0.5px'}}>{t('visual_demo_device2')}</div>
-                  <img src="/dp-pro-2.jpg" alt={t('visual_demo_label2')} style={{width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', margin: '0 auto 10px', display: 'block', border: '1px solid rgba(37,211,102,0.5)'}} />
-                  <div style={{fontSize: '13px', color: '#d1d5db'}}>{t('visual_demo_label2')}</div>
-                </div>
-              </div>
-            </div>
-            <p style={{textAlign: 'center' as const, marginTop: '20px', fontSize: 'clamp(18px,3vw,24px)', fontWeight: '700', color: '#fff'}}>{t('visual_demo_title')}</p>
-            <p style={{textAlign: 'center' as const, marginTop: '4px', fontSize: '14px', color: '#9ca3af', maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto'}}>{t('visual_demo_sub')}</p>
-          </div>
-        </section>
-
-        {/* Identity Section — 2026-08-30 (Webb): rebuilt as an asymmetric
-            photo+list layout instead of a third centred icon-card grid in a
-            row, and swapped the generic icon-in-a-circle for the real
-            professional photo (dp-pro-2.jpg, no employer branding). */}
-        <section id="identity" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
+        {/* Use cases: why someone would schedule their photo. The screenshot is the
+            extension's own Photos tab (unchanged asset). */}
+        <section id="use-cases" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
           <div className="container">
             <div className="identity-grid">
-              <img src="/dp-pro-2.jpg" alt={t('identity_title')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'cover', aspectRatio: '3/4', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
+              <img src="/dp-photos-ui.png" alt={t('uc_img_alt')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'contain', aspectRatio: '2/3', background: '#0b0f0d', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
               <div>
-                <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('identity_title')}</h2>
-                <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('identity_sub')}</p>
+                <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('uc_title')}</h2>
+                <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('uc_sub')}</p>
                 <div style={{display: 'flex', flexDirection: 'column' as const, gap: '18px'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                     <div>
-                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_boss')}</div>
-                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_boss_sees')}</div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('uc1_title')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('uc1_desc')}</div>
                     </div>
                   </div>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     <div>
-                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_friends')}</div>
-                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_friends_sees')}</div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('uc2_title')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('uc2_desc')}</div>
                     </div>
                   </div>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '12px'}}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0, marginTop: '2px'}}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     <div>
-                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('identity_family')}</div>
-                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('identity_family_sees')}</div>
+                      <div style={{fontWeight: '700', color: '#fff', fontSize: '0.95rem'}}>{t('uc3_title')}</div>
+                      <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>{t('uc3_desc')}</div>
                     </div>
                   </div>
                 </div>
@@ -2346,7 +2510,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Share Hook — distribution primitive, first scroll breakpoint */}
+        {/* Bridge: the broader work / personal idea, in Scheduled Photos terms */}
         <section className="share-hook" style={{
           padding: '60px 20px',
           textAlign: 'center',
@@ -2362,7 +2526,7 @@ export default function Home() {
               color: 'rgba(255,255,255,0.92)',
               marginBottom: '14px',
             }}>
-              {t('share_hook_1')}
+              {t('bridge_1')}
             </p>
             <p style={{
               fontSize: 'clamp(28px, 5vw, 40px)',
@@ -2372,272 +2536,73 @@ export default function Home() {
               marginBottom: '14px',
               letterSpacing: '-0.5px',
             }}>
-              {t('share_hook_2')}
+              {t('bridge_2')}
             </p>
             <p style={{
               fontSize: 'clamp(16px, 2.4vw, 20px)',
               color: 'rgba(255,255,255,0.55)',
               fontStyle: 'italic',
             }}>
-              {t('share_hook_3')}
+              {t('bridge_3')}
             </p>
           </div>
         </section>
 
-        {/* Demo Section - Fixed Video Embed */}
-        <section id="demo" className="demo">
-          <div className="demo-container">
-            <div className="demo-video-wrapper">
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: '0'}}>
-                <iframe
-                  src="https://www.youtube.com/embed/mt8QzcG0_XQ?rel=0&modestbranding=1&autoplay=0"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '12px'
-                  }}
-                ></iframe>
-              </div>
-            </div>
-            <div className="trust-statement" style={{
-              background: 'rgba(37, 211, 102, 0.1)',
-              padding: '12px 20px',
-              borderRadius: '8px',
-              marginTop: '16px',
-              textAlign: 'center',
-              fontSize: '14px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{flexShrink: 0}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              {t('demo_privacy')}
-            </div>
-            <p className="demo-caption" style={{
-              marginTop: '12px',
-              fontSize: '16px',
-              opacity: '0.8',
-              textAlign: 'center'
-            }}>
-              {t('demo_caption')}
-            </p>
-          </div>
-        </section>
-
-        {/* Social Proof Section */}
-        <section className="social-proof-section">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('reddit_title')}</h2>
-              <p className="section-subtitle">{t('reddit_sub')}</p>
-            </div>
-            <div className="reddit-posts-grid">
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">9 years ago</span>
-                  </div>
-                  <div className="post-stats">6 upvotes · 7 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_1_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_1_a')}</div>
-                </div>
-              </div>
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">5 years ago</span>
-                  </div>
-                  <div className="post-stats">7 upvotes · 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_2_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_2_a')}</div>
-                </div>
-              </div>
-              <div className="reddit-post glass-card">
-                <div className="post-header">
-                  <div className="post-meta">
-                    <span className="subreddit">r/whatsapp</span>
-                    <span className="post-date">8 months ago</span>
-                  </div>
-                  <div className="post-stats">9 upvotes · 3 comments</div>
-                </div>
-                <div className="post-content">
-                  <h4>{t('reddit_3_q')}</h4>
-                  <div className="reddit-answer">{t('reddit_3_a')}</div>
-                </div>
-              </div>
-            </div>
-            <div style={{textAlign: 'center', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(37,211,102,0.2)'}}>
-              <span style={{fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: '800', color: '#25D366', letterSpacing: '-0.5px'}}>{t('until_now')}</span>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
+        {/* How it works: install, choose, schedule, confirm. */}
         <section id="how-it-works" className="how-it-works">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">{t('how_title')}</h2>
-              <p className="section-subtitle">{t('how_sub')}</p>
+              <h2 className="section-title">{t('flow_title')}</h2>
+              <p className="section-subtitle">{t('flow_sub')}</p>
             </div>
-            <div className="steps-grid">
+            <div className="steps-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">1</div>
-                <h3 className="step-title">{t('step1_title')}</h3>
-                <p className="step-description">{t('step1_sub')}</p>
+                <h3 className="step-title">{t('flow1_title')}</h3>
+                <p className="step-description">{t('flow1_sub')}</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">2</div>
-                <h3 className="step-title">{t('step2_title')}</h3>
-                <p className="step-description">{t('step2_sub')}</p>
+                <h3 className="step-title">{t('flow2_title')}</h3>
+                <p className="step-description">{t('flow2_sub')}</p>
               </div>
               <div className="step-card glass-card animate-on-scroll">
                 <div className="step-number">3</div>
-                <h3 className="step-title">{t('step3_title')}</h3>
-                <p className="step-description">{t('step3_sub')}</p>
+                <h3 className="step-title">{t('flow3_title')}</h3>
+                <p className="step-description">{t('flow3_sub')}</p>
               </div>
-            </div>
-            {/* Preview Mode promotion — solves cold-start, visible before deep scroll */}
-            <div style={{marginTop: '32px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px 28px', textAlign: 'center' as const}}>
-              <p style={{margin: 0, color: '#9ca3af', fontSize: '0.95rem', lineHeight: '1.6', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                {t('preview_callout')}
-              </p>
-            </div>
-            <div style={{marginTop: '24px', background: 'rgba(37,211,102,0.07)', border: '1px solid rgba(37,211,102,0.25)', borderRadius: '16px', padding: '28px 32px', display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
-              <p style={{margin: 0, color: '#d1d5db', fontSize: '1rem', lineHeight: '1.6', flex: '1 1 300px'}}>
-                {t('callout_text')}
-              </p>
-              <button style={{background: 'transparent', border: '1px solid rgba(37,211,102,0.5)', color: '#25D366', padding: '10px 24px', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap' as const, transition: 'all 0.2s ease', flexShrink: 0}}
-                onClick={() => { navigator.clipboard.writeText('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc'); const btn = document.activeElement as HTMLButtonElement; if (btn) { btn.textContent = t('copied_msg') || 'Copied!'; setTimeout(() => { btn.textContent = t('callout_btn') || 'Copy install link'; }, 2500); } }}>
-                {t('callout_btn')}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Current Status Section */}
-        <section className="current-status">
-          <div className="container">
-            <div className="status-card glass-card">
-              <h2 className="status-title">{t('status_title')}</h2>
-              <div className="status-grid">
-                <div className="status-item">
-                  <div className="status-icon available">✓</div>
-                  <div className="status-text">
-                    <strong>{t('status_1_title')}</strong>
-                    <p>{t('status_1_desc')}</p>
-                  </div>
-                </div>
-                <div className="status-item">
-                  <div className="status-icon available">✓</div>
-                  <div className="status-text">
-                    <strong>{t('status_2_title')}</strong>
-                    <p>{t('status_2_desc')}</p>
-                  </div>
-                </div>
-                <div className="status-item">
-                  <div className="status-icon not-available">—</div>
-                  <div className="status-text">
-                    <strong>{t('status_3_title')}</strong>
-                    <p>{t('status_3_desc')}</p>
-                  </div>
-                </div>
+              <div className="step-card glass-card animate-on-scroll">
+                <div className="step-number">4</div>
+                <h3 className="step-title">{t('flow4_title')}</h3>
+                <p className="step-description">{t('flow4_sub')}</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Features: both are Pro (Pro-only from 1 November 2026). */}
         <section id="features" className="features">
           <div className="container">
             <div className="section-header">
-              <h2 className="section-title">{t('features_title')}</h2>
-              <p className="section-subtitle">{t('features_sub')}</p>
+              <h2 className="section-title">{t('po_ft_title')}</h2>
+              <p className="section-subtitle">{t('po_ft_sub')}</p>
             </div>
-
-            {/* 4 Pro features */}
             <div className="features-grid" style={{gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))'}}>
-              {/* Photo History - flagship */}
-              <div className="feature-card glass-card animate-on-scroll" style={{border:'1px solid rgba(37,211,102,0.3)',position:'relative' as const}}>
+              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const,border:'1px solid rgba(37,211,102,0.3)'}}>
                 <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'#25D366',color:'#000',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                </div>
-                <h3 className="feature-title"><span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',width:'18px',height:'18px',marginRight:'6px',verticalAlign:'middle'}}><svg viewBox="0 0 24 24" fill="#25D366" width="16" height="16"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg></span>{t('feat1_title')}</h3>
-                <p className="feature-description">{t('feat1_desc')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('free_label')}</div>
                 <div className="feature-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
+                <h3 className="feature-title">{t('feat1_title')}</h3>
+                <p className="feature-description">{t('feat1_desc')}</p>
+              </div>
+              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
+                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
+                <div className="feature-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                </div>
                 <h3 className="feature-title">{t('feat2_title')}</h3>
                 <p className="feature-description">{t('feat2_desc')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                </div>
-                <h3 className="feature-title">{t('feat3_title')}</h3>
-                <p className="feature-description">{t('feat3_desc')}</p>
-              </div>
-              <div className="feature-card glass-card animate-on-scroll" style={{position:'relative' as const}}>
-                <div style={{position:'absolute' as const,top:'12px',right:'12px',background:'rgba(37,211,102,0.15)',color:'#25D366',fontSize:'10px',fontWeight:'800',padding:'2px 8px',borderRadius:'10px',letterSpacing:'0.5px'}}>{t('feat_pro_badge')}</div>
-                <div className="feature-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-                <h3 className="feature-title">{t('feat4_title')}</h3>
-                <p className="feature-description">{t('feat4_desc')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Is This For Me — 2026-08-30 (Webb): eliminate confusion between
-            Scheduled Photos (acquisition, no counterparty install) and
-            Private Contact Sharing (differentiation, both sides need
-            DualProfile) BEFORE pricing, not after a purchase. */}
-        <section id="is-this-for-me" className="features">
-          <div className="container">
-            <div className="section-header">
-              <h2 className="section-title">{t('is_for_me_title')}</h2>
-            </div>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '820px', margin: '0 auto'}}>
-              <div className="glass-card" style={{padding: '1.75rem', border: '1px solid rgba(37,211,102,0.3)'}}>
-                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q1')}</p>
-                {[t('is_for_me_q1_point1'), t('is_for_me_q1_point2'), t('is_for_me_q1_point3'), t('is_for_me_q1_point4')].map(p => (
-                  <div key={p} style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    {p}
-                  </div>
-                ))}
-              </div>
-              <div className="glass-card" style={{padding: '1.75rem'}}>
-                <p style={{fontWeight: '700', color: '#fff', marginBottom: '14px', fontSize: '1.05rem'}}>{t('is_for_me_q2')}</p>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  {t('is_for_me_q2_point1')}
-                </div>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                  {t('is_for_me_q2_point2')}
-                </div>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 0', color: '#d1d5db', fontSize: '0.95rem'}}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{flexShrink: 0}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                  {t('is_for_me_q2_point3')}
-                </div>
               </div>
             </div>
           </div>
@@ -2648,45 +2613,16 @@ export default function Home() {
           <div className="container">
             <div className="section-header">
               <h2 className="section-title">{t('pricing_title')}</h2>
-              <p className="section-subtitle">{t('pricing_sub')}</p>
+              <p className="section-subtitle">{t('po_pr_sub')}</p>
             </div>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: '1fr',
               gap: '1.5rem',
-              maxWidth: '760px',
+              maxWidth: '420px',
               margin: '0 auto'
             }}>
-              {/* Free */}
-              <div className="glass-card" style={{padding: '2.25rem', textAlign: 'center' as const}}>
-                <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('free_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1rem'}}>{t('free_sub')}</p>
-                <div style={{background:'rgba(37,211,102,0.08)',border:'1px solid rgba(37,211,102,0.2)',borderRadius:'8px',padding:'8px 12px',marginBottom:'1rem',fontSize:'12px',color:'#25D366',fontWeight:'600'}}>
-                  {t('free_trial_note')}
-                </div>
-                <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.25rem'}}>£0</div>
-                <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('free_forever')}</p>
-                <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
-                  {/* Scheduled Photos is the headline free feature: it needs no
-                      counterparty install, so it works for 100% of installers
-                      on day one. */}
-                  <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
-                  </li>
-                  {[t('feat_contacts_free'), t('feat_preview'), t('feat_p2p'), t('feat_chrome')].map(f => (
-                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-outline" style={{width: '100%'}}
-                  onClick={() => window.open('https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc', '_blank')}>
-                  {t('btn_start_trial')}
-                </button>
-              </div>
-
-              {/* Pro — the only paid tier. One-time, no subscription. */}
+              {/* Pro: the only tier from 1 November 2026. One-time, no subscription. */}
               <div className="glass-card glow-primary" style={{
                 padding: '2.25rem', textAlign: 'center' as const,
                 border: '1px solid rgba(37,211,102,0.4)', position: 'relative' as const
@@ -2696,18 +2632,26 @@ export default function Home() {
                   background: '#25D366', color: '#000',
                   fontSize: '0.75rem', fontWeight: '700',
                   padding: '4px 14px', borderBottomLeftRadius: '8px', borderTopRightRadius: '12px'
-                }}>{t('badge_popular')}</div>
+                }}>{t('badge_once')}</div>
                 <h3 style={{fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem'}}>{t('pro_label')}</h3>
-                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('pro_sub')}</p>
+                <p style={{color: '#9ca3af', fontSize: '0.95rem', marginBottom: '1.5rem'}}>{t('po_pro_sub')}</p>
                 <div style={{fontSize: '3rem', fontWeight: '800', color: '#25D366', marginBottom: '0.1rem'}}>£9.99</div>
                 <div style={{fontSize: '0.78rem', color: '#6b7280', marginBottom: '0.1rem'}}>{t('usd_approx')} $13 USD</div>
                 <p style={{color: '#9ca3af', fontSize: '0.9rem', marginBottom: '1.75rem'}}>{t('pro_once')}</p>
                 <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem', textAlign: 'left' as const}}>
                   <li style={{padding: '0.6rem 0', borderBottom: '1px solid rgba(37,211,102,0.15)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(37,211,102,0.06)', borderRadius: '6px', paddingLeft: '8px', marginBottom: '4px'}}>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" style={{flexShrink: 0}}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_everything_free')}</span>
+                    <span style={{fontWeight: '700', color: '#25D366'}}>{t('feat_scheduled')}</span>
                   </li>
-                  {[t('feat_photo_history'), t('feat_trial'), t('feat_export'), t('feat_sync'), t('feat_priority'), t('feat_nofee')].map(f => (
+                  {[t('po_days'), t('po_confirm'), t('feat_photo_history')].map(f => (
+                    <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                      <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
+                    </li>
+                  ))}
+                  <li style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                    <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> <a href="/per-contact" style={{color: '#d1d5db', textDecoration: 'underline', textUnderlineOffset: '3px'}}>{t('po_pcp')}</a>
+                  </li>
+                  {[t('feat_chrome'), t('feat_priority'), t('feat_nofee')].map(f => (
                     <li key={f} style={{padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
                       <span style={{color: '#25D366', fontWeight: '700'}}>✓</span> {f}
                     </li>
@@ -2718,61 +2662,17 @@ export default function Home() {
                 </ul>
                 <button className="btn btn-primary" style={{width: '100%'}}
                   onClick={() => window.open('https://wadualpic.lemonsqueezy.com/checkout/buy/4f5df750-a085-44a6-8cdd-690b92bd80b1', '_blank')}>
-                  {t('btn_get_pro')}
+                  {t('po_buy')}
                 </button>
+                <p style={{color: '#9ca3af', fontSize: '0.85rem', marginTop: '1rem', marginBottom: 0}}>
+                  {t('po_have_key')}{' '}
+                  <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" target="_blank" rel="noopener noreferrer" style={{color: '#25D366'}}>{t('po_install')}</a>
+                </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* What Happens Where — 2026-08-30 (Webb): replaces the repeated
-            "install free" callout that sat here. This is a repeated-CTA cut,
-            not a content cut: the space now answers the exact question a
-            reader has right after seeing pricing — what does Pro actually
-            change, and where. */}
-        <section style={{padding:'60px 20px',textAlign:'center' as const}}>
-          <div style={{maxWidth:'860px',margin:'0 auto'}}>
-            <h2 style={{fontSize:'clamp(22px,4vw,32px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('what_happens_where_title')}</h2>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
-              {[
-                [t('what_contacts_see_label'), t('what_contacts_see_val')],
-                [t('what_phone_label'), t('what_phone_val')],
-                [t('what_web_label'), t('what_web_val')],
-                [t('what_requires_install_label'), t('what_requires_install_val')],
-              ].map(([label, val]) => (
-                <div key={label} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px'}}>
-                  <div style={{color: '#25D366', fontWeight: '700', fontSize: '0.9rem', marginBottom: '8px'}}>{label}</div>
-                  <div style={{color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5'}}>{val}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Social Proof */}
-        <section style={{padding:'60px 20px',textAlign:'center' as const}}>
-          <div style={{maxWidth:'800px',margin:'0 auto'}}>
-            <h2 style={{fontSize:'clamp(20px,3vw,28px)',fontWeight:'700',color:'#fff',marginBottom:'32px'}}>{t('social_title')}</h2>
-            {/* Reddit quote */}
-            <div style={{background:'rgba(255,69,0,0.06)',border:'1px solid rgba(255,69,0,0.2)',borderLeft:'4px solid #FF4500',borderRadius:'12px',padding:'24px 28px',marginBottom:'32px',textAlign:'left' as const}}>
-              <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'8px'}}>
-                <span style={{fontSize:'13px',color:'#FF4500',fontWeight:'700',letterSpacing:'0.5px'}}>r/DigitalPrivacy</span>
-                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.25)'}}>·</span>
-                <span style={{fontSize:'12px',color:'rgba(255,255,255,0.3)'}}>Jun 1, 2026</span>
-              </div>
-              <p style={{fontSize:'clamp(15px,2vw,18px)',color:'#e5e7eb',fontStyle:'italic',lineHeight:'1.6',marginBottom:'12px'}}>
-                &ldquo;{t('social_quote')}&rdquo;
-              </p>
-              <div style={{fontSize:'12px',color:'rgba(255,255,255,0.35)'}}>{t('social_attr')}</div>
-            </div>
-            {/* Stats */}
-            <div style={{display:'flex',justifyContent:'center',gap:'32px',flexWrap:'wrap' as const}}>
-              {[t('social_stat1'), t('social_stat2'), t('social_stat3')].map((stat, i) => (
-                <div key={i} style={{background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:'10px',padding:'12px 20px',fontSize:'13px',color:'rgba(255,255,255,0.6)',fontWeight:'600'}}>
-                  {stat}
-                </div>
-              ))}
-            </div>
+            <p style={{maxWidth: '560px', margin: '1.5rem auto 0', textAlign: 'center' as const, color: '#9ca3af', fontSize: '0.9rem'}}>
+              {t('po_existing')}
+            </p>
           </div>
         </section>
 
@@ -2786,7 +2686,7 @@ export default function Home() {
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="1.5" style={{margin: '0 auto 12px', display: 'block'}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <h2 style={{fontSize: 'clamp(24px,4vw,34px)', fontWeight: '800', color: '#fff', marginBottom: '24px'}}>{t('security_title')}</h2>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' as const}}>
-              {[t('security_point1'), t('security_point2'), t('security_point3')].map(p => (
+              {[t('security_point1'), t('v2_sec_2'), t('v2_sec_3')].map(p => (
                 <div key={p} style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '18px 20px', color: '#d1d5db', fontSize: '0.95rem', lineHeight: '1.5', display: 'flex', alignItems: 'flex-start', gap: '10px'}}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2.5" style={{flexShrink: 0, marginTop: '2px'}}><polyline points="20 6 9 17 4 12"></polyline></svg>
                   {p}
@@ -2835,7 +2735,11 @@ export default function Home() {
                 <a href="/privacy" className="footer-link">Privacy Policy</a>
                 <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Support</a>
               </div>
-              <p className="footer-note">{t('footer_note')}</p>
+              <p className="footer-note">{t('v2_footer_note')}</p>
+            </div>
+            <div style={{textAlign: 'center' as const, marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)'}}>
+              <a href="/per-contact" className="footer-link" style={{fontSize: '12px'}}>{t('v2_footer_pcp')}</a>
+              <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '8px'}}>{t('v2_footer_disclaimer')}</p>
             </div>
           </div>
         </footer>
@@ -2851,7 +2755,7 @@ export default function Home() {
               </svg>
             </button>
             <h2 className="modal-title">{t('modal_title')}</h2>
-            <p className="modal-subtitle">{t('modal_sub')}</p>
+            <p className="modal-subtitle">{t('po_modal_sub')}</p>
             <button 
               className="btn btn-primary btn-full"
               onClick={() => {
@@ -2860,9 +2764,9 @@ export default function Home() {
                 showToast("Opening Chrome Web Store...", "Add DualProfile to Chrome to get started.");
               }}
             >
-              {t('modal_btn')}
+              {t('po_cta')}
             </button>
-            <p className="modal-privacy">{t('modal_note')}</p>
+            <p className="modal-privacy">{t('po_modal_note')}</p>
           </div>
         </div>
 
