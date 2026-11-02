@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { Breadcrumbs, SiteLinks, Canonical } from '../components/seo';
 
 const LANG_OPTIONS = [
   { code: 'en', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ec-1f1e7.svg', label: 'EN' },
@@ -29,10 +30,8 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy — DualProfile</title>
-        <meta name="description" content="DualProfile Privacy Policy — How we protect your data and privacy" />
-        <link rel="icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <title>Privacy Policy | DualProfile</title>
+        <meta name="description" content="How DualProfile handles your data on WhatsApp Web: what is stored, what is never accessed, and how to delete it." />
       
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -262,7 +261,7 @@ export default function Privacy() {
       {/* Navbar with language switcher */}
       <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
         <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
-          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+          <img src="/dualprofile-logo-64.webp" alt="" width="32" height="32" />
           <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
         </a>
         <div style={{display:'flex',flexWrap:'wrap',gap:'4px',alignItems:'center'}}>
@@ -274,7 +273,6 @@ export default function Privacy() {
               color: lang === l.code ? '#25D366' : '#6b7280',
               cursor:'pointer',display:'flex',alignItems:'center',gap:'2px',
             }}>
-              <img src={l.flag} alt={l.label} width="13" height="13" style={{display:'inline-block',verticalAlign:'middle'}} />
               <span>{l.label}</span>
             </button>
           ))}
@@ -285,10 +283,9 @@ export default function Privacy() {
       <div className="bg-dark text-white">
         <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <div style={{marginBottom: '2rem'}}>
-            <a href="/" className="text-gray-400 hover:text-brand-green transition mb-8 inline-block" style={{marginBottom: '1rem', display: 'inline-block'}}>
-              &larr; Back to DualProfile
-            </a>
-            <h1 className="text-4xl font-bold mb-4">Privacy Policy — DualProfile</h1>
+            <Canonical path="/privacy" />
+            <Breadcrumbs trail={[{ name: 'Privacy Policy', path: '/privacy' }]} />
+            <h1 className="text-4xl font-bold mb-4">DualProfile Privacy Policy</h1>
             <p className="text-gray-400">Effective Date: March 1, 2026</p>
           </div>
 
@@ -306,7 +303,7 @@ export default function Privacy() {
 
           <div className="space-y-8 text-gray-300">
             <p style={{fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem'}}>
-              <strong style={{color: '#25D366'}}>DualProfile does not read or modify your WhatsApp messages — ever.</strong> Our extension manages profile photo assignments and, with your explicit confirmation, scheduled photo changes to your own account. We have zero access to your chat content, message history, or conversation data.
+              <strong style={{color: '#25D366'}}>DualProfile does not read or modify your WhatsApp messages, ever.</strong> Our extension manages profile photo assignments and, with your explicit confirmation, scheduled photo changes to your own account. We have zero access to your chat content, message history, or conversation data.
             </p>
 
             {/* What Data We Collect */}
@@ -453,7 +450,8 @@ export default function Privacy() {
           </div>
 
           <div style={{marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border)', textAlign: 'center', color: 'var(--muted-foreground)'}}>
-            <p>© 2026 DualProfile. Privacy is not optional — it's fundamental.</p>
+            <p>© 2026 DualProfile.</p>
+            <SiteLinks />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { Breadcrumbs, SiteLinks } from '../components/seo';
 
 // Per-Contact Photos, moved off the homepage on 2026-10-14 so the homepage
 // sells Scheduled Photos only. Linked from the homepage footer and from the
@@ -15,8 +16,6 @@ export default function PerContact() {
         <title>Per-Contact Photos (experimental) | DualProfile</title>
         <meta name="description" content="Show a different WhatsApp profile photo to a specific contact. Both people need DualProfile installed. Works on WhatsApp Web." />
         <link rel="canonical" href="https://vivaup.org/per-contact" />
-        <link rel="icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "VideoObject",
@@ -67,13 +66,14 @@ export default function PerContact() {
 
       <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
         <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
-          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+          <img src="/dualprofile-logo-64.webp" alt="" width="32" height="32" />
           <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
         </a>
         <a href="/" style={{color:'#9ca3af',fontSize:'14px',textDecoration:'none'}}>&larr; Scheduled Photos</a>
       </nav>
 
       <main className="pc-wrap">
+        <Breadcrumbs trail={[{ name: 'Per-Contact Photos', path: '/per-contact' }]} />
         <span className="pc-badge">EXPERIMENTAL</span>
         <h1 className="pc-h1">Per-Contact Photos</h1>
         <p className="pc-lead">Show a different WhatsApp profile photo to a specific contact.</p>
@@ -146,8 +146,9 @@ export default function PerContact() {
         </div>
 
         <footer style={{marginTop:'3rem',paddingTop:'1.5rem',borderTop:'1px solid #374151',textAlign:'center',color:'#6b7280',fontSize:'0.85rem'}}>
-          <p style={{margin:'0 0 0.5rem'}}>© 2026 DualProfile. <a href="/privacy" className="pc-back">Privacy Policy</a> · <a href="mailto:edwin.dualprofile@gmail.com" className="pc-back">Support</a></p>
+          <p style={{margin:'0 0 0.5rem'}}>© 2026 DualProfile.</p>
           <p style={{margin:0,fontSize:'0.8rem'}}>DualProfile is an independent product and is not affiliated with WhatsApp or Meta.</p>
+          <SiteLinks />
         </footer>
       </main>
     </>

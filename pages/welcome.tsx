@@ -4,11 +4,10 @@ export default function Welcome() {
   return (
     <>
       <Head>
-        <title>You're in — DualProfile</title>
-        <meta name="description" content="Your DualProfile subscription is confirmed. Install the extension and get started." />
+        <title>You're in | DualProfile</title>
+        <meta name="description" content="Your DualProfile Pro purchase is confirmed. Install the extension and get started." />
         <meta name="robots" content="noindex" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <div className="page">
@@ -16,7 +15,7 @@ export default function Welcome() {
         <nav className="navbar">
           <div className="navbar-container">
             <div className="logo">
-              <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+              <img src="/dualprofile-logo-64.webp" alt="DualProfile" width="32" height="32" />
               <span className="logo-text">DualProfile</span>
             </div>
           </div>
@@ -37,8 +36,8 @@ export default function Welcome() {
 
             <h1 className="title">You're in.</h1>
             <p className="subtitle">
-              Your DualProfile subscription is confirmed.<br />
-              One thing left to do — install the extension.
+              Your DualProfile Pro purchase is confirmed.<br />
+              One thing left to do: install the extension.
             </p>
 
             {/* Steps */}
@@ -47,7 +46,7 @@ export default function Welcome() {
                 <div className="step-num">1</div>
                 <div className="step-text">
                   <strong>Add DualProfile to Chrome</strong>
-                  <span>Click the button below — takes 10 seconds</span>
+                  <span>Click the button below. It takes 10 seconds</span>
                 </div>
               </div>
               <div className="step">
@@ -61,7 +60,7 @@ export default function Welcome() {
                 <div className="step-num">3</div>
                 <div className="step-text">
                   <strong>Send the link to your first contact</strong>
-                  <span>They install too — then it's automatic from there</span>
+                  <span>They install too, then it's automatic from there</span>
                 </div>
               </div>
             </div>
@@ -73,7 +72,7 @@ export default function Welcome() {
               rel="noreferrer"
               className="cta-btn"
             >
-              Add to Chrome — Install Now
+              Add to Chrome
             </a>
 
             <p className="note">

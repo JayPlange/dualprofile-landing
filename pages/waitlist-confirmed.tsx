@@ -18,10 +18,10 @@ export default function WaitlistConfirmed() {
   return (
     <>
       <Head>
-        <title>You're on the list! - DualProfile</title>
+        <title>You're on the list | DualProfile</title>
         <meta name="description" content="Welcome to the DualProfile waitlist! We'll notify you as soon as we launch." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
