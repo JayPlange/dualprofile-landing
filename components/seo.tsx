@@ -2,26 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 
 // Shared SEO pieces for the DualProfile site. One place for the site URL,
-// the author, the breadcrumb trail and the footer links, so every page says
+// the breadcrumb trail and the footer links, so every page says
 // the same thing and links to the same canonical URLs (no trailing slash,
 // matching next.config.js trailingSlash: false).
 
 export const SITE = 'https://vivaup.org';
-
-// The real person behind DualProfile. Used in schema.org markup and in the
-// visible "Made by" line.
-export const AUTHOR = {
-  '@type': 'Person',
-  name: 'Edwin Plange',
-  jobTitle: 'Software engineer and founder of DualProfile',
-  address: { '@type': 'PostalAddress', addressLocality: 'Accra', addressCountry: 'GH' },
-  url: 'https://vivaup.org/links',
-  sameAs: [
-    'https://edwinplange.vercel.app',
-    'https://www.linkedin.com/in/edwin-plange',
-    'https://github.com/JayPlange',
-  ],
-};
 
 type Crumb = { name: string; path: string };
 
@@ -66,7 +51,7 @@ export function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   );
 }
 
-/** Links every public page from every other one, plus who made it. */
+/** Links every public page from every other one. */
 export function SiteLinks() {
   const link = { color: '#9ca3af', textDecoration: 'none' as const };
   return (
@@ -76,9 +61,6 @@ export function SiteLinks() {
         <a href="/per-contact" style={link}>Per-Contact Photos</a>
         <a href="/support" style={link}>Support</a>
         <a href="/privacy" style={link}>Privacy Policy</a>
-      </p>
-      <p style={{ margin: 0 }}>
-        Made by <a href="/links" rel="author" style={{ ...link, textDecoration: 'underline', textUnderlineOffset: '3px' }}>Edwin Plange</a>, a software engineer in Accra, Ghana.
       </p>
     </div>
   );

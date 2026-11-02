@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { AUTHOR } from '../components/seo';
 
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
@@ -2153,8 +2152,7 @@ export default function Home() {
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
           "screenshot": "https://vivaup.org/dp-photos-ui.png",
-          "author": AUTHOR,
-          "publisher": { "@type": "Organization", "name": "DualProfile", "url": "https://vivaup.org/", "logo": "https://vivaup.org/dualprofile-logo.png", "founder": AUTHOR }
+          "publisher": { "@type": "Organization", "name": "DualProfile", "url": "https://vivaup.org/", "logo": "https://vivaup.org/dualprofile-logo.png" }
         })}} />
         {/* FAQ structured data, from the English FAQ shown on the page. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -2753,7 +2751,6 @@ export default function Home() {
             </div>
             <div style={{textAlign: 'center' as const, marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)'}}>
               <a href="/per-contact" className="footer-link" style={{fontSize: '12px'}}>{t('v2_footer_pcp')}</a>
-              <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '8px'}}>Made by <a href="/links" rel="author" className="footer-link">Edwin Plange</a>, a software engineer in Accra, Ghana.</p>
               <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '8px'}}>{t('v2_footer_disclaimer')}</p>
             </div>
           </div>

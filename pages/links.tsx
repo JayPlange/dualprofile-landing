@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { AUTHOR } from "../components/seo";
 import { photoBase64 } from "../data/photoData";
 import { noiseBase64 } from "../data/noiseData";
 
@@ -8,13 +7,8 @@ export default function LinksPage() {
     <>
       <Head>
         <title>Edwin Plange | Links</title>
-        <meta name="description" content="Edwin Plange, software engineer in Accra and maker of DualProfile. Links to DualProfile, LinkedIn, YouTube and X." />
+        <meta name="description" content="Links to DualProfile, LinkedIn, YouTube and X." />
         <link rel="canonical" href="https://vivaup.org/links" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfilePage",
-          "mainEntity": { ...AUTHOR, "@context": undefined, "worksFor": { "@type": "Organization", "name": "DualProfile", "url": "https://vivaup.org/" } }
-        })}} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
