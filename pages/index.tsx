@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { AUTHOR } from '../components/seo';
 
 // ─── i18n ────────────────────────────────────────────────────────────────────
 const LANGS: Record<string, Record<string, string>> = {
@@ -1854,6 +1855,18 @@ const LANG_OPTIONS = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
+// The FAQ shown on the page, as [question key, answer key]. Also feeds the
+// FAQPage structured data in <Head>.
+const FAQ_KEYS: [string, string][] = [
+  ['sp_faq_1_q', 'sp_faq_1_a'],
+  ['faq_5_q', 'faq_5_a'],
+  ['faq_2_q', 'v2_faq_mobile_a'],
+  ['v2_faq_ask_q', 'v2_faq_ask_a'],
+  ['po_faq_price_q', 'po_faq_price_a'],
+  ['po_faq_exist_q', 'po_faq_exist_a'],
+  ['faq_7_q', 'faq_7_a'],
+];
+
 export default function Home() {
   const [email, setEmail] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -2095,21 +2108,13 @@ export default function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wcActive]);
 
-  const faqs = [
-    { question: t('sp_faq_1_q'), answer: t('sp_faq_1_a') },
-    { question: t('faq_5_q'), answer: t('faq_5_a') },
-    { question: t('faq_2_q'), answer: t('v2_faq_mobile_a') },
-    { question: t('v2_faq_ask_q'), answer: t('v2_faq_ask_a') },
-    { question: t('po_faq_price_q'), answer: t('po_faq_price_a') },
-    { question: t('po_faq_exist_q'), answer: t('po_faq_exist_a') },
-    { question: t('faq_7_q'), answer: t('faq_7_a') },
-  ];
+  const faqs = FAQ_KEYS.map(([q, a]) => ({ question: t(q), answer: t(a) }));
 
   return (
     <>
       <Head>
         <title>DualProfile: Schedule Your WhatsApp Profile Photo</title>
-        <meta name="description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
+        <meta name="description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. A Chrome and Edge extension for WhatsApp Web." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://vivaup.org/" />
 
@@ -2117,13 +2122,13 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://vivaup.org/" />
         <meta property="og:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
-        <meta property="og:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
+        <meta property="og:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. A Chrome and Edge extension for WhatsApp Web." />
         <meta property="og:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="DualProfile: Schedule Your WhatsApp Profile Photo" />
-        <meta name="twitter:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. Chrome and Edge extension for WhatsApp Web. £9.99 once, no subscription." />
+        <meta name="twitter:description" content="Schedule when your WhatsApp profile photo changes: a work photo by day, a personal one after hours. A Chrome and Edge extension for WhatsApp Web." />
         <meta name="twitter:image" content="https://img.youtube.com/vi/mt8QzcG0_XQ/maxresdefault.jpg" />
 
         {/* Structured Data */}
@@ -2147,11 +2152,20 @@ export default function Home() {
             "Works on WhatsApp Web in Chrome and Edge"
           ],
           "installUrl": "https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc",
-          "screenshot": "https://vivaup.org/dualprofile-logo.png"
+          "screenshot": "https://vivaup.org/dp-photos-ui.png",
+          "author": AUTHOR,
+          "publisher": { "@type": "Organization", "name": "DualProfile", "url": "https://vivaup.org/", "logo": "https://vivaup.org/dualprofile-logo.png", "founder": AUTHOR }
         })}} />
-        <link rel="icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        {/* FAQ structured data, from the English FAQ shown on the page. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": FAQ_KEYS.map(([q, a]) => ({
+            "@type": "Question",
+            "name": LANGS['en'][q],
+            "acceptedAnswer": { "@type": "Answer", "text": LANGS['en'][a] }
+          }))
+        })}} />
         <script async data-uid="45b1efe5a4" src="https://dualprofile.kit.com/45b1efe5a4/index.js" />
       </Head>
 
@@ -2161,7 +2175,7 @@ export default function Home() {
           <div className="navbar-container">
             <div className="logo">
               <div style={{position:'relative' as const, display:'inline-flex', alignItems:'center'}}>
-                <img src="/dualprofile-logo.png" alt="DualProfile Logo" width="32" height="32" />
+                <img src="/dualprofile-logo-64.webp" alt="" width="32" height="32" />
                 {wcActive && (
                   <span style={{
                     position:'absolute' as const,
@@ -2207,7 +2221,7 @@ export default function Home() {
                     display: 'flex', alignItems: 'center', gap: '3px',
                     transition: 'all 0.15s ease'
                   }}>
-                    <img src={l.flag} alt={l.label} width="14" height="14" style={{display:'inline-block',verticalAlign:'middle',marginRight:'2px'}} /><span>{l.label}</span>
+                    <span>{l.label}</span>
                   </button>
                 ))}
               </div>
@@ -2219,7 +2233,7 @@ export default function Home() {
                   fontSize:'11px',fontWeight:'700',fontFamily:'inherit',
                   display:'flex',alignItems:'center',gap:'4px'
                 }}>
-                  <img src={LANG_OPTIONS.find(l => l.code === lang)?.flag || LANG_OPTIONS[0].flag} alt={lang.toUpperCase()} width="14" height="14" style={{verticalAlign:'middle'}} />
+                  
                   <span>{lang.toUpperCase()}</span>
                   <span style={{fontSize:'8px',opacity:0.6}}>&#9660;</span>
                 </button>
@@ -2240,7 +2254,6 @@ export default function Home() {
                         fontSize:'11px',fontWeight:'700',fontFamily:'inherit',
                         display:'flex',alignItems:'center',gap:'3px'
                       }}>
-                        <img src={l.flag} alt={l.label} width="13" height="13" style={{verticalAlign:'middle'}} />
                         <span>{l.label}</span>
                       </button>
                     ))}
@@ -2478,7 +2491,7 @@ export default function Home() {
         <section id="use-cases" className="features" style={{paddingTop: '20px', paddingBottom: '20px'}}>
           <div className="container">
             <div className="identity-grid">
-              <img src="/dp-photos-ui.png" alt={t('uc_img_alt')} style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'contain', aspectRatio: '2/3', background: '#0b0f0d', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
+              <img src="/dp-photos-ui.webp" alt={t('uc_img_alt')} width={240} height={360} loading="lazy" decoding="async" style={{width: '100%', maxWidth: '240px', margin: '0 auto', borderRadius: '16px', objectFit: 'contain', aspectRatio: '2/3', background: '#0b0f0d', border: '1px solid rgba(255,255,255,0.1)', display: 'block'}} />
               <div>
                 <h2 className="section-title" style={{textAlign: 'left' as const, marginBottom: '6px'}}>{t('uc_title')}</h2>
                 <p className="section-subtitle" style={{textAlign: 'left' as const, marginBottom: '24px'}}>{t('uc_sub')}</p>
@@ -2733,12 +2746,14 @@ export default function Home() {
               <p>© 2026 DualProfile. {t('footer_rights')}</p>
               <div className="footer-links">
                 <a href="/privacy" className="footer-link">Privacy Policy</a>
-                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Support</a>
+                <a href="/support" className="footer-link">Support</a>
+                <a href="mailto:edwin.dualprofile@gmail.com" className="footer-link">Email</a>
               </div>
               <p className="footer-note">{t('v2_footer_note')}</p>
             </div>
             <div style={{textAlign: 'center' as const, marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)'}}>
               <a href="/per-contact" className="footer-link" style={{fontSize: '12px'}}>{t('v2_footer_pcp')}</a>
+              <p style={{fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '8px'}}>Made by <a href="/links" rel="author" className="footer-link">Edwin Plange</a>, a software engineer in Accra, Ghana.</p>
               <p style={{fontSize: '11px', color: 'rgba(255,255,255,0.35)', marginTop: '8px'}}>{t('v2_footer_disclaimer')}</p>
             </div>
           </div>

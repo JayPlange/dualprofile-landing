@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Remove output: 'export' to enable API routes
-  trailingSlash: true,
+  // No trailing slash: /support, not /support/. Canonical URLs, the sitemap and
+  // every internal link use this form, so none of them hit a redirect.
+  trailingSlash: false,
   images: {
     unoptimized: true
   },
@@ -20,10 +22,10 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "img-src 'self' https://res.cloudinary.com https://twemoji.maxcdn.com data:",
+              "img-src 'self' https://res.cloudinary.com https://img.youtube.com data:",
               "script-src 'self' 'unsafe-inline' https://dualprofile.kit.com",
-              "style-src 'self' 'unsafe-inline'",
-              "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://api.lemonsqueezy.com https://dualprofile.kit.com",
               "frame-src 'self' https://www.youtube.com https://youtube.com",
               "object-src 'none'",

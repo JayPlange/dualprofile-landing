@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { Breadcrumbs, SiteLinks, Canonical } from '../components/seo';
 
 const LANG_OPTIONS = [
   { code: 'en', flag: 'https://twemoji.maxcdn.com/v/latest/svg/1f1ec-1f1e7.svg', label: 'EN' },
@@ -30,9 +31,8 @@ export default function Support() {
   return (
     <>
       <Head>
-        <title>Support — DualProfile</title>
-        <meta name="description" content="Get help with DualProfile - installation, troubleshooting, and frequently asked questions" />
-        <link rel="icon" href="/favicon.png" />
+        <title>DualProfile Support: Setup, Licence Keys and FAQ</title>
+        <meta name="description" content="Help with DualProfile for WhatsApp Web: installing the extension, linking a second browser, entering your licence key, and answers to common questions." />
       
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -303,7 +303,7 @@ export default function Support() {
       {/* Navbar with language switcher */}
       <nav style={{background:'#0b0b0f',borderBottom:'1px solid rgba(255,255,255,0.06)',padding:'0 24px',height:'64px',display:'flex',alignItems:'center',justifyContent:'space-between',position:'sticky',top:0,zIndex:100}}>
         <a href="/" style={{display:'flex',alignItems:'center',gap:'10px',textDecoration:'none'}}>
-          <img src="/dualprofile-logo.png" alt="DualProfile" width="32" height="32" />
+          <img src="/dualprofile-logo-64.webp" alt="" width="32" height="32" />
           <span style={{fontSize:'1.1rem',fontWeight:700,color:'#fff'}}>DualProfile</span>
         </a>
         <div style={{display:'flex',flexWrap:'wrap',gap:'4px',alignItems:'center'}}>
@@ -315,7 +315,6 @@ export default function Support() {
               color: lang === l.code ? '#25D366' : '#6b7280',
               cursor:'pointer',display:'flex',alignItems:'center',gap:'2px',
             }}>
-              <img src={l.flag} alt={l.label} width="13" height="13" style={{display:'inline-block',verticalAlign:'middle'}} />
               <span>{l.label}</span>
             </button>
           ))}
@@ -326,9 +325,8 @@ export default function Support() {
       <div className="bg-dark text-white">
         <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
           <div style={{marginBottom: '2rem'}}>
-            <a href="/" className="text-gray-400 hover:text-brand-green transition mb-8 inline-block" style={{marginBottom: '1rem', display: 'inline-block'}}>
-              &larr; Back to DualProfile
-            </a>
+            <Canonical path="/support" />
+            <Breadcrumbs trail={[{ name: 'Support', path: '/support' }]} />
             <h1 className="text-4xl font-bold mb-4">Support</h1>
             <p className="text-gray-400">Get help with DualProfile - installation, troubleshooting, and answers to common questions.</p>
           </div>
@@ -389,16 +387,16 @@ export default function Support() {
               <div className="subsection">
                 <ul>
                   <li>
-                    <strong>Overlays not showing</strong> — Refresh WhatsApp Web after installing DualProfile. Sometimes the page needs to reload to show the extension overlays.
+                    <strong>Overlays not showing</strong>: Refresh WhatsApp Web after installing DualProfile. Sometimes the page needs to reload to show the extension overlays.
                   </li>
                   <li>
-                    <strong>Badge not showing on contacts</strong> — Make sure your phone number is registered in DualProfile Settings. The badge appears only when your number is verified.
+                    <strong>Badge not showing on contacts</strong>: Make sure your phone number is registered in DualProfile Settings. The badge appears only when your number is verified.
                   </li>
                   <li>
-                    <strong>Photos not syncing to the other person</strong> — DualProfile works peer-to-peer. Both people need the extension installed and phone numbers registered. Once both sides are set up, syncing is automatic and requires no further action.
+                    <strong>Photos not syncing to the other person</strong>: DualProfile works peer-to-peer. Both people need the extension installed and phone numbers registered. Once both sides are set up, syncing is automatic and requires no further action.
                   </li>
                   <li>
-                    <strong>Notification icons not updating</strong> — Reload the extension from chrome://extensions. Find DualProfile, click the reload button, then refresh WhatsApp Web.
+                    <strong>Notification icons not updating</strong>: Reload the extension from chrome://extensions. Find DualProfile, click the reload button, then refresh WhatsApp Web.
                   </li>
                 </ul>
               </div>
@@ -411,17 +409,12 @@ export default function Support() {
               <div className="space-y-4">
                 <div className="faq-item">
                   <div className="faq-question">Does my contact need to install anything?</div>
-                  <div className="faq-answer">Yes — DualProfile works peer-to-peer. When you assign a photo to a contact and they have DualProfile installed, your assigned photo appears on their screen automatically. This is how the selective visibility works. Share the install link with them: <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" className="brand-green" target="_blank" rel="noopener noreferrer">chromewebstore.google.com</a></div>
+                  <div className="faq-answer">For Scheduled Photos, no. It changes your real WhatsApp photo, so everyone sees it without installing anything. For Per-Contact Photos, yes: the contact needs DualProfile installed with their number saved to see the photo you assigned them. Share the <a href="https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc" className="brand-green" target="_blank" rel="noopener noreferrer">install link</a> with them.</div>
                 </div>
 
                 <div className="faq-item">
                   <div className="faq-question">Does it work on the WhatsApp mobile app?</div>
-                  <div className="faq-answer">No — DualProfile works on WhatsApp Web (web.whatsapp.com) in Chrome or Edge on desktop only. The WhatsApp mobile app does not support browser extensions.</div>
-                </div>
-
-                <div className="faq-item">
-                  <div className="faq-question">Does it work on mobile?</div>
-                  <div className="faq-answer">No — DualProfile is a browser extension for WhatsApp Web only. Mobile apps don't support extensions.</div>
+                  <div className="faq-answer">You set DualProfile up in WhatsApp Web, in Chrome or Edge on a computer. A scheduled photo is your real WhatsApp photo, so it also shows in the mobile app. Per-Contact Photos only show on WhatsApp Web, because they rely on the other person's extension.</div>
                 </div>
 
                 <div className="faq-item">
@@ -431,12 +424,12 @@ export default function Support() {
 
                 <div className="faq-item">
                   <div className="faq-question">Is my phone number stored?</div>
-                  <div className="faq-answer">No — it is hashed (SHA-256) on your device and never stored as plain text anywhere. We only store the hash for matching.</div>
+                  <div className="faq-answer">No. It is hashed (SHA-256) on your device and never stored as plain text anywhere. We only store the hash for matching.</div>
                 </div>
 
                 <div className="faq-item">
                   <div className="faq-question">Can my contacts see that I'm using DualProfile?</div>
-                  <div className="faq-answer">No — they only see the photo you assigned to them. There's no indication that you're using any extension.</div>
+                  <div className="faq-answer">No. They only see the photo you assigned to them. There's no indication that you're using any extension.</div>
                 </div>
 
                 <div className="faq-item">
@@ -472,7 +465,8 @@ export default function Support() {
           </div>
 
           <div style={{marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #374151', textAlign: 'center', color: '#9ca3af'}}>
-            <p>© 2026 DualProfile. We're here to help.</p>
+            <p>© 2026 DualProfile.</p>
+            <SiteLinks />
           </div>
         </div>
       </div>
