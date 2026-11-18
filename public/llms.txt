@@ -1,0 +1,32 @@
+# DualProfile
+
+> DualProfile is a Chrome extension for WhatsApp Web that helps people separate work and personal life on one WhatsApp account by automatically scheduling profile photo changes.
+
+Website: https://vivaup.org/
+Chrome Web Store: https://chromewebstore.google.com/detail/dualprofile/mdlhdncmaeepcejdbpnjpjlmagmmpkpc
+
+## What DualProfile does
+
+- **Scheduled Photos:** Automatically changes your WhatsApp profile photo according to a schedule you choose. For example, show a professional photo during work hours and a personal photo outside work. Each change requires your confirmation.
+- **Photo History & Revert:** Restore a recently used profile photo.
+- **Per-Contact Photos:** An experimental feature that lets you assign a different photo to a specific contact. Both people must have DualProfile installed. Available on WhatsApp Web only.
+- **Export & Import:** Back up and restore contact assignments.
+- **Multi-Device Sync:** Sync supported preferences across devices.
+
+## Privacy
+
+- DualProfile does not access or store WhatsApp chat content.
+- Scheduled Photos works on your own WhatsApp account. Other people do not need to install DualProfile.
+- Per-Contact Photos requires both people to have DualProfile installed.
+
+## Compatibility
+
+- Chrome and Edge browsers.
+- WhatsApp Web.
+- Per-Contact Photos is experimental and does not support group chats or the WhatsApp mobile app.
+
+## Help and documentation
+
+- Support: https://vivaup.org/support
+- Privacy Policy: https://vivaup.org/privacy
+- Per-Contact Photos: https://vivaup.org/per-contact
